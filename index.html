@@ -12,6 +12,14 @@
 <body>
     <div class="animated-bg"></div>
     
+    <div class="parallax-container">
+        <div class="parallax-layer parallax-layer-2"></div>
+        <div class="parallax-layer parallax-layer-3"></div>
+        <div class="parallax-layer parallax-layer-8"></div>
+        <div class="parallax-layer parallax-layer-9"></div>
+        <div class="parallax-layer parallax-layer-10"></div>
+    </div>
+    
     <div class="floating-elements">
         <div class="floating-element"></div>
         <div class="floating-element"></div>
@@ -106,5 +114,42 @@
             <p>&copy; 2024 King's High School Digital Technology Department. Inspiring innovation through technology.</p>
         </div>
     </footer>
+
+    <script>
+        // Forest parallax scrolling effect with 10 layers
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            
+            // Different parallax speeds for each layer (back to front)
+            // Skybox is now the default static background, so removed from parallax
+            const layerSpeeds = {
+                2: 0.1,   // Layer 2: Moon
+                3: 0.37,  // Layer 3: Mountains (slightly faster to prevent bottom reveal)
+                8: 0.4,   // Layer 8: Forest mid
+                9: 0.6,   // Layer 9: Forest low
+                10: 0.8   // Layer 10: Forest front (fastest parallax)
+            };
+            
+            // Update only the layers we're using
+            Object.keys(layerSpeeds).forEach(layerNum => {
+                const layer = document.querySelector(`.parallax-layer-${layerNum}`);
+                if (layer) {
+                    const rate = scrolled * layerSpeeds[layerNum];
+                    layer.style.transform = `translateY(${rate}px)`;
+                }
+            });
+            
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        });
+    </script>
 </body>
 </html>

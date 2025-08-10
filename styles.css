@@ -21,7 +21,7 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--dark-bg);
+  background: var(--dark-bg) url('images/BG/4 Forest parallax vertical skybox fulll.png') center bottom/auto 150% repeat-x fixed;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -33,10 +33,84 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -2;
   background: linear-gradient(45deg, #0066cc, #00a8ff, #667eea, #764ba2);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+}
+
+.parallax-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.parallax-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  background-size: auto 150%;
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  transition: transform 0.1s ease-out;
+}
+
+/* Forest Parallax Layers - Back to Front */
+.parallax-layer-1 {
+  background-image: url('images/BG/4 Forest parallax vertical skybox fulll.png');
+  z-index: -10;
+}
+
+.parallax-layer-2 {
+  background-image: url('images/BG/4-1 Forest parallax vertical forest moon big.png');
+  z-index: -9;
+}
+
+.parallax-layer-3 {
+  background-image: url('images/BG/3 Forest parallax vertical mountain back.png');
+  z-index: -8;
+}
+
+.parallax-layer-4 {
+  background-image: url('images/BG/8 Forest parallax vertical cloud 5.png');
+  z-index: -7;
+}
+
+.parallax-layer-5 {
+  background-image: url('images/BG/7 Forest parallax vertical cloud 4.png');
+  z-index: -6;
+}
+
+.parallax-layer-6 {
+  background-image: url('images/BG/6 Forest parallax vertical cloud 3.png');
+  z-index: -5;
+}
+
+.parallax-layer-7 {
+  background-image: url('images/BG/5 Forest parallax vertical cloud 2.png');
+  z-index: -4;
+}
+
+.parallax-layer-8 {
+  background-image: url('images/BG/2 Forest parallax vertical forest mid.png');
+  z-index: -3;
+}
+
+.parallax-layer-9 {
+  background-image: url('images/BG/1 Forest parallax vertical forest low.png');
+  z-index: -2;
+}
+
+.parallax-layer-10 {
+  background-image: url('images/BG/0 Forest parallax vertical forest tree front.png');
+  z-index: -1;
 }
 
 @keyframes gradientShift {
