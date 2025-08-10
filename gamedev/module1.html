@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: Getting Started with Godot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            margin: 1rem 0;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .download-section {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            margin: 1rem 0;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .checklist {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .checklist ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .next-module {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .next-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        .next-link:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+
+    <div class="header">
+        <h1>Module 1: Getting Started with Godot</h1>
+        <p>Foundation Skills & Setup</p>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Learning Objectives</h2>
+        <ul>
+            <li>Download and install Godot Engine</li>
+            <li>Understand the Godot interface and basic navigation</li>
+            <li>Learn fundamental game development concepts</li>
+            <li>Set up your first project with provided graphics</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>📺 Brackeys Godot Tutorial</h2>
+        <p>Watch this comprehensive tutorial to get started with Godot. This will give you a solid foundation in the engine's interface and basic concepts.</p>
+        
+        <div class="video-container">
+            <div class="video-placeholder">
+                [YouTube Embed: Brackeys Godot Tutorial]<br>
+                <small>Placeholder - Teacher will add the actual embed code</small>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h3>⏰ Time Management</h3>
+            <p>The tutorial is longer than one class period. Focus on:</p>
+            <ul>
+                <li>First 15 minutes: Interface overview</li>
+                <li>Next 20 minutes: Basic project setup and navigation</li>
+                <li>Remaining time: Experiment with creating nodes</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📁 Download Graphics Pack</h2>
+        <div class="download-section">
+            <h3>Essential Game Assets</h3>
+            <p>Download the graphics pack that contains all the sprites, backgrounds, and UI elements you'll need for the entire course.</p>
+            
+            <p><strong>Download Link:</strong> <a href="#" style="color: #4caf50;">[Asset Pack Download]</a></p>
+            <p><small>Placeholder link - Teacher will add the actual download link</small></p>
+            
+            <h4>What's Included:</h4>
+            <ul>
+                <li>Character sprites (multiple animations)</li>
+                <li>Platform and tile assets</li>
+                <li>UI buttons and icons</li>
+                <li>Background images</li>
+                <li>Projectile and effect sprites</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🛠️ Setup Your First Project</h2>
+        <h3>Step-by-Step Instructions:</h3>
+        <ol>
+            <li><strong>Install Godot:</strong> Download from <a href="https://godotengine.org" target="_blank">godotengine.org</a></li>
+            <li><strong>Create New Project:</strong> Click "Create" in the project manager</li>
+            <li><strong>Name Your Project:</strong> "Year10_GameDev_[YourName]"</li>
+            <li><strong>Import Assets:</strong> Create an "assets" folder and import your downloaded graphics</li>
+            <li><strong>Explore Interface:</strong> Familiarize yourself with the different panels</li>
+        </ol>
+
+        <div class="highlight">
+            <h3>🤖 AI Prompt for Setup Help</h3>
+            <p>If you get stuck, try this prompt with your AI assistant:</p>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "I'm setting up my first Godot project for a Year 10 game development class. Can you walk me through importing image assets into Godot and organizing them in folders? I have sprites for characters, backgrounds, and UI elements."
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>✅ Module 1 Checklist</h2>
+        <div class="checklist">
+            <h3>Before Moving to Module 2:</h3>
+            <ul>
+                <li>Godot is installed and running</li>
+                <li>Watched at least 35 minutes of the Brackeys tutorial</li>
+                <li>Created your first project</li>
+                <li>Downloaded and imported the graphics pack</li>
+                <li>Can navigate the Godot interface (Scene, Inspector, FileSystem)</li>
+                <li>Successfully created and deleted a basic node</li>
+                <li>Understand what a scene is in Godot</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🧠 Key Concepts Learned</h2>
+        <ul>
+            <li><strong>Nodes:</strong> Building blocks of everything in Godot</li>
+            <li><strong>Scenes:</strong> Collections of nodes that make up game objects</li>
+            <li><strong>Project Structure:</strong> How to organize assets and scenes</li>
+            <li><strong>Interface Navigation:</strong> Understanding different panels and their purposes</li>
+        </ul>
+    </div>
+
+    <div class="next-module">
+        <a href="module2.html" class="next-link">Continue to Module 2: Clicker Game →</a>
+    </div>
+</body>
+</html>

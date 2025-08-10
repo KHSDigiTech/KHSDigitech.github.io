@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7: Simple Shooter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .node-info {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            margin: 1rem 0;
+        }
+
+        .ai-prompt {
+            background: #f3e5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #9c27b0;
+            margin: 1rem 0;
+        }
+
+        .step-by-step {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+        }
+
+        .checklist {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .checklist ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        .controls-box {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            margin: 1rem 0;
+        }
+
+        .instantiation-info {
+            background: #ffe0e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b9d;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .next-module {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .next-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        .next-link:hover {
+            background: #218838;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+
+    <div class="header">
+        <h1>Module 7: Simple Shooter</h1>
+        <p>Object Instantiation, Timers & Projectile Physics</p>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Learning Objectives</h2>
+        <ul>
+            <li>Create and instantiate bullet/projectile objects</li>
+            <li>Use Timer nodes for controlled firing rates</li>
+            <li>Handle object cleanup and memory management</li>
+            <li>Implement simple target practice gameplay</li>
+            <li>Master dynamic object creation in Godot</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>🎮 The Game: Space Shooter</h2>
+        <p>Build a classic space shooter where the player fires projectiles at targets. Learn the fundamentals of bullet mechanics and object instantiation!</p>
+        
+        <div class="node-info">
+            <h3>🔧 Essential Nodes</h3>
+            <ul>
+                <li><strong>CharacterBody2D:</strong> Player ship with movement</li>
+                <li><strong>Area2D:</strong> Bullet projectiles and targets</li>
+                <li><strong>Timer:</strong> Controls firing rate and spawn timing</li>
+                <li><strong>PackedScene:</strong> Bullet prefab for instantiation</li>
+            </ul>
+        </div>
+
+        <div class="controls-box">
+            <h3>🎹 Shooter Controls</h3>
+            <ul>
+                <li><strong>WASD / Arrow Keys:</strong> Move player ship</li>
+                <li><strong>Space:</strong> Fire bullets</li>
+                <li><strong>Automatic firing</strong> (optional): Hold space to continuous fire</li>
+            </ul>
+        </div>
+
+        <div class="instantiation-info">
+            <h3>🏭 Understanding Object Instantiation</h3>
+            <ul>
+                <li><strong>PackedScene:</strong> A saved scene file that can be loaded</li>
+                <li><strong>instantiate():</strong> Creates a new copy of a scene</li>
+                <li><strong>add_child():</strong> Adds the new object to the scene tree</li>
+                <li><strong>queue_free():</strong> Removes objects to prevent memory leaks</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🏗️ Building Your Shooter Game</h2>
+        
+        <div class="step-by-step">
+            <h3>Step 1: Main Scene Setup</h3>
+            <ol>
+                <li>Create new scene with <code>Node2D</code> root ("ShooterGame")</li>
+                <li>Add player ship (<code>CharacterBody2D</code>) with sprite and collision</li>
+                <li>Add <code>Timer</code> node for firing rate control</li>
+                <li>Add UI elements (score label, instructions)</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 2: Create Bullet Scene</h3>
+            <ol>
+                <li>Create a <strong>new scene</strong> (separate from main game)</li>
+                <li>Add <code>Area2D</code> as root (name it "Bullet")</li>
+                <li>Add <code>Sprite2D</code> child with bullet/laser texture</li>
+                <li>Add <code>CollisionShape2D</code> child with appropriate shape</li>
+                <li><strong>Save as</strong> "Bullet.tscn" in your project</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 3: Create Target/Enemy Scene</h3>
+            <ol>
+                <li>Create another <strong>new scene</strong></li>
+                <li>Add <code>Area2D</code> as root ("Target")</li>
+                <li>Add <code>Sprite2D</code> with enemy/target texture</li>
+                <li>Add <code>CollisionShape2D</code> for hit detection</li>
+                <li><strong>Save as</strong> "Target.tscn"</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 4: Connect Everything</h3>
+            <ol>
+                <li>In main scene script, load bullet scene with <code>preload()</code></li>
+                <li>Connect Timer signal for automatic firing</li>
+                <li>Connect input handling for manual shooting</li>
+                <li>Set up collision detection between bullets and targets</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🤖 AI-Assisted Shooting Mechanics</h2>
+        
+        <div class="ai-prompt">
+            <h3>Perfect Prompt for Bullet Instantiation</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "I need to create a bullet system in Godot 4. I have a bullet scene saved as 'Bullet.tscn' and want to instantiate it when the player presses Space. Can you show me how to preload the scene, instantiate it at the player's position, give it upward velocity, and add it to the scene tree? Also include how to remove bullets when they go off-screen."
+            </blockquote>
+        </div>
+
+        <div class="ai-prompt">
+            <h3>Timer and Firing Rate Prompts</h3>
+            <ul>
+                <li>"How do I use a Timer node to limit how fast the player can fire bullets?"</li>
+                <li>"Can you show me how to make automatic firing when holding the Space key?"</li>
+                <li>"How do I make bullets move in different directions based on player rotation?"</li>
+                <li>"What's the best way to clean up bullets that leave the screen area?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Target and Collision System</h2>
+        
+        <div class="step-by-step">
+            <h3>Setting Up Target Destruction</h3>
+            <ol>
+                <li>In your Bullet scene, connect the <code>area_entered</code> signal</li>
+                <li>When bullet hits target, both should be destroyed</li>
+                <li>Increase score when target is destroyed</li>
+                <li>Optional: Add explosion effect or sound</li>
+            </ol>
+        </div>
+
+        <div class="ai-prompt">
+            <h3>AI Prompt for Collision Handling</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "In my Godot 4 shooter game, I want bullets (Area2D) to destroy targets (Area2D) when they collide. Can you show me how to detect the collision, remove both objects from the scene, and update a score variable? I want this to work for any number of bullets and targets."
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🎨 Game Enhancement Ideas</h2>
+        <h3>Level Up Your Shooter!</h3>
+        <ul>
+            <li><strong>Moving Targets:</strong> Enemies that move in patterns</li>
+            <li><strong>Power-ups:</strong> Rapid fire, multi-shot, larger bullets</li>
+            <li><strong>Enemy Spawning:</strong> Continuously spawn new targets</li>
+            <li><strong>Different Weapons:</strong> Various bullet types with different behaviors</li>
+            <li><strong>Health System:</strong> Player takes damage from enemy bullets</li>
+            <li><strong>Particle Effects:</strong> Explosions when objects are destroyed</li>
+            <li><strong>Background Scrolling:</strong> Moving starfield for space effect</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>⚡ Advanced Features</h2>
+        
+        <div class="step-by-step">
+            <h3>Enemy Return Fire</h3>
+            <p>For advanced students who finish early:</p>
+            <ol>
+                <li>Add Timer to enemy/target scenes</li>
+                <li>Make enemies shoot bullets toward the player</li>
+                <li>Use different colored bullets for enemies</li>
+                <li>Player loses points or health when hit</li>
+            </ol>
+        </div>
+
+        <div class="ai-prompt">
+            <h3>AI Prompt for Enemy AI</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "I want my enemy targets to occasionally shoot bullets back at the player in my Godot 4 shooter. Can you show me how to use a Timer node to make enemies fire bullets toward the player's current position at random intervals?"
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🔧 Memory Management & Performance</h2>
+        <div class="instantiation-info">
+            <h3>Important: Cleaning Up Objects</h3>
+            <ul>
+                <li><strong>Off-screen Cleanup:</strong> Remove bullets that leave the play area</li>
+                <li><strong>queue_free() vs free():</strong> Use queue_free() for safety</li>
+                <li><strong>Object Pooling:</strong> Reuse bullets instead of creating new ones (advanced)</li>
+                <li><strong>Limit Active Objects:</strong> Don't let too many bullets exist at once</li>
+            </ul>
+        </div>
+
+        <div class="ai-prompt">
+            <h3>AI Prompt for Cleanup</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "How do I automatically remove bullets that go off-screen in my Godot 4 shooter to prevent memory issues? I want to check if bullets have moved outside the visible area and delete them safely."
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🐛 Common Problems & Solutions</h2>
+        <ul>
+            <li><strong>Bullets not appearing:</strong> Check if you're adding them to the scene tree</li>
+            <li><strong>Bullets not moving:</strong> Make sure velocity is applied in _physics_process()</li>
+            <li><strong>Too many bullets:</strong> Implement firing rate limiting with Timer</li>
+            <li><strong>Game slowing down:</strong> Clean up off-screen bullets properly</li>
+            <li><strong>Collisions not working:</strong> Check collision layers and Area2D signals</li>
+            <li><strong>Scene file not found:</strong> Use correct path in preload()</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>✅ Module 7 Checklist</h2>
+        <div class="checklist">
+            <h3>Before Moving to Module 8:</h3>
+            <ul>
+                <li>Player can fire bullets by pressing Space</li>
+                <li>Bullets move across the screen smoothly</li>
+                <li>Created separate Bullet.tscn scene file</li>
+                <li>Bullets are instantiated and added to scene properly</li>
+                <li>Targets can be destroyed by bullets</li>
+                <li>Score increases when targets are hit</li>
+                <li>Bullets are cleaned up when they leave screen</li>
+                <li>Used Timer node for firing rate control</li>
+                <li>No significant performance issues or lag</li>
+                <li>Saved scene as "Shooter.tscn"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🧠 Key Concepts Learned</h2>
+        <ul>
+            <li><strong>Object Instantiation:</strong> Creating objects dynamically at runtime</li>
+            <li><strong>PackedScene:</strong> Loading and instantiating saved scenes</li>
+            <li><strong>Timer Nodes:</strong> Controlling timing and rates in games</li>
+            <li><strong>Memory Management:</strong> Properly removing objects to prevent leaks</li>
+            <li><strong>Projectile Physics:</strong> Moving objects with velocity</li>
+            <li><strong>Scene Organization:</strong> Using separate scenes for reusable objects</li>
+        </ul>
+    </div>
+
+    <div class="next-module">
+        <a href="module8.html" class="next-link">Continue to Module 8: Menu Master →</a>
+    </div>
+</body>
+</html>

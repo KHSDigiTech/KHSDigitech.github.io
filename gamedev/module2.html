@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Clicker Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .node-info {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            margin: 1rem 0;
+        }
+
+        .ai-prompt {
+            background: #f3e5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #9c27b0;
+            margin: 1rem 0;
+        }
+
+        .step-by-step {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+        }
+
+        .checklist {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .checklist ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .next-module {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .next-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        .next-link:hover {
+            background: #218838;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+
+    <div class="header">
+        <h1>Module 2: Clicker Game</h1>
+        <p>UI Nodes, Signals & Basic Scripting</p>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Learning Objectives</h2>
+        <ul>
+            <li>Create and customize Button nodes</li>
+            <li>Display dynamic text with Label nodes</li>
+            <li>Understand Godot's signal system</li>
+            <li>Write your first GDScript functions</li>
+            <li>Learn effective AI prompting for coding help</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>🎮 The Game: Cookie Clicker Style</h2>
+        <p>You'll create a simple clicking game where players click a button to increase their score. Perfect for learning UI basics!</p>
+        
+        <div class="node-info">
+            <h3>🔧 Nodes You'll Use</h3>
+            <ul>
+                <li><strong>Control:</strong> Main container for UI elements</li>
+                <li><strong>Button:</strong> The clickable element players interact with</li>
+                <li><strong>Label:</strong> Displays the current score</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🏗️ Building Your Clicker Game</h2>
+        
+        <div class="step-by-step">
+            <h3>Step 1: Scene Setup</h3>
+            <ol>
+                <li>Create a new scene</li>
+                <li>Add a <code>Control</code> node as root (rename to "ClickerGame")</li>
+                <li>Set Control node to "Full Rect" (in Inspector → Layout)</li>
+                <li>Add a <code>Button</code> child node</li>
+                <li>Add a <code>Label</code> child node</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 2: Design Your Interface</h3>
+            <ul>
+                <li><strong>Button:</strong> Make it large and center it on screen</li>
+                <li><strong>Button Text:</strong> Change to "Click Me!" or use a sprite from your asset pack</li>
+                <li><strong>Label:</strong> Position at top of screen, set text to "Score: 0"</li>
+                <li><strong>Font Size:</strong> Make both elements large enough to see clearly</li>
+            </ul>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 3: Connect the Button Signal</h3>
+            <ol>
+                <li>Select your Button node</li>
+                <li>Go to "Node" tab (next to Inspector)</li>
+                <li>Find the "pressed()" signal</li>
+                <li>Click "Connect" and choose your root node</li>
+                <li>This creates a function called <code>_on_button_pressed()</code></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🤖 AI-Assisted Coding</h2>
+        
+        <div class="ai-prompt">
+            <h3>Perfect Prompt for Getting Help</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "I'm making a clicker game in Godot 4 using GDScript. I have a Button node and a Label node. When the button is pressed, I want to increase a score variable by 1 and update the label to show 'Score: [current score]'. Can you show me the complete script with proper variable declaration and the button press function?"
+            </blockquote>
+        </div>
+
+        <div class="ai-prompt">
+            <h3>Follow-up Prompts You Might Need</h3>
+            <ul>
+                <li>"How do I reference my Label node from the script?"</li>
+                <li>"Can you explain what @onready means in Godot?"</li>
+                <li>"How do I make the score increase by different amounts?"</li>
+                <li>"What's the difference between var and @export in GDScript?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🎨 Customization Ideas</h2>
+        <h3>Make it Your Own!</h3>
+        <ul>
+            <li><strong>Visual:</strong> Use sprites from your asset pack instead of default buttons</li>
+            <li><strong>Sound:</strong> Add click sounds (if available in asset pack)</li>
+            <li><strong>Animation:</strong> Make the button grow/shrink when clicked</li>
+            <li><strong>Multiple Buttons:</strong> Different buttons give different points</li>
+            <li><strong>Upgrades:</strong> Add buttons that increase click value</li>
+        </ul>
+
+        <div class="ai-prompt">
+            <h3>AI Prompt for Enhancements</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "I want to add a simple animation to my Godot button so it scales up slightly when pressed and then back to normal size. Can you show me how to use a Tween node or create_tween() to do this smoothly?"
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🐛 Common Problems & Solutions</h2>
+        <ul>
+            <li><strong>Button not responding:</strong> Check if the signal is properly connected</li>
+            <li><strong>Label not updating:</strong> Make sure you're using the correct node reference</li>
+            <li><strong>Script errors:</strong> Copy the error message and ask AI for help</li>
+            <li><strong>Node not found:</strong> Check your node names and paths</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>✅ Module 2 Checklist</h2>
+        <div class="checklist">
+            <h3>Before Moving to Module 3:</h3>
+            <ul>
+                <li>Created a working clicker game</li>
+                <li>Button increases score when clicked</li>
+                <li>Label displays current score</li>
+                <li>Used AI successfully to get coding help</li>
+                <li>Understand how signals work in Godot</li>
+                <li>Can modify button text and appearance</li>
+                <li>Script is attached and running without errors</li>
+                <li>Saved your scene as "ClickerGame.tscn"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🧠 Key Concepts Learned</h2>
+        <ul>
+            <li><strong>UI Nodes:</strong> Button and Label for user interface</li>
+            <li><strong>Signals:</strong> How nodes communicate with each other</li>
+            <li><strong>GDScript Basics:</strong> Variables, functions, node references</li>
+            <li><strong>AI Prompting:</strong> How to ask for specific coding help</li>
+        </ul>
+    </div>
+
+    <div class="next-module">
+        <a href="module3.html" class="next-link">Continue to Module 3: Character Movement →</a>
+    </div>
+</body>
+</html>

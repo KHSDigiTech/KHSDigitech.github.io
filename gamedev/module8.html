@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 8: Menu Master</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #a55eea 0%, #8854d0 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .node-info {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            margin: 1rem 0;
+        }
+
+        .ai-prompt {
+            background: #f3e5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #9c27b0;
+            margin: 1rem 0;
+        }
+
+        .step-by-step {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+        }
+
+        .checklist {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .checklist ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        .scene-management {
+            background: #fff0f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b9d;
+            margin: 1rem 0;
+        }
+
+        .congratulations {
+            background: #e8f5e8;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid #28a745;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .final-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .complete-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        .complete-link:hover {
+            background: #218838;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+
+    <div class="header">
+        <h1>Module 8: Menu Master</h1>
+        <p>Scene Management, UI Design & Project Organization</p>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Learning Objectives</h2>
+        <ul>
+            <li>Create a professional-looking main menu</li>
+            <li>Connect all your previous games together</li>
+            <li>Learn scene switching and management</li>
+            <li>Design intuitive navigation systems</li>
+            <li>Organize and polish your complete game collection</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>🎮 The Final Project: Game Collection Menu</h2>
+        <p>Create a main menu that connects all the games you've built throughout this course. This will be your portfolio piece showcasing everything you've learned!</p>
+        
+        <div class="node-info">
+            <h3>🔧 Menu System Nodes</h3>
+            <ul>
+                <li><strong>Control:</strong> Main container for UI layout</li>
+                <li><strong>VBoxContainer/HBoxContainer:</strong> Organize buttons in rows/columns</li>
+                <li><strong>Button:</strong> Navigation buttons for each game</li>
+                <li><strong>Label:</strong> Title, instructions, and descriptions</li>
+                <li><strong>TextureRect:</strong> Background images and decorations</li>
+            </ul>
+        </div>
+
+        <div class="scene-management">
+            <h3>🔄 Understanding Scene Management</h3>
+            <ul>
+                <li><strong>get_tree().change_scene_to_file():</strong> Load a different scene</li>
+                <li><strong>Main Scene:</strong> The first scene that loads when game starts</li>
+                <li><strong>Scene Paths:</strong> File paths to your game scenes</li>
+                <li><strong>Return Navigation:</strong> Getting back to the main menu</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🏗️ Building Your Game Collection Menu</h2>
+        
+        <div class="step-by-step">
+            <h3>Step 1: Menu Scene Setup</h3>
+            <ol>
+                <li>Create new scene with <code>Control</code> root ("MainMenu")</li>
+                <li>Set Control to "Full Rect" (covers entire screen)</li>
+                <li>Add <code>VBoxContainer</code> for vertical button layout</li>
+                <li>Add <code>Label</code> for main title: "Year 10 Game Collection"</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 2: Create Game Buttons</h3>
+            <p>Add buttons for each game you've created:</p>
+            <ul>
+                <li><strong>Clicker Game</strong> (Module 2)</li>
+                <li><strong>Character Movement</strong> (Module 3)</li>
+                <li><strong>Collision Detective</strong> (Module 4)</li>
+                <li><strong>Platformer</strong> (Module 5)</li>
+                <li><strong>Top-Down Explorer</strong> (Module 6)</li>
+                <li><strong>Shooter</strong> (Module 7)</li>
+                <li><strong>Quit</strong> button to exit</li>
+            </ul>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 3: Style Your Menu</h3>
+            <ol>
+                <li>Add background image or color</li>
+                <li>Style buttons with custom themes</li>
+                <li>Add game descriptions or screenshots</li>
+                <li>Make title text large and prominent</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 4: Connect Button Signals</h3>
+            <ol>
+                <li>Connect each button's "pressed()" signal</li>
+                <li>Create functions like <code>_on_clicker_game_pressed()</code></li>
+                <li>Use <code>get_tree().change_scene_to_file()</code> to load games</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🤖 AI-Assisted Menu Creation</h2>
+        
+        <div class="ai-prompt">
+            <h3>Perfect Prompt for Scene Switching</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "I need to create a main menu in Godot 4 that can load different game scenes. I have 6 different game scenes saved as .tscn files. Can you show me how to use get_tree().change_scene_to_file() to load each scene when a button is pressed? Also include how to make a Quit button that exits the game."
+            </blockquote>
+        </div>
+
+        <div class="ai-prompt">
+            <h3>Menu Design and Polish Prompts</h3>
+            <ul>
+                <li>"How do I create custom button styles and themes in Godot 4?"</li>
+                <li>"Can you show me how to add hover effects to menu buttons?"</li>
+                <li>"How do I add background music that plays only in the main menu?"</li>
+                <li>"What's the best way to organize UI elements with Container nodes?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🔄 Adding Return to Menu Functionality</h2>
+        <p>Make sure players can get back to the main menu from each game!</p>
+        
+        <div class="step-by-step">
+            <h3>Method 1: ESC Key</h3>
+            <ol>
+                <li>In each game scene, add input handling for ESC key</li>
+                <li>Use <code>Input.is_action_just_pressed("ui_cancel")</code></li>
+                <li>Load main menu scene when ESC is pressed</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Method 2: Menu Button</h3>
+            <ol>
+                <li>Add a "Main Menu" button to each game</li>
+                <li>Position it in a corner (usually top-left)</li>
+                <li>Connect to function that loads main menu</li>
+            </ol>
+        </div>
+
+        <div class="ai-prompt">
+            <h3>AI Prompt for Return Navigation</h3>
+            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                "I want to add a way for players to return to the main menu from any of my games in Godot 4. Can you show me how to detect when the ESC key is pressed and use get_tree().change_scene_to_file() to load the main menu scene? I want this to work from any game scene."
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🎨 Menu Polish and Enhancement</h2>
+        <h3>Make Your Menu Shine!</h3>
+        <ul>
+            <li><strong>Animated Title:</strong> Use AnimationPlayer for moving or scaling text</li>
+            <li><strong>Button Hover Effects:</strong> Change color/size when mouse hovers</li>
+            <li><strong>Game Previews:</strong> Small screenshots next to each button</li>
+            <li><strong>Sound Effects:</strong> Button click sounds and menu music</li>
+            <li><strong>Particle Effects:</strong> Animated background elements</li>
+            <li><strong>Credits Section:</strong> Show your name as the developer</li>
+            <li><strong>Controls Help:</strong> Explain controls for each game</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>📁 Project Organization</h2>
+        <div class="step-by-step">
+            <h3>Setting Up Main Scene</h3>
+            <ol>
+                <li>Go to <strong>Project → Project Settings</strong></li>
+                <li>In <strong>Application → Run</strong> tab</li>
+                <li>Set <strong>Main Scene</strong> to your MainMenu.tscn</li>
+                <li>Now your menu loads first when game starts!</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>File Organization Tips</h3>
+            <ul>
+                <li>Keep all game scenes in the root directory</li>
+                <li>Use clear names: "ClickerGame.tscn", "Platformer.tscn", etc.</li>
+                <li>Organize assets in folders by type</li>
+                <li>Document which scenes go with which modules</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>⚡ Advanced Menu Features</h2>
+        <h3>For Students Who Want to Go Further</h3>
+        
+        <div class="step-by-step">
+            <h3>Settings Menu</h3>
+            <ol>
+                <li>Create separate Settings.tscn scene</li>
+                <li>Add volume sliders for sound effects</li>
+                <li>Add graphics quality options</li>
+                <li>Save settings using Godot's user data system</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>High Score System</h3>
+            <ol>
+                <li>Save high scores for each game to file</li>
+                <li>Display best scores on main menu</li>
+                <li>Add "New High Score!" celebration</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🐛 Common Problems & Solutions</h2>
+        <ul>
+            <li><strong>Scene won't load:</strong> Check file path spelling and .tscn extension</li>
+            <li><strong>Buttons not working:</strong> Verify signals are connected properly</li>
+            <li><strong>UI elements misaligned:</strong> Use Container nodes for automatic layout</li>
+            <li><strong>Game doesn't start with menu:</strong> Set Main Scene in Project Settings</li>
+            <li><strong>Can't return to menu:</strong> Make sure all games have return functionality</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>✅ Module 8 Final Checklist</h2>
+        <div class="checklist">
+            <h3>Complete Game Collection Requirements:</h3>
+            <ul>
+                <li>Main menu loads when game starts</li>
+                <li>Buttons for all 6 games you created</li>
+                <li>Each button successfully loads the correct game</li>
+                <li>Can return to main menu from each game (ESC or button)</li>
+                <li>Quit button properly exits the application</li>
+                <li>Menu looks polished with styling and layout</li>
+                <li>All games still work correctly when launched from menu</li>
+                <li>Main menu is set as the project's main scene</li>
+                <li>No broken links or missing scenes</li>
+                <li>Added your name/credits somewhere in the menu</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🧠 Key Concepts Learned</h2>
+        <ul>
+            <li><strong>Scene Management:</strong> Switching between different game scenes</li>
+            <li><strong>UI Layout:</strong> Using Container nodes for organized interfaces</li>
+            <li><strong>Project Structure:</strong> Organizing multiple scenes in one project</li>
+            <li><strong>Navigation Design:</strong> Creating intuitive user interfaces</li>
+            <li><strong>Polish and Presentation:</strong> Making professional-looking menus</li>
+        </ul>
+    </div>
+
+    <div class="congratulations">
+        <h2>🎉 Congratulations!</h2>
+        <p><strong>You've completed the Year 10 Game Development course!</strong></p>
+        <p>You now have:</p>
+        <ul style="text-align: left; display: inline-block;">
+            <li>6 complete mini-games showcasing different mechanics</li>
+            <li>A professional main menu connecting everything together</li>
+            <li>Experience with all major Godot node types</li>
+            <li>Skills in using AI effectively for coding assistance</li>
+            <li>A portfolio piece to show friends, family, and future employers</li>
+        </ul>
+        <p><strong>You're now ready to create your own game ideas!</strong></p>
+    </div>
+
+    <div class="final-link">
+        <a href="../year10-game-dev.html" class="complete-link">🏆 Course Complete - View All Modules</a>
+    </div>
+</body>
+</html>
