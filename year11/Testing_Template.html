@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Table Template and Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .testing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .testing-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .testing-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .testing-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .test-id {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 40px;
+        }
+
+        .test-type-expected {
+            background: #d4edda;
+            color: #155724;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .test-type-boundary {
+            background: #fff3cd;
+            color: #856404;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .test-type-invalid {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .pass-status {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .fail-status {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .guide-section {
+            background: #e7f3ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #007bff;
+        }
+
+        .guide-section ul {
+            margin: 0.5rem 0;
+        }
+
+        .guide-section li {
+            margin: 0.5rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Testing Table Template and Guide</h1>
+        <p>Systematic testing for your AS92004 Contact Book assessment</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Purpose</h2>
+        <p>A testing table is a crucial tool for proving that your program works as expected. It helps you think systematically about what to test and provides clear evidence of your program's functionality, robustness, and handling of edge cases. You should fill this out as you develop and test your program.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>How to Use This Table</h2>
+        <div class="guide-section">
+            <ul>
+                <li><strong>Test Case ID:</strong> A unique number for each test (e.g., 1, 2, 3...).</li>
+                <li><strong>Feature Being Tested:</strong> What part of your program are you testing? (e.g., "Add Contact", "Main Menu Choice").</li>
+                <li><strong>Test Type:</strong> What kind of input are you testing?
+                    <ul>
+                        <li><span class="test-type-expected">Expected</span>: The program is working under normal, expected conditions.</li>
+                        <li><span class="test-type-boundary">Boundary</span>: The program is working at the limits of its conditions (e.g., an empty list, the highest valid menu option).</li>
+                        <li><span class="test-type-invalid">Invalid</span>: The program is being tested with input it should reject (e.g., text instead of a number, a menu option that doesn't exist).</li>
+                    </ul>
+                </li>
+                <li><strong>Input Data:</strong> Exactly what you will type into the program for this test.</li>
+                <li><strong>Expected Outcome:</strong> What <em>should</em> happen when you provide the input?</li>
+                <li><strong>Actual Outcome:</strong> What <em>actually</em> happened when you ran the test?</li>
+                <li><strong>Pass/Fail:</strong> Did the actual outcome match the expected outcome?</li>
+                <li><strong>Action Taken (if Fail):</strong> If the test failed, what did you do to fix it? (e.g., "Fixed the if statement to correctly check for the number 3.", "Added a try-except block to handle text input.")</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Testing Table Template</h2>
+        <div style="overflow-x: auto;">
+            <table class="testing-table">
+                <thead>
+                    <tr>
+                        <th>Test Case ID</th>
+                        <th>Feature Being Tested</th>
+                        <th>Test Type</th>
+                        <th>Input Data</th>
+                        <th>Expected Outcome</th>
+                        <th>Actual Outcome</th>
+                        <th>Pass/Fail</th>
+                        <th>Action Taken (if Fail)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="test-id">1</td>
+                        <td>Main Menu Choice</td>
+                        <td><span class="test-type-expected">Expected</span></td>
+                        <td><code>1</code></td>
+                        <td>The "Add Contact" function runs.</td>
+                        <td>The "Add Contact" function runs.</td>
+                        <td class="pass-status">Pass</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="test-id">2</td>
+                        <td>Main Menu Choice</td>
+                        <td><span class="test-type-boundary">Boundary</span></td>
+                        <td><code>3</code></td>
+                        <td>The program exits cleanly.</td>
+                        <td>The program exits cleanly.</td>
+                        <td class="pass-status">Pass</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="test-id">3</td>
+                        <td>Main Menu Choice</td>
+                        <td><span class="test-type-invalid">Invalid</span></td>
+                        <td><code>hello</code></td>
+                        <td>An error message like "Invalid input" is shown, and the menu reappears.</td>
+                        <td>An error message is shown and the menu reappears.</td>
+                        <td class="pass-status">Pass</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="test-id">4</td>
+                        <td>Main Menu Choice</td>
+                        <td><span class="test-type-invalid">Invalid</span></td>
+                        <td><code>5</code></td>
+                        <td>An error message is shown, and the menu reappears.</td>
+                        <td>The program crashed.</td>
+                        <td class="fail-status"><strong>Fail</strong></td>
+                        <td>Added an <code>if</code> statement to check if the choice is between 1 and 3.</td>
+                    </tr>
+                    <tr>
+                        <td class="test-id">5</td>
+                        <td>View Contacts</td>
+                        <td><span class="test-type-boundary">Boundary</span></td>
+                        <td>Choose "View" when the contact list is empty.</td>
+                        <td>A message like "Your contact book is empty" is shown.</td>
+                        <td>A message is shown.</td>
+                        <td class="pass-status">Pass</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="test-id">6</td>
+                        <td>Add Contact</td>
+                        <td><span class="test-type-expected">Expected</span></td>
+                        <td>Name: <code>Test</code>, Phone: <code>123</code></td>
+                        <td>The contact is added to the list. Viewing contacts shows the new contact.</td>
+                        <td>The contact was added and is visible.</td>
+                        <td class="pass-status">Pass</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="test-id">7</td>
+                        <td>Add Contact</td>
+                        <td><span class="test-type-invalid">Invalid</span></td>
+                        <td>Name: <code>(blank)</code>, Phone: <code>(blank)</code></td>
+                        <td>The program should ask for the name again or show an error.</td>
+                        <td>The program accepted a blank contact.</td>
+                        <td class="fail-status"><strong>Fail</strong></td>
+                        <td>Added a check to ensure the name is not empty before adding.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Testing Strategies</h2>
+        
+        <h3>1. Test Types You Should Include</h3>
+        <div class="guide-section">
+            <ul>
+                <li><strong><span class="test-type-expected">Expected Cases</span>:</strong> Normal usage - valid menu choices, typical contact data</li>
+                <li><strong><span class="test-type-boundary">Boundary Cases</span>:</strong> Edge conditions - empty lists, maximum/minimum values, first/last menu options</li>
+                <li><strong><span class="test-type-invalid">Invalid Cases</span>:</strong> Error conditions - wrong data types, out-of-range numbers, empty inputs</li>
+            </ul>
+        </div>
+
+        <h3>2. Features to Test</h3>
+        <ul>
+            <li>Main menu navigation (all valid options)</li>
+            <li>Add contact functionality</li>
+            <li>View contacts functionality</li>
+            <li>Program exit</li>
+            <li>Error handling for invalid inputs</li>
+            <li>Edge cases (empty contact book, etc.)</li>
+        </ul>
+
+        <h3>3. Assessment Evidence</h3>
+        <div class="highlight">
+            <p><strong>For NCEA Assessment:</strong> Include screenshots or written logs of your testing process. Show both passing and failing tests, and document how you fixed any failures. This demonstrates your systematic approach to ensuring program quality.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Tips for Effective Testing</h2>
+        <ul>
+            <li><strong>Test as you build:</strong> Don't wait until the end to test everything</li>
+            <li><strong>Be specific:</strong> Record exact input and output, don't just say "it worked"</li>
+            <li><strong>Test failure scenarios:</strong> Your program should handle errors gracefully</li>
+            <li><strong>Document fixes:</strong> Show how you improved the code based on test results</li>
+            <li><strong>Retest after fixes:</strong> Make sure your changes actually work</li>
+            <li><strong>Keep evidence:</strong> Screenshots or log files prove your testing process</li>
+        </ul>
+    </div>
+
+    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+</body>
+</html>
