@@ -240,17 +240,17 @@
         <div class="ai-prompt">
             <h3>Perfect Prompt for Bullet Instantiation</h3>
             <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I need to create a bullet system in Godot 4. I have a bullet scene saved as 'Bullet.tscn' and want to instantiate it when the player presses Space. Can you show me how to preload the scene, instantiate it at the player's position, give it upward velocity, and add it to the scene tree? Also include how to remove bullets when they go off-screen."
+                "I want to create a shooting game in Godot 4. When the player presses Space, I want a bullet to appear at the player's position and fly upward across the screen. I've already created a separate bullet scene file called 'Bullet.tscn' with the bullet sprite. I need code that creates a new bullet every time Space is pressed, makes it appear where the player is, and makes it move upward. Also, the bullets should disappear when they go off the top of the screen so they don't slow down the game. Can you show me all the code needed and explain each part?"
             </blockquote>
         </div>
 
         <div class="ai-prompt">
             <h3>Timer and Firing Rate Prompts</h3>
             <ul>
-                <li>"How do I use a Timer node to limit how fast the player can fire bullets?"</li>
-                <li>"Can you show me how to make automatic firing when holding the Space key?"</li>
-                <li>"How do I make bullets move in different directions based on player rotation?"</li>
-                <li>"What's the best way to clean up bullets that leave the screen area?"</li>
+                <li>"How do I prevent the player from shooting too fast by adding a delay between shots?"</li>
+                <li>"Can you make it so the player shoots automatically when holding down the Space key?"</li>
+                <li>"How do I make bullets shoot in the direction the player is facing instead of always upward?"</li>
+                <li>"What's the best way to automatically delete bullets when they leave the screen?"</li>
             </ul>
         </div>
     </div>
@@ -271,7 +271,7 @@
         <div class="ai-prompt">
             <h3>AI Prompt for Collision Handling</h3>
             <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "In my Godot 4 shooter game, I want bullets (Area2D) to destroy targets (Area2D) when they collide. Can you show me how to detect the collision, remove both objects from the scene, and update a score variable? I want this to work for any number of bullets and targets."
+                "In my Godot 4 shooter game, when a bullet hits a target, I want both the bullet and target to disappear, and the player's score to increase by 1. The score should be displayed on screen and update immediately. I want this to work no matter how many bullets or targets are in the game. Can you show me how to detect when a bullet touches a target, make them both disappear, update the score, and display the new score? Please explain each part of the code."
             </blockquote>
         </div>
     </div>

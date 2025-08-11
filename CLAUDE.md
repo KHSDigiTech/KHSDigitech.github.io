@@ -4,33 +4,52 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a GitHub Pages repository for "King's High Digitech" (KHSDigitech.github.io). The repository appears to be in its initial state with minimal content - currently containing only a basic README.md file.
+This is a GitHub Pages repository for "King's High Digitech" (KHSDigitech.github.io) - the Digital Technology department website for King's High School. The site provides curriculum information and resources for students across Years 9-13, covering programming, game development, digital media, and other technology subjects.
 
 ## Repository Structure
 
-The repository is extremely minimal:
-- `README.md` - Basic project title and description
-- This appears to be a new GitHub Pages site that has not been developed yet
+This is a static HTML/CSS/JavaScript website with the following structure:
+- `index.html` - Main homepage with year level overview
+- `styles.css` - Global stylesheet with CSS custom properties and responsive design
+- `geometric-background.js` - Animated background system (currently inline in HTML)
+- `year[N].html` - Year level overview pages (9-13)
+- `year[N]/` - Subject-specific pages for each year level
+- `gamedev/` - Game development tutorial modules using Godot engine
+- `Images/` - Static assets including parallax background images
+
+## Architecture
+
+### Styling System
+- Uses CSS custom properties for consistent theming (dark theme with gradients)
+- Inter font family from Google Fonts
+- Responsive card-based layouts
+- Animated geometric background with mouse/scroll interaction
+- Modern glassmorphism effects and shadows
+
+### Navigation Structure
+- Hierarchical navigation: Home → Year Level → Subject → Content
+- Consistent header/footer across all pages
+- Year-based curriculum organization (Years 9-13)
+
+### Content Areas
+- **Year 9**: Digital literacy, programming fundamentals, digital media, basic game development
+- **Year 10**: Web development, databases, 3D modeling, Python programming
+- **Year 11-13**: Advanced programming, specialized pathways, NCEA preparation
+- **Game Development**: Dedicated Godot engine tutorial modules
 
 ## Development Notes
 
-This repository appears to be a fresh GitHub Pages repository that is ready for initial development. Since there are no build tools, package managers, or specific frameworks detected, this is likely intended to be either:
-1. A static HTML/CSS/JavaScript website
-2. A GitHub Pages site using Jekyll (which would be built automatically by GitHub)
-3. A site that will use a static site generator to be added later
+This is a pure static website designed for GitHub Pages deployment:
+- No build process or package manager required
+- Direct HTML/CSS/JavaScript without frameworks
+- All dependencies loaded via CDN (Google Fonts)
+- Geometric background animation system implemented in vanilla JavaScript
 
 ## Common Tasks
 
-Since this is a GitHub Pages repository in its initial state:
-- Static files can be added directly to the root directory
-- GitHub Pages will automatically serve content from the main branch
-- If using Jekyll, `_config.yml` and other Jekyll files would need to be added
-- For custom domains, a `CNAME` file would be added to the root
-
-## Future Development
-
-When adding content to this repository, consider:
-- Whether to use a static site generator (Jekyll, Hugo, etc.)
-- Site structure and navigation requirements
-- Responsive design for mobile compatibility
-- SEO optimization for educational content
+Since this is a static site:
+- Content updates involve editing HTML files directly
+- Style changes go in `styles.css` using the existing CSS custom property system
+- New pages should follow existing template patterns
+- Image assets go in appropriate subdirectories under `Images/`
+- The site deploys automatically via GitHub Pages from the main branch

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Timeline - Year 12 Major Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .timeline-table th,
+        .timeline-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .timeline-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .timeline-table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .phase-header {
+            font-weight: bold;
+            background-color: #e3f2fd !important;
+        }
+
+        .phase-continuation {
+            border-left: none;
+            font-style: italic;
+        }
+
+        .deliverables ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .deliverables li {
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .next-module {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .next-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin: 0 10px;
+        }
+
+        .next-link:hover {
+            background: #218838;
+        }
+
+        .assessment-info {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-table {
+                font-size: 0.9rem;
+            }
+            
+            .timeline-table th,
+            .timeline-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+
+    <div class="header">
+        <h1>Year 12 Major Project Timeline</h1>
+        <p>20-Week Game Development Journey</p>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Project Overview</h2>
+        <p>This timeline provides a comprehensive 20-week overview for your major project, combining two NZQA Level 2 achievement standards:</p>
+        
+        <div class="assessment-info">
+            <h3>Assessment Standards</h3>
+            <ul>
+                <li><strong>AS91893 (Digital Media Outcome)</strong> - 4 credits</li>
+                <li><strong>AS91897 (Digital Technologies Outcome)</strong> - 6 credits</li>
+            </ul>
+            <p>Your game development project will address both standards simultaneously through careful planning and execution.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📅 Development Timeline</h2>
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Phase</th>
+                    <th style="width: 10%;">Weeks</th>
+                    <th style="width: 25%;">Key Focus</th>
+                    <th style="width: 45%;">Key Deliverables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="phase-header">
+                    <td><strong>1. Pre-production</strong></td>
+                    <td>1-2</td>
+                    <td><strong>Planning & Idea Generation</strong></td>
+                    <td class="deliverables">
+                        <ul>
+                            <li>Project proposal & initial ideas</li>
+                            <li>AI-assisted brainstorming</li>
+                            <li>Completed Game Design Document (GDD)</li>
+                            <li>Trello board setup</li>
+                            <li>GitHub repository created</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="phase-header">
+                    <td rowspan="4"><strong>2. Production</strong></td>
+                    <td>3-6</td>
+                    <td><strong>Sprint 1: Core Mechanics</strong></td>
+                    <td class="deliverables">
+                        <ul>
+                            <li>Playable character with core movement</li>
+                            <li>Implementation of the main game mechanic (e.g., shooting, jumping puzzle)</li>
+                            <li>Basic level blockout</li>
+                            <li>Sprint 1 reflection</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="phase-continuation"></td>
+                    <td>7-10</td>
+                    <td><strong>Sprint 2: Gameplay Loop & UI</strong></td>
+                    <td class="deliverables">
+                        <ul>
+                            <li>A full, playable game loop (start → play → win/lose)</li>
+                            <li>Main menu and HUD elements</li>
+                            <li>First round of user feedback</li>
+                            <li>Sprint 2 reflection</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="phase-continuation"></td>
+                    <td>11-14</td>
+                    <td><strong>Sprint 3: Art, Sound & Level Design</strong></td>
+                    <td class="deliverables">
+                        <ul>
+                            <li>Replacement of placeholder assets with final art</li>
+                            <li>Integration of sound effects and music</li>
+                            <li>A fully designed and playable level</li>
+                            <li>Second round of user feedback</li>
+                            <li>Sprint 3 reflection</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="phase-continuation"></td>
+                    <td>15-18</td>
+                    <td><strong>Sprint 4: Polish & Final Features</strong></td>
+                    <td class="deliverables">
+                        <ul>
+                            <li>"Game feel" improvements (juice)</li>
+                            <li>Bug fixing and optimization</li>
+                            <li>Addition of any stretch goals</li>
+                            <li>Final user testing</li>
+                            <li>Sprint 4 reflection</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="phase-header">
+                    <td><strong>3. Post-production</strong></td>
+                    <td>19-20</td>
+                    <td><strong>Final Submission</strong></td>
+                    <td class="deliverables">
+                        <ul>
+                            <li>Final, polished game build</li>
+                            <li>Video screencast of the game</li>
+                            <li>Completed assessment portfolio (reports, evidence)</li>
+                            <li>Final project submission</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h2>🔄 Agile Development Process</h2>
+        <p>This project follows an <strong>agile development methodology</strong> with four main sprints. Each sprint is approximately 4 weeks long and focuses on different aspects of game development:</p>
+        
+        <div class="highlight">
+            <h3>Sprint Structure</h3>
+            <p>Each sprint follows the same pattern:</p>
+            <ol>
+                <li><strong>Planning:</strong> Define goals and tasks for the sprint</li>
+                <li><strong>Development:</strong> Implement features and create content</li>
+                <li><strong>Testing:</strong> Playtest and gather feedback</li>
+                <li><strong>Reflection:</strong> Evaluate progress and plan improvements</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📋 Key Success Factors</h2>
+        <ul>
+            <li><strong>Documentation:</strong> Keep detailed records of your development process</li>
+            <li><strong>User Testing:</strong> Gather feedback regularly from different users</li>
+            <li><strong>Version Control:</strong> Use Git/GitHub to track your progress</li>
+            <li><strong>Time Management:</strong> Stick to the sprint deadlines to avoid rushing at the end</li>
+            <li><strong>Iteration:</strong> Be prepared to modify your game based on feedback and testing</li>
+        </ul>
+    </div>
+
+    <div class="next-module">
+        <a href="game-design-document.html" class="next-link">Game Design Document Template →</a>
+        <a href="sprint-1-plan.html" class="next-link">Sprint 1 Plan →</a>
+    </div>
+</body>
+</html>

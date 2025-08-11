@@ -1,0 +1,12 @@
+# Year 12 Major Project: Game Development Timeline
+
+This timeline provides a 20-week overview for your major project, combining AS91893 (Digital Media Outcome) and AS91897 (Digital Technologies Outcome).
+
+| Phase                  | Weeks | Key Focus                               | Key Deliverables                                                                                                                                                                                         |
+|:---------------------- |:----- |:--------------------------------------- |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Pre-production**  | 1-2   | **Planning & Idea Generation**          | - Project proposal & initial ideas.<br>- AI-assisted brainstorming.<br>- Completed Game Design Document (GDD).<br>- Trello board setup.<br>- GitHub repository created.                                  |
+| **2. Production**      | 3-6   | **Sprint 1: Core Mechanics**            | - Playable character with core movement.<br>- Implementation of the main game mechanic (e.g., shooting, jumping puzzle).<br>- Basic level blockout.<br>- Sprint 1 reflection.                            |
+|                        | 7-10  | **Sprint 2: Gameplay Loop & UI**        | - A full, playable game loop (start -> play -> win/lose).<br>- Main menu and HUD elements.<br>- First round of user feedback.<br>- Sprint 2 reflection.                                                  |
+|                        | 11-14 | **Sprint 3: Art, Sound & Level Design** | - Replacement of placeholder assets with final art.<br>- Integration of sound effects and music.<br>- A fully designed and playable level.<br>- Second round of user feedback.<br>- Sprint 3 reflection. |
+|                        | 15-18 | **Sprint 4: Polish & Final Features**   | - "Game feel" improvements (juice).<br>- Bug fixing and optimization.<br>- Addition of any stretch goals.<br>- Final user testing.<br>- Sprint 4 reflection.                                             |
+| **3. Post-production** | 19-20 | **Final Submission**                    | - Final, polished game build.<br>- Video screencast of the game.<br>- Completed assessment portfolio (reports, evidence).<br>- Final project submission.                                                 |

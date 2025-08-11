@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint 1 Plan: Core Mechanics - Year 12 Major Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .week-card {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .week-title {
+            color: #28a745;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .focus-area {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        .task-list {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .task-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .task-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .task-list li:last-child {
+            border-bottom: none;
+        }
+
+        .task-list li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        .reflection-section {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .reflection-question {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        .reflection-answer {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 2px dashed #ffc107;
+            font-style: italic;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: #d4edda;
+            padding: 1rem;
+            border-left: 4px solid #28a745;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .next-module {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .next-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin: 0 10px;
+        }
+
+        .next-link:hover {
+            background: #218838;
+        }
+
+        .sprint-goal {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .sprint-goal h3 {
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #667eea, transparent);
+            margin: 2rem 0;
+            border: none;
+        }
+
+        .tips-box {
+            background: #f0f8ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .tips-box h4 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+
+    <div class="header">
+        <h1>Sprint 1: Core Mechanics</h1>
+        <p>Weeks 3-6 of Your Major Project</p>
+    </div>
+
+    <div class="content-section">
+        <div class="sprint-goal">
+            <h3>🎯 Sprint Goal</h3>
+            <p>To create a playable prototype with the core game mechanics fully implemented.</p>
+        </div>
+
+        <div class="highlight">
+            <h3>📋 Sprint 1 Success Criteria</h3>
+            <ul>
+                <li>Player character with basic movement controls</li>
+                <li>Primary game mechanic implemented and functional</li>
+                <li>Simple test environment or level blockout</li>
+                <li>Basic win/lose conditions defined</li>
+                <li>Initial user feedback collected and documented</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📅 Weekly Breakdown</h2>
+
+        <div class="week-card">
+            <div class="week-title">Week 3: Setup & Player Movement</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Initialize the game project in your chosen engine/framework. Implement the player character and basic movement.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Create the main project folder and structure</li>
+                    <li>Implement player input for movement (e.g., keyboard controls)</li>
+                    <li>Create a simple "player" object (can be a basic shape)</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 4: Core Mechanic Implementation</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Develop the main gameplay mechanic that makes your game unique.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Implement the primary mechanic (e.g., shooting, puzzle interaction, dialogue system)</li>
+                    <li>Create a simple "test environment" or "blockout" level to test the mechanic</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 5: Basic Game State</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Define win/lose conditions to make the game playable.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Implement a simple objective (e.g., reach a goal area, destroy all targets)</li>
+                    <li>Implement a failure condition (e.g., player health reaches zero, timer runs out)</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 6: Testing & Reflection</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Get initial feedback on the core feel of the game and reflect on the sprint.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Have at least one other person playtest the prototype</li>
+                    <li>Log their feedback in the Feedback Log</li>
+                    <li>Complete the Sprint 1 Reflection below</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="content-section">
+        <h2>💡 Development Tips</h2>
+        <div class="tips-box">
+            <h4>Technical Advice</h4>
+            <ul>
+                <li><strong>Start Simple:</strong> Use basic shapes (squares, circles) for your initial prototype</li>
+                <li><strong>Focus on Feel:</strong> How responsive are the controls? Does movement feel good?</li>
+                <li><strong>Version Control:</strong> Commit your changes to Git regularly (daily if possible)</li>
+                <li><strong>Test Early:</strong> Play your own game constantly to catch issues early</li>
+            </ul>
+        </div>
+
+        <div class="tips-box">
+            <h4>Assessment Tips</h4>
+            <ul>
+                <li><strong>Document Everything:</strong> Take screenshots of your progress weekly</li>
+                <li><strong>Explain Decisions:</strong> In your journal, explain why you made certain technical choices</li>
+                <li><strong>Show Iteration:</strong> Document how you improved mechanics based on testing</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Sprint 1 Reflection</h2>
+        <p>Complete this reflection at the end of Week 6 to prepare for Sprint 2:</p>
+
+        <div class="reflection-section">
+            <div class="reflection-question">What went well this sprint?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - think about technical successes, good decisions, things that worked smoothly
+            </div>
+
+            <div class="reflection-question">What were the main challenges?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - technical problems, learning curves, time management issues
+            </div>
+
+            <div class="reflection-question">How did the initial feedback shape your plan for the next sprint?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - what did playtesters say? What will you change or improve?
+            </div>
+
+            <div class="reflection-question">What is the main goal for Sprint 2?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - based on what you've learned, what should Sprint 2 focus on?
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>✅ Sprint 1 Completion Checklist</h2>
+        <div class="task-list">
+            <h3>Before moving to Sprint 2:</h3>
+            <ul>
+                <li>Project is set up with proper folder structure</li>
+                <li>Player character moves responsively with input</li>
+                <li>Core game mechanic is functional (even if basic)</li>
+                <li>Win and lose conditions are clearly defined</li>
+                <li>At least one person has playtested your prototype</li>
+                <li>Feedback has been documented in your Feedback Log</li>
+                <li>All weekly journal entries are completed</li>
+                <li>Sprint 1 Reflection is completed</li>
+                <li>Code is committed to Git repository</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="next-module">
+        <a href="game-design-document.html" class="next-link">← Game Design Document</a>
+        <a href="sprint-2-plan.html" class="next-link">Sprint 2 Plan →</a>
+    </div>
+</body>
+</html>

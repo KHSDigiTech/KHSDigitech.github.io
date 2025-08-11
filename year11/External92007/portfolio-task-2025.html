@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS 92007 Design Portfolio Task 2025</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --success-color: #16a34a;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .overview-card {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .overview-card h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .task-description {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .task-description h3 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .criteria-card {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .criteria-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+        }
+
+        .criteria-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .achievement { border-color: #10b981; }
+        .merit { border-color: #f59e0b; }
+        .excellence { border-color: #ef4444; }
+
+        .achievement h3 { color: #10b981; }
+        .merit h3 { color: #f59e0b; }
+        .excellence h3 { color: #ef4444; }
+
+        .checklist-section {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .checklist-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .checklist-category {
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            background: #f1f5f9;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .checkbox-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 0.75rem;
+            margin-top: 0.2rem;
+            transform: scale(1.2);
+            accent-color: var(--primary-color);
+        }
+
+        .checkbox-content {
+            flex: 1;
+        }
+
+        .checkbox-content strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .checkbox-content .description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .sentence-starters {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .sentence-starters h4 {
+            color: #0c4a6e;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sentence-starters ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sentence-starters li {
+            color: #0c4a6e;
+            font-size: 0.85rem;
+            padding: 0.2rem 0;
+        }
+
+        .sentence-starters li:before {
+            content: "• ";
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .requirement-card {
+            background: var(--card-background);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .requirement-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+        }
+
+        .requirement-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .alert {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .alert h3 {
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+
+        .alert p {
+            color: #991b1b;
+            font-size: 0.9rem;
+        }
+
+        .tips {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tips h3 {
+            color: #15803d;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips ul {
+            color: #16a34a;
+            margin-left: 1.5rem;
+        }
+
+        .submission-info {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .submission-info h2 {
+            margin-bottom: 1rem;
+        }
+
+        .submission-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .submission-detail {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .submission-detail strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .criteria-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .checkbox-item input[type="checkbox"] {
+                -webkit-appearance: checkbox;
+                appearance: checkbox;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AS 92007 Design Portfolio Task 2025</h1>
+            <p>Design a Digital Technologies Outcome - Level 1, 5 Credits</p>
+        </div>
+
+        <div class="overview-card">
+            <h2>🎯 Task Overview</h2>
+            <p>You are designing a comprehensive digital solution to address a real-world problem affecting young people aged 16-25. This could be a mobile app, website, game, or software application that makes a meaningful difference in their lives.</p>
+            
+            <div class="task-description">
+                <h3>Your Challenge</h3>
+                <p>Create a portfolio of design work that documents your journey from identifying a problem to designing a complete digital solution. Focus on how your design thinking evolves, how you use feedback, and how your final design serves its intended purpose.</p>
+            </div>
+        </div>
+
+        <div class="criteria-grid">
+            <div class="criteria-card achievement">
+                <h3>Achievement</h3>
+                <ul>
+                    <li><strong>Design</strong> a digital technologies outcome</li>
+                    <li>Describe need/opportunity and users</li>
+                    <li>Generate design ideas</li>
+                    <li>Show how design addresses the need</li>
+                </ul>
+            </div>
+            
+            <div class="criteria-card merit">
+                <h3>Merit</h3>
+                <ul>
+                    <li><strong>Refine</strong> a design for a digital technologies outcome</li>
+                    <li>Use feedback to improve design</li>
+                    <li>Explain how decisions improve quality</li>
+                </ul>
+            </div>
+            
+            <div class="criteria-card excellence">
+                <h3>Excellence</h3>
+                <ul>
+                    <li><strong>Evaluate</strong> a design for a digital technologies outcome</li>
+                    <li>Justify how decisions contribute to fitness for purpose</li>
+                    <li>Show deep understanding of design impact</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="checklist-section">
+            <h2>📋 Portfolio Development Checklist</h2>
+
+            <div class="checklist-category">
+                <div class="category-header">1. Problem Identification & User Research</div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="identify-problem">
+                    <div class="checkbox-content">
+                        <strong>Identify a genuine need or opportunity</strong>
+                        <div class="description">Choose a real problem that affects young people (16-25) in areas like study, work, health, social connection, or personal development.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"The problem I identified is..."</li>
+                                <li>"This issue particularly affects young people because..."</li>
+                                <li>"Currently, this need is not well addressed because..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="define-users">
+                    <div class="checkbox-content">
+                        <strong>Define potential users and their specific requirements</strong>
+                        <div class="description">Create detailed user profiles including their needs, limitations, preferences, and technical abilities.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"My primary users are..."</li>
+                                <li>"Their main requirements include..."</li>
+                                <li>"They need this solution to be... because..."</li>
+                                <li>"The key challenges they face are..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="research-evidence">
+                    <div class="checkbox-content">
+                        <strong>Gather research evidence to support your problem</strong>
+                        <div class="description">Include surveys, interviews, statistics, or observations that prove this is a genuine issue.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"My research shows that..."</li>
+                                <li>"I discovered through [method] that..."</li>
+                                <li>"The data indicates..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist-category">
+                <div class="category-header">2. Design Ideas & Initial Concepts</div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="brainstorm-ideas">
+                    <div class="checkbox-content">
+                        <strong>Generate multiple design ideas</strong>
+                        <div class="description">Create at least 3-5 different approaches to solving your identified problem. Show visual elements, functional features, and technical considerations.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"My first design idea focuses on..."</li>
+                                <li>"An alternative approach would be to..."</li>
+                                <li>"This concept addresses the problem by..."</li>
+                                <li>"The key features of this design include..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sketch-wireframes">
+                    <div class="checkbox-content">
+                        <strong>Create sketches, wireframes, or concept diagrams</strong>
+                        <div class="description">Show your ideas visually through hand-drawn sketches, digital wireframes, or system diagrams.</div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="explain-ideas">
+                    <div class="checkbox-content">
+                        <strong>Explain how each idea addresses user needs</strong>
+                        <div class="description">Connect your design features back to the specific requirements you identified.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"This design element helps users by..."</li>
+                                <li>"I included this feature because my research showed..."</li>
+                                <li>"This addresses the requirement for... by..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist-category">
+                <div class="category-header">3. Manaakitanga & Kaitiakitanga Integration</div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="manaakitanga">
+                    <div class="checkbox-content">
+                        <strong>Show how you applied manaakitanga (care and respect for others)</strong>
+                        <div class="description">Demonstrate how your design considers accessibility, inclusivity, cultural sensitivity, and user wellbeing.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"I applied manaakitanga by ensuring..."</li>
+                                <li>"To show care for all users, I..."</li>
+                                <li>"My design is inclusive because..."</li>
+                                <li>"I considered different cultural perspectives by..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="kaitiakitanga">
+                    <div class="checkbox-content">
+                        <strong>Demonstrate kaitiakitanga (environmental and digital responsibility)</strong>
+                        <div class="description">Show how your design considers data privacy, digital wellbeing, sustainable technology use, or environmental impact.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"I demonstrated kaitiakitanga through..."</li>
+                                <li>"To protect user data and privacy, I designed..."</li>
+                                <li>"My solution promotes healthy digital habits by..."</li>
+                                <li>"I considered the environmental impact by..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist-category">
+                <div class="category-header">4. Feedback & Refinement Process</div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="gather-feedback">
+                    <div class="checkbox-content">
+                        <strong>Collect feedback from potential users or experts</strong>
+                        <div class="description">Get specific, actionable feedback on your design ideas from people who represent your target users.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"When I showed my design to [user type], they said..."</li>
+                                <li>"The feedback I received was..."</li>
+                                <li>"Users particularly liked/disliked..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="document-changes">
+                    <div class="checkbox-content">
+                        <strong>Document specific changes made based on feedback</strong>
+                        <div class="description">Show before/after comparisons and explain exactly what you changed and why.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"Based on this feedback, I changed..."</li>
+                                <li>"To address the concern about [issue], I..."</li>
+                                <li>"This modification improves the design because..."</li>
+                                <li>"The updated version now..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="explain-improvements">
+                    <div class="checkbox-content">
+                        <strong>Explain how changes improve the design quality</strong>
+                        <div class="description">Connect your refinements to better user experience, functionality, or fitness for purpose.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"This change improves the user experience by..."</li>
+                                <li>"The design is now more effective because..."</li>
+                                <li>"This refinement better addresses the original problem by..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist-category">
+                <div class="category-header">5. Final Design & Evaluation</div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="final-design">
+                    <div class="checkbox-content">
+                        <strong>Complete detailed final design</strong>
+                        <div class="description">Create a comprehensive design showing all key screens/pages, features, and user interactions.</div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="design-decisions">
+                    <div class="checkbox-content">
+                        <strong>Justify key design decisions</strong>
+                        <div class="description">Explain why you made specific choices about layout, features, colors, navigation, etc.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"I chose [design element] because..."</li>
+                                <li>"This decision was based on..."</li>
+                                <li>"The [feature/design] is effective for my users because..."</li>
+                                <li>"Through the design process, I learned that..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="fitness-purpose">
+                    <div class="checkbox-content">
+                        <strong>Evaluate fitness for purpose</strong>
+                        <div class="description">Analyze how well your final design solves the original problem and meets user requirements.</div>
+                        <div class="sentence-starters">
+                            <h4>Sentence Starters:</h4>
+                            <ul>
+                                <li>"My design is fit for purpose because..."</li>
+                                <li>"It successfully addresses the original problem by..."</li>
+                                <li>"Users will benefit from this design because..."</li>
+                                <li>"The key strengths of my final design are..."</li>
+                                <li>"If I were to develop this further, I would..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist-category">
+                <div class="category-header">6. Portfolio Presentation & Requirements</div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="required-images">
+                    <div class="checkbox-content">
+                        <strong>Include minimum 3 required images</strong>
+                        <div class="description">• Final design (multiple images if multi-page)<br>• Design ideas/concepts<br>• Examples of design refinement</div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="word-count">
+                    <div class="checkbox-content">
+                        <strong>Stay within 1000-word limit</strong>
+                        <div class="description">Keep written explanations concise and focused. Use visuals to communicate where possible.</div>
+                    </div>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="format-check">
+                    <div class="checkbox-content">
+                        <strong>Format correctly for submission</strong>
+                        <div class="description">8-10 A4 pages OR 8-10 slides OR 6 A3 pages, saved as PDF, readable black text, minimum 11pt font.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="requirements-grid">
+            <div class="requirement-card">
+                <h3>🎨 Suitable Digital Outcomes</h3>
+                <ul>
+                    <li>Mobile apps (productivity, health, social)</li>
+                    <li>Websites (community, education, services)</li>
+                    <li>Software applications (desktop tools)</li>
+                    <li>Games (educational, awareness, entertainment)</li>
+                    <li>Interactive experiences or animations</li>
+                    <li>IoT/robotics projects</li>
+                </ul>
+                <p><strong>Not suitable:</strong> Simple logos, posters, or basic static designs</p>
+            </div>
+
+            <div class="requirement-card">
+                <h3>💡 Problem Areas to Consider</h3>
+                <ul>
+                    <li>Study stress and time management</li>
+                    <li>Mental health and wellbeing</li>
+                    <li>Social connection and loneliness</li>
+                    <li>Financial literacy and budgeting</li>
+                    <li>Environmental awareness</li>
+                    <li>Career planning and skill development</li>
+                    <li>Health and fitness motivation</li>
+                    <li>Cultural connection and identity</li>
+                </ul>
+            </div>
+
+            <div class="requirement-card">
+                <h3>🎯 Evidence to Include</h3>
+                <ul>
+                    <li>Research notes and user insights</li>
+                    <li>Sketches and initial concepts</li>
+                    <li>Design iterations and comparisons</li>
+                    <li>Feedback documentation</li>
+                    <li>Final design mockups/wireframes</li>
+                    <li>Reflective annotations</li>
+                    <li>Design decision explanations</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="alert">
+            <h3>⚠️ Important Restrictions</h3>
+            <p><strong>NO AI tools allowed:</strong> You cannot use ChatGPT, Claude, or other AI tools to write any part of your portfolio text. All written responses must be your own work.</p>
+            <p><strong>Portfolio work only:</strong> Focus on the design phase only - do not include any actual development/coding work.</p>
+        </div>
+
+        <div class="tips">
+            <h3>💡 Success Tips</h3>
+            <ul>
+                <li><strong>Start with real research:</strong> Talk to actual people who have the problem you're trying to solve</li>
+                <li><strong>Show your thinking process:</strong> Document how your ideas evolve and why you make changes</li>
+                <li><strong>Get meaningful feedback:</strong> Ask specific questions like "What would prevent you from using this?" rather than "Do you like it?"</li>
+                <li><strong>Connect everything back to users:</strong> Always explain how your design choices benefit your target users</li>
+                <li><strong>Use visuals effectively:</strong> Screenshots, diagrams, and sketches often communicate better than text</li>
+                <li><strong>Be specific:</strong> Instead of "users want it to be easy," say "users need to complete the main task in under 3 steps"</li>
+            </ul>
+        </div>
+
+        <div class="submission-info">
+            <h2>📤 Submission Requirements</h2>
+            <div class="submission-details">
+                <div class="submission-detail">
+                    <strong>Due Date</strong>
+                    12 September 2025
+                </div>
+                <div class="submission-detail">
+                    <strong>Format</strong>
+                    PDF file only
+                </div>
+                <div class="submission-detail">
+                    <strong>Length</strong>
+                    8-10 A4 pages maximum
+                </div>
+                <div class="submission-detail">
+                    <strong>Word Limit</strong>
+                    1000 words maximum
+                </div>
+                <div class="submission-detail">
+                    <strong>Font</strong>
+                    Black text, minimum 11pt
+                </div>
+                <div class="submission-detail">
+                    <strong>Images</strong>
+                    Minimum 3 required
+                </div>
+            </div>
+            <p style="margin-top: 1rem; opacity: 0.9;">
+                <strong>Remember:</strong> This work must be completed and collated in class under teacher supervision. Plan to spend approximately 3 hours organizing your portfolio for submission.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Save checkbox states to localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            // Load saved states
+            checkboxes.forEach(function(checkbox) {
+                const saved = localStorage.getItem('portfolio_' + checkbox.id);
+                if (saved === 'true') {
+                    checkbox.checked = true;
+                }
+            });
+            
+            // Save state on change
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    localStorage.setItem('portfolio_' + checkbox.id, checkbox.checked);
+                });
+            });
+
+            // Add progress tracking
+            updateProgress();
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', updateProgress);
+            });
+        });
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const percentage = Math.round((checked.length / checkboxes.length) * 100);
+            
+            // Update page title with progress
+            document.title = `AS 92007 Portfolio Task (${percentage}% Complete)`;
+        }
+
+        // Print functionality
+        function printChecklist() {
+            window.print();
+        }
+
+        // Add print button
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header');
+            const printBtn = document.createElement('button');
+            printBtn.innerHTML = '🖨️ Print Checklist';
+            printBtn.style.cssText = 'background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 6px; margin-top: 1rem; cursor: pointer;';
+            printBtn.onclick = printChecklist;
+            header.appendChild(printBtn);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint 4 Plan: Polish & Final Features - Year 12 Major Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .week-card {
+            background: #f8f9fa;
+            border-left: 4px solid #e91e63;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .week-title {
+            color: #e91e63;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .focus-area {
+            background: #fce4ec;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+            border-left: 4px solid #f8bbd9;
+        }
+
+        .task-list {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .task-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .task-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .task-list li:last-child {
+            border-bottom: none;
+        }
+
+        .task-list li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #e91e63;
+        }
+
+        .sprint-goal {
+            background: #fce4ec;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #e91e63;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .sprint-goal h3 {
+            color: #c2185b;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: #fce4ec;
+            padding: 1rem;
+            border-left: 4px solid #e91e63;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .next-module {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .next-link {
+            display: inline-block;
+            background: #e91e63;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin: 0 10px;
+        }
+
+        .next-link:hover {
+            background: #c2185b;
+        }
+
+        .polish-tips {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .polish-tips h4 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+
+    <div class="header">
+        <h1>Sprint 4: Polish & Final Features</h1>
+        <p>Weeks 15-18 of Your Major Project</p>
+    </div>
+
+    <div class="content-section">
+        <div class="sprint-goal">
+            <h3>🎯 Sprint Goal</h3>
+            <p>To add "juice" (game feel), fix all outstanding bugs, and conduct final user testing.</p>
+        </div>
+
+        <div class="highlight">
+            <h3>📋 Sprint 4 Success Criteria</h3>
+            <ul>
+                <li>Game feels satisfying and responsive to play</li>
+                <li>All critical bugs identified and fixed</li>
+                <li>Polish elements added (particles, screen shake, animations)</li>
+                <li>Final user testing completed with fresh testers</li>
+                <li>Game is ready for final submission</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📅 Weekly Breakdown</h2>
+
+        <div class="week-card">
+            <div class="week-title">Week 15: Game Feel & "Juice"</div>
+            <div class="focus-area">
+                <strong>Focus:</strong> Make the game feel satisfying and responsive to play.
+            </div>
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Add particle effects for key events (e.g., explosions, collecting items)</li>
+                    <li>Implement screen shake for impactful moments</li>
+                    <li>Add subtle animations and transitions (e.g., button hover effects)</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 16: Bug Hunting</div>
+            <div class="focus-area">
+                <strong>Focus:</strong> Actively try to break your game and fix what you find.
+            </div>
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Play through the game multiple times, trying unusual things</li>
+                    <li>Create a list of all bugs found</li>
+                    <li>Prioritize and fix the most critical bugs</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 17: Final User Testing</div>
+            <div class="focus-area">
+                <strong>Focus:</strong> Get a final round of feedback from a fresh set of eyes.
+            </div>
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Prepare a feature-complete build of the game</li>
+                    <li>Have 2-3 new people play the game</li>
+                    <li>Log any final bugs or usability issues in the Feedback Log</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 18: Final Sprint Reflection</div>
+            <div class="focus-area">
+                <strong>Focus:</strong> Reflect on the sprint and prepare for final submission.
+            </div>
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Complete the Sprint 4 Reflection</li>
+                    <li>Prepare for final submission phase</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>✨ Polish & "Juice" Ideas</h2>
+        <div class="polish-tips">
+            <h4>Game Feel Enhancements</h4>
+            <ul>
+                <li><strong>Screen Shake:</strong> Small camera shake when player takes damage or destroys enemies</li>
+                <li><strong>Particle Effects:</strong> Sparks, dust, explosion effects for key events</li>
+                <li><strong>Sound Timing:</strong> Perfect synchronization of sound effects with visual events</li>
+                <li><strong>Animation Easing:</strong> Smooth, natural movement curves instead of linear motion</li>
+                <li><strong>UI Animations:</strong> Buttons that scale or glow when hovered</li>
+                <li><strong>Visual Feedback:</strong> Health bars, score counters that animate smoothly</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="next-module">
+        <a href="sprint-3-plan.html" class="next-link">← Sprint 3 Plan</a>
+        <a href="feedback-log.html" class="next-link">Feedback Log →</a>
+    </div>
+</body>
+</html>

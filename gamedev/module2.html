@@ -177,7 +177,17 @@
         </div>
 
         <div class="step-by-step">
-            <h3>Step 3: Connect the Button Signal</h3>
+            <h3>Step 3: Add a Script to Your Root Node</h3>
+            <ol>
+                <li>Select your root Control node ("ClickerGame")</li>
+                <li>Click the "Attach Script" button in the toolbar</li>
+                <li>Keep the default settings and click "Create"</li>
+                <li>A script editor will open - this is where you'll write your code</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 4: Connect the Button Signal</h3>
             <ol>
                 <li>Select your Button node</li>
                 <li>Go to "Node" tab (next to Inspector)</li>
@@ -194,17 +204,17 @@
         <div class="ai-prompt">
             <h3>Perfect Prompt for Getting Help</h3>
             <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I'm making a clicker game in Godot 4 using GDScript. I have a Button node and a Label node. When the button is pressed, I want to increase a score variable by 1 and update the label to show 'Score: [current score]'. Can you show me the complete script with proper variable declaration and the button press function?"
+                "I'm making a clicker game in Godot 4. I have a button that when clicked should increase a number (score) by 1, and I want to display that score on the screen in text that updates each time. I need the complete code including how to create a variable to store the score, how to make the button respond when clicked, and how to update the text display. Please explain each part of the code."
             </blockquote>
         </div>
 
         <div class="ai-prompt">
             <h3>Follow-up Prompts You Might Need</h3>
             <ul>
-                <li>"How do I reference my Label node from the script?"</li>
-                <li>"Can you explain what @onready means in Godot?"</li>
-                <li>"How do I make the score increase by different amounts?"</li>
-                <li>"What's the difference between var and @export in GDScript?"</li>
+                <li>"How do I connect my code to the text label so it can update the display?"</li>
+                <li>"Can you explain what each line of code does in simple terms?"</li>
+                <li>"How do I make the button give different amounts of points when clicked?"</li>
+                <li>"What does each part of the code mean and why is it needed?"</li>
             </ul>
         </div>
     </div>

@@ -195,7 +195,16 @@
         </div>
 
         <div class="step-by-step">
-            <h3>Step 3: Connect the Collision Signal</h3>
+            <h3>Step 3: Add Script to Main Scene</h3>
+            <ol>
+                <li>Select your main scene root node ("CollisionGame")</li>
+                <li>Click "Attach Script" button and create the script</li>
+                <li>This script will control the game logic</li>
+            </ol>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 4: Connect the Collision Signal</h3>
             <ol>
                 <li>Select the Coin (Area2D) node</li>
                 <li>Go to "Node" tab (next to Inspector)</li>
@@ -212,17 +221,17 @@
         <div class="ai-prompt">
             <h3>Perfect Prompt for Collision Detection</h3>
             <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I'm making a coin collection game in Godot 4. I have an Area2D coin that should disappear when the player (CharacterBody2D) touches it, and increase the score by 1. Can you show me the complete _on_coin_body_entered(body) function that checks if the body is the player, updates a score variable, updates a Label node, and removes the coin from the scene?"
+                "I'm making a coin collection game in Godot 4. When my player character walks into a coin, I want the coin to disappear and add 1 point to the score. The score should be displayed on screen and update immediately. I also want to make sure only the player can collect coins, not other objects. Can you show me the complete code including how to store the score, detect when something touches the coin, check if it's the player, update the score display, and remove the coin?"
             </blockquote>
         </div>
 
         <div class="ai-prompt">
             <h3>Additional Features to Ask For</h3>
             <ul>
-                <li>"How do I spawn multiple coins at random positions?"</li>
-                <li>"Can you add a simple particle effect when a coin is collected?"</li>
-                <li>"How do I make coins that give different point values?"</li>
-                <li>"What's the difference between queue_free() and remove_child()?"</li>
+                <li>"How do I create multiple coins and place them randomly around the screen?"</li>
+                <li>"Can you add a visual effect like sparkles when a coin is collected?"</li>
+                <li>"How do I make some coins worth more points than others?"</li>
+                <li>"What's the best way to completely remove objects from the game when they're no longer needed?"</li>
             </ul>
         </div>
     </div>

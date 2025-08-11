@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Portfolio Evidence Instructions - AS 92007 2025</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --success-color: #16a34a;
+            --warning-color: #f59e0b;
+            --danger-color: #dc2626;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.15);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .alert {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .alert h2 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .alert p {
+            color: #78350f;
+        }
+
+        .section-card {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .section-card h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .evidence-item {
+            background: #f8fafc;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .evidence-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+        }
+
+        .evidence-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .evidence-item .icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .criteria-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .achievement { background: #dcfce7; color: #166534; }
+        .merit { background: #fef3c7; color: #92400e; }
+        .excellence { background: #fecaca; color: #991b1b; }
+
+        .checklist {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .checklist h4 {
+            color: #0c4a6e;
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist ul {
+            margin-left: 1.5rem;
+            color: #0369a1;
+        }
+
+        .example-box {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .example-box h4 {
+            color: #15803d;
+            margin-bottom: 0.5rem;
+        }
+
+        .sentence-starters {
+            background: #fefce8;
+            border: 1px solid #eab308;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .sentence-starters h4 {
+            color: #a16207;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sentence-starters ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sentence-starters li {
+            color: #a16207;
+            font-size: 0.85rem;
+            padding: 0.2rem 0;
+        }
+
+        .sentence-starters li:before {
+            content: "💬 ";
+            margin-right: 0.5rem;
+        }
+
+        .submission-requirements {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .submission-requirements h2 {
+            margin-bottom: 1rem;
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .req-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .req-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .warning {
+            background: #fef2f2;
+            border: 2px solid #fca5a5;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning h3 {
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning p {
+            color: #991b1b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .evidence-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 From Game to Portfolio</h1>
+            <p>AS 92007: Creating Design Evidence from Your Game Jam Project</p>
+            <a href="../External92007/portfolio-task-2025.html" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; margin-top: 1rem; border: 1px solid rgba(255,255,255,0.3);">← Back to Portfolio Task</a>
+        </div>
+
+        <div class="alert">
+            <h2>📋 Your Task</h2>
+            <p>You've completed your Game Jam design document! Now you need to extract and organize that design work into a portfolio for NCEA External Assessment. This is about showing your design thinking process, not building the actual game.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>🎯 What You Need to Create</h2>
+            <p>Your portfolio should tell the story of how you designed your game concept, from initial ideas through to your final design proposal. Think of it as organizing your existing design work to show your creative process clearly.</p>
+            
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <h3><span class="icon">💡</span>Problem & Users</h3>
+                    <div class="criteria-badges">
+                        <span class="badge achievement">Achievement</span>
+                    </div>
+                    <p>Document the problem your game solves and who it's designed for.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">🎨</span>Design Ideas</h3>
+                    <div class="criteria-badges">
+                        <span class="badge achievement">Achievement</span>
+                    </div>
+                    <p>Show your initial concepts, sketches, and how ideas evolved.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">🔄</span>Feedback & Refinement</h3>
+                    <div class="criteria-badges">
+                        <span class="badge merit">Merit</span>
+                    </div>
+                    <p>Document how you used feedback to improve your design.</p>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">⚖️</span>Design Evaluation</h3>
+                    <div class="criteria-badges">
+                        <span class="badge excellence">Excellence</span>
+                    </div>
+                    <p>Justify why your design decisions make the game fit for purpose.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>📸 Evidence You Should Extract from Your Game Design</h2>
+
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <h3><span class="icon">🎯</span>Final Game Design Concept</h3>
+                    <p>Use your completed design document to show your final game concept and design decisions.</p>
+                    
+                    <div class="checklist">
+                        <h4>Extract from your design document:</h4>
+                        <ul>
+                            <li>Final game concept description</li>
+                            <li>Visual mockups or sketches you created</li>
+                            <li>UI/menu design ideas</li>
+                            <li>Game mechanics and rules</li>
+                            <li>Art style and aesthetic choices</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sentence-starters">
+                        <h4>How to describe it:</h4>
+                        <ul>
+                            <li>"My final game design addresses the delivery theme by..."</li>
+                            <li>"The main gameplay involves..."</li>
+                            <li>"Players would interact with the game by..."</li>
+                            <li>"I designed the game to be..."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">👥</span>Target Users & Their Needs</h3>
+                    <p>Identify who your game was designed for and what problem it solves.</p>
+                    
+                    <div class="example-box">
+                        <h4>From the Kiwinko example:</h4>
+                        <p>"My potential players are mainly 14-18 year old high school students... I will be participating in a national game jam where other contributors will give me feedback."</p>
+                    </div>
+                    
+                    <div class="sentence-starters">
+                        <h4>How to describe your users:</h4>
+                        <ul>
+                            <li>"My game targets... because..."</li>
+                            <li>"These users need entertainment that is..."</li>
+                            <li>"The problem my game solves is..."</li>
+                            <li>"My users want games that are..."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">✏️</span>Design Process Documentation</h3>
+                    <p>Look through your design document and extract your initial concepts and iterations.</p>
+                    
+                    <div class="checklist">
+                        <h4>Find evidence of:</h4>
+                        <ul>
+                            <li>Your initial game concepts (like the 3 ideas in Kiwinko example)</li>
+                            <li>Sketches and wireframes you created</li>
+                            <li>Art style decisions and asset choices</li>
+                            <li>UI/UX design iterations</li>
+                            <li>Game mechanics evolution</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">💬</span>Feedback & Iteration Evidence</h3>
+                    <p>Document the feedback you received and how you acted on it.</p>
+                    
+                    <div class="example-box">
+                        <h4>From the Kiwinko example:</h4>
+                        <p>"Jake wasn't sold on the idea... Adam and John both liked the idea and said it could be exciting if done well. Maybe by adding anti aircraft stuff to dodge..."</p>
+                    </div>
+                    
+                    <div class="sentence-starters">
+                        <h4>How to document feedback:</h4>
+                        <ul>
+                            <li>"When I showed my design to [person], they suggested..."</li>
+                            <li>"Based on this feedback, I changed..."</li>
+                            <li>"This improvement made the game better because..."</li>
+                            <li>"The updated version now..."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">🤝</span>Manaakitanga Evidence</h3>
+                    <p>Show how your design considers care and respect for users.</p>
+                    
+                    <div class="example-box">
+                        <h4>From the Kiwinko example:</h4>
+                        <p>"I will make sure that my graphics are High Contrasting, so that the user can see what is going on... visual clarity is important."</p>
+                    </div>
+                    
+                    <div class="sentence-starters">
+                        <h4>How to show manaakitanga:</h4>
+                        <ul>
+                            <li>"I designed my game to be accessible by..."</li>
+                            <li>"To show care for all players, I..."</li>
+                            <li>"My design considers different abilities by..."</li>
+                            <li>"I made sure the game was inclusive by..."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="evidence-item">
+                    <h3><span class="icon">🏆</span>Design Decisions & Justification</h3>
+                    <p>Explain WHY you made specific design choices and how they improve the game.</p>
+                    
+                    <div class="example-box">
+                        <h4>From the Kiwinko example:</h4>
+                        <p>"I chose this idea because Pachinko style games have been getting more popular lately... This is also an opportunity to tap into."</p>
+                    </div>
+                    
+                    <div class="sentence-starters">
+                        <h4>How to justify decisions:</h4>
+                        <ul>
+                            <li>"I chose [design element] because..."</li>
+                            <li>"This decision makes the game better for users by..."</li>
+                            <li>"My design is fit for purpose because..."</li>
+                            <li>"The key strengths of my design are..."</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>📝 Portfolio Structure Guide</h2>
+            
+            <div class="evidence-grid">
+                <div class="evidence-item">
+                    <h3>Page 1-2: The Problem & Users</h3>
+                    <ul>
+                        <li>What need or opportunity does your game address?</li>
+                        <li>Who are your target users?</li>
+                        <li>What do these users specifically need?</li>
+                        <li>Screenshots of your final game</li>
+                    </ul>
+                </div>
+
+                <div class="evidence-item">
+                    <h3>Page 3-4: Design Ideas</h3>
+                    <ul>
+                        <li>Your initial game concepts (multiple ideas)</li>
+                        <li>Sketches, wireframes, or mockups</li>
+                        <li>Why you chose your final concept</li>
+                        <li>Art style and asset decisions</li>
+                    </ul>
+                </div>
+
+                <div class="evidence-item">
+                    <h3>Page 5-6: Manaakitanga & Process</h3>
+                    <ul>
+                        <li>How you applied manaakitanga in your design</li>
+                        <li>Accessibility considerations</li>
+                        <li>User-centered design decisions</li>
+                        <li>Design process documentation</li>
+                    </ul>
+                </div>
+
+                <div class="evidence-item">
+                    <h3>Page 7-8: Feedback & Refinement</h3>
+                    <ul>
+                        <li>Specific feedback you received</li>
+                        <li>Before/after comparisons</li>
+                        <li>How changes improved the design</li>
+                        <li>Iteration examples</li>
+                    </ul>
+                </div>
+
+                <div class="evidence-item">
+                    <h3>Page 9-10: Evaluation & Justification</h3>
+                    <ul>
+                        <li>Why your design decisions were effective</li>
+                        <li>How the game meets user needs</li>
+                        <li>Fitness for purpose analysis</li>
+                        <li>Overall design quality reflection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Important Reminders</h3>
+            <p><strong>This is about DESIGN, not implementation:</strong> Focus on your design thinking and decision-making process. You're showing how you planned and refined your digital solution concept.</p>
+            <p><strong>Use your existing design work:</strong> You already have most of the evidence from your Game Jam design document - now organize it to tell the story of your design journey.</p>
+        </div>
+
+        <div class="submission-requirements">
+            <h2>📤 Submission Requirements</h2>
+            
+            <div class="req-grid">
+                <div class="req-item">
+                    <strong>Due Date</strong>
+                    12 September 2025
+                </div>
+                <div class="req-item">
+                    <strong>Format</strong>
+                    PDF file only
+                </div>
+                <div class="req-item">
+                    <strong>Length</strong>
+                    8-10 A4 pages maximum
+                </div>
+                <div class="req-item">
+                    <strong>Word Limit</strong>
+                    1000 words maximum
+                </div>
+                <div class="req-item">
+                    <strong>Font</strong>
+                    Black text, minimum 11pt
+                </div>
+                <div class="req-item">
+                    <strong>Images</strong>
+                    Minimum 3 required
+                </div>
+            </div>
+            
+            <p style="margin-top: 1rem; opacity: 0.9;">
+                <strong>Remember:</strong> This portfolio must be completed and submitted under teacher supervision. Organize your evidence efficiently to tell a compelling design story within the page limits.
+            </p>
+        </div>
+        
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="../../year11.html" style="display: inline-block; background: var(--primary-color); color: white; text-decoration: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 500;">← Back to Year 11</a>
+        </div>
+    </div>
+</body>
+</html>

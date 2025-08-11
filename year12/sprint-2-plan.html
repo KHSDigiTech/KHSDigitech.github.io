@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint 2 Plan: Gameplay Loop & UI - Year 12 Major Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .week-card {
+            background: #f8f9fa;
+            border-left: 4px solid #ff6b35;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .week-title {
+            color: #ff6b35;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .focus-area {
+            background: #fff3e0;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .task-list {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .task-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .task-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .task-list li:last-child {
+            border-bottom: none;
+        }
+
+        .task-list li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #ff6b35;
+        }
+
+        .reflection-section {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .reflection-question {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        .reflection-answer {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 2px dashed #ffc107;
+            font-style: italic;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: #ffe8cc;
+            padding: 1rem;
+            border-left: 4px solid #ff6b35;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .next-module {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .next-link {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            margin: 0 10px;
+        }
+
+        .next-link:hover {
+            background: #e55a2b;
+        }
+
+        .sprint-goal {
+            background: #ffe8cc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .sprint-goal h3 {
+            color: #d84315;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ff6b35, transparent);
+            margin: 2rem 0;
+            border: none;
+        }
+
+        .tips-box {
+            background: #f0f8ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .tips-box h4 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .user-testing {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .user-testing h4 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+
+    <div class="header">
+        <h1>Sprint 2: Gameplay Loop & UI</h1>
+        <p>Weeks 7-10 of Your Major Project</p>
+    </div>
+
+    <div class="content-section">
+        <div class="sprint-goal">
+            <h3>🎯 Sprint Goal</h3>
+            <p>To build a complete, playable game loop with a functional user interface.</p>
+        </div>
+
+        <div class="highlight">
+            <h3>📋 Sprint 2 Success Criteria</h3>
+            <ul>
+                <li>Main menu with start/quit functionality</li>
+                <li>In-game HUD showing essential information</li>
+                <li>Win and lose screens with appropriate messaging</li>
+                <li>Smooth transitions between all game states</li>
+                <li>Complete gameplay loop (Menu → Game → End Screen)</li>
+                <li>Formal user testing session completed</li>
+                <li>Feedback collected and key improvements implemented</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📅 Weekly Breakdown</h2>
+
+        <div class="week-card">
+            <div class="week-title">Week 7: Main Menu & UI Scaffolding</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Create the entry point to your game and essential interface elements.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Design and implement a main menu screen with "Start" and "Quit" buttons</li>
+                    <li>Create a basic Heads-Up Display (HUD) to show essential info (e.g., score, health)</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 8: Win/Lose Screens & Transitions</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Create clear end-points for the gameplay loop and smooth flow between screens.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Implement a "You Win" screen when the objective is met</li>
+                    <li>Implement a "Game Over" screen when the player fails</li>
+                    <li>Ensure smooth transitions between menu → game → end screens</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 9: User Feedback Session</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Conduct a formal user feedback session with a wider group of testers.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Prepare a playable build of the game</li>
+                    <li>Have 2-3 people play the game from start to finish</li>
+                    <li>Observe their playthrough and take notes</li>
+                    <li>Log all feedback in the Feedback Log</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-card">
+            <div class="week-title">Week 10: Feedback Implementation & Reflection</div>
+            
+            <div class="focus-area">
+                <strong>Focus:</strong> Analyze feedback and make improvements based on user testing insights.
+            </div>
+
+            <div class="task-list">
+                <h4>Tasks to Complete:</h4>
+                <ul>
+                    <li>Prioritize the feedback and choose key changes to implement</li>
+                    <li>Implement at least one significant improvement based on feedback</li>
+                    <li>Complete the Sprint 2 Reflection below</li>
+                    <li>Write weekly journal entry</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="content-section">
+        <h2>💡 Development Tips</h2>
+        <div class="tips-box">
+            <h4>UI/UX Design Tips</h4>
+            <ul>
+                <li><strong>Keep It Simple:</strong> Clear, readable fonts and intuitive button placement</li>
+                <li><strong>Consistent Style:</strong> Use the same colors, fonts, and button styles throughout</li>
+                <li><strong>Visual Feedback:</strong> Buttons should respond to mouse hover/clicks</li>
+                <li><strong>Essential Info Only:</strong> Don't clutter the HUD with unnecessary information</li>
+            </ul>
+        </div>
+
+        <div class="user-testing">
+            <h4>User Testing Best Practices</h4>
+            <ul>
+                <li><strong>Silent Observation:</strong> Don't help or guide players during initial testing</li>
+                <li><strong>Ask Open Questions:</strong> "What did you think?" not "Did you like the jumping?"</li>
+                <li><strong>Note Confusion:</strong> Where do players get stuck or confused?</li>
+                <li><strong>Watch Actions:</strong> What players do is more important than what they say</li>
+                <li><strong>Test with Different People:</strong> Get varied perspectives and skill levels</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Sprint 2 Reflection</h2>
+        <p>Complete this reflection at the end of Week 10 to prepare for Sprint 3:</p>
+
+        <div class="reflection-section">
+            <div class="reflection-question">What was the most valuable piece of feedback you received?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - which feedback point will most improve your game?
+            </div>
+
+            <div class="reflection-question">Did the gameplay loop feel complete to your testers? Why or why not?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - could players understand the flow from start to finish?
+            </div>
+
+            <div class="reflection-question">What technical challenges did you face when implementing the UI?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - layout issues, responsive design, state management, etc.
+            </div>
+
+            <div class="reflection-question">How will the feedback influence your art and sound direction for Sprint 3?</div>
+            <div class="reflection-answer">
+                Your detailed answer here - what visual/audio elements need the most attention?
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>✅ Sprint 2 Completion Checklist</h2>
+        <div class="task-list">
+            <h3>Before moving to Sprint 3:</h3>
+            <ul>
+                <li>Main menu functions properly (start/quit buttons work)</li>
+                <li>HUD displays relevant game information clearly</li>
+                <li>Win screen appears when objective is completed</li>
+                <li>Game Over screen appears when player fails</li>
+                <li>Smooth transitions between all game states</li>
+                <li>At least 2-3 people have completed full playthroughs</li>
+                <li>All user feedback is documented in Feedback Log</li>
+                <li>At least one significant improvement implemented based on feedback</li>
+                <li>All weekly journal entries completed</li>
+                <li>Sprint 2 Reflection completed</li>
+                <li>Updated code committed to Git repository</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="next-module">
+        <a href="sprint-1-plan.html" class="next-link">← Sprint 1 Plan</a>
+        <a href="sprint-3-plan.html" class="next-link">Sprint 3 Plan →</a>
+    </div>
+</body>
+</html>
