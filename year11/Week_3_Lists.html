@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: Introduction to Lists</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .exercises {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Week 3: Introduction to Lists</h1>
+        <p><strong>Goal:</strong> To learn how to store and manage an ordered collection of items using lists. This is the first step to managing a collection of contacts.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Concepts & Explanations</h2>
+        
+        <h3>1. What is a List?</h3>
+        <p>A list is a data structure that holds an ordered sequence of items. Think of it like a numbered list of groceries or a column in a spreadsheet. Each item in the list has a specific position.</p>
+        
+        <div class="code-block">
+<pre><code><span class="comment"># An empty list</span>
+my_friends = []
+
+<span class="comment"># A list with initial items</span>
+shopping_list = [<span class="string">"apples"</span>, <span class="string">"bread"</span>, <span class="string">"milk"</span>]</code></pre>
+        </div>
+        
+        <ul>
+            <li><strong>[]:</strong> The square brackets are what define a list.</li>
+            <li><strong>"apples", "bread", "milk":</strong> The items are separated by commas.</li>
+        </ul>
+
+        <h3>2. Adding to a List with .append()</h3>
+        <p><code>.append()</code> is a <strong>method</strong>, which is a function that belongs to a specific object (in this case, a list). It adds a new item to the very end of the list.</p>
+        
+        <div class="code-block">
+<pre><code>shopping_list = [<span class="string">"apples"</span>, <span class="string">"bread"</span>]
+shopping_list.append(<span class="string">"eggs"</span>)
+<span class="comment"># Now, shopping_list is ["apples", "bread", "eggs"]</span></code></pre>
+        </div>
+        
+        <ul>
+            <li><strong>shopping_list.append(...):</strong> You write the name of the list, a dot <code>.</code>, and then the method name.</li>
+        </ul>
+
+        <h3>3. Accessing List Items by Index</h3>
+        <p>Every item in a list has a position called an <strong>index</strong>. The most important thing to remember is that <strong>indexes start at 0</strong>, not 1.</p>
+        
+        <div class="code-block">
+<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+first_color = colors[<span class="number">0</span>]  <span class="comment"># This gets "red"</span>
+second_color = colors[<span class="number">1</span>] <span class="comment"># This gets "green"</span></code></pre>
+        </div>
+        
+        <ul>
+            <li><strong>colors[0]:</strong> The number inside the square brackets is the index of the item you want to retrieve.</li>
+        </ul>
+
+        <h3>4. Getting the Length of a List with len()</h3>
+        <p><code>len()</code> is a function that tells you how many items are in a list.</p>
+        
+        <div class="code-block">
+<pre><code>num_of_colors = <span class="function">len</span>(colors) <span class="comment"># This would be 3</span></code></pre>
+        </div>
+
+        <h3>5. Modifying an Item in a List</h3>
+        <p>You can change an item at a specific index by assigning a new value to it.</p>
+        
+        <div class="code-block">
+<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+colors[<span class="number">1</span>] = <span class="string">"yellow"</span> <span class="comment"># Change the item at index 1</span>
+<span class="comment"># Now, colors is ["red", "yellow", "blue"]</span></code></pre>
+        </div>
+
+        <h3>6. Removing Items from a List</h3>
+        <p>There are two common ways to remove items:</p>
+        <ul>
+            <li><strong>.pop():</strong> Removes an item at a specific index. If you don't provide an index, it removes the <em>last</em> item.</li>
+            <li><strong>.remove():</strong> Removes the <em>first</em> item in the list that matches the value you provide.</li>
+        </ul>
+        
+        <div class="code-block">
+<pre><code><span class="comment"># Using .pop()</span>
+colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+colors.pop(<span class="number">0</span>) <span class="comment"># Removes "red"</span>
+<span class="comment"># Now, colors is ["green", "blue"]</span>
+
+<span class="comment"># Using .remove()</span>
+colors.remove(<span class="string">"blue"</span>) <span class="comment"># Removes "blue"</span>
+<span class="comment"># Now, colors is ["green"]</span></code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>My Hobbies:</strong> Create a list containing three of your hobbies. Print the entire list.</li>
+                <li><strong>First and Last:</strong> Create a list of your three favorite foods. Print the first item in the list.</li>
+                <li><strong>Add an Item:</strong> Start with an empty list called `movies`. Ask the user to enter their favorite movie and `append()` it to the list. Then print the list.</li>
+                <li><strong>Team Roster:</strong> Create a list with the names of two of your friends. Ask the user to add a third friend's name. Print the final list.</li>
+                <li><strong>List Count:</strong> Create a list of 5 different numbers. Use the `len()` function to print a message like: "The list contains 5 numbers."</li>
+                <li><strong>Change of Plans:</strong> Create a list of three places you want to visit. Use an index to change the second place to a new destination. Print the updated list.</li>
+                <li><strong>Remove an Item:</strong> Create a list of tasks to do. Use `.pop()` to remove the first task and print a message saying you've completed it. Then print the remaining tasks.</li>
+                <li><strong>Guest List Management:</strong> Create a list of guests. A guest cancels, so use `.remove()` to remove their name from the list. Print the final guest list.</li>
+                <li><strong>Dynamic Shopping List:</strong> Create an empty list. Ask the user to enter three items one by one, appending each to the list. Then, tell the user you're out of the first item and remove it. Print the final list.</li>
+                <li><strong>Error Finder:</strong> The following code has an error. Can you fix it? `my_list = [1, 2, 3] print(my_list[3])` (Hint: Remember how indexing starts).</li>
+                <li><strong>Sentence Builder:</strong> Create a list of individual words: `["This", "is", "a", "sentence"]`. Print each word on the same line by accessing them by their index and using string concatenation, to form the full sentence.</li>
+                <li><strong>Top Three:</strong> Create a list of your top three favorite songs. `pop()` the last one and store it in a variable. Then print a message like: "Your third favorite song is [Song], but let's just focus on the top two: [The rest of the list]."</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Lists are ordered collections of items defined with square brackets []</li>
+            <li>Use .append() to add items to the end of a list</li>
+            <li>List indexes start at 0, not 1</li>
+            <li>Access items using square bracket notation: list[index]</li>
+            <li>Use len() to find how many items are in a list</li>
+            <li>Modify list items by assigning new values to specific indexes</li>
+            <li>Remove items with .pop() (by index) or .remove() (by value)</li>
+        </ul>
+    </div>
+
+    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+</body>
+</html>

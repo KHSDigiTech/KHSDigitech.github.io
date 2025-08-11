@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6: Error Handling</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .exercises {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Week 6: A Detailed Guide to Error Handling</h1>
+        <p><strong>Goal:</strong> To make your program robust by anticipating and handling errors gracefully instead of crashing.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Concepts & Thorough Explanations</h2>
+        
+        <h3>1. The Problem: Crashing Programs</h3>
+        <p>What happens if you ask for a number, but the user types "hello"? Your program will crash with a <code>ValueError</code> when you try to use <code>int()</code>.</p>
+
+        <h3>2. The try...except Block</h3>
+        <p>This structure lets you "try" a piece of code that might fail. If it fails, the program doesn't crash; instead, it runs the code in the "except" block.</p>
+
+        <h4>Syntax Breakdown:</h4>
+        <div class="code-block">
+<pre><code><span class="keyword">try</span>:
+    <span class="comment"># 1. The code to attempt is put in the 'try' block.</span>
+    age_string = <span class="function">input</span>(<span class="string">"Enter your age: "</span>)
+    age_number = <span class="function">int</span>(age_string)
+    <span class="function">print</span>(<span class="string">f"You are </span><span class="string">{age_number}</span><span class="string"> years old."</span>)
+
+<span class="keyword">except</span> ValueError:
+    <span class="comment"># 2. This block only runs if a ValueError occurs in the 'try' block.</span>
+    <span class="function">print</span>(<span class="string">"Invalid input. Please enter a number."</span>)</code></pre>
+        </div>
+
+        <ul>
+            <li><strong>try:</strong> The block of code where an error might happen.</li>
+            <li><strong>except ValueError:</strong> If a <code>ValueError</code> specifically occurs in the <code>try</code> block, the program immediately jumps to this <code>except</code> block. It skips the rest of the <code>try</code> block.</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Important:</strong> This is a cornerstone of robust programming and is essential for an Excellence grade.
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Safe Number Input:</strong> Ask the user for a number. Use a <code>try...except</code> block to print the number if it's valid, or an error message if it's not.</li>
+                <li><strong>Age Converter:</strong> Wrap the age conversion program from Week 1 in a <code>try...except</code> block.</li>
+                <li><strong>Calculator Protection:</strong> Wrap the simple calculator from Week 1 in a <code>try...except</code> block to handle cases where the user enters text instead of numbers.</li>
+                <li><strong>Menu with Loop and Error Handling:</strong> Create a menu that asks for a number choice. Use a <code>while</code> loop to keep asking until the user enters a valid number. Use <code>try...except</code> inside the loop.</li>
+                <li><strong>Division Calculator:</strong> Ask for two numbers. In the <code>try</code> block, calculate and print the result of the first number divided by the second. You will need two <code>except</code> blocks: one for <code>ValueError</code> (if they enter text) and one for <code>ZeroDivisionError</code> (if they try to divide by zero).</li>
+                <li><strong>List Index Checker:</strong> Create a list with 3 items. Ask the user for an index number. In a <code>try</code> block, try to print the item at that index. Catch the <code>IndexError</code> if the index is out of range.</li>
+                <li><strong>File Reader (Conceptual):</strong> You don't need to write the file part, but conceptually, how would you use <code>try...except</code> when trying to open a file that might not exist? (Hint: It would cause a <code>FileNotFoundError</code>).</li>
+                <li><strong>Robust Input Function:</strong> Create a function <code>get_integer_input(prompt)</code> that uses a <code>while True</code> loop and a <code>try...except</code> block to repeatedly ask the user for input with the given prompt until they enter a valid integer, at which point the function should <code>return</code> the number.</li>
+                <li><strong>Contact Book Age:</strong> Imagine your contact book also stored age. Use <code>try...except</code> to make sure the user enters a valid number for the age.</li>
+                <li><strong>Combining It All:</strong> Create a list of numbers. Ask the user for a new number to add. Use <code>try...except</code> to ensure it's a valid number before appending it to the list.</li>
+            </ul>
+        </div>
+    </div>
+
+    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+</body>
+</html>

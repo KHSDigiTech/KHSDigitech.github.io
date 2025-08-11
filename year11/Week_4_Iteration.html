@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4: Iteration (Loops)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .exercises {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Week 4: Iteration (Loops)</h1>
+        <p><strong>Goal:</strong> To learn how to repeat blocks of code automatically. This is essential for creating a menu that keeps running and for processing every item in a list.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Concepts & Explanations</h2>
+        
+        <h3>1. The while Loop</h3>
+        <p>A <code>while</code> loop repeats a block of code <strong>as long as a certain condition remains true</strong>. It's perfect for when you don't know how many times you need to repeat the code.</p>
+        
+        <div class="code-block">
+<pre><code><span class="comment"># A loop that counts to 3</span>
+count = <span class="number">1</span>
+<span class="keyword">while</span> count <= <span class="number">3</span>:
+    <span class="function">print</span>(<span class="string">"The count is:"</span>, count)
+    count = count + <span class="number">1</span> <span class="comment"># This is crucial! It's the incrementer.</span>
+
+<span class="function">print</span>(<span class="string">"Loop finished."</span>)</code></pre>
+        </div>
+        
+        <ul>
+            <li><strong>while count <= 3:</strong> The loop will continue as long as the <code>count</code> variable is less than or equal to 3.</li>
+            <li><strong>count = count + 1:</strong> Inside the loop, we must change the variable from the condition. If we don't, we create an <strong>infinite loop</strong> because the condition will never become false.</li>
+        </ul>
+
+        <h4>The while True and break Pattern:</h4>
+        <p>A very common pattern is to create a loop that runs forever and then use a conditional <code>break</code> statement to exit it. This is ideal for menus.</p>
+        
+        <div class="code-block">
+<pre><code><span class="keyword">while</span> <span class="keyword">True</span>:
+    command = <span class="function">input</span>(<span class="string">"Enter command (or 'q' to quit): "</span>)
+    <span class="keyword">if</span> command == <span class="string">"q"</span>:
+        <span class="keyword">break</span> <span class="comment"># Exit the loop immediately</span>
+    <span class="function">print</span>(<span class="string">f"Executing command: </span><span class="string">{command}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <h3>2. The for Loop</h3>
+        <p>A <code>for</code> loop is used to iterate over a sequence (like a list). It will run its code block once for every item in the sequence.</p>
+        
+        <div class="code-block">
+<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+<span class="keyword">for</span> item <span class="keyword">in</span> colors:
+    <span class="function">print</span>(<span class="string">"The color is:"</span>, item)</code></pre>
+        </div>
+        
+        <ul>
+            <li><strong>for item in colors:</strong> This is the loop definition.
+                <ul>
+                    <li><strong>colors:</strong> The list you want to loop through.</li>
+                    <li><strong>item:</strong> This is a <strong>temporary variable</strong> that you name. In each iteration of the loop, <code>item</code> will hold the current item from the list (<code>"red"</code> in the first loop, <code>"green"</code> in the second, etc.).</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Counting:</strong> Write a `while` loop that counts from 1 to 5 and prints each number.</li>
+                <li><strong>List Printer:</strong> Create a list of your favorite songs. Use a `for` loop to print each song title.</li>
+                <li><strong>Password Loop:</strong> Write a program that keeps asking for a password until the user types "secret".</li>
+                <li><strong>Sum of a List:</strong> Create a list of numbers. Use a `for` loop to calculate and print the sum of all the numbers in the list.</li>
+                <li><strong>Menu Loop:</strong> Using a `while True` loop, create a menu that prints two options. If the user chooses option 1, print "Option 1 chosen." If they choose option 2, `break` the loop.</li>
+                <li><strong>Even Numbers:</strong> Write a `for` loop that goes through a list of numbers and only prints the ones that are even.</li>
+                <li><strong>Guest List Greeter:</strong> You have a list of guests. Use a `for` loop to print a personalized greeting for each guest, like "Welcome to the party, [Guest Name]!"</li>
+                <li><strong>Find the Item:</strong> Create a list of items. Ask the user for an item to search for. Use a `for` loop and an `if` statement to check if the item is in the list and print a confirmation message.</li>
+                <li><strong>Shopping Cart Total:</strong> Create a list of prices for items in a shopping cart. Use a `for` loop to add them all up and print the final total.</li>
+                <li><strong>Contact List Display:</strong> Create a simple list of contacts (just names for now). Use a `for` loop to print the header "--- Your Contacts ---" and then print each contact name on a new line.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Use <code>while</code> loops when you don't know how many iterations you need</li>
+            <li>Use <code>for</code> loops to iterate through sequences like lists</li>
+            <li>Always modify the condition variable in a <code>while</code> loop to avoid infinite loops</li>
+            <li>The <code>while True</code> + <code>break</code> pattern is perfect for menu systems</li>
+            <li>The loop variable in a <code>for</code> loop automatically takes each value from the sequence</li>
+            <li>Proper indentation is crucial for defining what code belongs inside the loop</li>
+        </ul>
+    </div>
+
+    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+</body>
+</html>

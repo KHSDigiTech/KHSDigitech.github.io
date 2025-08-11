@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5: Dictionaries</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .exercises {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Week 5: Dictionaries</h1>
+        <p><strong>Goal:</strong> To learn how to store data as key-value pairs, which allows for much better organization. This is a critical step for creating a "well-structured" program and achieving at the Merit level.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Concepts & Explanations</h2>
+        
+        <h3>1. The Problem with Simple Lists</h3>
+        <p>Imagine we store a contact like this: <code>contact = ["Alice", "123456789"]</code>. What does <code>contact[0]</code> mean? We know it's the name, but the code doesn't. We have to remember the order. This is where dictionaries come in.</p>
+
+        <h3>2. What is a Dictionary?</h3>
+        <p>A dictionary is a collection of <strong>key-value pairs</strong>. It's like a real dictionary where you look up a word (the <strong>key</strong>) to find its definition (the <strong>value</strong>). The order doesn't matter, only the keys do.</p>
+        
+        <div class="code-block">
+<pre><code><span class="comment"># A dictionary representing one contact</span>
+contact = {
+    <span class="string">"name"</span>: <span class="string">"Alice"</span>,
+    <span class="string">"phone"</span>: <span class="string">"123456789"</span>,
+    <span class="string">"email"</span>: <span class="string">"alice@example.com"</span>
+}</code></pre>
+        </div>
+        
+        <ul>
+            <li><strong>{}:</strong> Dictionaries are defined with curly braces.</li>
+            <li><strong>"name": "Alice":</strong> This is a key-value pair. <code>"name"</code> is the key, and <code>"Alice"</code> is the value. They are separated by a colon <code>:</code>.</li>
+            <li>Each pair is separated by a comma.</li>
+        </ul>
+
+        <h3>3. Accessing Values by Key</h3>
+        <p>You don't use an index with dictionaries. You use the key to get the value.</p>
+        
+        <div class="code-block">
+<pre><code><span class="function">print</span>(contact[<span class="string">"name"</span>])  <span class="comment"># This will print "Alice"</span>
+<span class="function">print</span>(contact[<span class="string">"email"</span>]) <span class="comment"># This will print "alice@example.com"</span></code></pre>
+        </div>
+
+        <h3>4. A List of Dictionaries</h3>
+        <p>This is the pattern you will use for your final assessment. You have a <code>list</code> where each item in the list is a <code>dictionary</code> representing one contact.</p>
+        
+        <div class="code-block">
+<pre><code>all_contacts = [
+    { <span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"phone"</span>: <span class="string">"111-222"</span> },
+    { <span class="string">"name"</span>: <span class="string">"Bob"</span>, <span class="string">"phone"</span>: <span class="string">"333-444"</span> }
+]
+
+<span class="comment"># Get Bob's phone number</span>
+<span class="function">print</span>(all_contacts[<span class="number">1</span>][<span class="string">"phone"</span>]) <span class="comment"># Prints "333-444"</span></code></pre>
+        </div>
+        
+        <ul>
+            <li><strong>all_contacts[1]:</strong> This gets the second dictionary from the list (<code>{ "name": "Bob", ... }</code>).</li>
+            <li><strong>["phone"]:</strong> From that dictionary, we then get the value associated with the "phone" key.</li>
+        </ul>
+
+        <h3>5. Iterating Through a Dictionary</h3>
+        <p>You can loop through a dictionary using a <code>for</code> loop with the <code>.items()</code> method. This gives you both the key and the value for each pair.</p>
+        
+        <div class="code-block">
+<pre><code>contact = { <span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"phone"</span>: <span class="string">"111-222"</span> }
+<span class="keyword">for</span> key, value <span class="keyword">in</span> contact.items():
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{key}</span><span class="string">: </span><span class="string">{value}</span><span class="string">"</span>)
+<span class="comment"># Output:</span>
+<span class="comment"># name: Alice</span>
+<span class="comment"># phone: 111-222</span></code></pre>
+        </div>
+
+        <h3>6. Checking if a Key Exists</h3>
+        <p>If you try to access a key that doesn't exist, your program will crash. You can check for a key's existence first using the <code>in</code> keyword.</p>
+        
+        <div class="code-block">
+<pre><code><span class="keyword">if</span> <span class="string">"email"</span> <span class="keyword">in</span> contact:
+    <span class="function">print</span>(contact[<span class="string">"email"</span>])
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Email address not found."</span>)</code></pre>
+        </div>
+
+        <h3>7. Deleting a Key-Value Pair</h3>
+        <p>You can remove a pair from a dictionary using the <code>del</code> keyword.</p>
+        
+        <div class="code-block">
+<pre><code><span class="keyword">del</span> contact[<span class="string">"phone"</span>]
+<span class="comment"># The contact dictionary no longer has a "phone" key.</span></code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>My Profile:</strong> Create a dictionary to store your own profile with keys for "name", "city", and "favorite_food". Print one of the values.</li>
+                <li><strong>Car Details:</strong> Create a dictionary for a car with keys for "make", "model", and "year". Print a sentence using all three values.</li>
+                <li><strong>Add a Key:</strong> Create a profile dictionary. After creating it, add a new key-value pair for "email". Print the whole dictionary.</li>
+                <li><strong>Student Grades:</strong> Create a dictionary to store a student's grades, with subjects as keys and scores as values. Use `.items()` to loop through and print each subject and score.</li>
+                <li><strong>Simple Translation:</strong> Create a dictionary that maps three English words to their Spanish translations. Ask the user for an English word and use the `in` keyword to check if it exists before printing the translation.</li>
+                <li><strong>Delete a Key:</strong> Create a dictionary with three key-value pairs. Use `del` to remove one of them. Print the final dictionary.</li>
+                <li><strong>Contact List of Dictionaries:</strong> Create a `list` containing two `dictionary` items, where each dictionary represents a contact (with "name" and "phone" keys).</li>
+                <li><strong>Looping Through Dictionaries:</strong> Using the list from the previous exercise, write a `for` loop that prints a formatted string for each contact, like: "Contact: [Name], Phone: [Phone]".</li>
+                <li><strong>Adding a Dictionary to a List:</strong> Start with an empty list called `contacts`. Create a new contact `dictionary` based on user input and `append()` it to the list. Print the list.</li>
+                <li><strong>Search by Name:</strong> Create a list of contact dictionaries. Ask the user for a name to search for. Loop through the list, and if you find a dictionary with a matching name, print that contact's phone number.</li>
+                <li><strong>Full Contact Entry:</strong> Combine everything: Create an empty list. Ask the user for a name and phone number. Create a new dictionary with that data. Append the dictionary to the list. Finally, loop through the list and print all the contacts.</li>
+                <li><strong>Profile Printer:</strong> Create a profile dictionary. Use a `for` loop with `.items()` to print each piece of information on a new line, like "Key: Value".</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Dictionaries use key-value pairs instead of numbered indexes</li>
+            <li>Access values using keys in square brackets: <code>dict["key"]</code></li>
+            <li>Lists of dictionaries are perfect for storing multiple records (like contacts)</li>
+            <li>Use <code>.items()</code> to loop through both keys and values</li>
+            <li>Always check if a key exists using <code>in</code> before accessing it</li>
+            <li>Remove key-value pairs with the <code>del</code> keyword</li>
+            <li>Dictionaries provide better structure than lists for complex data</li>
+        </ul>
+    </div>
+
+    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+</body>
+</html>

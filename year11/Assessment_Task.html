@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Task: Simple Contact Book</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .achievement-section {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .merit-section {
+            background: #cce7ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #007bff;
+        }
+
+        .excellence-section {
+            background: #f8d7da;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #dc3545;
+        }
+
+        .requirements {
+            background: #e2e3e5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .requirements ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .requirements li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .requirements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+
+        .grade-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .achieved { background: #d4edda; color: #155724; }
+        .merit { background: #cce7ff; color: #004085; }
+        .excellence { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Assessment Task: Simple Contact Book</h1>
+        <p><strong>AS92004 Create a Computer Program</strong></p>
+    </div>
+
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>Your task is to create a simple command-line "Contact Book" application. This program will allow a user to store and retrieve contact information. You will need to apply your programming skills to create a functional, well-structured, and robust application.</p>
+        
+        <p>This assessment will be graded against the criteria for <strong>AS92004 Create a computer program</strong>.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Core Requirements</h2>
+        <p>Your program <strong>must</strong> provide the user with a menu of options to:</p>
+        
+        <div class="requirements">
+            <ul>
+                <li><strong>Add a new contact:</strong> The program should prompt the user for a contact's name and their phone number and save it.</li>
+                <li><strong>View all contacts:</strong> The program should display a list of all the contacts that have been saved.</li>
+                <li><strong>Exit the program:</strong> A way for the user to safely close the application.</li>
+            </ul>
+        </div>
+
+        <p>To meet the standard, your program must:</p>
+        <div class="requirements">
+            <ul>
+                <li>Store at least two types of data for each contact (e.g., name as a string, phone number as a string or integer).</li>
+                <li>Take input from the user to navigate the menu and enter contact details.</li>
+                <li>Produce clear output for the user (displaying the menu, contacts, and other messages).</li>
+                <li>Use <strong>sequence</strong>, <strong>selection</strong> (e.g., if/elif/else for menu choices), and <strong>iteration</strong> (e.g., a while loop for the main menu).</li>
+                <li>Use a single <strong>collection</strong> (e.g., a list) to store all the contact data.</li>
+                <li>Be documented with comments.</li>
+                <li>Include evidence of testing to show that it works on expected cases.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Marking Schedule</h2>
+
+        <div class="achievement-section">
+            <h3><span class="grade-badge achieved">ACHIEVED</span> Create a computer program</h3>
+            <p>The student's program meets all the core requirements. It is functional and performs the specified task.</p>
+            
+            <ul>
+                <li><strong>Functionality:</strong> The program successfully allows a user to add contacts, view them, and exit.</li>
+                <li><strong>Data Storage:</strong> Contacts are stored in a single collection, such as a list.
+                    <br><em>Example: The contacts are stored in a list of strings, like ["John Doe - 021123456", "Jane Smith - 022765432"].</em></li>
+                <li><strong>Control Structures:</strong> The program correctly uses if statements (or equivalent) to handle menu choices and a loop to keep the program running until the user exits.</li>
+                <li><strong>Testing:</strong> The student provides evidence that the program works as expected for the main functions.
+                    <br><em>Example: Screenshots or a log showing the user adding a contact and then successfully viewing it.</em></li>
+                <li><strong>Comments:</strong> The code contains comments that explain what is happening.
+                    <br><em>Example: # Get user input for the name.</em></li>
+            </ul>
+        </div>
+
+        <div class="merit-section">
+            <h3><span class="grade-badge merit">MERIT</span> Create a well-structured computer program</h3>
+            <p>The student's program meets all the criteria for Achieved, and is also well-structured.</p>
+            
+            <ul>
+                <li><strong>Variable Names:</strong> Variables and functions have clear, descriptive names.
+                    <br><em>Example: contact_list or all_contacts is used instead of x or c_list.</em></li>
+                <li><strong>Data Organization:</strong> Uses more sophisticated data structures like lists of dictionaries.
+                    <br><em>Example: [{"name": "John", "phone": "021123456"}, {"name": "Jane", "phone": "022765432"}].</em></li>
+                <li><strong>Code Structure:</strong> The code is logically organized and easy to follow.</li>
+                <li><strong>User Experience:</strong> Clear prompts, helpful messages, and good formatting of output.</li>
+            </ul>
+        </div>
+
+        <div class="excellence-section">
+            <h3><span class="grade-badge excellence">EXCELLENCE</span> Create a robust computer program</h3>
+            <p>The student's program meets all the criteria for Merit, and also handles unexpected situations gracefully.</p>
+            
+            <ul>
+                <li><strong>Error Handling:</strong> Uses try...except blocks to handle invalid input without crashing.
+                    <br><em>Example: Handling non-numeric menu choices gracefully.</em></li>
+                <li><strong>Input Validation:</strong> Checks for valid input and provides helpful error messages.</li>
+                <li><strong>Edge Cases:</strong> Handles situations like empty contact lists, duplicate names, etc.</li>
+                <li><strong>Code Documentation:</strong> Comprehensive comments and/or docstrings that explain the purpose and behavior of code sections.</li>
+                <li><strong>Testing Evidence:</strong> Thorough testing including edge cases and error conditions.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Development Timeline</h2>
+        <div class="highlight">
+            <p><strong>Week 8-10:</strong> Use the structured 3-week development process covered in Week 8 materials. This includes planning, implementation, testing, and documentation phases.</p>
+        </div>
+        
+        <ul>
+            <li><strong>Week 8:</strong> Planning and basic implementation</li>
+            <li><strong>Week 9:</strong> Feature completion and testing</li>
+            <li><strong>Week 10:</strong> Error handling, documentation, and final polish</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Success Tips</h2>
+        <ul>
+            <li>Start simple - get the basic menu working first</li>
+            <li>Test frequently as you add each feature</li>
+            <li>Use descriptive variable names from the beginning</li>
+            <li>Add comments as you write code, not at the end</li>
+            <li>Plan your data structure carefully (lists vs dictionaries)</li>
+            <li>Save evidence of your testing process</li>
+        </ul>
+    </div>
+
+    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+</body>
+</html>

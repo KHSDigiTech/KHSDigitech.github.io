@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Week Programming Course: Teacher Overview</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .exercises {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '📚';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #333;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f3f4;
+        }
+
+        .week-number {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>8-Week Programming Course: Teacher Overview</h1>
+        <p><strong>Goal:</strong> Take absolute beginners to successful completion of AS92004 Simple Contact Book assessment</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Course Overview</h2>
+        <p>This document provides a high-level overview of the 10-week lesson plan designed to take absolute beginners to a point where they can successfully complete the <strong>AS92004 Simple Contact Book</strong> assessment.</p>
+        
+        <div class="highlight">
+            <strong>Note:</strong> The course is designed as 8 core weeks plus 2 weeks for project development and refinement.
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Weekly Progression</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 8%;">Week</th>
+                    <th style="width: 25%;">Topic</th>
+                    <th style="width: 35%;">Key Skills Learned</th>
+                    <th style="width: 32%;">Relation to Final Assessment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="week-number">1</td>
+                    <td>Intro to Programming & Data Types</td>
+                    <td><code>print()</code>, <code>input()</code>, variables, strings, <code>int()</code>, type conversion</td>
+                    <td>Getting user input and understanding why it might need converting.</td>
+                </tr>
+                <tr>
+                    <td class="week-number">2</td>
+                    <td>Conditional Logic & String Formatting</td>
+                    <td><code>if/elif/else</code>, comparison operators, f-strings</td>
+                    <td>Building the menu and creating clean, readable output.</td>
+                </tr>
+                <tr>
+                    <td class="week-number">3</td>
+                    <td>Introduction to Lists</td>
+                    <td>Creating lists, <code>append()</code>, <code>pop()</code>, <code>remove()</code>, accessing by index</td>
+                    <td>Storing the collection of contacts.</td>
+                </tr>
+                <tr>
+                    <td class="week-number">4</td>
+                    <td>Iteration (Loops)</td>
+                    <td><code>while</code> loops, <code>for</code> loops, <code>break</code></td>
+                    <td>Creating the main menu loop and viewing all contacts.</td>
+                </tr>
+                <tr>
+                    <td class="week-number">5</td>
+                    <td>Structuring Data (Dictionaries)</td>
+                    <td>Creating dictionaries, accessing values, <code>.items()</code>, <code>del</code></td>
+                    <td><strong>(Merit)</strong> Storing contact data in a well-structured way.</td>
+                </tr>
+                <tr>
+                    <td class="week-number">6</td>
+                    <td>Error Handling</td>
+                    <td><code>try...except</code> blocks to handle errors gracefully</td>
+                    <td><strong>(Excellence)</strong> Making the program robust by handling invalid user input.</td>
+                </tr>
+                <tr>
+                    <td class="week-number">7</td>
+                    <td>Functions & Documentation</td>
+                    <td><code>def</code>, parameters, <code>return</code>, comments vs. docstrings</td>
+                    <td><strong>(Excellence)</strong> Structuring code for flexibility and reusability.</td>
+                </tr>
+                <tr>
+                    <td class="week-number">8-10</td>
+                    <td>Project Development & Refinement</td>
+                    <td>Applying all concepts, debugging, documentation, and final testing</td>
+                    <td>Completing the final assessment to a high standard over 3 weeks.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h2>Assessment Grade Pathways</h2>
+        
+        <div class="exercises">
+            <ul>
+                <li><strong>Achieved Level:</strong> Students complete Weeks 1-4 successfully and can implement basic functionality using sequence, selection, and iteration.</li>
+                <li><strong>Merit Level:</strong> Students also master Week 5 (Dictionaries) to create well-structured data storage and demonstrate clear, logical code organization.</li>
+                <li><strong>Excellence Level:</strong> Students additionally complete Weeks 6-7 (Error Handling & Functions) to create flexible, robust programs that handle edge cases gracefully.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Teaching Points</h2>
+        
+        <h3>Weeks 1-4: Foundation Skills (Achieved Level)</h3>
+        <ul>
+            <li>Focus on core programming concepts that every student needs</li>
+            <li>Emphasize practical application and immediate feedback</li>
+            <li>Build confidence through incremental complexity</li>
+            <li>Ensure solid understanding before moving to advanced topics</li>
+        </ul>
+
+        <h3>Week 5: Data Structure (Merit Level)</h3>
+        <ul>
+            <li>Introduce dictionaries as a more sophisticated way to store related data</li>
+            <li>Compare list vs dictionary approaches for contact storage</li>
+            <li>Emphasize code readability and logical organization</li>
+        </ul>
+
+        <h3>Weeks 6-7: Advanced Concepts (Excellence Level)</h3>
+        <ul>
+            <li>Error handling: Making programs that don't crash</li>
+            <li>Functions: Code reusability and logical separation</li>
+            <li>Documentation: Professional coding practices</li>
+            <li>Testing: Systematic verification of program functionality</li>
+        </ul>
+
+        <h3>Weeks 8-10: Assessment Period</h3>
+        <ul>
+            <li>Students implement their contact book using learned concepts</li>
+            <li>Individual support based on target grade level</li>
+            <li>Focus on testing and documentation</li>
+            <li>Iterative improvement and debugging</li>
+        </ul>
+    </div>
+
+    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+</body>
+</html>
