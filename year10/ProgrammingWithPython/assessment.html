@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Task - Year 10 Python Programming</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .output-block {
+            background: #0f172a;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 1rem;
+            border-left: 4px solid #f59e0b;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .requirements-section {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .requirements-section h3 {
+            color: #065f46;
+            margin-top: 0;
+        }
+
+        .requirement-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #10b981;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #f59e0b;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: #f59e0b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #d97706;
+        }
+
+        .project-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .project-card {
+            background: #fefbf7;
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h4 {
+            color: #92400e;
+            margin-top: 0;
+            border-bottom: 2px solid #fbbf24;
+            padding-bottom: 0.5rem;
+        }
+
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .rubric-table th {
+            background: #f3f4f6;
+            font-weight: bold;
+        }
+
+        .timeline {
+            background: #f0f9ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .timeline h3 {
+            color: #0c4a6e;
+            margin-top: 0;
+        }
+
+        .week-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .tips-section {
+            background: #f0fdf4;
+            border: 1px solid #16a34a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .tips-section h3 {
+            color: #166534;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Python Course Overview</a>
+
+    <div class="header">
+        <h1>Assessment Task</h1>
+        <p>2-Week Programming Project - Weeks 7 & 8</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Project Overview</h2>
+        <p>For your final assessment, you'll create a complete Python program that demonstrates all the concepts you've learned throughout this course. This project will take place over two weeks and will be your opportunity to showcase your programming skills.</p>
+        
+        <div class="highlight">
+            <h3>Assessment Goals:</h3>
+            <ul>
+                <li>Apply all programming concepts from Modules 1-6</li>
+                <li>Create a functional, interactive program</li>
+                <li>Demonstrate problem-solving and programming logic</li>
+                <li>Write clean, well-commented code</li>
+                <li>Present your work to the class</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Project Options</h2>
+        <p>Choose ONE of the following project options:</p>
+        
+        <div class="project-options">
+            <div class="project-card">
+                <h4>Option 1: Text Adventure Game</h4>
+                <p>Create an interactive story-based game where players make choices that affect the outcome.</p>
+                <p><strong>Features to include:</strong></p>
+                <ul>
+                    <li>Story with multiple paths and endings</li>
+                    <li>Player choice system using input and if statements</li>
+                    <li>Character stats (health, items, score)</li>
+                    <li>Inventory system using lists</li>
+                    <li>Save/load game progress</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h4>Option 2: Personal Finance Calculator</h4>
+                <p>Build a comprehensive calculator to help manage personal finances and budgeting.</p>
+                <p><strong>Features to include:</strong></p>
+                <ul>
+                    <li>Income and expense tracking</li>
+                    <li>Budget planning and recommendations</li>
+                    <li>Savings goal calculator</li>
+                    <li>Data persistence (save/load financial data)</li>
+                    <li>Financial reports and summaries</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h4>Option 3: Quiz Game System</h4>
+                <p>Create an interactive quiz game with multiple categories and difficulty levels.</p>
+                <p><strong>Features to include:</strong></p>
+                <ul>
+                    <li>Multiple quiz categories (science, math, history, etc.)</li>
+                    <li>Different difficulty levels</li>
+                    <li>Score tracking and high scores</li>
+                    <li>Question bank stored in lists</li>
+                    <li>Timer functionality (bonus feature)</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h4>Option 4: Student Grade Manager</h4>
+                <p>Develop a system to manage student information and calculate grades.</p>
+                <p><strong>Features to include:</strong></p>
+                <ul>
+                    <li>Add/remove students and courses</li>
+                    <li>Input and modify grades</li>
+                    <li>Calculate GPAs and course averages</li>
+                    <li>Generate report cards</li>
+                    <li>Search and filter functionality</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="requirements-section">
+        <h3>Technical Requirements</h3>
+        <p>Your project MUST demonstrate ALL of the following concepts:</p>
+
+        <div class="requirement-item">
+            <h4>1. Print Statements & Output Formatting</h4>
+            <p>Use print statements for user interaction, menus, and displaying information in a clear, well-formatted way.</p>
+        </div>
+
+        <div class="requirement-item">
+            <h4>2. Variables & Data Types</h4>
+            <p>Use appropriate variable names and data types (strings, integers, floats, booleans) throughout your program.</p>
+        </div>
+
+        <div class="requirement-item">
+            <h4>3. User Input & Type Conversion</h4>
+            <p>Get input from users and convert data types when necessary. Include input validation to handle errors.</p>
+        </div>
+
+        <div class="requirement-item">
+            <h4>4. If Statements & Decision Making</h4>
+            <p>Use if, elif, and else statements to create branching logic and respond to different user choices.</p>
+        </div>
+
+        <div class="requirement-item">
+            <h4>5. Loops</h4>
+            <p>Use both for and while loops appropriately. Include a main program loop to keep the program running.</p>
+        </div>
+
+        <div class="requirement-item">
+            <h4>6. Lists & Functions</h4>
+            <p>Create and use lists to store data. Write at least 3 custom functions that make your code more organized and reusable.</p>
+        </div>
+
+        <div class="requirement-item">
+            <h4>7. Code Quality</h4>
+            <p>Write clean, readable code with meaningful variable names, proper indentation, and helpful comments explaining your logic.</p>
+        </div>
+    </div>
+
+    <div class="timeline">
+        <h3>Project Timeline</h3>
+        
+        <div class="week-item">
+            <h4>Week 7 - Planning & Development</h4>
+            <ul>
+                <li><strong>Day 1:</strong> Choose project option and create detailed plan</li>
+                <li><strong>Day 2:</strong> Begin coding - focus on basic structure and main menu</li>
+                <li><strong>Day 3:</strong> Implement core features and user input handling</li>
+                <li><strong>Day 4:</strong> Add data storage (lists) and core functions</li>
+                <li><strong>Day 5:</strong> Continue development and begin testing</li>
+            </ul>
+        </div>
+
+        <div class="week-item">
+            <h4>Week 8 - Completion & Presentation</h4>
+            <ul>
+                <li><strong>Day 1:</strong> Complete all required features</li>
+                <li><strong>Day 2:</strong> Add error handling and polish user interface</li>
+                <li><strong>Day 3:</strong> Final testing and bug fixes</li>
+                <li><strong>Day 4:</strong> Prepare presentation and documentation</li>
+                <li><strong>Day 5:</strong> Project presentations to class</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Example Project Structure</h2>
+        <p>Here's an example of how your main program might be structured:</p>
+        
+        <div class="code-block">
+<pre><code><span class="comment"># Example: Text Adventure Game Structure</span>
+
+<span class="keyword">def</span> <span class="function">display_menu</span>():
+    <span class="string">"""Display the main game menu"""</span>
+    <span class="function">print</span>(<span class="string">"\n=== ADVENTURE GAME ==="</span>)
+    <span class="function">print</span>(<span class="string">"1. Start New Game"</span>)
+    <span class="function">print</span>(<span class="string">"2. Load Game"</span>)
+    <span class="function">print</span>(<span class="string">"3. View High Scores"</span>)
+    <span class="function">print</span>(<span class="string">"4. Exit"</span>)
+
+<span class="keyword">def</span> <span class="function">start_new_game</span>():
+    <span class="string">"""Initialize a new game"""</span>
+    player_name = <span class="function">input</span>(<span class="string">"Enter your character name: "</span>)
+    player_health = <span class="number">100</span>
+    player_inventory = []
+    
+    <span class="function">print</span>(<span class="string">f"Welcome, {player_name}! Your adventure begins..."</span>)
+    <span class="keyword">return</span> player_name, player_health, player_inventory
+
+<span class="keyword">def</span> <span class="function">main</span>():
+    <span class="string">"""Main program loop"""</span>
+    game_running = <span class="keyword">True</span>
+    
+    <span class="keyword">while</span> game_running:
+        <span class="function">display_menu</span>()
+        choice = <span class="function">input</span>(<span class="string">"Enter your choice: "</span>)
+        
+        <span class="keyword">if</span> choice == <span class="string">"1"</span>:
+            player_data = <span class="function">start_new_game</span>()
+            <span class="comment"># Run game logic</span>
+        <span class="keyword">elif</span> choice == <span class="string">"4"</span>:
+            <span class="function">print</span>(<span class="string">"Thanks for playing!"</span>)
+            game_running = <span class="keyword">False</span>
+
+<span class="comment"># Run the program</span>
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    <span class="function">main</span>()</code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Assessment Rubric</h2>
+        <table class="rubric-table">
+            <thead>
+                <tr>
+                    <th>Criteria</th>
+                    <th>Excellent (4)</th>
+                    <th>Good (3)</th>
+                    <th>Satisfactory (2)</th>
+                    <th>Needs Work (1)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Functionality</strong></td>
+                    <td>Program works perfectly with all features implemented</td>
+                    <td>Program works well with minor issues</td>
+                    <td>Program works but missing some features</td>
+                    <td>Program has significant functionality problems</td>
+                </tr>
+                <tr>
+                    <td><strong>Code Quality</strong></td>
+                    <td>Clean, well-commented, excellent variable names</td>
+                    <td>Mostly clean with good comments</td>
+                    <td>Readable with some comments</td>
+                    <td>Difficult to read, few comments</td>
+                </tr>
+                <tr>
+                    <td><strong>Concept Application</strong></td>
+                    <td>Excellent use of all 6 programming concepts</td>
+                    <td>Good use of most concepts</td>
+                    <td>Adequate use of required concepts</td>
+                    <td>Missing or poor use of several concepts</td>
+                </tr>
+                <tr>
+                    <td><strong>Creativity & Innovation</strong></td>
+                    <td>Creative features and excellent user experience</td>
+                    <td>Some creative elements</td>
+                    <td>Meets requirements with basic creativity</td>
+                    <td>Minimal creativity or innovation</td>
+                </tr>
+                <tr>
+                    <td><strong>Presentation</strong></td>
+                    <td>Clear, confident presentation of project</td>
+                    <td>Good presentation with minor issues</td>
+                    <td>Adequate presentation</td>
+                    <td>Poor or incomplete presentation</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tips-section">
+        <h3>Success Tips</h3>
+        <ul>
+            <li><strong>Start Simple:</strong> Get a basic version working first, then add features</li>
+            <li><strong>Test Frequently:</strong> Run your code often to catch errors early</li>
+            <li><strong>Use Functions:</strong> Break your code into smaller, manageable functions</li>
+            <li><strong>Handle Errors:</strong> Use try-except blocks for user input validation</li>
+            <li><strong>Comment Your Code:</strong> Explain what each section does</li>
+            <li><strong>Ask for Help:</strong> Don't hesitate to ask questions if you're stuck</li>
+            <li><strong>Plan Before Coding:</strong> Spend time thinking about the structure before writing code</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Submission Requirements</h2>
+        <div class="highlight">
+            <h3>What to Submit:</h3>
+            <ul>
+                <li>Complete Python (.py) file with your program</li>
+                <li>Brief written explanation (1-2 paragraphs) of your project</li>
+                <li>List of any challenges you faced and how you solved them</li>
+                <li>Ideas for future improvements or features</li>
+            </ul>
+            
+            <h3>Presentation Requirements:</h3>
+            <ul>
+                <li>5-minute demonstration of your program</li>
+                <li>Explain your code structure and key functions</li>
+                <li>Show all required programming concepts in action</li>
+                <li>Discuss challenges and solutions</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="module6.html" class="nav-button">← Previous: Lists & Functions</a>
+        <a href="index.html" class="nav-button">Back to Course Overview</a>
+    </div>
+</body>
+</html>

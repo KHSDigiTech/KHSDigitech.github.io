@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: Input & Type Conversion - Year 10 Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .output-block {
+            background: #0f172a;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+
+        .input-output-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #fbbf24;
+        }
+
+        .input-text {
+            color: #fbbf24;
+        }
+        
+        .highlight {
+            background: #dbeafe;
+            padding: 1rem;
+            border-left: 4px solid #3b82f6;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .practice-section {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .practice-section h3 {
+            color: #0c4a6e;
+            margin-top: 0;
+        }
+
+        .practice-task {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #1d4ed8;
+        }
+
+        .concept-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .concept-box h4 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box h4 {
+            color: #dc2626;
+            margin-top: 0;
+        }
+
+        .conversion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .conversion-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .conversion-card h4 {
+            color: #1e293b;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Python Course Overview</a>
+
+    <div class="header">
+        <h1>Module 3: Input & Type Conversion</h1>
+        <p>Week 3 - Making Programs Interactive</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to:</p>
+        <ul>
+            <li>Use the input() function to get information from users</li>
+            <li>Understand that input() always returns a string</li>
+            <li>Convert strings to integers using int()</li>
+            <li>Convert strings to floats using float()</li>
+            <li>Convert other data types to strings using str()</li>
+            <li>Create interactive programs that respond to user input</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>The input() Function</h2>
+        <p>The <code>input()</code> function allows your program to pause and wait for the user to type something. Whatever the user types becomes the value that input() returns.</p>
+        
+        <div class="concept-box">
+            <h4>How input() Works</h4>
+            <p>When Python reaches an input() statement, it displays a prompt (if you provide one), waits for the user to type something and press Enter, then continues with that text as a string value.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Basic Input Syntax</h2>
+        <p>Here's the simplest way to get input from a user:</p>
+        
+        <div class="code-block">
+name = input("What is your name? ")
+print("Hello,", name)
+        </div>
+        
+        <div class="input-output-block">
+What is your name? <span class="input-text">Sarah</span>
+Hello, Sarah
+        </div>
+        
+        <div class="warning-box">
+            <h4>⚠️ Important: input() Always Returns a String</h4>
+            <p>No matter what the user types - even if it looks like a number - input() always gives you a string. If you want to use it as a number, you need to convert it!</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Type Conversion Functions</h2>
+        <p>Python provides built-in functions to convert between different data types:</p>
+        
+        <div class="conversion-grid">
+            <div class="conversion-card">
+                <h4>int()</h4>
+                <p>Converts to integer (whole number)</p>
+                <code>int("25") → 25</code>
+            </div>
+            <div class="conversion-card">
+                <h4>float()</h4>
+                <p>Converts to decimal number</p>
+                <code>float("3.14") → 3.14</code>
+            </div>
+            <div class="conversion-card">
+                <h4>str()</h4>
+                <p>Converts to string (text)</p>
+                <code>str(42) → "42"</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Detailed Examples</h2>
+        
+        <h3>Example 1: Getting and Using Text Input</h3>
+        <div class="code-block">
+first_name = input("Enter your first name: ")
+last_name = input("Enter your last name: ")
+favorite_color = input("What's your favorite color? ")
+
+print("Hi", first_name, last_name)
+print("I like", favorite_color, "too!")
+        </div>
+        
+        <div class="input-output-block">
+Enter your first name: <span class="input-text">Alex</span>
+Enter your last name: <span class="input-text">Johnson</span>
+What's your favorite color? <span class="input-text">blue</span>
+Hi Alex Johnson
+I like blue too!
+        </div>
+
+        <h3>Example 2: The Problem with Number Input (Without Conversion)</h3>
+        <div class="code-block">
+# This WON'T work as expected!
+age = input("How old are you? ")
+next_year = age + 1  # This will cause an error!
+print("Next year you'll be", next_year)
+        </div>
+        
+        <div class="output-block">
+TypeError: can only concatenate str (not "int") to str
+        </div>
+
+        <h3>Example 3: Correct Way - Converting Input to Numbers</h3>
+        <div class="code-block">
+# Convert string input to integer
+age_text = input("How old are you? ")
+age = int(age_text)
+next_year = age + 1
+
+print("You are", age, "years old")
+print("Next year you'll be", next_year)
+        </div>
+        
+        <div class="input-output-block">
+How old are you? <span class="input-text">16</span>
+You are 16 years old
+Next year you'll be 17
+        </div>
+
+        <h3>Example 4: Shorthand - Converting Input Directly</h3>
+        <div class="code-block">
+# You can convert input directly in one line
+age = int(input("How old are you? "))
+height = float(input("How tall are you in meters? "))
+
+print("Age:", age)
+print("Height:", height, "meters")
+
+# Calculate something
+age_in_months = age * 12
+print("You are approximately", age_in_months, "months old")
+        </div>
+        
+        <div class="input-output-block">
+How old are you? <span class="input-text">15</span>
+How tall are you in meters? <span class="input-text">1.68</span>
+Age: 15
+Height: 1.68 meters
+You are approximately 180 months old
+        </div>
+
+        <h3>Example 5: Simple Calculator</h3>
+        <div class="code-block">
+print("Simple Calculator")
+print("================")
+
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+sum_result = num1 + num2
+difference = num1 - num2
+product = num1 * num2
+quotient = num1 / num2
+
+print("\nResults:")
+print("Sum:", sum_result)
+print("Difference:", difference)
+print("Product:", product)
+print("Quotient:", quotient)
+        </div>
+        
+        <div class="input-output-block">
+Simple Calculator
+================
+Enter first number: <span class="input-text">12.5</span>
+Enter second number: <span class="input-text">3.2</span>
+
+Results:
+Sum: 15.7
+Difference: 9.3
+Product: 40.0
+Quotient: 3.90625
+        </div>
+
+        <h3>Example 6: Converting Numbers to Strings</h3>
+        <div class="code-block">
+age = 16
+score = 95.5
+
+# Convert numbers to strings for concatenation
+message = "I am " + str(age) + " years old"
+score_text = "My test score was " + str(score) + "%"
+
+print(message)
+print(score_text)
+
+# Alternative using print() with commas (easier!)
+print("I am", age, "years old")
+print("My test score was", score, "%")
+        </div>
+        
+        <div class="output-block">
+I am 16 years old
+My test score was 95.5%
+I am 16 years old
+My test score was 95.5 %
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h3>Practice Tasks</h3>
+        <p>Complete these 10 tasks to practice input and type conversion:</p>
+
+        <div class="practice-task">
+            <h4>Task 1: Personal Greeting</h4>
+            <p>Ask for the user's name and age. Print a personalized greeting like "Hello [name], you are [age] years old!"</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 2: Favorite Number Math</h4>
+            <p>Ask the user for their favorite number. Convert it to an integer, then print the number multiplied by 2, and the number squared.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 3: Rectangle Calculator</h4>
+            <p>Ask the user for a rectangle's length and width (as floats). Calculate and display the area and perimeter.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 4: Temperature Converter</h4>
+            <p>Ask for a temperature in Celsius. Convert it to Fahrenheit using the formula: F = C * 9/5 + 32. Display both temperatures.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 5: Age Calculator</h4>
+            <p>Ask for the user's birth year. Calculate their current age (assume current year is 2024) and display it.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 6: Simple Shopping</h4>
+            <p>Ask for the price of an item and the quantity. Calculate the total cost and display it.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 7: Circle Calculator</h4>
+            <p>Ask for a circle's radius. Calculate the area (π × r²) and circumference (2 × π × r). Use 3.14159 for π.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 8: Time Converter</h4>
+            <p>Ask for a number of minutes. Convert and display the equivalent in hours and minutes (e.g., 90 minutes = 1 hour and 30 minutes).</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 9: BMI Calculator</h4>
+            <p>Ask for height in meters and weight in kg. Calculate BMI using: BMI = weight / (height²). Display the result.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 10: Student Report Card</h4>
+            <p>Ask for the student's name and three test scores. Calculate the average score and create a formatted report showing the student's name, all three scores, and their average.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Common Mistakes to Avoid</h2>
+        <div class="highlight">
+            <h3>❌ Don't do this:</h3>
+            <div class="code-block">
+age = input("Age? ")
+next_year = age + 1        # Error: can't add int to string
+
+number = int("hello")      # Error: "hello" isn't a number
+
+float("3.14.15")          # Error: invalid decimal format
+            </div>
+            
+            <h3>✅ Do this instead:</h3>
+            <div class="code-block">
+age = int(input("Age? "))  # Convert to int first
+next_year = age + 1        # Now this works!
+
+# Make sure input can be converted
+number = int("25")         # This works fine
+
+# Use proper decimal format
+number = float("3.14")     # This works fine
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>input() always returns a string, even if the user types numbers</li>
+            <li>Use int() to convert strings to whole numbers</li>
+            <li>Use float() to convert strings to decimal numbers</li>
+            <li>Use str() to convert numbers to strings</li>
+            <li>You can convert input directly: <code>age = int(input("Age? "))</code></li>
+            <li>Always make sure the input can be converted to avoid errors</li>
+        </ul>
+    </div>
+
+    <div class="navigation">
+        <a href="module2.html" class="nav-button">← Previous: Variables & Data Types</a>
+        <a href="module4.html" class="nav-button">Next: If Statements →</a>
+    </div>
+</body>
+</html>

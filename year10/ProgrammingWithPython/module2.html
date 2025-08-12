@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Variables & Data Types - Year 10 Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .output-block {
+            background: #0f172a;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+        
+        .highlight {
+            background: #dbeafe;
+            padding: 1rem;
+            border-left: 4px solid #3b82f6;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .practice-section {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .practice-section h3 {
+            color: #0c4a6e;
+            margin-top: 0;
+        }
+
+        .practice-task {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #1d4ed8;
+        }
+
+        .concept-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .concept-box h4 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .data-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .data-type-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .data-type-card h4 {
+            color: #1e293b;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Python Course Overview</a>
+
+    <div class="header">
+        <h1>Module 2: Variables & Data Types</h1>
+        <p>Week 2 - Storing and Working with Data</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to:</p>
+        <ul>
+            <li>Create and assign values to variables</li>
+            <li>Understand the four main data types: string, integer, float, and boolean</li>
+            <li>Use variables in print statements and calculations</li>
+            <li>Follow Python naming conventions for variables</li>
+            <li>Change variable values and understand variable reassignment</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>What are Variables?</h2>
+        <p>A variable is like a labeled box that stores information. You can put different types of information in the box, and you can use the label (variable name) to get the information back later.</p>
+        
+        <div class="concept-box">
+            <h4>Real-World Analogy</h4>
+            <p>Think of variables like labeled containers in your kitchen. You might have a jar labeled "sugar" that contains sugar, and a jar labeled "flour" that contains flour. In programming, you might have a variable called "age" that contains the number 15.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Creating Variables</h2>
+        <p>To create a variable, you use the assignment operator <code>=</code>. The variable name goes on the left, and the value goes on the right.</p>
+        
+        <div class="code-block">
+name = "Sarah"
+age = 15
+height = 5.6
+is_student = True
+        </div>
+        
+        <div class="highlight">
+            <h3>Variable Naming Rules:</h3>
+            <ul>
+                <li>Must start with a letter or underscore (not a number)</li>
+                <li>Can contain letters, numbers, and underscores</li>
+                <li>Cannot contain spaces or special characters</li>
+                <li>Case-sensitive (<code>age</code> and <code>Age</code> are different)</li>
+                <li>Cannot use Python keywords (like <code>print</code>, <code>if</code>, etc.)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Python Data Types</h2>
+        <p>Python has several data types, but we'll focus on the four most important ones:</p>
+        
+        <div class="data-type-grid">
+            <div class="data-type-card">
+                <h4>String (str)</h4>
+                <p>Text data</p>
+                <code>"Hello"</code>
+            </div>
+            <div class="data-type-card">
+                <h4>Integer (int)</h4>
+                <p>Whole numbers</p>
+                <code>42</code>
+            </div>
+            <div class="data-type-card">
+                <h4>Float (float)</h4>
+                <p>Decimal numbers</p>
+                <code>3.14</code>
+            </div>
+            <div class="data-type-card">
+                <h4>Boolean (bool)</h4>
+                <p>True or False</p>
+                <code>True</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Detailed Examples</h2>
+        
+        <h3>Example 1: Creating and Using String Variables</h3>
+        <div class="code-block">
+first_name = "John"
+last_name = "Smith"
+school = "King's High School"
+
+print("Student name:", first_name, last_name)
+print("School:", school)
+        </div>
+        
+        <div class="output-block">
+Student name: John Smith
+School: King's High School
+        </div>
+
+        <h3>Example 2: Working with Numbers</h3>
+        <div class="code-block">
+age = 16
+height = 1.75
+weight = 65.5
+
+print("Age:", age, "years old")
+print("Height:", height, "meters")
+print("Weight:", weight, "kg")
+
+# You can do math with number variables
+next_year_age = age + 1
+print("Next year I will be", next_year_age)
+        </div>
+        
+        <div class="output-block">
+Age: 16 years old
+Height: 1.75 meters
+Weight: 65.5 kg
+Next year I will be 17
+        </div>
+
+        <h3>Example 3: Boolean Variables</h3>
+        <div class="code-block">
+is_teenager = True
+has_license = False
+likes_pizza = True
+
+print("Is a teenager:", is_teenager)
+print("Has driver's license:", has_license)
+print("Likes pizza:", likes_pizza)
+        </div>
+        
+        <div class="output-block">
+Is a teenager: True
+Has driver's license: False
+Likes pizza: True
+        </div>
+
+        <h3>Example 4: Changing Variable Values</h3>
+        <div class="code-block">
+score = 0
+print("Starting score:", score)
+
+score = 10
+print("After first level:", score)
+
+score = score + 5  # Add 5 to the current score
+print("After bonus:", score)
+
+score = 100
+print("Final score:", score)
+        </div>
+        
+        <div class="output-block">
+Starting score: 0
+After first level: 10
+After bonus: 15
+Final score: 100
+        </div>
+
+        <h3>Example 5: Using Variables in Calculations</h3>
+        <div class="code-block">
+length = 10
+width = 5
+height = 3
+
+area = length * width
+volume = length * width * height
+perimeter = 2 * (length + width)
+
+print("Rectangle area:", area)
+print("Box volume:", volume)
+print("Rectangle perimeter:", perimeter)
+        </div>
+        
+        <div class="output-block">
+Rectangle area: 50
+Box volume: 150
+Rectangle perimeter: 30
+        </div>
+
+        <div class="concept-box">
+            <h4>Mathematical Operators</h4>
+            <p>+ (addition), - (subtraction), * (multiplication), / (division)</p>
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h3>Practice Tasks</h3>
+        <p>Complete these 10 tasks to practice working with variables:</p>
+
+        <div class="practice-task">
+            <h4>Task 1: Personal Information</h4>
+            <p>Create variables for your first name, last name, and age. Print them in a sentence like: "My name is [first] [last] and I am [age] years old."</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 2: Favorite Things</h4>
+            <p>Create string variables for your favorite color, food, and movie. Print each one with a descriptive message.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 3: School Subjects</h4>
+            <p>Create variables for three school subjects and their grades (as numbers). Print each subject and grade.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 4: Simple Calculator</h4>
+            <p>Create two number variables with values 15 and 7. Calculate and print their sum, difference, product, and quotient.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 5: Rectangle Properties</h4>
+            <p>Create variables for a rectangle's length (8) and width (5). Calculate and print the area and perimeter.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 6: Boolean Practice</h4>
+            <p>Create three boolean variables about yourself (like is_tall, likes_sports, has_pets). Print each with a descriptive message.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 7: Variable Reassignment</h4>
+            <p>Create a variable called "score" with value 0. Then change it to 25, then to 50, printing the value each time with a message.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 8: Temperature Conversion</h4>
+            <p>Create a variable for temperature in Celsius (25). Calculate and store the Fahrenheit equivalent (F = C * 9/5 + 32). Print both temperatures.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 9: Circle Properties</h4>
+            <p>Create a variable for a circle's radius (7). Calculate the area (π * r²) and circumference (2 * π * r). Use 3.14159 for π.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 10: Student Profile</h4>
+            <p>Create a complete student profile using variables: name, age, grade level, favorite subject, GPA (as a decimal), and whether they play sports (boolean). Print all information in a nicely formatted way.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Common Mistakes to Avoid</h2>
+        <div class="highlight">
+            <h3>❌ Don't do this:</h3>
+            <div class="code-block">
+2age = 15           # Can't start with number
+my age = 15         # No spaces allowed
+my-age = 15         # No hyphens allowed
+Age = age           # These are different variables!
+            </div>
+            
+            <h3>✅ Do this instead:</h3>
+            <div class="code-block">
+age2 = 15           # Numbers at end are OK
+my_age = 15         # Use underscores for spaces
+my_age = 15         # Use underscores for word separation
+age = 15            # Be consistent with capitalization
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>Variables store data that can be used later in your program</li>
+            <li>Python has four main data types: string, integer, float, and boolean</li>
+            <li>Use descriptive variable names that make your code easy to understand</li>
+            <li>You can change a variable's value anytime by assigning a new value</li>
+            <li>Variables can be used in calculations and print statements</li>
+        </ul>
+    </div>
+
+    <div class="navigation">
+        <a href="module1.html" class="nav-button">← Previous: Print Statements</a>
+        <a href="module3.html" class="nav-button">Next: Input & Type Conversion →</a>
+    </div>
+</body>
+</html>

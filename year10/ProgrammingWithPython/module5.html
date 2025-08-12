@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Loops - Year 10 Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .output-block {
+            background: #0f172a;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+
+        .input-output-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #fbbf24;
+        }
+
+        .input-text {
+            color: #fbbf24;
+        }
+        
+        .highlight {
+            background: #dbeafe;
+            padding: 1rem;
+            border-left: 4px solid #3b82f6;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .practice-section {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .practice-section h3 {
+            color: #0c4a6e;
+            margin-top: 0;
+        }
+
+        .practice-task {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #1d4ed8;
+        }
+
+        .concept-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .concept-box h4 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box h4 {
+            color: #dc2626;
+            margin-top: 0;
+        }
+
+        .loop-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .loop-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .loop-card h4 {
+            color: #1e293b;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .flowchart {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Python Course Overview</a>
+
+    <div class="header">
+        <h1>Module 5: Loops</h1>
+        <p>Week 5 - Repeating Actions Efficiently</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to:</p>
+        <ul>
+            <li>Understand when and why to use loops</li>
+            <li>Use for loops to repeat code a specific number of times</li>
+            <li>Use the range() function with for loops</li>
+            <li>Use while loops to repeat code while a condition is true</li>
+            <li>Avoid infinite loops and understand loop control</li>
+            <li>Combine loops with if statements for complex logic</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>What are Loops?</h2>
+        <p>Loops allow you to repeat code multiple times without writing it over and over. Instead of copying and pasting the same code, you can tell Python "do this 10 times" or "keep doing this until something changes."</p>
+        
+        <div class="concept-box">
+            <h4>Real-World Example</h4>
+            <p>Think about brushing your teeth: "Repeat moving the toothbrush up and down 20 times." In programming: "Repeat printing 'Hello' 5 times."</p>
+        </div>
+
+        <div class="flowchart">
+            <h4>Loop Flow</h4>
+            <p>Start → Check condition → Run code → Go back to start</p>
+            <p>When condition becomes false → Stop and continue</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>For Loops</h2>
+        <p>For loops are used when you know exactly how many times you want to repeat something.</p>
+        
+        <div class="loop-comparison">
+            <div class="loop-card">
+                <h4>Without Loops (Bad!)</h4>
+                <div class="code-block">
+print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")
+print("Hello")
+                </div>
+            </div>
+            <div class="loop-card">
+                <h4>With For Loop (Good!)</h4>
+                <div class="code-block">
+for i in range(5):
+    print("Hello")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>The range() Function</h2>
+        <p>The range() function creates a sequence of numbers that for loops can use:</p>
+        
+        <div class="highlight">
+            <h3>Range Patterns:</h3>
+            <ul>
+                <li><code>range(5)</code> → 0, 1, 2, 3, 4 (5 numbers starting from 0)</li>
+                <li><code>range(1, 6)</code> → 1, 2, 3, 4, 5 (from 1 to 5)</li>
+                <li><code>range(2, 11, 2)</code> → 2, 4, 6, 8, 10 (from 2 to 10, step by 2)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Detailed Examples</h2>
+        
+        <h3>Example 1: Basic For Loop</h3>
+        <div class="code-block">
+print("Counting to 5:")
+for i in range(1, 6):
+    print("Number:", i)
+
+print("Done counting!")
+        </div>
+        
+        <div class="output-block">
+Counting to 5:
+Number: 1
+Number: 2
+Number: 3
+Number: 4
+Number: 5
+Done counting!
+        </div>
+
+        <h3>Example 2: Multiplication Table</h3>
+        <div class="code-block">
+number = int(input("Which multiplication table? "))
+
+print(f"Multiplication table for {number}:")
+for i in range(1, 11):
+    result = number * i
+    print(f"{number} x {i} = {result}")
+        </div>
+        
+        <div class="input-output-block">
+Which multiplication table? <span class="input-text">7</span>
+Multiplication table for 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+        </div>
+
+        <h3>Example 3: Accumulating (Adding Up) Numbers</h3>
+        <div class="code-block">
+total = 0
+print("Adding numbers from 1 to 10:")
+
+for number in range(1, 11):
+    total = total + number
+    print(f"Added {number}, total is now {total}")
+
+print(f"Final total: {total}")
+        </div>
+        
+        <div class="output-block">
+Adding numbers from 1 to 10:
+Added 1, total is now 1
+Added 2, total is now 3
+Added 3, total is now 6
+Added 4, total is now 10
+Added 5, total is now 15
+Added 6, total is now 21
+Added 7, total is now 28
+Added 8, total is now 36
+Added 9, total is now 45
+Added 10, total is now 55
+Final total: 55
+        </div>
+
+        <h3>Example 4: While Loops</h3>
+        <div class="code-block">
+password = ""
+attempts = 0
+
+while password != "secret" and attempts < 3:
+    password = input("Enter password: ")
+    attempts = attempts + 1
+    
+    if password == "secret":
+        print("Access granted!")
+    else:
+        print(f"Wrong password. {3 - attempts} attempts remaining.")
+
+if password != "secret":
+    print("Too many failed attempts. Access denied.")
+        </div>
+        
+        <div class="input-output-block">
+Enter password: <span class="input-text">wrong</span>
+Wrong password. 2 attempts remaining.
+Enter password: <span class="input-text">incorrect</span>
+Wrong password. 1 attempts remaining.
+Enter password: <span class="input-text">secret</span>
+Access granted!
+        </div>
+
+        <h3>Example 5: Number Guessing Game with Loops</h3>
+        <div class="code-block">
+import random
+
+secret_number = random.randint(1, 20)
+guesses = 0
+max_guesses = 5
+
+print("I'm thinking of a number between 1 and 20.")
+print(f"You have {max_guesses} guesses!")
+
+while guesses < max_guesses:
+    guess = int(input("Enter your guess: "))
+    guesses = guesses + 1
+    
+    if guess == secret_number:
+        print(f"Congratulations! You guessed it in {guesses} tries!")
+        break  # Exit the loop early
+    elif guess < secret_number:
+        print("Too low!")
+    else:
+        print("Too high!")
+    
+    remaining = max_guesses - guesses
+    if remaining > 0:
+        print(f"You have {remaining} guesses left.")
+
+if guess != secret_number:
+    print(f"Sorry! The number was {secret_number}")
+        </div>
+        
+        <div class="input-output-block">
+I'm thinking of a number between 1 and 20.
+You have 5 guesses!
+Enter your guess: <span class="input-text">10</span>
+Too low!
+You have 4 guesses left.
+Enter your guess: <span class="input-text">15</span>
+Too high!
+You have 3 guesses left.
+Enter your guess: <span class="input-text">12</span>
+Congratulations! You guessed it in 3 tries!
+        </div>
+
+        <h3>Example 6: Nested Loops (Loop Inside Loop)</h3>
+        <div class="code-block">
+print("Multiplication table from 1 to 5:")
+print()
+
+for row in range(1, 6):
+    for col in range(1, 6):
+        result = row * col
+        print(f"{result:3}", end=" ")  # :3 means 3 spaces wide
+    print()  # New line after each row
+        </div>
+        
+        <div class="output-block">
+Multiplication table from 1 to 5:
+
+  1   2   3   4   5 
+  2   4   6   8  10 
+  3   6   9  12  15 
+  4   8  12  16  20 
+  5  10  15  20  25 
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h3>Practice Tasks</h3>
+        <p>Complete these 10 tasks to practice loops:</p>
+
+        <div class="practice-task">
+            <h4>Task 1: Count to 20</h4>
+            <p>Use a for loop to print numbers from 1 to 20, each on a separate line.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 2: Even Numbers</h4>
+            <p>Print all even numbers from 2 to 30 using a for loop.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 3: Countdown</h4>
+            <p>Create a countdown from 10 to 1, then print "Blast off!"</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 4: Sum Calculator</h4>
+            <p>Ask the user for a number, then calculate the sum of all numbers from 1 to that number using a for loop.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 5: Times Table Quiz</h4>
+            <p>Create a times table quiz that asks 5 multiplication questions (like "What is 7 x 3?") and keeps track of the score.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 6: Password Validator</h4>
+            <p>Keep asking for a password until the user enters "python123". Count how many attempts it took.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 7: Number Pattern</h4>
+            <p>Print this pattern using nested loops:<br>
+            1<br>
+            1 2<br>
+            1 2 3<br>
+            1 2 3 4<br>
+            1 2 3 4 5</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 8: Average Calculator</h4>
+            <p>Ask the user how many numbers they want to average, then use a loop to get those numbers and calculate the average.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 9: Simple ATM</h4>
+            <p>Create a simple ATM program with a starting balance of $100. Use a while loop to keep showing a menu (check balance, deposit, withdraw, quit) until the user chooses to quit.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 10: Rock Paper Scissors Tournament</h4>
+            <p>Create a Rock Paper Scissors game that plays 5 rounds against the computer, keeps track of wins/losses, and announces the overall winner at the end.</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>For vs While Loops</h2>
+        <div class="loop-comparison">
+            <div class="loop-card">
+                <h4>Use FOR loops when:</h4>
+                <ul>
+                    <li>You know exactly how many times to repeat</li>
+                    <li>You want to do something for each item in a sequence</li>
+                    <li>You're counting or iterating through numbers</li>
+                </ul>
+                <div class="code-block">
+# Print numbers 1 to 10
+for i in range(1, 11):
+    print(i)
+                </div>
+            </div>
+            <div class="loop-card">
+                <h4>Use WHILE loops when:</h4>
+                <ul>
+                    <li>You don't know how many times to repeat</li>
+                    <li>You want to continue until something specific happens</li>
+                    <li>The condition might never become true</li>
+                </ul>
+                <div class="code-block">
+# Keep asking until correct
+answer = ""
+while answer != "yes":
+    answer = input("Ready? ")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Common Mistakes to Avoid</h2>
+        <div class="warning-box">
+            <h4>⚠️ Infinite Loops</h4>
+            <p>Make sure your while loop condition will eventually become false, or your program will run forever!</p>
+            <div class="code-block">
+# BAD - This will run forever!
+count = 1
+while count < 10:
+    print(count)
+    # Forgot to increment count!
+
+# GOOD - This will stop
+count = 1
+while count < 10:
+    print(count)
+    count = count + 1  # Don't forget this!
+            </div>
+        </div>
+        
+        <div class="highlight">
+            <h3>❌ Don't do this:</h3>
+            <div class="code-block">
+for i in range(5)
+    print(i)           # Missing colon
+
+for i in range(5):
+print(i)               # Missing indentation
+            </div>
+            
+            <h3>✅ Do this instead:</h3>
+            <div class="code-block">
+for i in range(5):     # Don't forget the colon
+    print(i)           # Proper indentation
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>For loops are great when you know how many times to repeat</li>
+            <li>While loops are perfect when you need to repeat until a condition changes</li>
+            <li>range() function is essential for for loops: range(start, stop, step)</li>
+            <li>Always make sure while loops have a way to stop (avoid infinite loops)</li>
+            <li>You can combine loops with if statements for powerful logic</li>
+            <li>Nested loops (loops inside loops) let you create patterns and tables</li>
+        </ul>
+    </div>
+
+    <div class="navigation">
+        <a href="module4.html" class="nav-button">← Previous: If Statements</a>
+        <a href="module6.html" class="nav-button">Next: Lists & Functions →</a>
+    </div>
+</body>
+</html>

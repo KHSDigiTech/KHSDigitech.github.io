@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4: If Statements - Year 10 Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .output-block {
+            background: #0f172a;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+
+        .input-output-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            border-left: 4px solid #fbbf24;
+        }
+
+        .input-text {
+            color: #fbbf24;
+        }
+        
+        .highlight {
+            background: #dbeafe;
+            padding: 1rem;
+            border-left: 4px solid #3b82f6;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .practice-section {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .practice-section h3 {
+            color: #0c4a6e;
+            margin-top: 0;
+        }
+
+        .practice-task {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #1d4ed8;
+        }
+
+        .concept-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .concept-box h4 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .operator-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .operator-card h4 {
+            color: #1e293b;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .operator-card code {
+            background: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .flowchart {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .indentation-example {
+            background: #fef2f2;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Python Course Overview</a>
+
+    <div class="header">
+        <h1>Module 4: If Statements</h1>
+        <p>Week 4 - Making Decisions in Code</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to:</p>
+        <ul>
+            <li>Use if statements to make decisions in your programs</li>
+            <li>Understand and use comparison operators (==, !=, <, >, <=, >=)</li>
+            <li>Create programs with if, elif, and else statements</li>
+            <li>Use logical operators (and, or, not) for complex conditions</li>
+            <li>Understand proper indentation in Python</li>
+            <li>Create interactive programs that respond differently to different inputs</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>What are If Statements?</h2>
+        <p>If statements allow your program to make decisions. They check if something is true, and if it is, they run specific code. Think of it like a decision tree - "If this is true, then do this."</p>
+        
+        <div class="concept-box">
+            <h4>Real-World Example</h4>
+            <p>In real life: "If it's raining, then I'll bring an umbrella." In programming: "If the user's age is 18 or older, then they can vote."</p>
+        </div>
+
+        <div class="flowchart">
+            <h4>Decision Flow</h4>
+            <p>Question → True? → Do this action</p>
+            <p>Question → False? → Skip the action (or do something else)</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Basic If Statement Syntax</h2>
+        <p>Here's the basic structure of an if statement:</p>
+        
+        <div class="code-block">
+if condition:
+    # Code to run if condition is True
+    print("This runs if the condition is true")
+        </div>
+        
+        <div class="indentation-example">
+            <h4>⚠️ Indentation is Critical!</h4>
+            <p>Python uses indentation (spaces or tabs) to group code together. All code that should run when the if statement is true must be indented by the same amount (usually 4 spaces).</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Comparison Operators</h2>
+        <p>These operators let you compare values and return True or False:</p>
+        
+        <div class="operator-grid">
+            <div class="operator-card">
+                <h4>Equal to</h4>
+                <code>==</code>
+                <p>5 == 5 → True</p>
+            </div>
+            <div class="operator-card">
+                <h4>Not equal to</h4>
+                <code>!=</code>
+                <p>5 != 3 → True</p>
+            </div>
+            <div class="operator-card">
+                <h4>Less than</h4>
+                <code>&lt;</code>
+                <p>3 < 5 → True</p>
+            </div>
+            <div class="operator-card">
+                <h4>Greater than</h4>
+                <code>&gt;</code>
+                <p>7 > 4 → True</p>
+            </div>
+            <div class="operator-card">
+                <h4>Less than or equal</h4>
+                <code>&lt;=</code>
+                <p>5 <= 5 → True</p>
+            </div>
+            <div class="operator-card">
+                <h4>Greater than or equal</h4>
+                <code>&gt;=</code>
+                <p>6 >= 4 → True</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Detailed Examples</h2>
+        
+        <h3>Example 1: Simple Age Check</h3>
+        <div class="code-block">
+age = int(input("How old are you? "))
+
+if age >= 18:
+    print("You are an adult!")
+    print("You can vote!")
+
+print("This line always runs")
+        </div>
+        
+        <div class="input-output-block">
+How old are you? <span class="input-text">20</span>
+You are an adult!
+You can vote!
+This line always runs
+        </div>
+
+        <h3>Example 2: If-Else Structure</h3>
+        <div class="code-block">
+password = input("Enter the password: ")
+
+if password == "secret123":
+    print("Access granted!")
+    print("Welcome to the system!")
+else:
+    print("Access denied!")
+    print("Incorrect password.")
+        </div>
+        
+        <div class="input-output-block">
+Enter the password: <span class="input-text">wrongpassword</span>
+Access denied!
+Incorrect password.
+        </div>
+
+        <h3>Example 3: Multiple Conditions with elif</h3>
+        <div class="code-block">
+score = int(input("Enter your test score: "))
+
+if score >= 90:
+    print("Grade: A")
+    print("Excellent work!")
+elif score >= 80:
+    print("Grade: B")
+    print("Good job!")
+elif score >= 70:
+    print("Grade: C")
+    print("Satisfactory")
+elif score >= 60:
+    print("Grade: D")
+    print("Needs improvement")
+else:
+    print("Grade: F")
+    print("Please see me after class")
+        </div>
+        
+        <div class="input-output-block">
+Enter your test score: <span class="input-text">85</span>
+Grade: B
+Good job!
+        </div>
+
+        <h3>Example 4: Comparing Strings</h3>
+        <div class="code-block">
+favorite_color = input("What's your favorite color? ").lower()
+
+if favorite_color == "blue":
+    print("Blue is the color of the ocean!")
+elif favorite_color == "red":
+    print("Red is a bold choice!")
+elif favorite_color == "green":
+    print("Green is the color of nature!")
+else:
+    print("That's a nice color choice!")
+        </div>
+        
+        <div class="input-output-block">
+What's your favorite color? <span class="input-text">Blue</span>
+Blue is the color of the ocean!
+        </div>
+
+        <h3>Example 5: Multiple Conditions with Logical Operators</h3>
+        <div class="code-block">
+age = int(input("Enter your age: "))
+has_license = input("Do you have a driver's license? (yes/no): ").lower()
+
+if age >= 16 and has_license == "yes":
+    print("You can drive!")
+elif age >= 16 and has_license == "no":
+    print("You're old enough, but you need a license!")
+elif age < 16 and has_license == "yes":
+    print("How do you have a license? You're too young!")
+else:
+    print("You're too young to drive.")
+        </div>
+        
+        <div class="input-output-block">
+Enter your age: <span class="input-text">17</span>
+Do you have a driver's license? (yes/no): <span class="input-text">yes</span>
+You can drive!
+        </div>
+
+        <h3>Example 6: Number Guessing Game</h3>
+        <div class="code-block">
+import random
+
+secret_number = random.randint(1, 10)
+guess = int(input("Guess a number between 1 and 10: "))
+
+if guess == secret_number:
+    print("Congratulations! You guessed it!")
+    print("The number was", secret_number)
+elif guess < secret_number:
+    print("Too low! The number was", secret_number)
+else:
+    print("Too high! The number was", secret_number)
+        </div>
+        
+        <div class="input-output-block">
+Guess a number between 1 and 10: <span class="input-text">7</span>
+Too high! The number was 4
+        </div>
+    </div>
+
+    <div class="practice-section">
+        <h3>Practice Tasks</h3>
+        <p>Complete these 10 tasks to practice if statements:</p>
+
+        <div class="practice-task">
+            <h4>Task 1: Simple Password Check</h4>
+            <p>Ask the user for a password. If it's "python123", print "Welcome!". Otherwise, print "Access denied!"</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 2: Even or Odd</h4>
+            <p>Ask for a number and determine if it's even or odd. (Hint: use the % operator - if number % 2 == 0, it's even)</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 3: Grade Calculator</h4>
+            <p>Ask for a test score and assign a letter grade: A (90+), B (80-89), C (70-79), D (60-69), F (below 60)</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 4: Age Category</h4>
+            <p>Ask for someone's age and categorize them: Child (0-12), Teen (13-19), Adult (20-64), Senior (65+)</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 5: Temperature Advice</h4>
+            <p>Ask for the temperature in Celsius. Give advice: Very Cold (below 0), Cold (0-15), Mild (16-25), Warm (26-35), Hot (above 35)</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 6: Movie Rating Checker</h4>
+            <p>Ask for someone's age and a movie rating (G, PG, PG-13, R). Determine if they can watch the movie based on age restrictions.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 7: Login System</h4>
+            <p>Ask for both username and password. Only grant access if username is "admin" AND password is "secure456".</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 8: Number Comparison</h4>
+            <p>Ask for two numbers and tell the user which is larger, or if they're equal.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 9: Day of the Week</h4>
+            <p>Ask for a day of the week and tell them if it's a weekday or weekend. Also give a fun fact about that day.</p>
+        </div>
+
+        <div class="practice-task">
+            <h4>Task 10: Simple Quiz Game</h4>
+            <p>Create a 3-question quiz about anything you like. Keep track of the score and give different messages based on how many they got right (0-1: "Keep studying!", 2: "Good effort!", 3: "Perfect!").</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Logical Operators</h2>
+        <div class="highlight">
+            <h3>Combining Conditions:</h3>
+            <ul>
+                <li><code>and</code> - Both conditions must be true</li>
+                <li><code>or</code> - At least one condition must be true</li>
+                <li><code>not</code> - Reverses the condition (True becomes False)</li>
+            </ul>
+            
+            <div class="code-block">
+# AND example
+if age >= 13 and age <= 19:
+    print("You're a teenager")
+
+# OR example  
+if day == "Saturday" or day == "Sunday":
+    print("It's the weekend!")
+
+# NOT example
+if not is_raining:
+    print("No umbrella needed")
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Common Mistakes to Avoid</h2>
+        <div class="highlight">
+            <h3>❌ Don't do this:</h3>
+            <div class="code-block">
+if age = 18:           # Use == not = for comparison
+    print("Adult")
+    
+if age >= 18:
+print("Adult")         # Missing indentation
+
+if 15 < age < 20       # Missing colon
+    print("Teen")
+            </div>
+            
+            <h3>✅ Do this instead:</h3>
+            <div class="code-block">
+if age == 18:          # == for comparison
+    print("Adult")
+    
+if age >= 18:
+    print("Adult")     # Proper indentation
+
+if 15 < age < 20:      # Don't forget the colon
+    print("Teen")
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Key Takeaways</h2>
+        <ul>
+            <li>If statements let your programs make decisions based on conditions</li>
+            <li>Use == to check if values are equal (not =, which assigns values)</li>
+            <li>elif lets you check multiple conditions in order</li>
+            <li>else runs when none of the previous conditions are true</li>
+            <li>Indentation is crucial - all code in an if block must be indented the same amount</li>
+            <li>You can combine conditions using and, or, and not</li>
+        </ul>
+    </div>
+
+    <div class="navigation">
+        <a href="module3.html" class="nav-button">← Previous: Input & Type Conversion</a>
+        <a href="module5.html" class="nav-button">Next: Loops →</a>
+    </div>
+</body>
+</html>
