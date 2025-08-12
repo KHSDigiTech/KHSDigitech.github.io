@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 10 Programming with Python - 6 Week Unit</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .module-card h3 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .module-link {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        
+        .module-link:hover {
+            background: #1d4ed8;
+        }
+        
+        .intro-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight {
+            background: #dbeafe;
+            padding: 1rem;
+            border-left: 4px solid #3b82f6;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .assessment-card {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .assessment-card h3 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .week-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .week-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-link">← Back to KHS DigiTech</a>
+
+    <div class="header">
+        <h1>Year 10 Programming with Python</h1>
+        <p>6-Week Introductory Programming Unit</p>
+    </div>
+
+    <div class="intro-section">
+        <h2>Course Overview</h2>
+        <p>Welcome to Programming with Python! This 6-week unit introduces you to the fundamental concepts of programming using Python. By the end of this course, you'll understand core programming concepts and be able to create simple interactive programs.</p>
+        
+        <div class="highlight">
+            <h3>What You'll Learn:</h3>
+            <ul>
+                <li>Print statements and basic output</li>
+                <li>Variables and different data types</li>
+                <li>Getting input from users and type conversion</li>
+                <li>If statements and basic selection logic</li>
+                <li>Loops (for and while) for repetition</li>
+                <li>Working with lists and basic functions</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <h3>Course Structure:</h3>
+            <p>Each module covers syntax, provides detailed examples, and includes 10 practice tasks. The course is designed for absolute beginners with no prior programming experience.</p>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <h2>6-Week Structure</h2>
+        <div class="week-structure">
+            <div class="week-item">
+                <h4>Week 1</h4>
+                <p>Print Statements & Basic Output</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 2</h4>
+                <p>Variables & Data Types</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 3</h4>
+                <p>Input & Type Conversion</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 4</h4>
+                <p>If Statements & Selection</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 5</h4>
+                <p>Loops & Repetition</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 6</h4>
+                <p>Lists & Basic Functions</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Learning Modules</h2>
+    <div class="module-grid">
+        <div class="module-card">
+            <h3>Module 1: Print Statements</h3>
+            <p>Learn how to display text and numbers on the screen using Python's print() function. Master basic output formatting and escape characters.</p>
+            <p><strong>Focus:</strong> print(), strings, basic formatting</p>
+            <a href="module1.html" class="module-link">Start Module 1</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Module 2: Variables & Data Types</h3>
+            <p>Understand how to store and manipulate data using variables. Learn about different data types including strings, integers, and floats.</p>
+            <p><strong>Focus:</strong> Variable assignment, int, float, str, boolean</p>
+            <a href="module2.html" class="module-link">Start Module 2</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Module 3: Input & Type Conversion</h3>
+            <p>Learn how to get input from users and convert between different data types. Create interactive programs that respond to user input.</p>
+            <p><strong>Focus:</strong> input(), int(), float(), str(), type conversion</p>
+            <a href="module3.html" class="module-link">Start Module 3</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Module 4: If Statements</h3>
+            <p>Master decision-making in programs using if statements. Learn about comparison operators and creating programs that respond differently to different inputs.</p>
+            <p><strong>Focus:</strong> if, elif, else, comparison operators</p>
+            <a href="module4.html" class="module-link">Start Module 4</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Module 5: Loops</h3>
+            <p>Learn how to repeat actions using for and while loops. Create programs that can process multiple items or repeat until a condition is met.</p>
+            <p><strong>Focus:</strong> for loops, while loops, range(), iteration</p>
+            <a href="module5.html" class="module-link">Start Module 5</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Module 6: Lists & Functions</h3>
+            <p>Work with collections of data using lists and create reusable code blocks with basic functions. Combine all previous concepts in more complex programs.</p>
+            <p><strong>Focus:</strong> Lists, basic functions, def keyword, return</p>
+            <a href="module6.html" class="module-link">Start Module 6</a>
+        </div>
+    </div>
+
+    <div class="assessment-card">
+        <h3>Assessment Task (Weeks 7-8)</h3>
+        <p><strong>2-Week Programming Project:</strong> Apply all learned concepts to create a complete interactive program. Students will design and build a text-based adventure game or calculator program that demonstrates their understanding of all course concepts.</p>
+        <a href="assessment.html" class="module-link" style="background: #f59e0b; margin-top: 1rem;">View Assessment Details</a>
+    </div>
+
+    <div class="intro-section">
+        <h2>Learning Approach</h2>
+        <p>Each module follows a structured approach: <strong>Explain → Demonstrate → Practice</strong>. You'll see clear syntax explanations, work through detailed examples together, then complete 10 practice tasks to reinforce your learning.</p>
+        <p>Python is an excellent first programming language because of its clear, readable syntax that closely resembles English. By the end of this unit, you'll have a solid foundation for more advanced programming concepts.</p>
+    </div>
+</body>
+</html>
