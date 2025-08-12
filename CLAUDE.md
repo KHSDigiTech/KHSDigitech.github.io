@@ -14,7 +14,7 @@ This is a static HTML/CSS/JavaScript website with the following structure:
 - `geometric-background.js` - Animated background system (currently inline in HTML)
 - `year[N].html` - Year level overview pages (9-13)
 - `year[N]/` - Subject-specific pages for each year level
-- `gamedev/` - Game development tutorial modules using Godot engine
+- `year10/gamedev/` - Complete game development course including overview page and 8 tutorial modules using Godot engine
 - `Images/` - Static assets including parallax background images
 
 ## Architecture

@@ -136,7 +136,7 @@
     </style>
 </head>
 <body>
-    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+    <a href="year10-game-dev.html" class="back-link">← Back to Course Overview</a>
 
     <div class="header">
         <h1>Module 7: Simple Shooter</h1>
@@ -195,10 +195,16 @@
             <h3>Step 1: Main Scene Setup</h3>
             <ol>
                 <li>Create new scene with <code>Node2D</code> root ("ShooterGame")</li>
-                <li>Add player ship (<code>CharacterBody2D</code>) with sprite and collision</li>
+                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "Shooter.tscn"</li>
+                <li><strong>🔄 Reuse your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
                 <li>Add <code>Timer</code> node for firing rate control</li>
                 <li>Add UI elements (score label, instructions)</li>
+                <li><strong>💾 Save again:</strong> Your shooter base is ready!</li>
             </ol>
+            
+            <div class="highlight">
+                <p><strong>🚀 Player as Ship:</strong> Your PlayerCharacter can work as a spaceship too! You might want to change the sprite to a ship texture, but the movement controls will work perfectly.</p>
+            </div>
         </div>
 
         <div class="step-by-step">

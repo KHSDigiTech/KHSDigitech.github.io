@@ -128,7 +128,7 @@
     </style>
 </head>
 <body>
-    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+    <a href="year10-game-dev.html" class="back-link">← Back to Course Overview</a>
 
     <div class="header">
         <h1>Module 3: Character Movement</h1>
@@ -172,13 +172,19 @@
         <h2>🏗️ Building Your Character</h2>
         
         <div class="step-by-step">
-            <h3>Step 1: Scene Setup</h3>
+            <h3>Step 1: Create PlayerCharacter Scene</h3>
             <ol>
                 <li>Create a new scene</li>
                 <li>Add <code>CharacterBody2D</code> as root node (rename to "Player")</li>
+                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "PlayerCharacter.tscn"</li>
                 <li>Add <code>Sprite2D</code> as child of Player</li>
                 <li>Add <code>CollisionShape2D</code> as child of Player</li>
+                <li><strong>💾 Save again:</strong> This scene will be reused in later modules!</li>
             </ol>
+            
+            <div class="highlight">
+                <p><strong>🎯 Important:</strong> The "PlayerCharacter.tscn" scene you create here will be used again in Modules 4, 5, 6, and 7. Make sure it's saved properly!</p>
+            </div>
         </div>
 
         <div class="step-by-step">
@@ -241,6 +247,26 @@
     </div>
 
     <div class="content-section">
+        <h2>🎮 Create Your Main Game Scene</h2>
+        <div class="step-by-step">
+            <h3>Step 4: Build the Character Movement Game</h3>
+            <ol>
+                <li>Create a <strong>new scene</strong> (this will be your main game)</li>
+                <li>Add a <code>Node2D</code> as root node (rename to "CharacterMovement")</li>
+                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "CharacterMovement.tscn"</li>
+                <li><strong>Instance your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
+                <li>Position the player in the center of the screen</li>
+                <li>Add a background (ColorRect or Sprite2D with background texture)</li>
+                <li><strong>💾 Save again:</strong> Your main game scene is ready!</li>
+            </ol>
+            
+            <div class="highlight">
+                <p><strong>🔄 Scene Reuse:</strong> By instancing "PlayerCharacter.tscn" into your main game, you can reuse the same character in multiple scenes. Any improvements you make to PlayerCharacter.tscn will automatically appear in all games that use it!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
         <h2>🎨 Customization Ideas</h2>
         <h3>Make Your Character Unique!</h3>
         <ul>
@@ -282,7 +308,9 @@
                 <li>No script errors in the output console</li>
                 <li>Used AI successfully to get movement code</li>
                 <li>Character stays within reasonable bounds</li>
-                <li>Saved scene as "CharacterMovement.tscn"</li>
+                <li><strong>Saved "PlayerCharacter.tscn" scene</strong></li>
+                <li><strong>Saved "CharacterMovement.tscn" main game scene</strong></li>
+                <li>Successfully instanced PlayerCharacter into main game scene</li>
             </ul>
         </div>
     </div>

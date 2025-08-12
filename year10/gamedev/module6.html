@@ -136,7 +136,7 @@
     </style>
 </head>
 <body>
-    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+    <a href="year10-game-dev.html" class="back-link">← Back to Course Overview</a>
 
     <div class="header">
         <h1>Module 6: Top-Down Explorer</h1>
@@ -195,10 +195,15 @@
             <h3>Step 1: Player Setup</h3>
             <ol>
                 <li>Create new scene with <code>Node2D</code> root ("TopDownGame")</li>
-                <li>Add <code>CharacterBody2D</code> player with appropriate sprite</li>
-                <li>Add <code>CollisionShape2D</code> with CircleShape2D or RectangleShape2D</li>
-                <li>Add <code>Camera2D</code> child to player, set to "Current"</li>
+                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "TopDownExplorer.tscn"</li>
+                <li><strong>🔄 Reuse your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
+                <li>Add <code>Camera2D</code> child to the instanced player, set to "Current"</li>
+                <li><strong>💾 Save again:</strong> Your top-down base is ready!</li>
             </ol>
+            
+            <div class="highlight">
+                <p><strong>🎯 Smart Reuse:</strong> Your PlayerCharacter movement script should work perfectly for top-down movement too! The same WASD controls work in any 2D perspective.</p>
+            </div>
         </div>
 
         <div class="step-by-step">

@@ -136,7 +136,7 @@
     </style>
 </head>
 <body>
-    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+    <a href="year10-game-dev.html" class="back-link">← Back to Course Overview</a>
 
     <div class="header">
         <h1>Module 5: Simple Platformer</h1>
@@ -195,10 +195,16 @@
             <h3>Step 1: Scene Setup</h3>
             <ol>
                 <li>Create new scene with <code>Node2D</code> as root ("PlatformerGame")</li>
-                <li>Add <code>CharacterBody2D</code> for player with Sprite2D and CollisionShape2D</li>
-                <li>Add a <code>Camera2D</code> child to the player (for following camera)</li>
+                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "Platformer.tscn"</li>
+                <li><strong>🔄 Reuse your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
+                <li>Add a <code>Camera2D</code> child to the instanced player</li>
                 <li>Set Camera2D to "Current" in Inspector</li>
+                <li><strong>💾 Save again:</strong> Your platformer base is ready!</li>
             </ol>
+            
+            <div class="highlight">
+                <p><strong>📝 Note:</strong> You'll need to modify the PlayerCharacter's script to add jumping and gravity. We'll use AI to help add platformer physics to your existing movement code!</p>
+            </div>
         </div>
 
         <div class="step-by-step">

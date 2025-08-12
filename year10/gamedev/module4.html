@@ -128,7 +128,7 @@
     </style>
 </head>
 <body>
-    <a href="../year10-game-dev.html" class="back-link">← Back to Course Overview</a>
+    <a href="year10-game-dev.html" class="back-link">← Back to Course Overview</a>
 
     <div class="header">
         <h1>Module 4: Collision Detective</h1>
@@ -178,10 +178,17 @@
             <h3>Step 1: Scene Setup</h3>
             <ol>
                 <li>Create a new scene with <code>Node2D</code> as root (rename to "CollisionGame")</li>
-                <li>Add your player from Module 3 (or create a simple CharacterBody2D)</li>
+                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "CollisionGame.tscn"</li>
+                <li><strong>🔄 Reuse your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
+                <li>Position the player in the scene</li>
                 <li>Create a <code>Control</code> node for UI (score label)</li>
                 <li>Add a <code>Label</code> child to show the score</li>
+                <li><strong>💾 Save again:</strong> Always save after major changes!</li>
             </ol>
+            
+            <div class="highlight">
+                <p><strong>🎯 Scene Reuse:</strong> By using your "PlayerCharacter.tscn" from Module 3, you don't need to recreate the movement system! This is the power of modular scene design in Godot.</p>
+            </div>
         </div>
 
         <div class="step-by-step">
