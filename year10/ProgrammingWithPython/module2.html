@@ -76,25 +76,29 @@
             margin: 1rem 0;
         }
 
-        .practice-section {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
+        .exercises {
+            background: #d4edda;
             padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .practice-section h3 {
-            color: #0c4a6e;
-            margin-top: 0;
-        }
-
-        .practice-task {
-            background: white;
-            padding: 1rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 3px solid #0ea5e9;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         .back-link {
@@ -196,10 +200,10 @@
         <p>To create a variable, you use the assignment operator <code>=</code>. The variable name goes on the left, and the value goes on the right.</p>
         
         <div class="code-block">
-name = "Sarah"
-age = 15
-height = 5.6
-is_student = True
+<pre><code>name = <span class="string">"Sarah"</span>
+age = <span class="number">15</span>
+height = <span class="number">5.6</span>
+is_student = <span class="keyword">True</span></code></pre>
         </div>
         
         <div class="highlight">
@@ -247,12 +251,12 @@ is_student = True
         
         <h3>Example 1: Creating and Using String Variables</h3>
         <div class="code-block">
-first_name = "John"
-last_name = "Smith"
-school = "King's High School"
+<pre><code>first_name = <span class="string">"John"</span>
+last_name = <span class="string">"Smith"</span>
+school = <span class="string">"King's High School"</span>
 
-print("Student name:", first_name, last_name)
-print("School:", school)
+<span class="function">print</span>(<span class="string">"Student name:"</span>, first_name, last_name)
+<span class="function">print</span>(<span class="string">"School:"</span>, school)</code></pre>
         </div>
         
         <div class="output-block">
@@ -262,17 +266,17 @@ School: King's High School
 
         <h3>Example 2: Working with Numbers</h3>
         <div class="code-block">
-age = 16
-height = 1.75
-weight = 65.5
+<pre><code>age = <span class="number">16</span>
+height = <span class="number">1.75</span>
+weight = <span class="number">65.5</span>
 
-print("Age:", age, "years old")
-print("Height:", height, "meters")
-print("Weight:", weight, "kg")
+<span class="function">print</span>(<span class="string">"Age:"</span>, age, <span class="string">"years old"</span>)
+<span class="function">print</span>(<span class="string">"Height:"</span>, height, <span class="string">"meters"</span>)
+<span class="function">print</span>(<span class="string">"Weight:"</span>, weight, <span class="string">"kg"</span>)
 
-# You can do math with number variables
-next_year_age = age + 1
-print("Next year I will be", next_year_age)
+<span class="comment"># You can do math with number variables</span>
+next_year_age = age + <span class="number">1</span>
+<span class="function">print</span>(<span class="string">"Next year I will be"</span>, next_year_age)</code></pre>
         </div>
         
         <div class="output-block">
@@ -284,13 +288,13 @@ Next year I will be 17
 
         <h3>Example 3: Boolean Variables</h3>
         <div class="code-block">
-is_teenager = True
-has_license = False
-likes_pizza = True
+<pre><code>is_teenager = <span class="keyword">True</span>
+has_license = <span class="keyword">False</span>
+likes_pizza = <span class="keyword">True</span>
 
-print("Is a teenager:", is_teenager)
-print("Has driver's license:", has_license)
-print("Likes pizza:", likes_pizza)
+<span class="function">print</span>(<span class="string">"Is a teenager:"</span>, is_teenager)
+<span class="function">print</span>(<span class="string">"Has driver's license:"</span>, has_license)
+<span class="function">print</span>(<span class="string">"Likes pizza:"</span>, likes_pizza)</code></pre>
         </div>
         
         <div class="output-block">
@@ -301,17 +305,17 @@ Likes pizza: True
 
         <h3>Example 4: Changing Variable Values</h3>
         <div class="code-block">
-score = 0
-print("Starting score:", score)
+<pre><code>score = <span class="number">0</span>
+<span class="function">print</span>(<span class="string">"Starting score:"</span>, score)
 
-score = 10
-print("After first level:", score)
+score = <span class="number">10</span>
+<span class="function">print</span>(<span class="string">"After first level:"</span>, score)
 
-score = score + 5  # Add 5 to the current score
-print("After bonus:", score)
+score = score + <span class="number">5</span>  <span class="comment"># Add 5 to the current score</span>
+<span class="function">print</span>(<span class="string">"After bonus:"</span>, score)
 
-score = 100
-print("Final score:", score)
+score = <span class="number">100</span>
+<span class="function">print</span>(<span class="string">"Final score:"</span>, score)</code></pre>
         </div>
         
         <div class="output-block">
@@ -323,17 +327,17 @@ Final score: 100
 
         <h3>Example 5: Using Variables in Calculations</h3>
         <div class="code-block">
-length = 10
-width = 5
-height = 3
+<pre><code>length = <span class="number">10</span>
+width = <span class="number">5</span>
+height = <span class="number">3</span>
 
 area = length * width
 volume = length * width * height
-perimeter = 2 * (length + width)
+perimeter = <span class="number">2</span> * (length + width)
 
-print("Rectangle area:", area)
-print("Box volume:", volume)
-print("Rectangle perimeter:", perimeter)
+<span class="function">print</span>(<span class="string">"Rectangle area:"</span>, area)
+<span class="function">print</span>(<span class="string">"Box volume:"</span>, volume)
+<span class="function">print</span>(<span class="string">"Rectangle perimeter:"</span>, perimeter)</code></pre>
         </div>
         
         <div class="output-block">
@@ -348,58 +352,21 @@ Rectangle perimeter: 30
         </div>
     </div>
 
-    <div class="practice-section">
-        <h3>Practice Tasks</h3>
-        <p>Complete these 10 tasks to practice working with variables:</p>
-
-        <div class="practice-task">
-            <h4>Task 1: Personal Information</h4>
-            <p>Create variables for your first name, last name, and age. Print them in a sentence like: "My name is [first] [last] and I am [age] years old."</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 2: Favorite Things</h4>
-            <p>Create string variables for your favorite color, food, and movie. Print each one with a descriptive message.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 3: School Subjects</h4>
-            <p>Create variables for three school subjects and their grades (as numbers). Print each subject and grade.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 4: Simple Calculator</h4>
-            <p>Create two number variables with values 15 and 7. Calculate and print their sum, difference, product, and quotient.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 5: Rectangle Properties</h4>
-            <p>Create variables for a rectangle's length (8) and width (5). Calculate and print the area and perimeter.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 6: Boolean Practice</h4>
-            <p>Create three boolean variables about yourself (like is_tall, likes_sports, has_pets). Print each with a descriptive message.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 7: Variable Reassignment</h4>
-            <p>Create a variable called "score" with value 0. Then change it to 25, then to 50, printing the value each time with a message.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 8: Temperature Conversion</h4>
-            <p>Create a variable for temperature in Celsius (25). Calculate and store the Fahrenheit equivalent (F = C * 9/5 + 32). Print both temperatures.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 9: Circle Properties</h4>
-            <p>Create a variable for a circle's radius (7). Calculate the area (π * r²) and circumference (2 * π * r). Use 3.14159 for π.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 10: Student Profile</h4>
-            <p>Create a complete student profile using variables: name, age, grade level, favorite subject, GPA (as a decimal), and whether they play sports (boolean). Print all information in a nicely formatted way.</p>
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Personal Information:</strong> Create variables for your first name, last name, and age. Print them in a sentence like: "My name is [first] [last] and I am [age] years old."</li>
+                <li><strong>Favorite Things:</strong> Create string variables for your favorite color, food, and movie. Print each one with a descriptive message.</li>
+                <li><strong>School Subjects:</strong> Create variables for three school subjects and their grades (as numbers). Print each subject and grade.</li>
+                <li><strong>Simple Calculator:</strong> Create two number variables with values 15 and 7. Calculate and print their sum, difference, product, and quotient.</li>
+                <li><strong>Rectangle Properties:</strong> Create variables for a rectangle's length (8) and width (5). Calculate and print the area and perimeter.</li>
+                <li><strong>Boolean Practice:</strong> Create three boolean variables about yourself (like is_tall, likes_sports, has_pets). Print each with a descriptive message.</li>
+                <li><strong>Variable Reassignment:</strong> Create a variable called "score" with value 0. Then change it to 25, then to 50, printing the value each time with a message.</li>
+                <li><strong>Temperature Conversion:</strong> Create a variable for temperature in Celsius (25). Calculate and store the Fahrenheit equivalent (F = C * 9/5 + 32). Print both temperatures.</li>
+                <li><strong>Circle Properties:</strong> Create a variable for a circle's radius (7). Calculate the area (π * r²) and circumference (2 * π * r). Use 3.14159 for π.</li>
+                <li><strong>Student Profile:</strong> Create a complete student profile using variables: name, age, grade level, favorite subject, GPA (as a decimal), and whether they play sports (boolean). Print all information in a nicely formatted way.</li>
+            </ul>
         </div>
     </div>
 
@@ -408,18 +375,18 @@ Rectangle perimeter: 30
         <div class="highlight">
             <h3>❌ Don't do this:</h3>
             <div class="code-block">
-2age = 15           # Can't start with number
-my age = 15         # No spaces allowed
-my-age = 15         # No hyphens allowed
-Age = age           # These are different variables!
+<pre><code><span class="number">2</span>age = <span class="number">15</span>           <span class="comment"># Can't start with number</span>
+my age = <span class="number">15</span>         <span class="comment"># No spaces allowed</span>
+my-age = <span class="number">15</span>         <span class="comment"># No hyphens allowed</span>
+Age = age           <span class="comment"># These are different variables!</span></code></pre>
             </div>
             
             <h3>✅ Do this instead:</h3>
             <div class="code-block">
-age2 = 15           # Numbers at end are OK
-my_age = 15         # Use underscores for spaces
-my_age = 15         # Use underscores for word separation
-age = 15            # Be consistent with capitalization
+<pre><code>age2 = <span class="number">15</span>           <span class="comment"># Numbers at end are OK</span>
+my_age = <span class="number">15</span>         <span class="comment"># Use underscores for spaces</span>
+my_age = <span class="number">15</span>         <span class="comment"># Use underscores for word separation</span>
+age = <span class="number">15</span>            <span class="comment"># Be consistent with capitalization</span></code></pre>
             </div>
         </div>
     </div>

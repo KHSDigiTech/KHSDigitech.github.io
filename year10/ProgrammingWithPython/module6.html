@@ -90,25 +90,29 @@
             margin: 1rem 0;
         }
 
-        .practice-section {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
+        .exercises {
+            background: #d4edda;
             padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .practice-section h3 {
-            color: #0c4a6e;
-            margin-top: 0;
-        }
-
-        .practice-task {
-            background: white;
-            padding: 1rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 3px solid #0ea5e9;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         .back-link {
@@ -230,15 +234,15 @@
         
         <h3>Basic List Creation</h3>
         <div class="code-block">
-# Creating lists
-fruits = ["apple", "banana", "orange", "grape"]
-numbers = [1, 2, 3, 4, 5]
-mixed = ["hello", 42, 3.14, True]
+<pre><code><span class="comment"># Creating lists</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>, <span class="string">"grape"</span>]
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+mixed = [<span class="string">"hello"</span>, <span class="number">42</span>, <span class="number">3.14</span>, <span class="keyword">True</span>]
 empty_list = []
 
-print("Fruits:", fruits)
-print("Numbers:", numbers)
-print("Mixed:", mixed)
+<span class="function">print</span>(<span class="string">"Fruits:"</span>, fruits)
+<span class="function">print</span>(<span class="string">"Numbers:"</span>, numbers)
+<span class="function">print</span>(<span class="string">"Mixed:"</span>, mixed)</code></pre>
         </div>
         
         <div class="output-block">
@@ -249,14 +253,14 @@ Mixed: ['hello', 42, 3.14, True]
 
         <h3>Accessing List Items (Indexing)</h3>
         <div class="code-block">
-colors = ["red", "green", "blue", "yellow"]
+<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>]
 
-print("First color:", colors[0])    # Index 0 is the first item
-print("Second color:", colors[1])   # Index 1 is the second item
-print("Last color:", colors[-1])    # Index -1 is the last item
+<span class="function">print</span>(<span class="string">"First color:"</span>, colors[<span class="number">0</span>])    <span class="comment"># Index 0 is the first item</span>
+<span class="function">print</span>(<span class="string">"Second color:"</span>, colors[<span class="number">1</span>])   <span class="comment"># Index 1 is the second item</span>
+<span class="function">print</span>(<span class="string">"Last color:"</span>, colors[<span class="number">-1</span>])    <span class="comment"># Index -1 is the last item</span>
 
-# Get the length of the list
-print("Number of colors:", len(colors))
+<span class="comment"># Get the length of the list</span>
+<span class="function">print</span>(<span class="string">"Number of colors:"</span>, <span class="function">len</span>(colors))</code></pre>
         </div>
         
         <div class="output-block">
@@ -300,26 +304,26 @@ Number of colors: 4
         
         <h3>Example 1: Shopping List Manager</h3>
         <div class="code-block">
-shopping_list = []
+<pre><code>shopping_list = []
 
-# Add items
-shopping_list.append("milk")
-shopping_list.append("bread")
-shopping_list.append("eggs")
+<span class="comment"># Add items</span>
+shopping_list.append(<span class="string">"milk"</span>)
+shopping_list.append(<span class="string">"bread"</span>)
+shopping_list.append(<span class="string">"eggs"</span>)
 
-print("Shopping list:", shopping_list)
+<span class="function">print</span>(<span class="string">"Shopping list:"</span>, shopping_list)
 
-# Add item at specific position
-shopping_list.insert(1, "butter")
-print("After adding butter:", shopping_list)
+<span class="comment"># Add item at specific position</span>
+shopping_list.insert(<span class="number">1</span>, <span class="string">"butter"</span>)
+<span class="function">print</span>(<span class="string">"After adding butter:"</span>, shopping_list)
 
-# Remove an item
-shopping_list.remove("bread")
-print("After removing bread:", shopping_list)
+<span class="comment"># Remove an item</span>
+shopping_list.remove(<span class="string">"bread"</span>)
+<span class="function">print</span>(<span class="string">"After removing bread:"</span>, shopping_list)
 
-# Check if item exists
-if "milk" in shopping_list:
-    print("Don't forget the milk!")
+<span class="comment"># Check if item exists</span>
+<span class="keyword">if</span> <span class="string">"milk"</span> <span class="keyword">in</span> shopping_list:
+    <span class="function">print</span>(<span class="string">"Don't forget the milk!"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -331,27 +335,27 @@ Don't forget the milk!
 
         <h3>Example 2: Lists with Loops</h3>
         <div class="code-block">
-scores = [85, 92, 78, 96, 88]
+<pre><code>scores = [<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">96</span>, <span class="number">88</span>]
 
-print("All test scores:")
-for score in scores:
-    print(f"Score: {score}")
+<span class="function">print</span>(<span class="string">"All test scores:"</span>)
+<span class="keyword">for</span> score <span class="keyword">in</span> scores:
+    <span class="function">print</span>(<span class="string">f"Score: {score}"</span>)
 
-# Calculate average
-total = 0
-for score in scores:
+<span class="comment"># Calculate average</span>
+total = <span class="number">0</span>
+<span class="keyword">for</span> score <span class="keyword">in</span> scores:
     total += score
 
-average = total / len(scores)
-print(f"\nAverage score: {average}")
+average = total / <span class="function">len</span>(scores)
+<span class="function">print</span>(<span class="string">f"\nAverage score: {average}"</span>)
 
-# Find highest score
-highest = scores[0]
-for score in scores:
-    if score > highest:
+<span class="comment"># Find highest score</span>
+highest = scores[<span class="number">0</span>]
+<span class="keyword">for</span> score <span class="keyword">in</span> scores:
+    <span class="keyword">if</span> score > highest:
         highest = score
 
-print(f"Highest score: {highest}")
+<span class="function">print</span>(<span class="string">f"Highest score: {highest}"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -368,18 +372,18 @@ Highest score: 96
 
         <h3>Example 3: Building Lists with User Input</h3>
         <div class="code-block">
-names = []
-print("Enter student names (type 'done' to finish):")
+<pre><code>names = []
+<span class="function">print</span>(<span class="string">"Enter student names (type 'done' to finish):"</span>)
 
-while True:
-    name = input("Enter name: ")
-    if name.lower() == "done":
-        break
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    name = <span class="function">input</span>(<span class="string">"Enter name: "</span>)
+    <span class="keyword">if</span> name.lower() == <span class="string">"done"</span>:
+        <span class="keyword">break</span>
     names.append(name)
 
-print(f"\nClass roster ({len(names)} students):")
-for i, name in enumerate(names, 1):
-    print(f"{i}. {name}")
+<span class="function">print</span>(<span class="string">f"\nClass roster ({len(names)} students):"</span>)
+<span class="keyword">for</span> i, name <span class="keyword">in</span> <span class="function">enumerate</span>(names, <span class="number">1</span>):
+    <span class="function">print</span>(<span class="string">f"{i}. {name}"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -434,15 +438,15 @@ Class roster (3 students):
         
         <h3>Example 1: Simple Function with No Parameters</h3>
         <div class="code-block">
-def greet():
-    """Prints a greeting message"""
-    print("Hello! Welcome to Python programming!")
-    print("Hope you're having a great day!")
+<pre><code><span class="keyword">def</span> <span class="function">greet</span>():
+    <span class="string">"""Prints a greeting message"""</span>
+    <span class="function">print</span>(<span class="string">"Hello! Welcome to Python programming!"</span>)
+    <span class="function">print</span>(<span class="string">"Hope you're having a great day!"</span>)
 
-# Call the function
-greet()
-print("Let's learn about functions!")
-greet()  # We can call it multiple times
+<span class="comment"># Call the function</span>
+<span class="function">greet</span>()
+<span class="function">print</span>(<span class="string">"Let's learn about functions!"</span>)
+<span class="function">greet</span>()  <span class="comment"># We can call it multiple times</span></code></pre>
         </div>
         
         <div class="output-block">
@@ -455,16 +459,16 @@ Hope you're having a great day!
 
         <h3>Example 2: Function with Parameters</h3>
         <div class="code-block">
-def greet_person(name, age):
-    """Greets a person with their name and age"""
-    print(f"Hello {name}!")
-    print(f"I see you are {age} years old.")
-    print("Nice to meet you!")
+<pre><code><span class="keyword">def</span> <span class="function">greet_person</span>(name, age):
+    <span class="string">"""Greets a person with their name and age"""</span>
+    <span class="function">print</span>(<span class="string">f"Hello {name}!"</span>)
+    <span class="function">print</span>(<span class="string">f"I see you are {age} years old."</span>)
+    <span class="function">print</span>(<span class="string">"Nice to meet you!"</span>)
 
-# Call the function with different arguments
-greet_person("Alice", 16)
-print()
-greet_person("Bob", 15)
+<span class="comment"># Call the function with different arguments</span>
+<span class="function">greet_person</span>(<span class="string">"Alice"</span>, <span class="number">16</span>)
+<span class="function">print</span>()
+<span class="function">greet_person</span>(<span class="string">"Bob"</span>, <span class="number">15</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -479,26 +483,26 @@ Nice to meet you!
 
         <h3>Example 3: Function that Returns a Value</h3>
         <div class="code-block">
-def calculate_area(length, width):
-    """Calculate the area of a rectangle"""
+<pre><code><span class="keyword">def</span> <span class="function">calculate_area</span>(length, width):
+    <span class="string">"""Calculate the area of a rectangle"""</span>
     area = length * width
-    return area
+    <span class="keyword">return</span> area
 
-def calculate_circle_area(radius):
-    """Calculate the area of a circle"""
-    pi = 3.14159
+<span class="keyword">def</span> <span class="function">calculate_circle_area</span>(radius):
+    <span class="string">"""Calculate the area of a circle"""</span>
+    pi = <span class="number">3.14159</span>
     area = pi * radius * radius
-    return area
+    <span class="keyword">return</span> area
 
-# Use the functions
-rect_area = calculate_area(10, 5)
-print(f"Rectangle area: {rect_area}")
+<span class="comment"># Use the functions</span>
+rect_area = <span class="function">calculate_area</span>(<span class="number">10</span>, <span class="number">5</span>)
+<span class="function">print</span>(<span class="string">f"Rectangle area: {rect_area}"</span>)
 
-circle_area = calculate_circle_area(7)
-print(f"Circle area: {circle_area}")
+circle_area = <span class="function">calculate_circle_area</span>(<span class="number">7</span>)
+<span class="function">print</span>(<span class="string">f"Circle area: {circle_area}"</span>)
 
-# You can use the returned value directly
-print(f"Total area: {calculate_area(8, 6) + calculate_circle_area(3)}")
+<span class="comment"># You can use the returned value directly</span>
+<span class="function">print</span>(<span class="string">f"Total area: {calculate_area(8, 6) + calculate_circle_area(3)}"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -509,39 +513,39 @@ Total area: 76.27433
 
         <h3>Example 4: Function that Works with Lists</h3>
         <div class="code-block">
-def find_average(numbers):
-    """Calculate the average of a list of numbers"""
-    if len(numbers) == 0:
-        return 0
+<pre><code><span class="keyword">def</span> <span class="function">find_average</span>(numbers):
+    <span class="string">"""Calculate the average of a list of numbers"""</span>
+    <span class="keyword">if</span> <span class="function">len</span>(numbers) == <span class="number">0</span>:
+        <span class="keyword">return</span> <span class="number">0</span>
     
-    total = 0
-    for number in numbers:
+    total = <span class="number">0</span>
+    <span class="keyword">for</span> number <span class="keyword">in</span> numbers:
         total += number
     
-    average = total / len(numbers)
-    return average
+    average = total / <span class="function">len</span>(numbers)
+    <span class="keyword">return</span> average
 
-def find_highest(numbers):
-    """Find the highest number in a list"""
-    if len(numbers) == 0:
-        return None
+<span class="keyword">def</span> <span class="function">find_highest</span>(numbers):
+    <span class="string">"""Find the highest number in a list"""</span>
+    <span class="keyword">if</span> <span class="function">len</span>(numbers) == <span class="number">0</span>:
+        <span class="keyword">return</span> <span class="keyword">None</span>
     
-    highest = numbers[0]
-    for number in numbers:
-        if number > highest:
+    highest = numbers[<span class="number">0</span>]
+    <span class="keyword">for</span> number <span class="keyword">in</span> numbers:
+        <span class="keyword">if</span> number > highest:
             highest = number
     
-    return highest
+    <span class="keyword">return</span> highest
 
-# Test the functions
-test_scores = [85, 92, 78, 96, 88, 91]
+<span class="comment"># Test the functions</span>
+test_scores = [<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">96</span>, <span class="number">88</span>, <span class="number">91</span>]
 
-avg = find_average(test_scores)
-high = find_highest(test_scores)
+avg = <span class="function">find_average</span>(test_scores)
+high = <span class="function">find_highest</span>(test_scores)
 
-print(f"Test scores: {test_scores}")
-print(f"Average: {avg}")
-print(f"Highest: {high}")
+<span class="function">print</span>(<span class="string">f"Test scores: {test_scores}"</span>)
+<span class="function">print</span>(<span class="string">f"Average: {avg}"</span>)
+<span class="function">print</span>(<span class="string">f"Highest: {high}"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -552,45 +556,45 @@ Highest: 96
 
         <h3>Example 5: Complete Program Using Lists and Functions</h3>
         <div class="code-block">
-def add_student(students, name, grade):
-    """Add a student to the list"""
-    student = {"name": name, "grade": grade}
+<pre><code><span class="keyword">def</span> <span class="function">add_student</span>(students, name, grade):
+    <span class="string">"""Add a student to the list"""</span>
+    student = {<span class="string">"name"</span>: name, <span class="string">"grade"</span>: grade}
     students.append(student)
-    print(f"Added {name} with grade {grade}")
+    <span class="function">print</span>(<span class="string">f"Added {name} with grade {grade}"</span>)
 
-def show_all_students(students):
-    """Display all students and their grades"""
-    if len(students) == 0:
-        print("No students in the list.")
-        return
+<span class="keyword">def</span> <span class="function">show_all_students</span>(students):
+    <span class="string">"""Display all students and their grades"""</span>
+    <span class="keyword">if</span> <span class="function">len</span>(students) == <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">"No students in the list."</span>)
+        <span class="keyword">return</span>
     
-    print("\nAll Students:")
-    print("-" * 20)
-    for i, student in enumerate(students, 1):
-        print(f"{i}. {student['name']}: {student['grade']}")
+    <span class="function">print</span>(<span class="string">"\nAll Students:"</span>)
+    <span class="function">print</span>(<span class="string">"-"</span> * <span class="number">20</span>)
+    <span class="keyword">for</span> i, student <span class="keyword">in</span> <span class="function">enumerate</span>(students, <span class="number">1</span>):
+        <span class="function">print</span>(<span class="string">f"{i}. {student['name']}: {student['grade']}"</span>)
 
-def calculate_class_average(students):
-    """Calculate the class average grade"""
-    if len(students) == 0:
-        return 0
+<span class="keyword">def</span> <span class="function">calculate_class_average</span>(students):
+    <span class="string">"""Calculate the class average grade"""</span>
+    <span class="keyword">if</span> <span class="function">len</span>(students) == <span class="number">0</span>:
+        <span class="keyword">return</span> <span class="number">0</span>
     
-    total = 0
-    for student in students:
-        total += student["grade"]
+    total = <span class="number">0</span>
+    <span class="keyword">for</span> student <span class="keyword">in</span> students:
+        total += student[<span class="string">"grade"</span>]
     
-    return total / len(students)
+    <span class="keyword">return</span> total / <span class="function">len</span>(students)
 
-# Main program
+<span class="comment"># Main program</span>
 class_list = []
 
-add_student(class_list, "Alice", 92)
-add_student(class_list, "Bob", 87)
-add_student(class_list, "Charlie", 95)
+<span class="function">add_student</span>(class_list, <span class="string">"Alice"</span>, <span class="number">92</span>)
+<span class="function">add_student</span>(class_list, <span class="string">"Bob"</span>, <span class="number">87</span>)
+<span class="function">add_student</span>(class_list, <span class="string">"Charlie"</span>, <span class="number">95</span>)
 
-show_all_students(class_list)
+<span class="function">show_all_students</span>(class_list)
 
-avg = calculate_class_average(class_list)
-print(f"\nClass average: {avg:.1f}")
+avg = <span class="function">calculate_class_average</span>(class_list)
+<span class="function">print</span>(<span class="string">f"\nClass average: {avg:.1f}"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -608,58 +612,21 @@ Class average: 91.3
         </div>
     </div>
 
-    <div class="practice-section">
-        <h3>Practice Tasks</h3>
-        <p>Complete these 10 tasks to practice lists and functions:</p>
-
-        <div class="practice-task">
-            <h4>Task 1: Favorite Movies</h4>
-            <p>Create a list of your 5 favorite movies. Print each movie with its position number (1. Movie1, 2. Movie2, etc.)</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 2: Number Operations</h4>
-            <p>Create a list of 10 numbers. Calculate and print the sum, average, highest, and lowest values using loops.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 3: Word Counter</h4>
-            <p>Ask the user to enter words until they type "stop". Store all words in a list, then print how many words they entered and display all words.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 4: Simple Calculator Function</h4>
-            <p>Create functions for add, subtract, multiply, and divide that take two parameters and return the result. Test each function.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 5: Temperature Converter Functions</h4>
-            <p>Create functions to convert Celsius to Fahrenheit and Fahrenheit to Celsius. Test both functions with different temperatures.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 6: List Helper Functions</h4>
-            <p>Create functions to: 1) Add an item to a list, 2) Remove an item from a list, 3) Find if an item exists in a list. Test all functions.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 7: Grade Manager</h4>
-            <p>Create a program with functions to: add grades to a list, calculate average grade, find highest/lowest grades, and display all grades nicely formatted.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 8: Shopping List App</h4>
-            <p>Create functions for: adding items, removing items, displaying the list, and checking if an item is on the list. Create a menu system to use these functions.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 9: Name Formatter</h4>
-            <p>Create a function that takes a first name and last name, and returns them formatted in different ways (e.g., "Last, First", "FIRST LAST", "F. Last").</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 10: Mini Contact Book</h4>
-            <p>Create a contact book using a list of dictionaries. Include functions to: add a contact (name, phone), find a contact by name, display all contacts, and remove a contact. Create a simple menu to use these features.</p>
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Favorite Movies:</strong> Create a list of your 5 favorite movies. Print each movie with its position number (1. Movie1, 2. Movie2, etc.)</li>
+                <li><strong>Number Operations:</strong> Create a list of 10 numbers. Calculate and print the sum, average, highest, and lowest values using loops.</li>
+                <li><strong>Word Counter:</strong> Ask the user to enter words until they type "stop". Store all words in a list, then print how many words they entered and display all words.</li>
+                <li><strong>Simple Calculator Function:</strong> Create functions for add, subtract, multiply, and divide that take two parameters and return the result. Test each function.</li>
+                <li><strong>Temperature Converter Functions:</strong> Create functions to convert Celsius to Fahrenheit and Fahrenheit to Celsius. Test both functions with different temperatures.</li>
+                <li><strong>List Helper Functions:</strong> Create functions to: 1) Add an item to a list, 2) Remove an item from a list, 3) Find if an item exists in a list. Test all functions.</li>
+                <li><strong>Grade Manager:</strong> Create a program with functions to: add grades to a list, calculate average grade, find highest/lowest grades, and display all grades nicely formatted.</li>
+                <li><strong>Shopping List App:</strong> Create functions for: adding items, removing items, displaying the list, and checking if an item is on the list. Create a menu system to use these functions.</li>
+                <li><strong>Name Formatter:</strong> Create a function that takes a first name and last name, and returns them formatted in different ways (e.g., "Last, First", "FIRST LAST", "F. Last").</li>
+                <li><strong>Mini Contact Book:</strong> Create a contact book using a list of dictionaries. Include functions to: add a contact (name, phone), find a contact by name, display all contacts, and remove a contact. Create a simple menu to use these features.</li>
+            </ul>
         </div>
     </div>
 
@@ -668,39 +635,39 @@ Class average: 91.3
         <div class="highlight">
             <h3>❌ Don't do this:</h3>
             <div class="code-block">
-# List indexing errors
-colors = ["red", "green", "blue"]
-print(colors[3])           # Error: index out of range
+<pre><code><span class="comment"># List indexing errors</span>
+colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+<span class="function">print</span>(colors[<span class="number">3</span>])           <span class="comment"># Error: index out of range</span>
 
-# Function definition errors
-def my_function()          # Missing colon
-    print("Hello")
+<span class="comment"># Function definition errors</span>
+<span class="keyword">def</span> <span class="function">my_function</span>()          <span class="comment"># Missing colon</span>
+    <span class="function">print</span>(<span class="string">"Hello"</span>)
 
-def my_function():
-print("Hello")             # Missing indentation
+<span class="keyword">def</span> <span class="function">my_function</span>():
+<span class="function">print</span>(<span class="string">"Hello"</span>)             <span class="comment"># Missing indentation</span>
 
-# Forgetting to return
-def add_numbers(a, b):
-    result = a + b         # Missing return statement
+<span class="comment"># Forgetting to return</span>
+<span class="keyword">def</span> <span class="function">add_numbers</span>(a, b):
+    result = a + b         <span class="comment"># Missing return statement</span></code></pre>
             </div>
             
             <h3>✅ Do this instead:</h3>
             <div class="code-block">
-# Safe list access
-colors = ["red", "green", "blue"]
-if len(colors) > 3:
-    print(colors[3])
-else:
-    print("Index out of range")
+<pre><code><span class="comment"># Safe list access</span>
+colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+<span class="keyword">if</span> <span class="function">len</span>(colors) > <span class="number">3</span>:
+    <span class="function">print</span>(colors[<span class="number">3</span>])
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Index out of range"</span>)
 
-# Correct function syntax
-def my_function():         # Don't forget the colon
-    print("Hello")         # Proper indentation
+<span class="comment"># Correct function syntax</span>
+<span class="keyword">def</span> <span class="function">my_function</span>():         <span class="comment"># Don't forget the colon</span>
+    <span class="function">print</span>(<span class="string">"Hello"</span>)         <span class="comment"># Proper indentation</span>
 
-# Always return when needed
-def add_numbers(a, b):
+<span class="comment"># Always return when needed</span>
+<span class="keyword">def</span> <span class="function">add_numbers</span>(a, b):
     result = a + b
-    return result          # Return the result
+    <span class="keyword">return</span> result          <span class="comment"># Return the result</span></code></pre>
             </div>
         </div>
     </div>

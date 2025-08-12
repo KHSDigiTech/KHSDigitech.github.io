@@ -90,25 +90,29 @@
             margin: 1rem 0;
         }
 
-        .practice-section {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
+        .exercises {
+            background: #d4edda;
             padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .practice-section h3 {
-            color: #0c4a6e;
-            margin-top: 0;
-        }
-
-        .practice-task {
-            background: white;
-            padding: 1rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 3px solid #0ea5e9;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         .back-link {
@@ -241,9 +245,9 @@
         <p>Here's the basic structure of an if statement:</p>
         
         <div class="code-block">
-if condition:
-    # Code to run if condition is True
-    print("This runs if the condition is true")
+<pre><code><span class="keyword">if</span> condition:
+    <span class="comment"># Code to run if condition is True</span>
+    <span class="function">print</span>(<span class="string">"This runs if the condition is true"</span>)</code></pre>
         </div>
         
         <div class="indentation-example">
@@ -295,13 +299,13 @@ if condition:
         
         <h3>Example 1: Simple Age Check</h3>
         <div class="code-block">
-age = int(input("How old are you? "))
+<pre><code>age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"How old are you? "</span>))
 
-if age >= 18:
-    print("You are an adult!")
-    print("You can vote!")
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="function">print</span>(<span class="string">"You are an adult!"</span>)
+    <span class="function">print</span>(<span class="string">"You can vote!"</span>)
 
-print("This line always runs")
+<span class="function">print</span>(<span class="string">"This line always runs"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -313,14 +317,14 @@ This line always runs
 
         <h3>Example 2: If-Else Structure</h3>
         <div class="code-block">
-password = input("Enter the password: ")
+<pre><code>password = <span class="function">input</span>(<span class="string">"Enter the password: "</span>)
 
-if password == "secret123":
-    print("Access granted!")
-    print("Welcome to the system!")
-else:
-    print("Access denied!")
-    print("Incorrect password.")
+<span class="keyword">if</span> password == <span class="string">"secret123"</span>:
+    <span class="function">print</span>(<span class="string">"Access granted!"</span>)
+    <span class="function">print</span>(<span class="string">"Welcome to the system!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Access denied!"</span>)
+    <span class="function">print</span>(<span class="string">"Incorrect password."</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -331,23 +335,23 @@ Incorrect password.
 
         <h3>Example 3: Multiple Conditions with elif</h3>
         <div class="code-block">
-score = int(input("Enter your test score: "))
+<pre><code>score = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your test score: "</span>))
 
-if score >= 90:
-    print("Grade: A")
-    print("Excellent work!")
-elif score >= 80:
-    print("Grade: B")
-    print("Good job!")
-elif score >= 70:
-    print("Grade: C")
-    print("Satisfactory")
-elif score >= 60:
-    print("Grade: D")
-    print("Needs improvement")
-else:
-    print("Grade: F")
-    print("Please see me after class")
+<span class="keyword">if</span> score >= <span class="number">90</span>:
+    <span class="function">print</span>(<span class="string">"Grade: A"</span>)
+    <span class="function">print</span>(<span class="string">"Excellent work!"</span>)
+<span class="keyword">elif</span> score >= <span class="number">80</span>:
+    <span class="function">print</span>(<span class="string">"Grade: B"</span>)
+    <span class="function">print</span>(<span class="string">"Good job!"</span>)
+<span class="keyword">elif</span> score >= <span class="number">70</span>:
+    <span class="function">print</span>(<span class="string">"Grade: C"</span>)
+    <span class="function">print</span>(<span class="string">"Satisfactory"</span>)
+<span class="keyword">elif</span> score >= <span class="number">60</span>:
+    <span class="function">print</span>(<span class="string">"Grade: D"</span>)
+    <span class="function">print</span>(<span class="string">"Needs improvement"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Grade: F"</span>)
+    <span class="function">print</span>(<span class="string">"Please see me after class"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -358,16 +362,16 @@ Good job!
 
         <h3>Example 4: Comparing Strings</h3>
         <div class="code-block">
-favorite_color = input("What's your favorite color? ").lower()
+<pre><code>favorite_color = <span class="function">input</span>(<span class="string">"What's your favorite color? "</span>).lower()
 
-if favorite_color == "blue":
-    print("Blue is the color of the ocean!")
-elif favorite_color == "red":
-    print("Red is a bold choice!")
-elif favorite_color == "green":
-    print("Green is the color of nature!")
-else:
-    print("That's a nice color choice!")
+<span class="keyword">if</span> favorite_color == <span class="string">"blue"</span>:
+    <span class="function">print</span>(<span class="string">"Blue is the color of the ocean!"</span>)
+<span class="keyword">elif</span> favorite_color == <span class="string">"red"</span>:
+    <span class="function">print</span>(<span class="string">"Red is a bold choice!"</span>)
+<span class="keyword">elif</span> favorite_color == <span class="string">"green"</span>:
+    <span class="function">print</span>(<span class="string">"Green is the color of nature!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"That's a nice color choice!"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -377,17 +381,17 @@ Blue is the color of the ocean!
 
         <h3>Example 5: Multiple Conditions with Logical Operators</h3>
         <div class="code-block">
-age = int(input("Enter your age: "))
-has_license = input("Do you have a driver's license? (yes/no): ").lower()
+<pre><code>age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your age: "</span>))
+has_license = <span class="function">input</span>(<span class="string">"Do you have a driver's license? (yes/no): "</span>).lower()
 
-if age >= 16 and has_license == "yes":
-    print("You can drive!")
-elif age >= 16 and has_license == "no":
-    print("You're old enough, but you need a license!")
-elif age < 16 and has_license == "yes":
-    print("How do you have a license? You're too young!")
-else:
-    print("You're too young to drive.")
+<span class="keyword">if</span> age >= <span class="number">16</span> <span class="keyword">and</span> has_license == <span class="string">"yes"</span>:
+    <span class="function">print</span>(<span class="string">"You can drive!"</span>)
+<span class="keyword">elif</span> age >= <span class="number">16</span> <span class="keyword">and</span> has_license == <span class="string">"no"</span>:
+    <span class="function">print</span>(<span class="string">"You're old enough, but you need a license!"</span>)
+<span class="keyword">elif</span> age < <span class="number">16</span> <span class="keyword">and</span> has_license == <span class="string">"yes"</span>:
+    <span class="function">print</span>(<span class="string">"How do you have a license? You're too young!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"You're too young to drive."</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -398,18 +402,18 @@ You can drive!
 
         <h3>Example 6: Number Guessing Game</h3>
         <div class="code-block">
-import random
+<pre><code><span class="keyword">import</span> random
 
-secret_number = random.randint(1, 10)
-guess = int(input("Guess a number between 1 and 10: "))
+secret_number = random.randint(<span class="number">1</span>, <span class="number">10</span>)
+guess = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Guess a number between 1 and 10: "</span>))
 
-if guess == secret_number:
-    print("Congratulations! You guessed it!")
-    print("The number was", secret_number)
-elif guess < secret_number:
-    print("Too low! The number was", secret_number)
-else:
-    print("Too high! The number was", secret_number)
+<span class="keyword">if</span> guess == secret_number:
+    <span class="function">print</span>(<span class="string">"Congratulations! You guessed it!"</span>)
+    <span class="function">print</span>(<span class="string">"The number was"</span>, secret_number)
+<span class="keyword">elif</span> guess < secret_number:
+    <span class="function">print</span>(<span class="string">"Too low! The number was"</span>, secret_number)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Too high! The number was"</span>, secret_number)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -418,58 +422,21 @@ Too high! The number was 4
         </div>
     </div>
 
-    <div class="practice-section">
-        <h3>Practice Tasks</h3>
-        <p>Complete these 10 tasks to practice if statements:</p>
-
-        <div class="practice-task">
-            <h4>Task 1: Simple Password Check</h4>
-            <p>Ask the user for a password. If it's "python123", print "Welcome!". Otherwise, print "Access denied!"</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 2: Even or Odd</h4>
-            <p>Ask for a number and determine if it's even or odd. (Hint: use the % operator - if number % 2 == 0, it's even)</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 3: Grade Calculator</h4>
-            <p>Ask for a test score and assign a letter grade: A (90+), B (80-89), C (70-79), D (60-69), F (below 60)</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 4: Age Category</h4>
-            <p>Ask for someone's age and categorize them: Child (0-12), Teen (13-19), Adult (20-64), Senior (65+)</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 5: Temperature Advice</h4>
-            <p>Ask for the temperature in Celsius. Give advice: Very Cold (below 0), Cold (0-15), Mild (16-25), Warm (26-35), Hot (above 35)</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 6: Movie Rating Checker</h4>
-            <p>Ask for someone's age and a movie rating (G, PG, PG-13, R). Determine if they can watch the movie based on age restrictions.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 7: Login System</h4>
-            <p>Ask for both username and password. Only grant access if username is "admin" AND password is "secure456".</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 8: Number Comparison</h4>
-            <p>Ask for two numbers and tell the user which is larger, or if they're equal.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 9: Day of the Week</h4>
-            <p>Ask for a day of the week and tell them if it's a weekday or weekend. Also give a fun fact about that day.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 10: Simple Quiz Game</h4>
-            <p>Create a 3-question quiz about anything you like. Keep track of the score and give different messages based on how many they got right (0-1: "Keep studying!", 2: "Good effort!", 3: "Perfect!").</p>
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Simple Password Check:</strong> Ask the user for a password. If it's "python123", print "Welcome!". Otherwise, print "Access denied!"</li>
+                <li><strong>Even or Odd:</strong> Ask for a number and determine if it's even or odd. (Hint: use the % operator - if number % 2 == 0, it's even)</li>
+                <li><strong>Grade Calculator:</strong> Ask for a test score and assign a letter grade: A (90+), B (80-89), C (70-79), D (60-69), F (below 60)</li>
+                <li><strong>Age Category:</strong> Ask for someone's age and categorize them: Child (0-12), Teen (13-19), Adult (20-64), Senior (65+)</li>
+                <li><strong>Temperature Advice:</strong> Ask for the temperature in Celsius. Give advice: Very Cold (below 0), Cold (0-15), Mild (16-25), Warm (26-35), Hot (above 35)</li>
+                <li><strong>Movie Rating Checker:</strong> Ask for someone's age and a movie rating (G, PG, PG-13, R). Determine if they can watch the movie based on age restrictions.</li>
+                <li><strong>Login System:</strong> Ask for both username and password. Only grant access if username is "admin" AND password is "secure456".</li>
+                <li><strong>Number Comparison:</strong> Ask for two numbers and tell the user which is larger, or if they're equal.</li>
+                <li><strong>Day of the Week:</strong> Ask for a day of the week and tell them if it's a weekday or weekend. Also give a fun fact about that day.</li>
+                <li><strong>Simple Quiz Game:</strong> Create a 3-question quiz about anything you like. Keep track of the score and give different messages based on how many they got right (0-1: "Keep studying!", 2: "Good effort!", 3: "Perfect!").</li>
+            </ul>
         </div>
     </div>
 
@@ -484,17 +451,17 @@ Too high! The number was 4
             </ul>
             
             <div class="code-block">
-# AND example
-if age >= 13 and age <= 19:
-    print("You're a teenager")
+<pre><code><span class="comment"># AND example</span>
+<span class="keyword">if</span> age >= <span class="number">13</span> <span class="keyword">and</span> age <= <span class="number">19</span>:
+    <span class="function">print</span>(<span class="string">"You're a teenager"</span>)
 
-# OR example  
-if day == "Saturday" or day == "Sunday":
-    print("It's the weekend!")
+<span class="comment"># OR example</span>
+<span class="keyword">if</span> day == <span class="string">"Saturday"</span> <span class="keyword">or</span> day == <span class="string">"Sunday"</span>:
+    <span class="function">print</span>(<span class="string">"It's the weekend!"</span>)
 
-# NOT example
-if not is_raining:
-    print("No umbrella needed")
+<span class="comment"># NOT example</span>
+<span class="keyword">if</span> <span class="keyword">not</span> is_raining:
+    <span class="function">print</span>(<span class="string">"No umbrella needed"</span>)</code></pre>
             </div>
         </div>
     </div>
@@ -504,26 +471,26 @@ if not is_raining:
         <div class="highlight">
             <h3>❌ Don't do this:</h3>
             <div class="code-block">
-if age = 18:           # Use == not = for comparison
-    print("Adult")
+<pre><code><span class="keyword">if</span> age = <span class="number">18</span>:           <span class="comment"># Use == not = for comparison</span>
+    <span class="function">print</span>(<span class="string">"Adult"</span>)
     
-if age >= 18:
-print("Adult")         # Missing indentation
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+<span class="function">print</span>(<span class="string">"Adult"</span>)         <span class="comment"># Missing indentation</span>
 
-if 15 < age < 20       # Missing colon
-    print("Teen")
+<span class="keyword">if</span> <span class="number">15</span> < age < <span class="number">20</span>       <span class="comment"># Missing colon</span>
+    <span class="function">print</span>(<span class="string">"Teen"</span>)</code></pre>
             </div>
             
             <h3>✅ Do this instead:</h3>
             <div class="code-block">
-if age == 18:          # == for comparison
-    print("Adult")
+<pre><code><span class="keyword">if</span> age == <span class="number">18</span>:          <span class="comment"># == for comparison</span>
+    <span class="function">print</span>(<span class="string">"Adult"</span>)
     
-if age >= 18:
-    print("Adult")     # Proper indentation
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="function">print</span>(<span class="string">"Adult"</span>)     <span class="comment"># Proper indentation</span>
 
-if 15 < age < 20:      # Don't forget the colon
-    print("Teen")
+<span class="keyword">if</span> <span class="number">15</span> < age < <span class="number">20</span>:      <span class="comment"># Don't forget the colon</span>
+    <span class="function">print</span>(<span class="string">"Teen"</span>)</code></pre>
             </div>
         </div>
     </div>

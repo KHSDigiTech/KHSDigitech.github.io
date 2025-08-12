@@ -76,25 +76,29 @@
             margin: 1rem 0;
         }
 
-        .practice-section {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
+        .exercises {
+            background: #d4edda;
             padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .practice-section h3 {
-            color: #0c4a6e;
-            margin-top: 0;
-        }
-
-        .practice-task {
-            background: white;
-            padding: 1rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 3px solid #0ea5e9;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         .back-link {
@@ -278,58 +282,21 @@ C:\Users\Documents
         </div>
     </div>
 
-    <div class="practice-section">
-        <h3>Practice Tasks</h3>
-        <p>Complete these 10 tasks to practice using print statements:</p>
-
-        <div class="practice-task">
-            <h4>Task 1: Basic Greeting</h4>
-            <p>Write a print statement that displays: <code>Hello, my name is [your name]</code></p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 2: Your Information</h4>
-            <p>Print your age as a number (without quotes) on a separate line.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 3: School Subject</h4>
-            <p>Print: <code>My favorite subject is Digital Technology</code></p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 4: Multiple Items</h4>
-            <p>Print your first name and last name in one print statement, separated by a space.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 5: Numbers and Text</h4>
-            <p>Print: <code>There are 365 days in a year</code> using both text and a number in the same print statement.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 6: Empty Line</h4>
-            <p>Print "First line", then an empty line, then "Last line" (use 3 print statements).</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 7: Quotes Inside Text</h4>
-            <p>Print: <code>The teacher said, "Good work!"</code></p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 8: New Lines</h4>
-            <p>Print "Line 1", "Line 2", and "Line 3" each on separate lines, but use only ONE print statement with \n.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 9: Tab Spacing</h4>
-            <p>Print: <code>Name:	John	Age:	16</code> using \t for the spacing.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 10: Creative Output</h4>
-            <p>Create a simple "business card" for yourself using print statements. Include your name, school year, and favorite hobby. Make it look neat using spaces, tabs, or new lines.</p>
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Basic Greeting:</strong> Write a print statement that displays: Hello, my name is [your name]</li>
+                <li><strong>Your Information:</strong> Print your age as a number (without quotes) on a separate line.</li>
+                <li><strong>School Subject:</strong> Print: My favorite subject is Digital Technology</li>
+                <li><strong>Multiple Items:</strong> Print your first name and last name in one print statement, separated by a space.</li>
+                <li><strong>Numbers and Text:</strong> Print: There are 365 days in a year using both text and a number in the same print statement.</li>
+                <li><strong>Empty Line:</strong> Print "First line", then an empty line, then "Last line" (use 3 print statements).</li>
+                <li><strong>Quotes Inside Text:</strong> Print: The teacher said, "Good work!"</li>
+                <li><strong>New Lines:</strong> Print "Line 1", "Line 2", and "Line 3" each on separate lines, but use only ONE print statement with \n.</li>
+                <li><strong>Tab Spacing:</strong> Print: Name: John Age: 16 using \t for the spacing.</li>
+                <li><strong>Creative Output:</strong> Create a simple "business card" for yourself using print statements. Include your name, school year, and favorite hobby. Make it look neat using spaces, tabs, or new lines.</li>
+            </ul>
         </div>
     </div>
 
@@ -338,18 +305,18 @@ C:\Users\Documents
         <div class="highlight">
             <h3>❌ Don't do this:</h3>
             <div class="code-block">
-Print("Hello")      # Capital P - Python is case sensitive
-print(Hello)        # Missing quotes around text
-print "Hello"       # Missing parentheses
-print('Hello")      # Mismatched quotes
+<pre><code><span class="function">Print</span>(<span class="string">"Hello"</span>)      <span class="comment"># Capital P - Python is case sensitive</span>
+<span class="function">print</span>(Hello)        <span class="comment"># Missing quotes around text</span>
+<span class="function">print</span> <span class="string">"Hello"</span>       <span class="comment"># Missing parentheses</span>
+<span class="function">print</span>(<span class="string">'Hello"</span>)      <span class="comment"># Mismatched quotes</span></code></pre>
             </div>
             
             <h3>✅ Do this instead:</h3>
             <div class="code-block">
-print("Hello")      # Correct!
-print("Hello")      # Text needs quotes
-print("Hello")      # Parentheses required
-print("Hello")      # Matching quotes
+<pre><code><span class="function">print</span>(<span class="string">"Hello"</span>)      <span class="comment"># Correct!</span>
+<span class="function">print</span>(<span class="string">"Hello"</span>)      <span class="comment"># Text needs quotes</span>
+<span class="function">print</span>(<span class="string">"Hello"</span>)      <span class="comment"># Parentheses required</span>
+<span class="function">print</span>(<span class="string">"Hello"</span>)      <span class="comment"># Matching quotes</span></code></pre>
             </div>
         </div>
     </div>

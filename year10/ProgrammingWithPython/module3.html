@@ -90,25 +90,29 @@
             margin: 1rem 0;
         }
 
-        .practice-section {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
+        .exercises {
+            background: #d4edda;
             padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .practice-section h3 {
-            color: #0c4a6e;
-            margin-top: 0;
-        }
-
-        .practice-task {
-            background: white;
-            padding: 1rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 3px solid #0ea5e9;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         .back-link {
@@ -223,8 +227,8 @@
         <p>Here's the simplest way to get input from a user:</p>
         
         <div class="code-block">
-name = input("What is your name? ")
-print("Hello,", name)
+<pre><code><span class="function">name</span> = <span class="function">input</span>(<span class="string">"What is your name? "</span>)
+<span class="function">print</span>(<span class="string">"Hello,"</span>, name)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -266,12 +270,12 @@ Hello, Sarah
         
         <h3>Example 1: Getting and Using Text Input</h3>
         <div class="code-block">
-first_name = input("Enter your first name: ")
-last_name = input("Enter your last name: ")
-favorite_color = input("What's your favorite color? ")
+<pre><code>first_name = <span class="function">input</span>(<span class="string">"Enter your first name: "</span>)
+last_name = <span class="function">input</span>(<span class="string">"Enter your last name: "</span>)
+favorite_color = <span class="function">input</span>(<span class="string">"What's your favorite color? "</span>)
 
-print("Hi", first_name, last_name)
-print("I like", favorite_color, "too!")
+<span class="function">print</span>(<span class="string">"Hi"</span>, first_name, last_name)
+<span class="function">print</span>(<span class="string">"I like"</span>, favorite_color, <span class="string">"too!"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -284,10 +288,10 @@ I like blue too!
 
         <h3>Example 2: The Problem with Number Input (Without Conversion)</h3>
         <div class="code-block">
-# This WON'T work as expected!
-age = input("How old are you? ")
-next_year = age + 1  # This will cause an error!
-print("Next year you'll be", next_year)
+<pre><code><span class="comment"># This WON'T work as expected!</span>
+age = <span class="function">input</span>(<span class="string">"How old are you? "</span>)
+next_year = age + <span class="number">1</span>  <span class="comment"># This will cause an error!</span>
+<span class="function">print</span>(<span class="string">"Next year you'll be"</span>, next_year)</code></pre>
         </div>
         
         <div class="output-block">
@@ -296,13 +300,13 @@ TypeError: can only concatenate str (not "int") to str
 
         <h3>Example 3: Correct Way - Converting Input to Numbers</h3>
         <div class="code-block">
-# Convert string input to integer
-age_text = input("How old are you? ")
-age = int(age_text)
-next_year = age + 1
+<pre><code><span class="comment"># Convert string input to integer</span>
+age_text = <span class="function">input</span>(<span class="string">"How old are you? "</span>)
+age = <span class="function">int</span>(age_text)
+next_year = age + <span class="number">1</span>
 
-print("You are", age, "years old")
-print("Next year you'll be", next_year)
+<span class="function">print</span>(<span class="string">"You are"</span>, age, <span class="string">"years old"</span>)
+<span class="function">print</span>(<span class="string">"Next year you'll be"</span>, next_year)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -313,16 +317,16 @@ Next year you'll be 17
 
         <h3>Example 4: Shorthand - Converting Input Directly</h3>
         <div class="code-block">
-# You can convert input directly in one line
-age = int(input("How old are you? "))
-height = float(input("How tall are you in meters? "))
+<pre><code><span class="comment"># You can convert input directly in one line</span>
+age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"How old are you? "</span>))
+height = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"How tall are you in meters? "</span>))
 
-print("Age:", age)
-print("Height:", height, "meters")
+<span class="function">print</span>(<span class="string">"Age:"</span>, age)
+<span class="function">print</span>(<span class="string">"Height:"</span>, height, <span class="string">"meters"</span>)
 
-# Calculate something
-age_in_months = age * 12
-print("You are approximately", age_in_months, "months old")
+<span class="comment"># Calculate something</span>
+age_in_months = age * <span class="number">12</span>
+<span class="function">print</span>(<span class="string">"You are approximately"</span>, age_in_months, <span class="string">"months old"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -335,22 +339,22 @@ You are approximately 180 months old
 
         <h3>Example 5: Simple Calculator</h3>
         <div class="code-block">
-print("Simple Calculator")
-print("================")
+<pre><code><span class="function">print</span>(<span class="string">"Simple Calculator"</span>)
+<span class="function">print</span>(<span class="string">"================="</span>)
 
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
+num1 = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Enter first number: "</span>))
+num2 = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Enter second number: "</span>))
 
 sum_result = num1 + num2
 difference = num1 - num2
 product = num1 * num2
 quotient = num1 / num2
 
-print("\nResults:")
-print("Sum:", sum_result)
-print("Difference:", difference)
-print("Product:", product)
-print("Quotient:", quotient)
+<span class="function">print</span>(<span class="string">"\nResults:"</span>)
+<span class="function">print</span>(<span class="string">"Sum:"</span>, sum_result)
+<span class="function">print</span>(<span class="string">"Difference:"</span>, difference)
+<span class="function">print</span>(<span class="string">"Product:"</span>, product)
+<span class="function">print</span>(<span class="string">"Quotient:"</span>, quotient)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -368,19 +372,19 @@ Quotient: 3.90625
 
         <h3>Example 6: Converting Numbers to Strings</h3>
         <div class="code-block">
-age = 16
-score = 95.5
+<pre><code>age = <span class="number">16</span>
+score = <span class="number">95.5</span>
 
-# Convert numbers to strings for concatenation
-message = "I am " + str(age) + " years old"
-score_text = "My test score was " + str(score) + "%"
+<span class="comment"># Convert numbers to strings for concatenation</span>
+message = <span class="string">"I am "</span> + <span class="function">str</span>(age) + <span class="string">" years old"</span>
+score_text = <span class="string">"My test score was "</span> + <span class="function">str</span>(score) + <span class="string">"%"</span>
 
-print(message)
-print(score_text)
+<span class="function">print</span>(message)
+<span class="function">print</span>(score_text)
 
-# Alternative using print() with commas (easier!)
-print("I am", age, "years old")
-print("My test score was", score, "%")
+<span class="comment"># Alternative using print() with commas (easier!)</span>
+<span class="function">print</span>(<span class="string">"I am"</span>, age, <span class="string">"years old"</span>)
+<span class="function">print</span>(<span class="string">"My test score was"</span>, score, <span class="string">"%"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -391,58 +395,21 @@ My test score was 95.5 %
         </div>
     </div>
 
-    <div class="practice-section">
-        <h3>Practice Tasks</h3>
-        <p>Complete these 10 tasks to practice input and type conversion:</p>
-
-        <div class="practice-task">
-            <h4>Task 1: Personal Greeting</h4>
-            <p>Ask for the user's name and age. Print a personalized greeting like "Hello [name], you are [age] years old!"</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 2: Favorite Number Math</h4>
-            <p>Ask the user for their favorite number. Convert it to an integer, then print the number multiplied by 2, and the number squared.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 3: Rectangle Calculator</h4>
-            <p>Ask the user for a rectangle's length and width (as floats). Calculate and display the area and perimeter.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 4: Temperature Converter</h4>
-            <p>Ask for a temperature in Celsius. Convert it to Fahrenheit using the formula: F = C * 9/5 + 32. Display both temperatures.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 5: Age Calculator</h4>
-            <p>Ask for the user's birth year. Calculate their current age (assume current year is 2024) and display it.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 6: Simple Shopping</h4>
-            <p>Ask for the price of an item and the quantity. Calculate the total cost and display it.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 7: Circle Calculator</h4>
-            <p>Ask for a circle's radius. Calculate the area (π × r²) and circumference (2 × π × r). Use 3.14159 for π.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 8: Time Converter</h4>
-            <p>Ask for a number of minutes. Convert and display the equivalent in hours and minutes (e.g., 90 minutes = 1 hour and 30 minutes).</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 9: BMI Calculator</h4>
-            <p>Ask for height in meters and weight in kg. Calculate BMI using: BMI = weight / (height²). Display the result.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 10: Student Report Card</h4>
-            <p>Ask for the student's name and three test scores. Calculate the average score and create a formatted report showing the student's name, all three scores, and their average.</p>
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Personal Greeting:</strong> Ask for the user's name and age. Print a personalized greeting like "Hello [name], you are [age] years old!"</li>
+                <li><strong>Favorite Number Math:</strong> Ask the user for their favorite number. Convert it to an integer, then print the number multiplied by 2, and the number squared.</li>
+                <li><strong>Rectangle Calculator:</strong> Ask the user for a rectangle's length and width (as floats). Calculate and display the area and perimeter.</li>
+                <li><strong>Temperature Converter:</strong> Ask for a temperature in Celsius. Convert it to Fahrenheit using the formula: F = C * 9/5 + 32. Display both temperatures.</li>
+                <li><strong>Age Calculator:</strong> Ask for the user's birth year. Calculate their current age (assume current year is 2024) and display it.</li>
+                <li><strong>Simple Shopping:</strong> Ask for the price of an item and the quantity. Calculate the total cost and display it.</li>
+                <li><strong>Circle Calculator:</strong> Ask for a circle's radius. Calculate the area (π × r²) and circumference (2 × π × r). Use 3.14159 for π.</li>
+                <li><strong>Time Converter:</strong> Ask for a number of minutes. Convert and display the equivalent in hours and minutes (e.g., 90 minutes = 1 hour and 30 minutes).</li>
+                <li><strong>BMI Calculator:</strong> Ask for height in meters and weight in kg. Calculate BMI using: BMI = weight / (height²). Display the result.</li>
+                <li><strong>Student Report Card:</strong> Ask for the student's name and three test scores. Calculate the average score and create a formatted report showing the student's name, all three scores, and their average.</li>
+            </ul>
         </div>
     </div>
 
@@ -451,24 +418,24 @@ My test score was 95.5 %
         <div class="highlight">
             <h3>❌ Don't do this:</h3>
             <div class="code-block">
-age = input("Age? ")
-next_year = age + 1        # Error: can't add int to string
+<pre><code>age = <span class="function">input</span>(<span class="string">"Age? "</span>)
+next_year = age + <span class="number">1</span>        <span class="comment"># Error: can't add int to string</span>
 
-number = int("hello")      # Error: "hello" isn't a number
+number = <span class="function">int</span>(<span class="string">"hello"</span>)      <span class="comment"># Error: "hello" isn't a number</span>
 
-float("3.14.15")          # Error: invalid decimal format
+<span class="function">float</span>(<span class="string">"3.14.15"</span>)          <span class="comment"># Error: invalid decimal format</span></code></pre>
             </div>
             
             <h3>✅ Do this instead:</h3>
             <div class="code-block">
-age = int(input("Age? "))  # Convert to int first
-next_year = age + 1        # Now this works!
+<pre><code>age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Age? "</span>))  <span class="comment"># Convert to int first</span>
+next_year = age + <span class="number">1</span>        <span class="comment"># Now this works!</span>
 
-# Make sure input can be converted
-number = int("25")         # This works fine
+<span class="comment"># Make sure input can be converted</span>
+number = <span class="function">int</span>(<span class="string">"25"</span>)         <span class="comment"># This works fine</span>
 
-# Use proper decimal format
-number = float("3.14")     # This works fine
+<span class="comment"># Use proper decimal format</span>
+number = <span class="function">float</span>(<span class="string">"3.14"</span>)     <span class="comment"># This works fine</span></code></pre>
             </div>
         </div>
     </div>

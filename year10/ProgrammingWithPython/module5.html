@@ -90,25 +90,29 @@
             margin: 1rem 0;
         }
 
-        .practice-section {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
+        .exercises {
+            background: #d4edda;
             padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .practice-section h3 {
-            color: #0c4a6e;
-            margin-top: 0;
-        }
-
-        .practice-task {
-            background: white;
-            padding: 1rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 3px solid #0ea5e9;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         .back-link {
@@ -242,18 +246,18 @@
             <div class="loop-card">
                 <h4>Without Loops (Bad!)</h4>
                 <div class="code-block">
-print("Hello")
-print("Hello")
-print("Hello")
-print("Hello")
-print("Hello")
+<pre><code><span class="function">print</span>(<span class="string">"Hello"</span>)
+<span class="function">print</span>(<span class="string">"Hello"</span>)
+<span class="function">print</span>(<span class="string">"Hello"</span>)
+<span class="function">print</span>(<span class="string">"Hello"</span>)
+<span class="function">print</span>(<span class="string">"Hello"</span>)</code></pre>
                 </div>
             </div>
             <div class="loop-card">
                 <h4>With For Loop (Good!)</h4>
                 <div class="code-block">
-for i in range(5):
-    print("Hello")
+<pre><code><span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>):
+    <span class="function">print</span>(<span class="string">"Hello"</span>)</code></pre>
                 </div>
             </div>
         </div>
@@ -278,11 +282,11 @@ for i in range(5):
         
         <h3>Example 1: Basic For Loop</h3>
         <div class="code-block">
-print("Counting to 5:")
-for i in range(1, 6):
-    print("Number:", i)
+<pre><code><span class="function">print</span>(<span class="string">"Counting to 5:"</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">6</span>):
+    <span class="function">print</span>(<span class="string">"Number:"</span>, i)
 
-print("Done counting!")
+<span class="function">print</span>(<span class="string">"Done counting!"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -297,12 +301,12 @@ Done counting!
 
         <h3>Example 2: Multiplication Table</h3>
         <div class="code-block">
-number = int(input("Which multiplication table? "))
+<pre><code>number = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Which multiplication table? "</span>))
 
-print(f"Multiplication table for {number}:")
-for i in range(1, 11):
+<span class="function">print</span>(<span class="string">f"Multiplication table for {number}:"</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">11</span>):
     result = number * i
-    print(f"{number} x {i} = {result}")
+    <span class="function">print</span>(<span class="string">f"{number} x {i} = {result}"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -322,14 +326,14 @@ Multiplication table for 7:
 
         <h3>Example 3: Accumulating (Adding Up) Numbers</h3>
         <div class="code-block">
-total = 0
-print("Adding numbers from 1 to 10:")
+<pre><code>total = <span class="number">0</span>
+<span class="function">print</span>(<span class="string">"Adding numbers from 1 to 10:"</span>)
 
-for number in range(1, 11):
+<span class="keyword">for</span> number <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">11</span>):
     total = total + number
-    print(f"Added {number}, total is now {total}")
+    <span class="function">print</span>(<span class="string">f"Added {number}, total is now {total}"</span>)
 
-print(f"Final total: {total}")
+<span class="function">print</span>(<span class="string">f"Final total: {total}"</span>)</code></pre>
         </div>
         
         <div class="output-block">
@@ -349,20 +353,20 @@ Final total: 55
 
         <h3>Example 4: While Loops</h3>
         <div class="code-block">
-password = ""
-attempts = 0
+<pre><code>password = <span class="string">""</span>
+attempts = <span class="number">0</span>
 
-while password != "secret" and attempts < 3:
-    password = input("Enter password: ")
-    attempts = attempts + 1
+<span class="keyword">while</span> password != <span class="string">"secret"</span> <span class="keyword">and</span> attempts < <span class="number">3</span>:
+    password = <span class="function">input</span>(<span class="string">"Enter password: "</span>)
+    attempts = attempts + <span class="number">1</span>
     
-    if password == "secret":
-        print("Access granted!")
-    else:
-        print(f"Wrong password. {3 - attempts} attempts remaining.")
+    <span class="keyword">if</span> password == <span class="string">"secret"</span>:
+        <span class="function">print</span>(<span class="string">"Access granted!"</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">f"Wrong password. {3 - attempts} attempts remaining."</span>)
 
-if password != "secret":
-    print("Too many failed attempts. Access denied.")
+<span class="keyword">if</span> password != <span class="string">"secret"</span>:
+    <span class="function">print</span>(<span class="string">"Too many failed attempts. Access denied."</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -376,33 +380,33 @@ Access granted!
 
         <h3>Example 5: Number Guessing Game with Loops</h3>
         <div class="code-block">
-import random
+<pre><code><span class="keyword">import</span> random
 
-secret_number = random.randint(1, 20)
-guesses = 0
-max_guesses = 5
+secret_number = random.randint(<span class="number">1</span>, <span class="number">20</span>)
+guesses = <span class="number">0</span>
+max_guesses = <span class="number">5</span>
 
-print("I'm thinking of a number between 1 and 20.")
-print(f"You have {max_guesses} guesses!")
+<span class="function">print</span>(<span class="string">"I'm thinking of a number between 1 and 20."</span>)
+<span class="function">print</span>(<span class="string">f"You have {max_guesses} guesses!"</span>)
 
-while guesses < max_guesses:
-    guess = int(input("Enter your guess: "))
-    guesses = guesses + 1
+<span class="keyword">while</span> guesses < max_guesses:
+    guess = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your guess: "</span>))
+    guesses = guesses + <span class="number">1</span>
     
-    if guess == secret_number:
-        print(f"Congratulations! You guessed it in {guesses} tries!")
-        break  # Exit the loop early
-    elif guess < secret_number:
-        print("Too low!")
-    else:
-        print("Too high!")
+    <span class="keyword">if</span> guess == secret_number:
+        <span class="function">print</span>(<span class="string">f"Congratulations! You guessed it in {guesses} tries!"</span>)
+        <span class="keyword">break</span>  <span class="comment"># Exit the loop early</span>
+    <span class="keyword">elif</span> guess < secret_number:
+        <span class="function">print</span>(<span class="string">"Too low!"</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">"Too high!"</span>)
     
     remaining = max_guesses - guesses
-    if remaining > 0:
-        print(f"You have {remaining} guesses left.")
+    <span class="keyword">if</span> remaining > <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">f"You have {remaining} guesses left."</span>)
 
-if guess != secret_number:
-    print(f"Sorry! The number was {secret_number}")
+<span class="keyword">if</span> guess != secret_number:
+    <span class="function">print</span>(<span class="string">f"Sorry! The number was {secret_number}"</span>)</code></pre>
         </div>
         
         <div class="input-output-block">
@@ -420,14 +424,14 @@ Congratulations! You guessed it in 3 tries!
 
         <h3>Example 6: Nested Loops (Loop Inside Loop)</h3>
         <div class="code-block">
-print("Multiplication table from 1 to 5:")
-print()
+<pre><code><span class="function">print</span>(<span class="string">"Multiplication table from 1 to 5:"</span>)
+<span class="function">print</span>()
 
-for row in range(1, 6):
-    for col in range(1, 6):
+<span class="keyword">for</span> row <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">6</span>):
+    <span class="keyword">for</span> col <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">6</span>):
         result = row * col
-        print(f"{result:3}", end=" ")  # :3 means 3 spaces wide
-    print()  # New line after each row
+        <span class="function">print</span>(<span class="string">f"{result:3}"</span>, end=<span class="string">" "</span>)  <span class="comment"># :3 means 3 spaces wide</span>
+    <span class="function">print</span>()  <span class="comment"># New line after each row</span></code></pre>
         </div>
         
         <div class="output-block">
@@ -441,63 +445,21 @@ Multiplication table from 1 to 5:
         </div>
     </div>
 
-    <div class="practice-section">
-        <h3>Practice Tasks</h3>
-        <p>Complete these 10 tasks to practice loops:</p>
-
-        <div class="practice-task">
-            <h4>Task 1: Count to 20</h4>
-            <p>Use a for loop to print numbers from 1 to 20, each on a separate line.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 2: Even Numbers</h4>
-            <p>Print all even numbers from 2 to 30 using a for loop.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 3: Countdown</h4>
-            <p>Create a countdown from 10 to 1, then print "Blast off!"</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 4: Sum Calculator</h4>
-            <p>Ask the user for a number, then calculate the sum of all numbers from 1 to that number using a for loop.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 5: Times Table Quiz</h4>
-            <p>Create a times table quiz that asks 5 multiplication questions (like "What is 7 x 3?") and keeps track of the score.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 6: Password Validator</h4>
-            <p>Keep asking for a password until the user enters "python123". Count how many attempts it took.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 7: Number Pattern</h4>
-            <p>Print this pattern using nested loops:<br>
-            1<br>
-            1 2<br>
-            1 2 3<br>
-            1 2 3 4<br>
-            1 2 3 4 5</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 8: Average Calculator</h4>
-            <p>Ask the user how many numbers they want to average, then use a loop to get those numbers and calculate the average.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 9: Simple ATM</h4>
-            <p>Create a simple ATM program with a starting balance of $100. Use a while loop to keep showing a menu (check balance, deposit, withdraw, quit) until the user chooses to quit.</p>
-        </div>
-
-        <div class="practice-task">
-            <h4>Task 10: Rock Paper Scissors Tournament</h4>
-            <p>Create a Rock Paper Scissors game that plays 5 rounds against the computer, keeps track of wins/losses, and announces the overall winner at the end.</p>
+    <div class="content-section">
+        <h2>Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Count to 20:</strong> Use a for loop to print numbers from 1 to 20, each on a separate line.</li>
+                <li><strong>Even Numbers:</strong> Print all even numbers from 2 to 30 using a for loop.</li>
+                <li><strong>Countdown:</strong> Create a countdown from 10 to 1, then print "Blast off!"</li>
+                <li><strong>Sum Calculator:</strong> Ask the user for a number, then calculate the sum of all numbers from 1 to that number using a for loop.</li>
+                <li><strong>Times Table Quiz:</strong> Create a times table quiz that asks 5 multiplication questions (like "What is 7 x 3?") and keeps track of the score.</li>
+                <li><strong>Password Validator:</strong> Keep asking for a password until the user enters "python123". Count how many attempts it took.</li>
+                <li><strong>Number Pattern:</strong> Print this pattern using nested loops: 1, 1 2, 1 2 3, 1 2 3 4, 1 2 3 4 5</li>
+                <li><strong>Average Calculator:</strong> Ask the user how many numbers they want to average, then use a loop to get those numbers and calculate the average.</li>
+                <li><strong>Simple ATM:</strong> Create a simple ATM program with a starting balance of $100. Use a while loop to keep showing a menu (check balance, deposit, withdraw, quit) until the user chooses to quit.</li>
+                <li><strong>Rock Paper Scissors Tournament:</strong> Create a Rock Paper Scissors game that plays 5 rounds against the computer, keeps track of wins/losses, and announces the overall winner at the end.</li>
+            </ul>
         </div>
     </div>
 
@@ -512,9 +474,9 @@ Multiplication table from 1 to 5:
                     <li>You're counting or iterating through numbers</li>
                 </ul>
                 <div class="code-block">
-# Print numbers 1 to 10
-for i in range(1, 11):
-    print(i)
+<pre><code><span class="comment"># Print numbers 1 to 10</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">11</span>):
+    <span class="function">print</span>(i)</code></pre>
                 </div>
             </div>
             <div class="loop-card">
@@ -525,10 +487,10 @@ for i in range(1, 11):
                     <li>The condition might never become true</li>
                 </ul>
                 <div class="code-block">
-# Keep asking until correct
-answer = ""
-while answer != "yes":
-    answer = input("Ready? ")
+<pre><code><span class="comment"># Keep asking until correct</span>
+answer = <span class="string">""</span>
+<span class="keyword">while</span> answer != <span class="string">"yes"</span>:
+    answer = <span class="function">input</span>(<span class="string">"Ready? "</span>)</code></pre>
                 </div>
             </div>
         </div>
@@ -540,34 +502,34 @@ while answer != "yes":
             <h4>⚠️ Infinite Loops</h4>
             <p>Make sure your while loop condition will eventually become false, or your program will run forever!</p>
             <div class="code-block">
-# BAD - This will run forever!
-count = 1
-while count < 10:
-    print(count)
-    # Forgot to increment count!
+<pre><code><span class="comment"># BAD - This will run forever!</span>
+count = <span class="number">1</span>
+<span class="keyword">while</span> count < <span class="number">10</span>:
+    <span class="function">print</span>(count)
+    <span class="comment"># Forgot to increment count!</span>
 
-# GOOD - This will stop
-count = 1
-while count < 10:
-    print(count)
-    count = count + 1  # Don't forget this!
+<span class="comment"># GOOD - This will stop</span>
+count = <span class="number">1</span>
+<span class="keyword">while</span> count < <span class="number">10</span>:
+    <span class="function">print</span>(count)
+    count = count + <span class="number">1</span>  <span class="comment"># Don't forget this!</span></code></pre>
             </div>
         </div>
         
         <div class="highlight">
             <h3>❌ Don't do this:</h3>
             <div class="code-block">
-for i in range(5)
-    print(i)           # Missing colon
+<pre><code><span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>)
+    <span class="function">print</span>(i)           <span class="comment"># Missing colon</span>
 
-for i in range(5):
-print(i)               # Missing indentation
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>):
+<span class="function">print</span>(i)               <span class="comment"># Missing indentation</span></code></pre>
             </div>
             
             <h3>✅ Do this instead:</h3>
             <div class="code-block">
-for i in range(5):     # Don't forget the colon
-    print(i)           # Proper indentation
+<pre><code><span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>):     <span class="comment"># Don't forget the colon</span>
+    <span class="function">print</span>(i)           <span class="comment"># Proper indentation</span></code></pre>
             </div>
         </div>
     </div>
