@@ -66,6 +66,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #10b981;
+            position: relative;
+        }
+
+        .output-block::before {
+            content: 'Expected Output:';
+            display: block;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-output-block {
@@ -76,6 +87,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #fbbf24;
+            position: relative;
+        }
+
+        .input-output-block::before {
+            content: 'Interactive Example:';
+            display: block;
+            color: #fbbf24;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-text {
@@ -290,12 +312,12 @@
         </div>
         
         <div class="output-block">
-Counting to 5:
-Number: 1
-Number: 2
-Number: 3
-Number: 4
-Number: 5
+Counting to 5:<br>
+Number: 1<br>
+Number: 2<br>
+Number: 3<br>
+Number: 4<br>
+Number: 5<br>
 Done counting!
         </div>
 
@@ -310,17 +332,17 @@ Done counting!
         </div>
         
         <div class="input-output-block">
-Which multiplication table? <span class="input-text">7</span>
-Multiplication table for 7:
-7 x 1 = 7
-7 x 2 = 14
-7 x 3 = 21
-7 x 4 = 28
-7 x 5 = 35
-7 x 6 = 42
-7 x 7 = 49
-7 x 8 = 56
-7 x 9 = 63
+Which multiplication table? <span class="input-text">7</span><br>
+Multiplication table for 7:<br>
+7 x 1 = 7<br>
+7 x 2 = 14<br>
+7 x 3 = 21<br>
+7 x 4 = 28<br>
+7 x 5 = 35<br>
+7 x 6 = 42<br>
+7 x 7 = 49<br>
+7 x 8 = 56<br>
+7 x 9 = 63<br>
 7 x 10 = 70
         </div>
 
@@ -337,17 +359,17 @@ Multiplication table for 7:
         </div>
         
         <div class="output-block">
-Adding numbers from 1 to 10:
-Added 1, total is now 1
-Added 2, total is now 3
-Added 3, total is now 6
-Added 4, total is now 10
-Added 5, total is now 15
-Added 6, total is now 21
-Added 7, total is now 28
-Added 8, total is now 36
-Added 9, total is now 45
-Added 10, total is now 55
+Adding numbers from 1 to 10:<br>
+Added 1, total is now 1<br>
+Added 2, total is now 3<br>
+Added 3, total is now 6<br>
+Added 4, total is now 10<br>
+Added 5, total is now 15<br>
+Added 6, total is now 21<br>
+Added 7, total is now 28<br>
+Added 8, total is now 36<br>
+Added 9, total is now 45<br>
+Added 10, total is now 55<br>
 Final total: 55
         </div>
 
@@ -370,11 +392,11 @@ attempts = <span class="number">0</span>
         </div>
         
         <div class="input-output-block">
-Enter password: <span class="input-text">wrong</span>
-Wrong password. 2 attempts remaining.
-Enter password: <span class="input-text">incorrect</span>
-Wrong password. 1 attempts remaining.
-Enter password: <span class="input-text">secret</span>
+Enter password: <span class="input-text">wrong</span><br>
+Wrong password. 2 attempts remaining.<br>
+Enter password: <span class="input-text">incorrect</span><br>
+Wrong password. 1 attempts remaining.<br>
+Enter password: <span class="input-text">secret</span><br>
 Access granted!
         </div>
 
@@ -410,15 +432,15 @@ max_guesses = <span class="number">5</span>
         </div>
         
         <div class="input-output-block">
-I'm thinking of a number between 1 and 20.
-You have 5 guesses!
-Enter your guess: <span class="input-text">10</span>
-Too low!
-You have 4 guesses left.
-Enter your guess: <span class="input-text">15</span>
-Too high!
-You have 3 guesses left.
-Enter your guess: <span class="input-text">12</span>
+I'm thinking of a number between 1 and 20.<br>
+You have 5 guesses!<br>
+Enter your guess: <span class="input-text">10</span><br>
+Too low!<br>
+You have 4 guesses left.<br>
+Enter your guess: <span class="input-text">15</span><br>
+Too high!<br>
+You have 3 guesses left.<br>
+Enter your guess: <span class="input-text">12</span><br>
 Congratulations! You guessed it in 3 tries!
         </div>
 
@@ -435,13 +457,13 @@ Congratulations! You guessed it in 3 tries!
         </div>
         
         <div class="output-block">
-Multiplication table from 1 to 5:
-
-  1   2   3   4   5 
-  2   4   6   8  10 
-  3   6   9  12  15 
-  4   8  12  16  20 
-  5  10  15  20  25 
+Multiplication table from 1 to 5:<br>
+<br>
+&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;5&nbsp;<br>
+&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;10&nbsp;<br>
+&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;12&nbsp;&nbsp;15&nbsp;<br>
+&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;12&nbsp;&nbsp;16&nbsp;&nbsp;20&nbsp;<br>
+&nbsp;&nbsp;5&nbsp;&nbsp;10&nbsp;&nbsp;15&nbsp;&nbsp;20&nbsp;&nbsp;25&nbsp;
         </div>
     </div>
 

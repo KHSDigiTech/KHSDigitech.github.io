@@ -66,6 +66,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #10b981;
+            position: relative;
+        }
+
+        .output-block::before {
+            content: 'Expected Output:';
+            display: block;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         .highlight {
@@ -260,7 +271,7 @@ school = <span class="string">"King's High School"</span>
         </div>
         
         <div class="output-block">
-Student name: John Smith
+Student name: John Smith<br>
 School: King's High School
         </div>
 
@@ -280,9 +291,9 @@ next_year_age = age + <span class="number">1</span>
         </div>
         
         <div class="output-block">
-Age: 16 years old
-Height: 1.75 meters
-Weight: 65.5 kg
+Age: 16 years old<br>
+Height: 1.75 meters<br>
+Weight: 65.5 kg<br>
 Next year I will be 17
         </div>
 
@@ -298,8 +309,8 @@ likes_pizza = <span class="keyword">True</span>
         </div>
         
         <div class="output-block">
-Is a teenager: True
-Has driver's license: False
+Is a teenager: True<br>
+Has driver's license: False<br>
 Likes pizza: True
         </div>
 
@@ -319,9 +330,9 @@ score = <span class="number">100</span>
         </div>
         
         <div class="output-block">
-Starting score: 0
-After first level: 10
-After bonus: 15
+Starting score: 0<br>
+After first level: 10<br>
+After bonus: 15<br>
 Final score: 100
         </div>
 
@@ -341,8 +352,8 @@ perimeter = <span class="number">2</span> * (length + width)
         </div>
         
         <div class="output-block">
-Rectangle area: 50
-Box volume: 150
+Rectangle area: 50<br>
+Box volume: 150<br>
 Rectangle perimeter: 30
         </div>
 

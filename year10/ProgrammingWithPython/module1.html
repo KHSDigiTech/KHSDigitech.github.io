@@ -66,6 +66,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #10b981;
+            position: relative;
+        }
+
+        .output-block::before {
+            content: 'Expected Output:';
+            display: block;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         .highlight {
@@ -214,9 +225,9 @@ Hello, World!
         </div>
         
         <div class="output-block">
-Welcome to Python programming!
-Single quotes work too
-You can print numbers: 42
+Welcome to Python programming!<br>
+Single quotes work too<br>
+You can print numbers: 42<br>
 And even decimals: 3.14
         </div>
 
@@ -228,8 +239,8 @@ And even decimals: 3.14
         </div>
         
         <div class="output-block">
-25
-3.14159
+25<br>
+3.14159<br>
 -10
         </div>
 
@@ -246,8 +257,8 @@ And even decimals: 3.14
         </div>
         
         <div class="output-block">
-My name is Sarah
-I am 15 years old
+My name is Sarah<br>
+I am 15 years old<br>
 Pi equals approximately 3.14
         </div>
 
@@ -260,11 +271,11 @@ Pi equals approximately 3.14
         </div>
         
         <div class="output-block">
-First line
-
-Third line
-Line 1
-Line 2
+First line<br>
+<br>
+Third line<br>
+Line 1<br>
+Line 2<br>
 Line 3
         </div>
 
@@ -276,8 +287,8 @@ Line 3
         </div>
         
         <div class="output-block">
-She said, "Hello there!"
-Tab	spaced	text
+She said, "Hello there!"<br>
+Tab&nbsp;&nbsp;&nbsp;&nbsp;spaced&nbsp;&nbsp;&nbsp;&nbsp;text<br>
 C:\Users\Documents
         </div>
     </div>

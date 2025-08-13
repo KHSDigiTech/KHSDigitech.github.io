@@ -66,6 +66,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #10b981;
+            position: relative;
+        }
+
+        .output-block::before {
+            content: 'Expected Output:';
+            display: block;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-output-block {
@@ -76,6 +87,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #fbbf24;
+            position: relative;
+        }
+
+        .input-output-block::before {
+            content: 'Interactive Example:';
+            display: block;
+            color: #fbbf24;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-text {
@@ -309,9 +331,9 @@
         </div>
         
         <div class="input-output-block">
-How old are you? <span class="input-text">20</span>
-You are an adult!
-You can vote!
+How old are you? <span class="input-text">20</span><br>
+You are an adult!<br>
+You can vote!<br>
 This line always runs
         </div>
 
@@ -328,8 +350,8 @@ This line always runs
         </div>
         
         <div class="input-output-block">
-Enter the password: <span class="input-text">wrongpassword</span>
-Access denied!
+Enter the password: <span class="input-text">wrongpassword</span><br>
+Access denied!<br>
 Incorrect password.
         </div>
 
@@ -355,8 +377,8 @@ Incorrect password.
         </div>
         
         <div class="input-output-block">
-Enter your test score: <span class="input-text">85</span>
-Grade: B
+Enter your test score: <span class="input-text">85</span><br>
+Grade: B<br>
 Good job!
         </div>
 
@@ -375,7 +397,7 @@ Good job!
         </div>
         
         <div class="input-output-block">
-What's your favorite color? <span class="input-text">Blue</span>
+What's your favorite color? <span class="input-text">Blue</span><br>
 Blue is the color of the ocean!
         </div>
 
@@ -395,8 +417,8 @@ has_license = <span class="function">input</span>(<span class="string">"Do you h
         </div>
         
         <div class="input-output-block">
-Enter your age: <span class="input-text">17</span>
-Do you have a driver's license? (yes/no): <span class="input-text">yes</span>
+Enter your age: <span class="input-text">17</span><br>
+Do you have a driver's license? (yes/no): <span class="input-text">yes</span><br>
 You can drive!
         </div>
 
@@ -417,7 +439,7 @@ guess = <span class="function">int</span>(<span class="function">input</span>(<s
         </div>
         
         <div class="input-output-block">
-Guess a number between 1 and 10: <span class="input-text">7</span>
+Guess a number between 1 and 10: <span class="input-text">7</span><br>
 Too high! The number was 4
         </div>
     </div>

@@ -66,6 +66,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #10b981;
+            position: relative;
+        }
+
+        .output-block::before {
+            content: 'Expected Output:';
+            display: block;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-output-block {
@@ -76,6 +87,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #fbbf24;
+            position: relative;
+        }
+
+        .input-output-block::before {
+            content: 'Interactive Example:';
+            display: block;
+            color: #fbbf24;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-text {
@@ -246,8 +268,8 @@ empty_list = []
         </div>
         
         <div class="output-block">
-Fruits: ['apple', 'banana', 'orange', 'grape']
-Numbers: [1, 2, 3, 4, 5]
+Fruits: ['apple', 'banana', 'orange', 'grape']<br>
+Numbers: [1, 2, 3, 4, 5]<br>
 Mixed: ['hello', 42, 3.14, True]
         </div>
 
@@ -264,9 +286,9 @@ Mixed: ['hello', 42, 3.14, True]
         </div>
         
         <div class="output-block">
-First color: red
-Second color: green
-Last color: yellow
+First color: red<br>
+Second color: green<br>
+Last color: yellow<br>
 Number of colors: 4
         </div>
     </div>
@@ -327,9 +349,9 @@ shopping_list.remove(<span class="string">"bread"</span>)
         </div>
         
         <div class="output-block">
-Shopping list: ['milk', 'bread', 'eggs']
-After adding butter: ['milk', 'butter', 'bread', 'eggs']
-After removing bread: ['milk', 'butter', 'eggs']
+Shopping list: ['milk', 'bread', 'eggs']<br>
+After adding butter: ['milk', 'butter', 'bread', 'eggs']<br>
+After removing bread: ['milk', 'butter', 'eggs']<br>
 Don't forget the milk!
         </div>
 
@@ -359,14 +381,14 @@ highest = scores[<span class="number">0</span>]
         </div>
         
         <div class="output-block">
-All test scores:
-Score: 85
-Score: 92
-Score: 78
-Score: 96
-Score: 88
-
-Average score: 87.8
+All test scores:<br>
+Score: 85<br>
+Score: 92<br>
+Score: 78<br>
+Score: 96<br>
+Score: 88<br>
+<br>
+Average score: 87.8<br>
 Highest score: 96
         </div>
 
@@ -387,15 +409,15 @@ Highest score: 96
         </div>
         
         <div class="input-output-block">
-Enter student names (type 'done' to finish):
-Enter name: <span class="input-text">Alice</span>
-Enter name: <span class="input-text">Bob</span>
-Enter name: <span class="input-text">Charlie</span>
-Enter name: <span class="input-text">done</span>
-
-Class roster (3 students):
-1. Alice
-2. Bob
+Enter student names (type 'done' to finish):<br>
+Enter name: <span class="input-text">Alice</span><br>
+Enter name: <span class="input-text">Bob</span><br>
+Enter name: <span class="input-text">Charlie</span><br>
+Enter name: <span class="input-text">done</span><br>
+<br>
+Class roster (3 students):<br>
+1. Alice<br>
+2. Bob<br>
 3. Charlie
         </div>
     </div>
@@ -450,10 +472,10 @@ Class roster (3 students):
         </div>
         
         <div class="output-block">
-Hello! Welcome to Python programming!
-Hope you're having a great day!
-Let's learn about functions!
-Hello! Welcome to Python programming!
+Hello! Welcome to Python programming!<br>
+Hope you're having a great day!<br>
+Let's learn about functions!<br>
+Hello! Welcome to Python programming!<br>
 Hope you're having a great day!
         </div>
 
@@ -472,12 +494,12 @@ Hope you're having a great day!
         </div>
         
         <div class="output-block">
-Hello Alice!
-I see you are 16 years old.
-Nice to meet you!
-
-Hello Bob!
-I see you are 15 years old.
+Hello Alice!<br>
+I see you are 16 years old.<br>
+Nice to meet you!<br>
+<br>
+Hello Bob!<br>
+I see you are 15 years old.<br>
 Nice to meet you!
         </div>
 
@@ -506,8 +528,8 @@ circle_area = <span class="function">calculate_circle_area</span>(<span class="n
         </div>
         
         <div class="output-block">
-Rectangle area: 50
-Circle area: 153.93791
+Rectangle area: 50<br>
+Circle area: 153.93791<br>
 Total area: 76.27433
         </div>
 
@@ -549,8 +571,8 @@ high = <span class="function">find_highest</span>(test_scores)
         </div>
         
         <div class="output-block">
-Test scores: [85, 92, 78, 96, 88, 91]
-Average: 88.33333333333333
+Test scores: [85, 92, 78, 96, 88, 91]<br>
+Average: 88.33333333333333<br>
 Highest: 96
         </div>
 
@@ -598,16 +620,16 @@ avg = <span class="function">calculate_class_average</span>(class_list)
         </div>
         
         <div class="output-block">
-Added Alice with grade 92
-Added Bob with grade 87
-Added Charlie with grade 95
-
-All Students:
---------------------
-1. Alice: 92
-2. Bob: 87
-3. Charlie: 95
-
+Added Alice with grade 92<br>
+Added Bob with grade 87<br>
+Added Charlie with grade 95<br>
+<br>
+All Students:<br>
+--------------------<br>
+1. Alice: 92<br>
+2. Bob: 87<br>
+3. Charlie: 95<br>
+<br>
 Class average: 91.3
         </div>
     </div>

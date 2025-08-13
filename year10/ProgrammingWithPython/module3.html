@@ -66,6 +66,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #10b981;
+            position: relative;
+        }
+
+        .output-block::before {
+            content: 'Expected Output:';
+            display: block;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-output-block {
@@ -76,6 +87,17 @@
             font-family: 'Courier New', monospace;
             margin: 1rem 0;
             border-left: 4px solid #fbbf24;
+            position: relative;
+        }
+
+        .input-output-block::before {
+            content: 'Interactive Example:';
+            display: block;
+            color: #fbbf24;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .input-text {
@@ -232,7 +254,7 @@
         </div>
         
         <div class="input-output-block">
-What is your name? <span class="input-text">Sarah</span>
+What is your name? <span class="input-text">Sarah</span><br>
 Hello, Sarah
         </div>
         
@@ -279,10 +301,10 @@ favorite_color = <span class="function">input</span>(<span class="string">"What'
         </div>
         
         <div class="input-output-block">
-Enter your first name: <span class="input-text">Alex</span>
-Enter your last name: <span class="input-text">Johnson</span>
-What's your favorite color? <span class="input-text">blue</span>
-Hi Alex Johnson
+Enter your first name: <span class="input-text">Alex</span><br>
+Enter your last name: <span class="input-text">Johnson</span><br>
+What's your favorite color? <span class="input-text">blue</span><br>
+Hi Alex Johnson<br>
 I like blue too!
         </div>
 
@@ -310,8 +332,8 @@ next_year = age + <span class="number">1</span>
         </div>
         
         <div class="input-output-block">
-How old are you? <span class="input-text">16</span>
-You are 16 years old
+How old are you? <span class="input-text">16</span><br>
+You are 16 years old<br>
 Next year you'll be 17
         </div>
 
@@ -330,10 +352,10 @@ age_in_months = age * <span class="number">12</span>
         </div>
         
         <div class="input-output-block">
-How old are you? <span class="input-text">15</span>
-How tall are you in meters? <span class="input-text">1.68</span>
-Age: 15
-Height: 1.68 meters
+How old are you? <span class="input-text">15</span><br>
+How tall are you in meters? <span class="input-text">1.68</span><br>
+Age: 15<br>
+Height: 1.68 meters<br>
 You are approximately 180 months old
         </div>
 
@@ -358,15 +380,15 @@ quotient = num1 / num2
         </div>
         
         <div class="input-output-block">
-Simple Calculator
-================
-Enter first number: <span class="input-text">12.5</span>
-Enter second number: <span class="input-text">3.2</span>
-
-Results:
-Sum: 15.7
-Difference: 9.3
-Product: 40.0
+Simple Calculator<br>
+================<br>
+Enter first number: <span class="input-text">12.5</span><br>
+Enter second number: <span class="input-text">3.2</span><br>
+<br>
+Results:<br>
+Sum: 15.7<br>
+Difference: 9.3<br>
+Product: 40.0<br>
 Quotient: 3.90625
         </div>
 
@@ -388,9 +410,9 @@ score_text = <span class="string">"My test score was "</span> + <span class="fun
         </div>
         
         <div class="output-block">
-I am 16 years old
-My test score was 95.5%
-I am 16 years old
+I am 16 years old<br>
+My test score was 95.5%<br>
+I am 16 years old<br>
 My test score was 95.5 %
         </div>
     </div>
