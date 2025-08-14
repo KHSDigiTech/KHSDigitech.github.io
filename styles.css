@@ -255,6 +255,7 @@ main {
 .year-row:nth-child(2) .year-card:nth-child(1) { animation-delay: 0.6s; }
 .year-row:nth-child(2) .year-card:nth-child(2) { animation-delay: 0.8s; }
 .year-row:nth-child(2) .year-card:nth-child(3) { animation-delay: 1s; }
+.year-row:nth-child(3) .year-card:nth-child(1) { animation-delay: 1.2s; }
 
 .year-card::before {
   content: '';
@@ -443,9 +444,67 @@ footer {
   .container { padding: 0 15px; }
 }
 
+/* Scholarship Card Styles */
+.scholarship-row {
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.scholarship-card {
+  max-width: 600px;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.1) 0%, 
+    rgba(255, 165, 0, 0.1) 50%, 
+    rgba(255, 140, 0, 0.1) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(255, 215, 0, 0.1);
+}
+
+.scholarship-card::before {
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+}
+
+.scholarship-card:hover {
+  box-shadow: 0 30px 60px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.scholarship-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: scholarshipGlow 2s ease-in-out infinite alternate;
+}
+
+.scholarship-link {
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  color: #2d2d2d;
+  font-weight: 600;
+  border: none;
+}
+
+.scholarship-link::before {
+  background: linear-gradient(135deg, #ffb347 0%, #ffd700 100%);
+}
+
+.scholarship-link:hover {
+  color: #2d2d2d;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+}
+
+@keyframes scholarshipGlow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+  }
+}
+
 @media (max-width: 480px) {
   .logo { font-size: 1.8rem; }
   .hero-title { font-size: 1.8rem; }
   .year-card { padding: 1.5rem; }
   .year-number { font-size: 2rem; }
+  .scholarship-icon { font-size: 3rem; }
 }
