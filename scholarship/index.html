@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Technologies Scholarship Study Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .module-card h3 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #7c3aed;
+            padding-bottom: 0.5rem;
+        }
+        
+        .module-link {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        
+        .module-link:hover {
+            background: #4c1d95;
+        }
+        
+        .intro-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight {
+            background: #ede9fe;
+            padding: 1rem;
+            border-left: 4px solid #7c3aed;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .assessment-card {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .assessment-card h3 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 1rem 0;
+        }
+
+        .performance-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid #7c3aed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .performance-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #4c1d95);
+        }
+
+        .performance-item h4 {
+            color: #4c1d95;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .performance-item ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .performance-item li {
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .question-type {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #7c3aed;
+        }
+
+        .question-type h5 {
+            color: #4c1d95;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        .question-type ul {
+            margin: 0 0 0.8rem 0;
+            padding-left: 1.2rem;
+        }
+
+        .question-type p {
+            margin: 0;
+            font-style: italic;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .resource-section {
+            background: #fefce8;
+            border: 2px solid #eab308;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resource-section h4 {
+            color: #a16207;
+            margin-top: 0;
+        }
+
+        .resource-section a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .resource-section a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .performance-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .question-types {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Back to KHS DigiTech</a>
+
+    <div class="header">
+        <h1>Digital Technologies Scholarship</h1>
+        <p>NZ Scholarship 93604 Study Guide & Resources</p>
+    </div>
+
+    <div class="intro-section">
+        <h2>Examination Overview</h2>
+        <p>The Digital Technologies Scholarship (93604) is a 3-hour digital examination that tests advanced computational thinking and programming skills. Success requires demonstrating exceptional problem-solving ability, efficient coding practices, and critical reflection on algorithmic solutions.</p>
+        
+        <div class="highlight">
+            <h3>Assessment Format:</h3>
+            <ul>
+                <li><strong>THREE complex questions</strong> requiring algorithmic comprehension, development, and critical reflection</li>
+                <li><strong>3-hour digital examination</strong> via NZQA-provided online portal</li>
+                <li><strong>Programming languages:</strong> Pseudocode, Python 3, C, C++, C#, Java, JavaScript</li>
+                <li><strong>Total marks:</strong> 24 (Outstanding Scholarship: 22-24)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Study Materials & Resources</h2>
+    <div class="module-grid">
+        <div class="module-card">
+            <h3>📋 Performance Standard</h3>
+            <p>Official assessment criteria and performance descriptors. Essential reading for understanding what scholarship-level work looks like.</p>
+            <p><strong>Focus:</strong> Assessment criteria, performance levels, explanatory notes</p>
+            <a href="Scholarship-Digital-Technologies-Performance-Standard.pdf" class="module-link" target="_blank">View Performance Standard</a>
+        </div>
+
+        <div class="module-card">
+            <h3>📊 Assessment Schedule 2025</h3>
+            <p>Detailed marking guidelines showing how Outstanding Scholarship, Scholarship, and lower levels are differentiated.</p>
+            <p><strong>Focus:</strong> Marking criteria, cut scores, performance descriptors</p>
+            <a href="Scholarship-Digital-Technologies-93604-assessment-schedule-2025.pdf" class="module-link" target="_blank">View Assessment Schedule</a>
+        </div>
+
+        <div class="module-card">
+            <h3>📝 Assessment Specifications</h3>
+            <p>Technical details about examination format, equipment requirements, and question structure.</p>
+            <p><strong>Focus:</strong> Exam format, technical requirements, question types</p>
+            <a href="93604-spc-2025.pdf" class="module-link" target="_blank">View Specifications</a>
+        </div>
+
+        <div class="module-card">
+            <h3>🎯 Sample Assessment 2025</h3>
+            <p>Complete practice examination with three typical scholarship questions. Essential for understanding question format and expectations.</p>
+            <p><strong>Focus:</strong> Practice questions, format familiarization, time management</p>
+            <a href="Scholarship-Digital-technologies-93604-sample-assessment-2025 (1).pdf" class="module-link" target="_blank">View Sample Assessment</a>
+        </div>
+
+        <div class="module-card">
+            <h3>🧠 Potential Exam Problems</h3>
+            <p>Comprehensive analysis of 10 potential scholarship problems with detailed solutions, time complexity analysis, and optimization strategies.</p>
+            <p><strong>Focus:</strong> Algorithm analysis, complexity theory, optimization techniques</p>
+            <a href="exam-problems.html" class="module-link">View Problem Analysis</a>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <h2>Common Question Types & Problem Categories</h2>
+        <p>Based on sample assessments and past exams, scholarship questions typically fall into these core categories:</p>
+        
+        <div class="question-types">
+            <div class="question-type">
+                <h5>1. Algorithm Analysis & String Processing</h5>
+                <ul>
+                    <li>Trace through pseudocode to determine output</li>
+                    <li>Identify algorithm purpose and functionality</li>
+                    <li>Create comprehensive test cases (including edge cases)</li>
+                    <li>Optimize algorithms for time/space efficiency</li>
+                    <li>String manipulation and pattern matching</li>
+                    <li>Recursive vs iterative trade-offs</li>
+                </ul>
+                <p><strong>Common Problems:</strong> Palindrome checking, anagram detection, substring search, longest common subsequence</p>
+            </div>
+
+            <div class="question-type">
+                <h5>2. Graph Theory & Pathfinding</h5>
+                <ul>
+                    <li>Shortest path algorithms (BFS, Dijkstra, A*)</li>
+                    <li>Grid-based movement with obstacles</li>
+                    <li>State space exploration and search strategies</li>
+                    <li>Tree traversal and graph connectivity</li>
+                    <li>Cycle detection and topological sorting</li>
+                    <li>Network flow and matching problems</li>
+                </ul>
+                <p><strong>Common Problems:</strong> Knight's tour, maze solving, minimum spanning tree, traveling salesman variations</p>
+            </div>
+
+            <div class="question-type">
+                <h5>3. Dynamic Programming & Optimization</h5>
+                <ul>
+                    <li>Overlapping subproblems identification</li>
+                    <li>Optimal substructure analysis</li>
+                    <li>Bottom-up vs top-down approaches</li>
+                    <li>Space optimization techniques</li>
+                    <li>Multi-dimensional DP problems</li>
+                    <li>Game theory and minimax algorithms</li>
+                </ul>
+                <p><strong>Common Problems:</strong> Knapsack variants, longest increasing subsequence, edit distance, matrix chain multiplication</p>
+            </div>
+
+            <div class="question-type">
+                <h5>4. Data Structures & Advanced Algorithms</h5>
+                <ul>
+                    <li>Custom data structure design</li>
+                    <li>Heap and priority queue applications</li>
+                    <li>Binary search and its variations</li>
+                    <li>Sorting algorithm modifications</li>
+                    <li>Range query problems</li>
+                    <li>Bit manipulation techniques</li>
+                </ul>
+                <p><strong>Common Problems:</strong> Range sum queries, sliding window maximum, merge intervals, binary search on answer</p>
+            </div>
+
+            <div class="question-type">
+                <h5>5. Mathematical & Number Theory</h5>
+                <ul>
+                    <li>Prime number algorithms and sieves</li>
+                    <li>Modular arithmetic and fast exponentiation</li>
+                    <li>Combinatorics and probability</li>
+                    <li>GCD/LCM and Euclidean algorithm</li>
+                    <li>Matrix operations and transformations</li>
+                    <li>Geometric algorithms</li>
+                </ul>
+                <p><strong>Common Problems:</strong> Prime factorization, counting problems, coordinate geometry, number theory puzzles</p>
+            </div>
+
+            <div class="question-type">
+                <h5>6. Greedy Algorithms & Heuristics</h5>
+                <ul>
+                    <li>Greedy choice property identification</li>
+                    <li>Activity selection and scheduling</li>
+                    <li>Huffman coding and compression</li>
+                    <li>Minimum spanning tree algorithms</li>
+                    <li>Interval problems and sorting strategies</li>
+                    <li>Approximation algorithms</li>
+                </ul>
+                <p><strong>Common Problems:</strong> Job scheduling, fractional knapsack, meeting rooms, gas station problem</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <h2>Performance Expectations</h2>
+        <div class="performance-grid">
+            <div class="performance-item">
+                <h4>Outstanding Scholarship (Score 8)</h4>
+                <ul>
+                    <li>Exceptional problem-solving with informed, concise solutions</li>
+                    <li>Optimal algorithmic design with scalability considerations</li>
+                    <li>Elegant, efficient, highly readable code</li>
+                    <li>All three questions completed using most efficient solutions</li>
+                    <li>Strong independent justification with critical reflection</li>
+                </ul>
+            </div>
+
+            <div class="performance-item">
+                <h4>Scholarship (Score 6-7)</h4>
+                <ul>
+                    <li>Strong problem-solving skills with well-thought-out approach</li>
+                    <li>Well-structured algorithms beyond simple solutions</li>
+                    <li>Well-written code with no logic errors</li>
+                    <li>Code functions correctly with minor inefficiencies</li>
+                    <li>Sound justification for algorithm choices</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="resource-section">
+        <h3>Comprehensive Study Strategy</h3>
+        
+        <h4>Phase 1: Foundation Building (3+ months before exam)</h4>
+        <ul>
+            <li><strong>Master core algorithms:</strong> Implement from scratch without references</li>
+            <li><strong>Understand complexities:</strong> Analyze time/space for every algorithm you learn</li>
+            <li><strong>Practice daily:</strong> Solve 2-3 problems daily from different categories</li>
+            <li><strong>Build pattern recognition:</strong> Identify common problem types and solution strategies</li>
+        </ul>
+
+        <h4>Phase 2: Advanced Problem Solving (1-3 months before)</h4>
+        <ul>
+            <li><strong>Tackle harder problems:</strong> Focus on medium-hard difficulty levels</li>
+            <li><strong>Time management:</strong> Practice 3-hour sessions with 3 complex problems</li>
+            <li><strong>Multiple solutions:</strong> Find 2-3 different approaches for each problem</li>
+            <li><strong>Critical analysis:</strong> Write detailed explanations for your algorithmic choices</li>
+        </ul>
+
+        <h4>Phase 3: Exam Preparation (2-4 weeks before)</h4>
+        <ul>
+            <li><strong>Simulate exam conditions:</strong> Digital format, no IDE, manual debugging</li>
+            <li><strong>Review fundamentals:</strong> Ensure perfect recall of basic algorithms</li>
+            <li><strong>Practice clean coding:</strong> Write production-quality code without testing</li>
+            <li><strong>Edge case mastery:</strong> Systematically consider all boundary conditions</li>
+        </ul>
+
+        <h4>Programming Excellence Standards:</h4>
+        <ul>
+            <li><strong>Code clarity:</strong> Self-documenting variable names, logical structure</li>
+            <li><strong>Efficiency first:</strong> Always consider if there's a more optimal approach</li>
+            <li><strong>Robust solutions:</strong> Handle all edge cases gracefully</li>
+            <li><strong>Mental debugging:</strong> Trace through code execution manually</li>
+            <li><strong>Modular design:</strong> Break complex problems into helper functions</li>
+        </ul>
+
+        <h4>Critical Reflection Framework:</h4>
+        <ul>
+            <li><strong>Solution justification:</strong> Why is this approach optimal for the given constraints?</li>
+            <li><strong>Alternative analysis:</strong> What other methods exist and why are they inferior?</li>
+            <li><strong>Scalability assessment:</strong> How does performance change with input size?</li>
+            <li><strong>Real-world applications:</strong> Where would this algorithm be used in practice?</li>
+            <li><strong>Optimization opportunities:</strong> Could this be improved further with different techniques?</li>
+        </ul>
+    </div>
+
+    <div class="intro-section">
+        <h2>Online Learning Resources</h2>
+        
+        <div class="highlight">
+            <h4>Practice Platforms:</h4>
+            <ul>
+                <li><strong><a href="https://leetcode.com/" target="_blank">LeetCode</a></strong> - Algorithmic problem practice</li>
+                <li><strong><a href="https://www.hackerrank.com/" target="_blank">HackerRank</a></strong> - Programming challenges</li>
+                <li><strong><a href="https://codeforces.com/" target="_blank">Codeforces</a></strong> - Competitive programming</li>
+                <li><strong><a href="https://www.khanacademy.org/computing/computer-science/algorithms" target="_blank">Khan Academy</a></strong> - Algorithm fundamentals</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <h4>Video Resources:</h4>
+            <ul>
+                <li><strong><a href="https://www.youtube.com/c/3blue1brown" target="_blank">3Blue1Brown</a></strong> - Algorithm visualization</li>
+                <li><strong><a href="https://www.youtube.com/c/AbdulBari" target="_blank">Abdul Bari</a></strong> - Algorithm design and analysis</li>
+                <li><strong><a href="https://www.youtube.com/c/WilliamFiset-videos" target="_blank">WilliamFiset</a></strong> - Data structures and algorithms</li>
+                <li><strong><a href="https://www.youtube.com/c/TusharRoy-coding-made-simple" target="_blank">Tushar Roy</a></strong> - Coding interview preparation</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <h4>Essential Topics to Master:</h4>
+            <ul>
+                <li><strong>Core Algorithms:</strong> Sorting (merge, quick, heap), Binary search variations, Graph traversal (BFS/DFS)</li>
+                <li><strong>Advanced Graph Theory:</strong> Shortest paths (Dijkstra, Floyd-Warshall), MST (Kruskal, Prim), Topological sort</li>
+                <li><strong>Dynamic Programming:</strong> 1D/2D DP, Memoization, Space optimization, Classical problems (LCS, LIS, Knapsack)</li>
+                <li><strong>Data Structures:</strong> Advanced trees (BST, AVL, Segment tree), Heaps, Hash tables, Union-Find</li>
+                <li><strong>Mathematical Foundations:</strong> Number theory, Combinatorics, Probability, Modular arithmetic</li>
+                <li><strong>Complexity Analysis:</strong> Big O/Ω/Θ notation, Amortized analysis, Space-time trade-offs</li>
+                <li><strong>Problem-Solving Patterns:</strong> Two pointers, Sliding window, Divide & conquer, Greedy strategies</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="assessment-card">
+        <h3>Preparation Timeline</h3>
+        <p><strong>3 Months Before:</strong> Review fundamental algorithms, practice daily programming problems, study official documents</p>
+        <p><strong>1 Month Before:</strong> Complete timed 3-hour practice sessions, focus on critical reflection skills, practice manual debugging</p>
+        <p><strong>1 Week Before:</strong> Review common algorithmic patterns, practice clean code writing, prepare for digital exam format</p>
+    </div>
+</body>
+</html>
