@@ -66,6 +66,30 @@
         .function { color: #63b3ed; }     /* Function names */
         .number { color: #fbb6ce; }       /* Numbers */
 
+        .example-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-box {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #e6ffe6;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
         .exercises {
             background: #d4edda;
             padding: 1.5rem;
@@ -79,9 +103,14 @@
         }
 
         .exercises li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             position: relative;
             padding-left: 2rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .exercises li:last-child {
+            border-bottom: none;
         }
 
         .exercises li::before {
@@ -89,6 +118,22 @@
             position: absolute;
             left: 0;
             font-size: 1.2rem;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 0.5rem;
         }
 
         .back-link {
@@ -117,63 +162,550 @@
 </head>
 <body>
     <div class="header">
-        <h1>Week 7: A Detailed Guide to Functions & Documentation</h1>
-        <p><strong>Goal:</strong> To organize code into reusable blocks and to document it clearly.</p>
+        <h1>Week 7: Functions & Code Organization</h1>
+        <p><strong>Goal:</strong> To master functions, parameters, return values, and professional code documentation. Learn to organize code into reusable, modular components that form the foundation of professional programming.</p>
     </div>
 
     <div class="content-section">
-        <h2>Key Concepts & Thorough Explanations</h2>
+        <h2>🎯 Learning Objectives</h2>
+        <p>By the end of this week, you will be able to:</p>
+        <ul>
+            <li>Create and call functions with <code>def</code> and understand their purpose</li>
+            <li>Use parameters to pass data into functions</li>
+            <li>Use <code>return</code> statements to get data back from functions</li>
+            <li>Understand the difference between printing and returning</li>
+            <li>Write professional docstrings for function documentation</li>
+            <li>Use comments effectively to explain complex code</li>
+            <li>Organize programs into logical, reusable functions</li>
+            <li>Create functions that work together to solve complex problems</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Key Concepts & Detailed Explanations</h2>
         
-        <h3>1. Functions (def and return)</h3>
-        <p>A function is a named, reusable block of code. Using <code>return</code> allows a function to send a value back to the code that called it.</p>
+        <h3>1. What Are Functions and Why Do We Need Them?</h3>
+        <p>Functions are like mini-programs within your main program. They allow you to break down complex problems into smaller, manageable pieces. Think of functions as specialized tools in a toolkit - each one has a specific job to do.</p>
 
-        <h3>2. Comments vs. Docstrings</h3>
-        <p>Good documentation is crucial for writing understandable code.</p>
-
-        <h4>Comments (#)</h4>
-        <p>Use comments to explain the <em>why</em> behind a specific, tricky line or section of code. They are for developers reading the code.</p>
-        <div class="code-block">
-<pre><code><span class="comment"># We add 1 to the index because users think in 1-based numbers</span>
-<span class="function">print</span>(<span class="string">f"Contact #{i+<span class="number">1</span>}: </span><span class="string">{contact['name']}</span><span class="string">"</span>)</code></pre>
+        <div class="example-box">
+            <h4>Real-World Analogy:</h4>
+            <p>Functions are like recipes in a cookbook. A recipe (function) has:</p>
+            <ul>
+                <li><strong>A name:</strong> "Chocolate Chip Cookies"</li>
+                <li><strong>Ingredients (parameters):</strong> flour, sugar, chocolate chips</li>
+                <li><strong>Instructions (function body):</strong> the steps to follow</li>
+                <li><strong>Result (return value):</strong> delicious cookies!</li>
+            </ul>
+            <p>You can use the same recipe multiple times with different ingredient amounts to make different quantities of cookies.</p>
         </div>
 
-        <h4>Docstrings ("""...""")</h4>
-        <p>A docstring is a special, multi-line string that is placed as the very first thing inside a function definition. It explains <em>what</em> the function does, what its parameters are, and what it returns. It is the professional standard for documentation.</p>
+        <h3>2. Creating Functions - The def Statement</h3>
+        <p>Functions are created using the <code>def</code> keyword, followed by the function name, parentheses, and a colon. The function body is indented.</p>
 
-        <h4>Syntax Breakdown:</h4>
         <div class="code-block">
-<pre><code><span class="keyword">def</span> <span class="function">calculate_area</span>(width, height):
-    <span class="string">"""Calculates the area of a rectangle.
+<pre><code><span class="comment"># Basic function structure</span>
+<span class="keyword">def</span> <span class="function">function_name</span>():
+    <span class="comment"># Function body goes here</span>
+    <span class="function">print</span>(<span class="string">"This function does something!"</span>)
 
+<span class="comment"># Calling (using) the function</span>
+<span class="function">function_name</span>()  <span class="comment"># This executes the function</span></code></pre>
+        </div>
+
+        <div class="step-by-step">
+            <h4>Function Definition Breakdown:</h4>
+            <ol>
+                <li><strong>def:</strong> Python keyword that starts a function definition</li>
+                <li><strong>function_name:</strong> A descriptive name for what the function does</li>
+                <li><strong>():</strong> Parentheses that will contain parameters (if any)</li>
+                <li><strong>:</strong> Colon indicates the start of the function body</li>
+                <li><strong>Indented code:</strong> The function body - what the function actually does</li>
+            </ol>
+        </div>
+
+        <h3>3. Parameters - Giving Functions Information</h3>
+        <p>Parameters allow you to pass information into functions, making them flexible and reusable. Think of parameters as variables that receive values when the function is called.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Function with parameters</span>
+<span class="keyword">def</span> <span class="function">greet_person</span>(name, age):
+    <span class="function">print</span>(<span class="string">f"Hello </span><span class="string">{name}</span><span class="string">! You are </span><span class="string">{age}</span><span class="string"> years old."</span>)
+
+<span class="comment"># Calling the function with arguments</span>
+<span class="function">greet_person</span>(<span class="string">"Alice"</span>, <span class="number">16</span>)  <span class="comment"># Output: Hello Alice! You are 16 years old.</span>
+<span class="function">greet_person</span>(<span class="string">"Bob"</span>, <span class="number">17</span>)    <span class="comment"># Output: Hello Bob! You are 17 years old.</span>
+
+<span class="comment"># Same function, different inputs = different outputs!</span></code></pre>
+        </div>
+
+        <div class="highlight">
+            <h4>Parameters vs Arguments:</h4>
+            <ul>
+                <li><strong>Parameters:</strong> The variables in the function definition (name, age)</li>
+                <li><strong>Arguments:</strong> The actual values passed when calling the function ("Alice", 16)</li>
+            </ul>
+        </div>
+
+        <h3>4. Return Values - Getting Information Back</h3>
+        <p>The <code>return</code> statement allows functions to send data back to the code that called them. This is crucial for creating functions that calculate values or process data.</p>
+
+        <div class="error-box">
+            <h4>❌ Common Mistake - Printing vs Returning:</h4>
+            <div class="code-block">
+<pre><code><span class="keyword">def</span> <span class="function">add_numbers_wrong</span>(a, b):
+    <span class="function">print</span>(a + b)  <span class="comment"># This prints but doesn't return</span>
+
+<span class="keyword">def</span> <span class="function">add_numbers_correct</span>(a, b):
+    <span class="keyword">return</span> a + b  <span class="comment"># This returns the result</span>
+
+<span class="comment"># Using them:</span>
+result1 = <span class="function">add_numbers_wrong</span>(<span class="number">5</span>, <span class="number">3</span>)    <span class="comment"># result1 is None (nothing returned)</span>
+result2 = <span class="function">add_numbers_correct</span>(<span class="number">5</span>, <span class="number">3</span>)  <span class="comment"># result2 is 8</span>
+
+<span class="function">print</span>(<span class="string">f"Result 1: </span><span class="string">{result1}</span><span class="string">"</span>)  <span class="comment"># Output: Result 1: None</span>
+<span class="function">print</span>(<span class="string">f"Result 2: </span><span class="string">{result2}</span><span class="string">"</span>)  <span class="comment"># Output: Result 2: 8</span></code></pre>
+            </div>
+            <p><strong>Key Point:</strong> Use <code>return</code> when you want to get a value back from a function to use elsewhere in your program.</p>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ When to Print vs Return:</h4>
+            <ul>
+                <li><strong>Use print():</strong> When you want to display information to the user</li>
+                <li><strong>Use return:</strong> When you want to pass a calculated value back to your program</li>
+                <li><strong>You can do both:</strong> Calculate a value, return it, AND print it elsewhere</li>
+            </ul>
+        </div>
+
+        <h3>5. Multiple Return Values and Early Returns</h3>
+        <p>Functions can return multiple values and can have multiple return statements for different conditions:</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Multiple return values</span>
+<span class="keyword">def</span> <span class="function">get_name_parts</span>(full_name):
+    parts = full_name.split()
+    first_name = parts[<span class="number">0</span>]
+    last_name = parts[-<span class="number">1</span>]
+    <span class="keyword">return</span> first_name, last_name  <span class="comment"># Returns a tuple</span>
+
+<span class="comment"># Using multiple return values</span>
+first, last = <span class="function">get_name_parts</span>(<span class="string">"Alice Johnson"</span>)
+<span class="function">print</span>(<span class="string">f"First: </span><span class="string">{first}</span><span class="string">, Last: </span><span class="string">{last}</span><span class="string">"</span>)
+
+<span class="comment"># Early returns for different conditions</span>
+<span class="keyword">def</span> <span class="function">check_grade</span>(score):
+    <span class="keyword">if</span> score >= <span class="number">90</span>:
+        <span class="keyword">return</span> <span class="string">"A"</span>
+    <span class="keyword">elif</span> score >= <span class="number">80</span>:
+        <span class="keyword">return</span> <span class="string">"B"</span>
+    <span class="keyword">elif</span> score >= <span class="number">70</span>:
+        <span class="keyword">return</span> <span class="string">"C"</span>
+    <span class="keyword">elif</span> score >= <span class="number">60</span>:
+        <span class="keyword">return</span> <span class="string">"D"</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> <span class="string">"F"</span></code></pre>
+        </div>
+
+        <h3>6. Function Scope - Local vs Global Variables</h3>
+        <p>Variables created inside functions are "local" - they only exist within that function. Variables created outside functions are "global" - they can be accessed anywhere.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Global variable</span>
+global_message = <span class="string">"I'm available everywhere"</span>
+
+<span class="keyword">def</span> <span class="function">demonstrate_scope</span>():
+    <span class="comment"># Local variable</span>
+    local_message = <span class="string">"I only exist inside this function"</span>
+    <span class="function">print</span>(global_message)  <span class="comment"># Can access global variables</span>
+    <span class="function">print</span>(local_message)   <span class="comment"># Can access local variables</span>
+
+<span class="function">demonstrate_scope</span>()
+<span class="function">print</span>(global_message)      <span class="comment"># This works</span>
+<span class="comment"># print(local_message)     # This would cause an error!</span></code></pre>
+        </div>
+
+        <div class="highlight">
+            <h4>Best Practice:</h4>
+            <p>Avoid using global variables inside functions. Instead, pass values as parameters and return results. This makes functions more predictable and easier to test.</p>
+        </div>
+
+        <h3>7. Professional Documentation - Comments vs Docstrings</h3>
+        <p>Good documentation makes your code readable and maintainable. There are two main types of documentation in Python:</p>
+
+        <h4>Comments (#) - Explain the "Why"</h4>
+        <p>Comments explain why you're doing something specific or clarify complex logic. They're for developers reading your code.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Calculate compound interest using the formula A = P(1 + r/n)^(nt)</span>
+amount = principal * ((<span class="number">1</span> + annual_rate / compounds_per_year) ** (compounds_per_year * years))
+
+<span class="comment"># Add 1 because users expect 1-based numbering, not 0-based</span>
+<span class="function">print</span>(<span class="string">f"Contact #{index + <span class="number">1</span>}: </span><span class="string">{name}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <h4>Docstrings ("""...""") - Explain the "What"</h4>
+        <p>Docstrings are the professional standard for documenting what a function does, its parameters, and what it returns. They go immediately after the function definition.</p>
+
+        <div class="code-block">
+<pre><code><span class="keyword">def</span> <span class="function">calculate_compound_interest</span>(principal, annual_rate, compounds_per_year, years):
+    <span class="string">"""Calculate compound interest on an investment.
+    
+    This function uses the compound interest formula: A = P(1 + r/n)^(nt)
+    where A is the final amount, P is principal, r is annual rate,
+    n is compounds per year, and t is time in years.
+    
     Args:
-        width (int): The width of the rectangle.
-        height (int): The height of the rectangle.
-
+        principal (float): The initial amount of money invested
+        annual_rate (float): The annual interest rate (as a decimal, e.g., 0.05 for 5%)
+        compounds_per_year (int): How many times interest is compounded per year
+        years (int): The number of years to invest
+        
     Returns:
-        int: The calculated area of the rectangle.
+        float: The final amount after compound interest is applied
+        
+    Example:
+        >>> calculate_compound_interest(1000, 0.05, 12, 5)
+        1283.36
     """</span>
-    <span class="keyword">return</span> width * height</code></pre>
+    amount = principal * ((<span class="number">1</span> + annual_rate / compounds_per_year) ** (compounds_per_year * years))
+    <span class="keyword">return</span> <span class="function">round</span>(amount, <span class="number">2</span>)</code></pre>
+        </div>
+
+        <div class="step-by-step">
+            <h4>Professional Docstring Format:</h4>
+            <ol>
+                <li><strong>Brief description:</strong> One line explaining what the function does</li>
+                <li><strong>Detailed description:</strong> More context if needed (optional)</li>
+                <li><strong>Args section:</strong> List each parameter with its type and description</li>
+                <li><strong>Returns section:</strong> Describe what the function returns</li>
+                <li><strong>Example section:</strong> Show how to use the function (optional but helpful)</li>
+            </ol>
+        </div>
+
+        <h3>8. Functions Working Together - Modular Programming</h3>
+        <p>The real power of functions comes when they work together to solve complex problems. Each function should have a single, clear responsibility.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Example: A modular calculator program</span>
+<span class="keyword">def</span> <span class="function">get_number</span>(prompt):
+    <span class="string">"""Get a valid number from the user with error handling."""</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">try</span>:
+            <span class="keyword">return</span> <span class="function">float</span>(<span class="function">input</span>(prompt))
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid number."</span>)
+
+<span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="string">"""Add two numbers and return the result."""</span>
+    <span class="keyword">return</span> a + b
+
+<span class="keyword">def</span> <span class="function">subtract</span>(a, b):
+    <span class="string">"""Subtract b from a and return the result."""</span>
+    <span class="keyword">return</span> a - b
+
+<span class="keyword">def</span> <span class="function">multiply</span>(a, b):
+    <span class="string">"""Multiply two numbers and return the result."""</span>
+    <span class="keyword">return</span> a * b
+
+<span class="keyword">def</span> <span class="function">divide</span>(a, b):
+    <span class="string">"""Divide a by b and return the result. Handles division by zero."""</span>
+    <span class="keyword">if</span> b == <span class="number">0</span>:
+        <span class="keyword">return</span> <span class="string">"Error: Cannot divide by zero"</span>
+    <span class="keyword">return</span> a / b
+
+<span class="keyword">def</span> <span class="function">show_menu</span>():
+    <span class="string">"""Display the calculator menu options."""</span>
+    <span class="function">print</span>(<span class="string">"\n=== Calculator ==="</span>)
+    <span class="function">print</span>(<span class="string">"1. Add"</span>)
+    <span class="function">print</span>(<span class="string">"2. Subtract"</span>)
+    <span class="function">print</span>(<span class="string">"3. Multiply"</span>)
+    <span class="function">print</span>(<span class="string">"4. Divide"</span>)
+    <span class="function">print</span>(<span class="string">"5. Exit"</span>)
+
+<span class="keyword">def</span> <span class="function">main</span>():
+    <span class="string">"""Main program loop for the calculator."""</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="function">show_menu</span>()
+        choice = <span class="function">input</span>(<span class="string">"Choose an option: "</span>)
+        
+        <span class="keyword">if</span> choice == <span class="string">"5"</span>:
+            <span class="function">print</span>(<span class="string">"Goodbye!"</span>)
+            <span class="keyword">break</span>
+        
+        <span class="keyword">elif</span> choice <span class="keyword">in</span> [<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>]:
+            num1 = <span class="function">get_number</span>(<span class="string">"Enter first number: "</span>)
+            num2 = <span class="function">get_number</span>(<span class="string">"Enter second number: "</span>)
+            
+            <span class="keyword">if</span> choice == <span class="string">"1"</span>:
+                result = <span class="function">add</span>(num1, num2)
+            <span class="keyword">elif</span> choice == <span class="string">"2"</span>:
+                result = <span class="function">subtract</span>(num1, num2)
+            <span class="keyword">elif</span> choice == <span class="string">"3"</span>:
+                result = <span class="function">multiply</span>(num1, num2)
+            <span class="keyword">elif</span> choice == <span class="string">"4"</span>:
+                result = <span class="function">divide</span>(num1, num2)
+            
+            <span class="function">print</span>(<span class="string">f"Result: </span><span class="string">{result}</span><span class="string">"</span>)
+        
+        <span class="keyword">else</span>:
+            <span class="function">print</span>(<span class="string">"Invalid choice. Please try again."</span>)
+
+<span class="comment"># Run the program</span>
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    <span class="function">main</span>()</code></pre>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Exercises</h2>
-        <div class="exercises">
+        <h2>💡 Complete Working Examples</h2>
+
+        <h3>Example 1: Temperature Converter Functions</h3>
+        <div class="code-block">
+<pre><code><span class="keyword">def</span> <span class="function">celsius_to_fahrenheit</span>(celsius):
+    <span class="string">"""Convert temperature from Celsius to Fahrenheit.
+    
+    Args:
+        celsius (float): Temperature in Celsius
+        
+    Returns:
+        float: Temperature in Fahrenheit
+    """</span>
+    <span class="keyword">return</span> (celsius * <span class="number">9</span>/<span class="number">5</span>) + <span class="number">32</span>
+
+<span class="keyword">def</span> <span class="function">fahrenheit_to_celsius</span>(fahrenheit):
+    <span class="string">"""Convert temperature from Fahrenheit to Celsius.
+    
+    Args:
+        fahrenheit (float): Temperature in Fahrenheit
+        
+    Returns:
+        float: Temperature in Celsius
+    """</span>
+    <span class="keyword">return</span> (fahrenheit - <span class="number">32</span>) * <span class="number">5</span>/<span class="number">9</span>
+
+<span class="keyword">def</span> <span class="function">get_temperature_input</span>():
+    <span class="string">"""Get a valid temperature from the user."""</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">try</span>:
+            temp = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Enter temperature: "</span>))
+            <span class="keyword">return</span> temp
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid number."</span>)
+
+<span class="comment"># Main program</span>
+<span class="function">print</span>(<span class="string">"Temperature Converter"</span>)
+temp = <span class="function">get_temperature_input</span>()
+choice = <span class="function">input</span>(<span class="string">"Convert from (C)elsius or (F)ahrenheit? "</span>).upper()
+
+<span class="keyword">if</span> choice == <span class="string">"C"</span>:
+    result = <span class="function">celsius_to_fahrenheit</span>(temp)
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{temp}</span><span class="string">°C = </span><span class="string">{result:<span class="number">.1</span>f}</span><span class="string">°F"</span>)
+<span class="keyword">elif</span> choice == <span class="string">"F"</span>:
+    result = <span class="function">fahrenheit_to_celsius</span>(temp)
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{temp}</span><span class="string">°F = </span><span class="string">{result:<span class="number">.1</span>f}</span><span class="string">°C"</span>)</code></pre>
+        </div>
+
+        <h3>Example 2: Grade Management System</h3>
+        <div class="code-block">
+<pre><code><span class="keyword">def</span> <span class="function">calculate_average</span>(grades):
+    <span class="string">"""Calculate the average of a list of grades.
+    
+    Args:
+        grades (list): List of numeric grades
+        
+    Returns:
+        float: Average grade, or 0 if list is empty
+    """</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> grades:  <span class="comment"># Empty list check</span>
+        <span class="keyword">return</span> <span class="number">0</span>
+    <span class="keyword">return</span> <span class="function">sum</span>(grades) / <span class="function">len</span>(grades)
+
+<span class="keyword">def</span> <span class="function">get_letter_grade</span>(percentage):
+    <span class="string">"""Convert percentage to letter grade.
+    
+    Args:
+        percentage (float): Grade as a percentage
+        
+    Returns:
+        str: Letter grade (A, B, C, D, or F)
+    """</span>
+    <span class="keyword">if</span> percentage >= <span class="number">90</span>:
+        <span class="keyword">return</span> <span class="string">"A"</span>
+    <span class="keyword">elif</span> percentage >= <span class="number">80</span>:
+        <span class="keyword">return</span> <span class="string">"B"</span>
+    <span class="keyword">elif</span> percentage >= <span class="number">70</span>:
+        <span class="keyword">return</span> <span class="string">"C"</span>
+    <span class="keyword">elif</span> percentage >= <span class="number">60</span>:
+        <span class="keyword">return</span> <span class="string">"D"</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> <span class="string">"F"</span>
+
+<span class="keyword">def</span> <span class="function">display_grade_report</span>(student_name, grades):
+    <span class="string">"""Display a formatted grade report for a student.
+    
+    Args:
+        student_name (str): Name of the student
+        grades (list): List of the student's grades
+    """</span>
+    average = <span class="function">calculate_average</span>(grades)
+    letter = <span class="function">get_letter_grade</span>(average)
+    
+    <span class="function">print</span>(<span class="string">f"\n=== Grade Report for </span><span class="string">{student_name}</span><span class="string"> ==="</span>)
+    <span class="function">print</span>(<span class="string">f"Individual grades: </span><span class="string">{grades}</span><span class="string">"</span>)
+    <span class="function">print</span>(<span class="string">f"Average: </span><span class="string">{average:<span class="number">.1</span>f}</span><span class="string">%"</span>)
+    <span class="function">print</span>(<span class="string">f"Letter grade: </span><span class="string">{letter}</span><span class="string">"</span>)
+
+<span class="comment"># Using the functions</span>
+student_grades = [<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">88</span>, <span class="number">95</span>]
+<span class="function">display_grade_report</span>(<span class="string">"Alice Johnson"</span>, student_grades)</code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚨 Common Function Mistakes and Best Practices</h2>
+
+        <div class="error-box">
+            <h4>❌ Mistake 1: Modifying Global Variables Inside Functions</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Bad practice - modifying global variables</span>
+total = <span class="number">0</span>
+
+<span class="keyword">def</span> <span class="function">add_to_total</span>(value):
+    <span class="keyword">global</span> total  <span class="comment"># Avoid this!</span>
+    total += value</code></pre>
+            </div>
+            <p><strong>Why it's bad:</strong> Makes functions unpredictable and hard to test.</p>
+            
+            <h4>✅ Better Approach:</h4>
+            <div class="code-block">
+<pre><code><span class="keyword">def</span> <span class="function">add_numbers</span>(current_total, value):
+    <span class="string">"""Add value to current total and return new total."""</span>
+    <span class="keyword">return</span> current_total + value
+
+<span class="comment"># Usage</span>
+total = <span class="number">0</span>
+total = <span class="function">add_numbers</span>(total, <span class="number">5</span>)  <span class="comment"># Clear and predictable</span></code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>❌ Mistake 2: Functions That Do Too Much</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Bad - function does everything</span>
+<span class="keyword">def</span> <span class="function">process_student_data</span>():
+    name = <span class="function">input</span>(<span class="string">"Name: "</span>)
+    grade = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Grade: "</span>))
+    average = grade * <span class="number">0.8</span>  <span class="comment"># Some calculation</span>
+    <span class="keyword">if</span> average >= <span class="number">80</span>:
+        letter = <span class="string">"A"</span>
+    <span class="keyword">else</span>:
+        letter = <span class="string">"B"</span>
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{name}</span><span class="string">: </span><span class="string">{letter}</span><span class="string">"</span>)
+    <span class="comment"># Function does input, calculation, conversion, and output!</span></code></pre>
+            </div>
+            
+            <h4>✅ Better - Break Into Smaller Functions:</h4>
+            <div class="code-block">
+<pre><code><span class="keyword">def</span> <span class="function">get_student_name</span>():
+    <span class="keyword">return</span> <span class="function">input</span>(<span class="string">"Enter student name: "</span>)
+
+<span class="keyword">def</span> <span class="function">get_student_grade</span>():
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">try</span>:
+            <span class="keyword">return</span> <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter grade (0-100): "</span>))
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid number."</span>)
+
+<span class="keyword">def</span> <span class="function">calculate_weighted_average</span>(grade):
+    <span class="keyword">return</span> grade * <span class="number">0.8</span>
+
+<span class="keyword">def</span> <span class="function">grade_to_letter</span>(percentage):
+    <span class="keyword">return</span> <span class="string">"A"</span> <span class="keyword">if</span> percentage >= <span class="number">80</span> <span class="keyword">else</span> <span class="string">"B"</span></code></pre>
+            </div>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Function Best Practices:</h4>
             <ul>
-                <li><strong>Greeter Function:</strong> Write a function that prints "Hello!".</li>
-                <li><strong>Return Value:</strong> Write a function that <code>return</code>s your name as a string.</li>
-                <li><strong>Area Calculator with Docstring:</strong> Write the <code>calculate_area</code> function from the example above, including the full docstring.</li>
-                <li><strong>List Printer Function:</strong> Write a function that takes a list as a parameter and prints every item.</li>
-                <li><strong>Menu Function with Return:</strong> Write a function that displays a menu and <code>return</code>s the user's choice.</li>
-                <li><strong>Add Comment:</strong> Take a piece of code from a previous week and add a useful <code>#</code> comment to it.</li>
-                <li><strong>Add Docstring:</strong> Take a function you wrote and add a professional docstring to it.</li>
-                <li><strong>Main Program Structure:</strong> Structure your contact book with empty functions (<code>display_menu</code>, <code>add_contact</code>, etc.) and add docstrings to each one explaining what it will do.</li>
-                <li><strong>is_valid_choice function:</strong> Write a function that takes a user's choice and a maximum number of options as parameters. It should <code>return</code> <code>True</code> if the choice is a valid number within the range, and <code>False</code> otherwise.</li>
-                <li><strong>Project Planning:</strong> Write out the plan for your contact book in plain English, with each step corresponding to a function you will create.</li>
+                <li><strong>Single Responsibility:</strong> Each function should do one thing well</li>
+                <li><strong>Descriptive Names:</strong> Function names should clearly indicate what they do</li>
+                <li><strong>Use Parameters:</strong> Pass data in through parameters, not global variables</li>
+                <li><strong>Return Values:</strong> Return results instead of printing (unless the function's job is to display)</li>
+                <li><strong>Add Docstrings:</strong> Document what the function does, its parameters, and return value</li>
+                <li><strong>Keep It Short:</strong> If a function is more than 10-15 lines, consider breaking it up</li>
             </ul>
         </div>
     </div>
 
-    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+    <div class="content-section">
+        <h2>✏️ Practice Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Basic Function Creation:</strong> Write a function called <code>greet()</code> that prints "Hello, World!" when called. Then modify it to take a name parameter and greet that specific person.</li>
+                
+                <li><strong>Calculator Functions:</strong> Create separate functions for add, subtract, multiply, and divide operations. Each should take two parameters and return the result.</li>
+                
+                <li><strong>Area Calculator:</strong> Write functions to calculate the area of a rectangle, circle, and triangle. Include proper docstrings for each function with parameter and return documentation.</li>
+                
+                <li><strong>Grade Converter:</strong> Create a function that takes a percentage and returns the corresponding letter grade. Test it with various inputs.</li>
+                
+                <li><strong>List Operations:</strong> Write functions to find the maximum, minimum, and average of a list of numbers. Each function should take a list as a parameter and return the result.</li>
+                
+                <li><strong>Input Validation Function:</strong> Create a reusable function <code>get_integer_input(prompt, min_value, max_value)</code> that keeps asking until the user enters a valid integer within the specified range.</li>
+                
+                <li><strong>String Processing:</strong> Write functions to count vowels in a string, reverse a string, and check if a string is a palindrome. Include comprehensive docstrings.</li>
+                
+                <li><strong>Temperature Converter:</strong> Create a complete temperature conversion program with separate functions for Celsius to Fahrenheit, Fahrenheit to Celsius, and a main menu system.</li>
+                
+                <li><strong>Password Validator:</strong> Write a function that checks if a password meets requirements (minimum length, contains uppercase, lowercase, numbers). Return True/False and a list of issues.</li>
+                
+                <li><strong>Shopping Cart Functions:</strong> Create functions to add items to a cart (list), calculate total price, apply discounts, and display the cart contents in a formatted way.</li>
+                
+                <li><strong>Date Calculator:</strong> Write functions to calculate someone's age in years given their birth year, determine if a year is a leap year, and calculate days between two dates (simplified version).</li>
+                
+                <li><strong>Text Analysis:</strong> Create functions to count words in a text, find the most common word, and calculate reading time (assume 200 words per minute).</li>
+                
+                <li><strong>Number System Converter:</strong> Write functions to convert between decimal, binary, and hexadecimal number systems. Include input validation and error handling.</li>
+                
+                <li><strong>Contact Book Functions:</strong> Plan and create the function structure for a contact book: add_contact(), display_contacts(), search_contact(), delete_contact(), and edit_contact(). Start with empty functions and proper docstrings.</li>
+                
+                <li><strong>Excellence Challenge:</strong> Create a complete student grade management system with functions for adding students, recording grades, calculating GPAs, generating reports, and data validation. Demonstrate professional code organization and documentation.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Key Takeaways</h2>
+        <ul>
+            <li><strong>Functions</strong> break complex problems into smaller, manageable pieces</li>
+            <li><strong>Parameters</strong> make functions flexible by allowing different inputs</li>
+            <li><strong>Return values</strong> let functions pass calculated results back to the calling code</li>
+            <li><strong>Docstrings</strong> provide professional documentation explaining function purpose and usage</li>
+            <li><strong>Comments</strong> explain why specific code decisions were made</li>
+            <li><strong>Modular programming</strong> creates maintainable, reusable code components</li>
+            <li><strong>Function scope</strong> keeps variables local and functions predictable</li>
+            <li><strong>Single responsibility</strong> makes functions easier to understand, test, and debug</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>🔗 NCEA Assessment Connections</h2>
+        <div class="highlight">
+            <h4>How This Relates to AS92004:</h4>
+            <ul>
+                <li><strong>Merit Level:</strong> Well-organized code with functions demonstrates good programming practices</li>
+                <li><strong>Excellence Level:</strong> Professional documentation, modular design, and sophisticated function usage</li>
+                <li><strong>Code Quality:</strong> Functions with docstrings and proper organization show advanced understanding</li>
+                <li><strong>Problem Solving:</strong> Breaking complex problems into functions demonstrates analytical thinking</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚀 Next Week Preview</h2>
+        <p>Next week, we'll learn about <strong>Project Development & Assessment Preparation</strong> - how to plan, implement, and document a complete programming project. We'll put together everything you've learned to create a professional-quality application that demonstrates your programming skills for NCEA assessment.</p>
+    </div>
+
+    <a href="../programming.html" class="back-link">← Back to Programming Overview</a>
 </body>
 </html>

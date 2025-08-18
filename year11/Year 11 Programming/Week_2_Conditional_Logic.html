@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 2: Conditional Logic & F-Strings</title>
+    <title>Week 2: Conditional Logic & Decision Making</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,12 +42,13 @@
         .code-block {
             background: #2d3748;
             color: #e2e8f0;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #007bff;
             margin: 1rem 0;
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             overflow-x: auto;
+            font-size: 0.9rem;
         }
 
         .code-block pre {
@@ -66,6 +67,38 @@
         .function { color: #63b3ed; }     /* Function names */
         .number { color: #fbb6ce; }       /* Numbers */
 
+        .example-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-box {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #e6ffe6;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
         .exercises {
             background: #d4edda;
             padding: 1.5rem;
@@ -79,9 +112,14 @@
         }
 
         .exercises li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             position: relative;
             padding-left: 2rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .exercises li:last-child {
+            border-bottom: none;
         }
 
         .exercises li::before {
@@ -113,75 +151,593 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 0.5rem;
         }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .decision-tree {
+            background: #f8f9fa;
+            border: 2px solid #6c757d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Week 2: Conditional Logic & F-Strings</h1>
-        <p><strong>Goal:</strong> To make decisions in code and to format output in a clean, modern way.</p>
+        <h1>Week 2: Conditional Logic & Decision Making</h1>
+        <p><strong>Goal:</strong> Learn to make your programs smart by using conditional statements (if/elif/else) to create programs that respond differently based on user input and make decisions automatically.</p>
     </div>
 
     <div class="content-section">
-        <h2>Key Concepts & Explanations</h2>
-        
-        <h3>1. if, elif, else</h3>
-        <p>These keywords allow you to run different blocks of code based on conditions.</p>
-
-        <h3>2. The Importance of Indentation</h3>
-        <p>Indentation (4 spaces) is how Python knows which code belongs to which <code>if</code> statement. It is mandatory.</p>
-
-        <h3>3. F-Strings (Formatted String Literals)</h3>
-        <p>F-strings are the best way to include variables directly inside a string.</p>
-
-        <h4>Syntax Breakdown:</h4>
-        <div class="code-block">
-<pre><code>name = <span class="string">"Alice"</span>
-age = <span class="number">30</span>
-
-<span class="comment"># The old way (using +)</span>
-message_old = <span class="string">"Hello, "</span> + name + <span class="string">". You are "</span> + <span class="function">str</span>(age) + <span class="string">" years old."</span>
-
-<span class="comment"># The new way (using f-string)</span>
-message_new = <span class="string">f"Hello, </span><span class="string">{name}</span><span class="string">. You are </span><span class="string">{age}</span><span class="string"> years old."</span>
-
-<span class="function">print</span>(message_new)</code></pre>
-        </div>
-
+        <h2>🎯 Learning Objectives</h2>
+        <p>By the end of this week, you will be able to:</p>
         <ul>
-            <li><strong>f"...":</strong> The <code>f</code> before the opening quote tells Python this is an f-string.</li>
-            <li><strong>{name}:</strong> You can put any variable directly inside curly braces, and its value will be inserted into the string. Python handles any necessary type conversions automatically.</li>
+            <li>Use <code>if</code> statements to execute code conditionally</li>
+            <li>Use <code>elif</code> to handle multiple conditions</li>
+            <li>Use <code>else</code> as a fallback option</li>
+            <li>Understand and use comparison operators (==, !=, <, >, <=, >=)</li>
+            <li>Combine conditions using logical operators (and, or, not)</li>
+            <li>Master f-string formatting for clean output</li>
+            <li>Create interactive menu systems</li>
+            <li>Debug common conditional logic errors</li>
         </ul>
     </div>
 
     <div class="content-section">
-        <h2>Exercises</h2>
+        <h2>📝 Key Concepts & Detailed Explanations</h2>
+        
+        <h3>1. What is Conditional Logic?</h3>
+        <p>Conditional logic allows your program to make decisions and execute different code paths based on certain conditions. Think of it like a flowchart where your program can take different routes depending on the situation.</p>
+
+        <div class="example-box">
+            <h4>Real-World Analogy:</h4>
+            <p>Conditional logic is like making decisions in everyday life: "If it's raining, take an umbrella. If it's sunny, wear sunglasses. Otherwise, just go as you are." Your program can make similar decisions based on data.</p>
+        </div>
+
+        <h3>2. The if Statement - Making Basic Decisions</h3>
+        <p>An <code>if</code> statement checks if a condition is true. If it is, the indented code beneath it runs. If not, the code is skipped.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Basic if statement</span>
+age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"How old are you? "</span>))
+
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="function">print</span>(<span class="string">"You are an adult!"</span>)
+    <span class="function">print</span>(<span class="string">"You can vote and drive."</span>)
+
+<span class="function">print</span>(<span class="string">"This line always runs."</span>)</code></pre>
+        </div>
+
+        <div class="step-by-step">
+            <h4>if Statement Breakdown:</h4>
+            <ol>
+                <li><strong>if</strong> - The keyword that starts the condition</li>
+                <li><strong>age >= 18</strong> - The condition to check (must be True or False)</li>
+                <li><strong>:</strong> - Colon indicates the start of the code block</li>
+                <li><strong>Indentation</strong> - All code that belongs to the if must be indented (4 spaces)</li>
+                <li><strong>Condition result</strong> - If True, indented code runs; if False, it's skipped</li>
+            </ol>
+        </div>
+
+        <h3>3. Comparison Operators - Testing Relationships</h3>
+        <p>Comparison operators let you compare values and return True or False.</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>==</td>
+                    <td>Equal to</td>
+                    <td>5 == 5</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>!=</td>
+                    <td>Not equal to</td>
+                    <td>5 != 3</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>Less than</td>
+                    <td>3 &lt; 5</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>Greater than</td>
+                    <td>5 &gt; 3</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>&lt;=</td>
+                    <td>Less than or equal to</td>
+                    <td>5 &lt;= 5</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>&gt;=</td>
+                    <td>Greater than or equal to</td>
+                    <td>5 &gt;= 3</td>
+                    <td>True</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning-box">
+            <h4>⚠️ Common Mistake: = vs ==</h4>
+            <ul>
+                <li><strong>=</strong> assigns a value to a variable: <code>age = 18</code></li>
+                <li><strong>==</strong> compares two values: <code>age == 18</code></li>
+            </ul>
+            <p>Using = instead of == in an if statement is a very common error!</p>
+        </div>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Examples of comparison operators</span>
+score = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your test score: "</span>))
+
+<span class="keyword">if</span> score == <span class="number">100</span>:
+    <span class="function">print</span>(<span class="string">"Perfect score!"</span>)
+
+<span class="keyword">if</span> score >= <span class="number">90</span>:
+    <span class="function">print</span>(<span class="string">"Excellent work!"</span>)
+
+<span class="keyword">if</span> score < <span class="number">50</span>:
+    <span class="function">print</span>(<span class="string">"Need to study more."</span>)
+
+<span class="keyword">if</span> score != <span class="number">0</span>:
+    <span class="function">print</span>(<span class="string">"At least you tried!"</span>)</code></pre>
+        </div>
+
+        <h3>4. The elif Statement - Multiple Conditions</h3>
+        <p><code>elif</code> (else if) lets you check multiple conditions in sequence. Python checks each condition in order and runs the first one that's true.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Grade calculator using elif</span>
+score = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your score: "</span>))
+
+<span class="keyword">if</span> score >= <span class="number">90</span>:
+    grade = <span class="string">"A"</span>
+    <span class="function">print</span>(<span class="string">"Excellent!"</span>)
+<span class="keyword">elif</span> score >= <span class="number">80</span>:
+    grade = <span class="string">"B"</span>
+    <span class="function">print</span>(<span class="string">"Good job!"</span>)
+<span class="keyword">elif</span> score >= <span class="number">70</span>:
+    grade = <span class="string">"C"</span>
+    <span class="function">print</span>(<span class="string">"Satisfactory."</span>)
+<span class="keyword">elif</span> score >= <span class="number">60</span>:
+    grade = <span class="string">"D"</span>
+    <span class="function">print</span>(<span class="string">"Needs improvement."</span>)
+<span class="keyword">else</span>:
+    grade = <span class="string">"F"</span>
+    <span class="function">print</span>(<span class="string">"Failed. Study harder!"</span>)
+
+<span class="function">print</span>(<span class="string">f"Your grade is: </span><span class="string">{grade}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <div class="decision-tree">
+            <h4>Decision Flow:</h4>
+            <pre>
+Is score >= 90? → YES → Grade = A, Print "Excellent!"
+                ↓ NO
+Is score >= 80? → YES → Grade = B, Print "Good job!"
+                ↓ NO
+Is score >= 70? → YES → Grade = C, Print "Satisfactory."
+                ↓ NO
+Is score >= 60? → YES → Grade = D, Print "Needs improvement."
+                ↓ NO
+                     → Grade = F, Print "Failed. Study harder!"
+            </pre>
+        </div>
+
+        <h3>5. The else Statement - The Default Option</h3>
+        <p><code>else</code> runs when none of the previous conditions are true. It's like a "catch-all" for any remaining cases.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Simple password checker</span>
+password = <span class="function">input</span>(<span class="string">"Enter password: "</span>)
+
+<span class="keyword">if</span> password == <span class="string">"secret123"</span>:
+    <span class="function">print</span>(<span class="string">"Access granted!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Access denied!"</span>)
+
+<span class="comment"># This always runs regardless of password</span>
+<span class="function">print</span>(<span class="string">"Security check complete."</span>)</code></pre>
+        </div>
+
+        <h3>6. String Comparisons - Working with Text</h3>
+        <p>You can compare strings just like numbers. Python compares them alphabetically and is case-sensitive.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># String comparison examples</span>
+name = <span class="function">input</span>(<span class="string">"What's your name? "</span>)
+
+<span class="keyword">if</span> name == <span class="string">"Alice"</span>:
+    <span class="function">print</span>(<span class="string">"Hi Alice!"</span>)
+<span class="keyword">elif</span> name == <span class="string">"Bob"</span>:
+    <span class="function">print</span>(<span class="string">"Hello Bob!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"Nice to meet you, </span><span class="string">{name}</span><span class="string">!"</span>)
+
+<span class="comment"># Case-insensitive comparison</span>
+day = <span class="function">input</span>(<span class="string">"What day is it? "</span>).lower()  <span class="comment"># Convert to lowercase</span>
+
+<span class="keyword">if</span> day == <span class="string">"saturday"</span> <span class="keyword">or</span> day == <span class="string">"sunday"</span>:
+    <span class="function">print</span>(<span class="string">"It's the weekend!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"It's a weekday."</span>)</code></pre>
+        </div>
+
+        <h3>7. Logical Operators - Combining Conditions</h3>
+        <p>Logical operators let you combine multiple conditions in a single if statement.</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                    <th>When True</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>and</td>
+                    <td>Both conditions must be true</td>
+                    <td>age >= 18 and age <= 65</td>
+                    <td>Both conditions are true</td>
+                </tr>
+                <tr>
+                    <td>or</td>
+                    <td>Either condition can be true</td>
+                    <td>day == "Saturday" or day == "Sunday"</td>
+                    <td>At least one condition is true</td>
+                </tr>
+                <tr>
+                    <td>not</td>
+                    <td>Reverses the condition</td>
+                    <td>not (score < 50)</td>
+                    <td>The condition is false</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Examples of logical operators</span>
+age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your age: "</span>))
+has_license = <span class="function">input</span>(<span class="string">"Do you have a license? (yes/no): "</span>).lower()
+
+<span class="comment"># Using 'and' - both conditions must be true</span>
+<span class="keyword">if</span> age >= <span class="number">16</span> <span class="keyword">and</span> has_license == <span class="string">"yes"</span>:
+    <span class="function">print</span>(<span class="string">"You can drive!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"You cannot drive yet."</span>)
+
+<span class="comment"># Using 'or' - either condition can be true</span>
+weather = <span class="function">input</span>(<span class="string">"What's the weather? "</span>).lower()
+<span class="keyword">if</span> weather == <span class="string">"rain"</span> <span class="keyword">or</span> weather == <span class="string">"snow"</span>:
+    <span class="function">print</span>(<span class="string">"Take an umbrella!"</span>)
+
+<span class="comment"># Using 'not' - reverse the condition</span>
+<span class="keyword">if</span> <span class="keyword">not</span> (age < <span class="number">13</span>):  <span class="comment"># Same as: if age >= 13:</span>
+    <span class="function">print</span>(<span class="string">"You can have social media."</span>)</code></pre>
+        </div>
+
+        <h3>8. F-Strings - Modern String Formatting</h3>
+        <p>F-strings make it easy to include variables and expressions directly in strings. They're cleaner and more efficient than older methods.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># F-string examples</span>
+name = <span class="function">input</span>(<span class="string">"What's your name? "</span>)
+age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"How old are you? "</span>))
+
+<span class="comment"># Basic f-string</span>
+<span class="function">print</span>(<span class="string">f"Hello </span><span class="string">{name}</span><span class="string">, you are </span><span class="string">{age}</span><span class="string"> years old."</span>)
+
+<span class="comment"># F-strings with calculations</span>
+<span class="function">print</span>(<span class="string">f"Next year you'll be </span><span class="string">{age + 1}</span><span class="string">."</span>)
+<span class="function">print</span>(<span class="string">f"In 10 years you'll be </span><span class="string">{age + 10}</span><span class="string">."</span>)
+
+<span class="comment"># F-strings with conditions</span>
+status = <span class="string">"adult"</span> <span class="keyword">if</span> age >= <span class="number">18</span> <span class="keyword">else</span> <span class="string">"minor"</span>
+<span class="function">print</span>(<span class="string">f"You are considered a </span><span class="string">{status}</span><span class="string">."</span>)</code></pre>
+        </div>
+
+        <div class="example-box">
+            <h4>F-String vs Old Methods:</h4>
+            <div class="code-block">
+<pre><code>name = <span class="string">"Alice"</span>
+score = <span class="number">95</span>
+
+<span class="comment"># ❌ Old way - hard to read and error-prone</span>
+message1 = <span class="string">"Hello "</span> + name + <span class="string">", your score is "</span> + <span class="function">str</span>(score) + <span class="string">"%."</span>
+
+<span class="comment"># ❌ Old way - using .format()</span>
+message2 = <span class="string">"Hello {}, your score is {}%."</span>.format(name, score)
+
+<span class="comment"># ✅ Modern way - clean and easy</span>
+message3 = <span class="string">f"Hello </span><span class="string">{name}</span><span class="string">, your score is </span><span class="string">{score}</span><span class="string">%."</span></code></pre>
+            </div>
+        </div>
+
+        <h3>9. The Critical Importance of Indentation</h3>
+        <p>Python uses indentation (spaces) to group code together. This is not optional - incorrect indentation will cause your program to crash or behave unexpectedly.</p>
+
+        <div class="error-box">
+            <h4>❌ Common Indentation Errors:</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># ERROR: No indentation</span>
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+<span class="function">print</span>(<span class="string">"You can vote"</span>)  <span class="comment"># This will cause an IndentationError</span>
+
+<span class="comment"># ERROR: Inconsistent indentation</span>
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="function">print</span>(<span class="string">"You can vote"</span>)      <span class="comment"># 4 spaces</span>
+        <span class="function">print</span>(<span class="string">"You can drive"</span>)    <span class="comment"># 8 spaces - Error!</span></code></pre>
+            </div>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Correct Indentation:</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Correct: Use 4 spaces consistently</span>
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="function">print</span>(<span class="string">"You can vote"</span>)       <span class="comment"># 4 spaces</span>
+    <span class="function">print</span>(<span class="string">"You can drive"</span>)      <span class="comment"># 4 spaces</span>
+    <span class="keyword">if</span> age >= <span class="number">21</span>:
+        <span class="function">print</span>(<span class="string">"You can drink"</span>)   <span class="comment"># 8 spaces (nested)</span>
+<span class="function">print</span>(<span class="string">"This is outside the if"</span>)  <span class="comment"># No indentation</span></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>💡 Complete Working Examples</h2>
+
+        <h3>Example 1: Simple Menu System</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># A basic menu system</span>
+<span class="function">print</span>(<span class="string">"=== Welcome to the Calculator ==="</span>)
+<span class="function">print</span>(<span class="string">"1. Add numbers"</span>)
+<span class="function">print</span>(<span class="string">"2. Subtract numbers"</span>)
+<span class="function">print</span>(<span class="string">"3. Exit"</span>)
+
+choice = <span class="function">input</span>(<span class="string">"Choose an option (1-3): "</span>)
+
+<span class="keyword">if</span> choice == <span class="string">"1"</span>:
+    <span class="function">print</span>(<span class="string">"You chose Addition"</span>)
+    num1 = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter first number: "</span>))
+    num2 = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter second number: "</span>))
+    result = num1 + num2
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{num1}</span><span class="string"> + </span><span class="string">{num2}</span><span class="string"> = </span><span class="string">{result}</span><span class="string">"</span>)
+<span class="keyword">elif</span> choice == <span class="string">"2"</span>:
+    <span class="function">print</span>(<span class="string">"You chose Subtraction"</span>)
+    num1 = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter first number: "</span>))
+    num2 = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter second number: "</span>))
+    result = num1 - num2
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{num1}</span><span class="string"> - </span><span class="string">{num2}</span><span class="string"> = </span><span class="string">{result}</span><span class="string">"</span>)
+<span class="keyword">elif</span> choice == <span class="string">"3"</span>:
+    <span class="function">print</span>(<span class="string">"Goodbye!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"'{choice}' is not a valid option."</span>)</code></pre>
+        </div>
+
+        <h3>Example 2: Advanced Age Checker</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Comprehensive age-based permissions checker</span>
+name = <span class="function">input</span>(<span class="string">"What's your name? "</span>)
+age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"How old are you? "</span>))
+
+<span class="function">print</span>(<span class="string">f"\nHello </span><span class="string">{name}</span><span class="string">! Let's see what you can do at age </span><span class="string">{age}</span><span class="string">:"</span>)
+
+<span class="keyword">if</span> age < <span class="number">13</span>:
+    <span class="function">print</span>(<span class="string">"- You can play, learn, and have fun!"</span>)
+    <span class="function">print</span>(<span class="string">"- Ask parents before using the internet"</span>)
+<span class="keyword">elif</span> age < <span class="number">16</span>:
+    <span class="function">print</span>(<span class="string">"- You can have social media (with permission)"</span>)
+    <span class="function">print</span>(<span class="string">"- You can work part-time in some places"</span>)
+<span class="keyword">elif</span> age < <span class="number">18</span>:
+    <span class="function">print</span>(<span class="string">"- You can drive (with a license)"</span>)
+    <span class="function">print</span>(<span class="string">"- You can work part-time"</span>)
+    <span class="function">print</span>(<span class="string">"- You can date"</span>)
+<span class="keyword">elif</span> age < <span class="number">21</span>:
+    <span class="function">print</span>(<span class="string">"- You can vote!"</span>)
+    <span class="function">print</span>(<span class="string">"- You can work full-time"</span>)
+    <span class="function">print</span>(<span class="string">"- You can get married"</span>)
+    <span class="function">print</span>(<span class="string">"- You're legally an adult"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"- You can do everything an adult can do!"</span>)
+    <span class="function">print</span>(<span class="string">"- You can drink alcohol (where legal)"</span>)
+    <span class="function">print</span>(<span class="string">"- You can rent a car"</span>)
+
+<span class="comment"># Additional check for senior citizens</span>
+<span class="keyword">if</span> age >= <span class="number">65</span>:
+    <span class="function">print</span>(<span class="string">"- You may be eligible for senior discounts!"</span>)</code></pre>
+        </div>
+
+        <h3>Example 3: Weather Advice System</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Weather-based clothing advice</span>
+<span class="function">print</span>(<span class="string">"Weather Advice System"</span>)
+<span class="function">print</span>(<span class="string">"====================="</span>)
+
+temperature = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"What's the temperature in Celsius? "</span>))
+is_raining = <span class="function">input</span>(<span class="string">"Is it raining? (yes/no): "</span>).lower()
+is_windy = <span class="function">input</span>(<span class="string">"Is it windy? (yes/no): "</span>).lower()
+
+<span class="function">print</span>(<span class="string">f"\nWeather Analysis:"</span>)
+<span class="function">print</span>(<span class="string">f"Temperature: </span><span class="string">{temperature}</span><span class="string">°C"</span>)
+
+<span class="comment"># Temperature-based advice</span>
+<span class="keyword">if</span> temperature < <span class="number">0</span>:
+    <span class="function">print</span>(<span class="string">"🥶 It's freezing! Wear heavy winter clothes."</span>)
+    clothing = <span class="string">"heavy coat, gloves, warm hat"</span>
+<span class="keyword">elif</span> temperature < <span class="number">10</span>:
+    <span class="function">print</span>(<span class="string">"🧥 It's cold. Wear a warm jacket."</span>)
+    clothing = <span class="string">"warm jacket, long pants"</span>
+<span class="keyword">elif</span> temperature < <span class="number">20</span>:
+    <span class="function">print</span>(<span class="string">"😊 It's cool. A light jacket would be good."</span>)
+    clothing = <span class="string">"light jacket or sweater"</span>
+<span class="keyword">elif</span> temperature < <span class="number">30</span>:
+    <span class="function">print</span>(<span class="string">"☀️ It's warm and pleasant!"</span>)
+    clothing = <span class="string">"t-shirt, comfortable clothes"</span>
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"🔥 It's hot! Stay cool and hydrated."</span>)
+    clothing = <span class="string">"light, breathable clothes"</span>
+
+<span class="comment"># Additional weather conditions</span>
+<span class="keyword">if</span> is_raining == <span class="string">"yes"</span>:
+    <span class="function">print</span>(<span class="string">"☔ Don't forget an umbrella or raincoat!"</span>)
+    clothing = clothing + <span class="string">", umbrella"</span>
+
+<span class="keyword">if</span> is_windy == <span class="string">"yes"</span> <span class="keyword">and</span> temperature < <span class="number">15</span>:
+    <span class="function">print</span>(<span class="string">"💨 It's windy and cold - dress extra warm!"</span>)
+
+<span class="function">print</span>(<span class="string">f"\nRecommended clothing: </span><span class="string">{clothing}</span><span class="string">"</span>)</code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚨 Common Errors and How to Fix Them</h2>
+
+        <div class="error-box">
+            <h4>Error 1: IndentationError</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+<span class="function">print</span>(<span class="string">"Adult"</span>)  <span class="comment"># ERROR: Not indented</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Always indent code inside if statements with 4 spaces:</p>
+            <div class="code-block">
+<pre><code><span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="function">print</span>(<span class="string">"Adult"</span>)  <span class="comment"># Correct: 4 spaces</span></code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>Error 2: Using = instead of ==</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+<span class="keyword">if</span> name = <span class="string">"Alice"</span>:  <span class="comment"># ERROR: Assignment, not comparison</span>
+    <span class="function">print</span>(<span class="string">"Hi Alice"</span>)</code></pre>
+            </div>
+            <p><strong>Fix:</strong> Use == for comparisons:</p>
+            <div class="code-block">
+<pre><code><span class="keyword">if</span> name == <span class="string">"Alice"</span>:  <span class="comment"># Correct: Comparison</span>
+    <span class="function">print</span>(<span class="string">"Hi Alice"</span>)</code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>Error 3: Comparing different data types</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+age = <span class="function">input</span>(<span class="string">"Age: "</span>)    <span class="comment"># This is a string!</span>
+<span class="keyword">if</span> age >= <span class="number">18</span>:           <span class="comment"># ERROR: Comparing string to number</span>
+    <span class="function">print</span>(<span class="string">"Adult"</span>)</code></pre>
+            </div>
+            <p><strong>Fix:</strong> Convert input to integer first:</p>
+            <div class="code-block">
+<pre><code>age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Age: "</span>))  <span class="comment"># Convert to integer</span>
+<span class="keyword">if</span> age >= <span class="number">18</span>:                <span class="comment"># Now this works</span>
+    <span class="function">print</span>(<span class="string">"Adult"</span>)</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>✏️ Practice Exercises</h2>
         <div class="exercises">
             <ul>
-                <li><strong>Password Checker:</strong> Ask for a password. If correct, print "Access Granted."</li>
-                <li><strong>Age Checker (f-string):</strong> Ask for the user's age. If they are 18 or older, use an f-string to print "Welcome, you are {age} and old enough to enter."</li>
-                <li><strong>Number Comparison:</strong> Ask for two numbers. Use an f-string to state if the first is larger, smaller, or equal to the second.</li>
-                <li><strong>Menu System:</strong> Create a menu with two options. Use f-strings to confirm the user's choice: "You selected option {choice}."</li>
-                <li><strong>Weekend Detector:</strong> Ask for the day of the week. If it's a weekend day, print "It's the weekend!" Otherwise, print "Time to work."</li>
-                <li><strong>Temperature Alert (f-string):</strong> Ask for the temperature. Use f-strings to give different advice for hot, cold, or moderate weather.</li>
-                <li><strong>Movie Rating:</strong> Ask for a movie rating (G, PG, M). Use f-strings to explain the rating.</li>
-                <li><strong>Basic Login (f-string):</strong> Ask for a username and password. If both are correct, print a welcome message using the username: f"Welcome back, {username}!"</li>
-                <li><strong>Quote Formatter:</strong> Store a quote and an author in variables. Use an f-string to print them in the format: [Author] says, "[Quote]".</li>
-                <li><strong>Receipt Printer:</strong> Create variables for an item name and its price. Use an f-string to print a line for a receipt: Item: [Name] - $[Price].</li>
+                <li><strong>Password Checker:</strong> Ask for a password. If it equals "secret123", print "Access Granted" using an f-string with the user's name.</li>
+                
+                <li><strong>Number Comparator:</strong> Ask for two numbers and use f-strings to tell the user which is larger, smaller, or if they're equal.</li>
+                
+                <li><strong>Grade Calculator:</strong> Ask for a test score and assign letter grades: A (90+), B (80-89), C (70-79), D (60-69), F (below 60).</li>
+                
+                <li><strong>Age Category:</strong> Ask for age and categorize as: Child (0-12), Teen (13-19), Adult (20-64), Senior (65+). Use f-strings in output.</li>
+                
+                <li><strong>Menu System:</strong> Create a restaurant menu with 4 options. Use f-strings to confirm the user's choice and display a price.</li>
+                
+                <li><strong>Weather Advisor:</strong> Ask for temperature and weather condition. Give clothing advice using multiple conditions and f-strings.</li>
+                
+                <li><strong>Movie Rater:</strong> Ask for a movie rating (G, PG, PG-13, R) and explain what each means using f-strings.</li>
+                
+                <li><strong>Login System:</strong> Ask for username AND password. Only grant access if both are correct. Use f-strings for personalized messages.</li>
+                
+                <li><strong>BMI Calculator:</strong> Calculate BMI and categorize as underweight, normal, overweight, or obese. Use f-strings to display results.</li>
+                
+                <li><strong>Day Classifier:</strong> Ask for a day of the week and categorize as weekday or weekend. Handle case variations (Monday, monday, MONDAY).</li>
+                
+                <li><strong>Discount Calculator:</strong> Ask for purchase amount. Apply discounts: 10% for $100+, 15% for $200+, 20% for $500+. Show original and final prices.</li>
+                
+                <li><strong>Time Greeting:</strong> Ask for the hour (0-23) and give appropriate greetings: Good morning (5-11), Good afternoon (12-17), Good evening (18-21), Good night (22-4).</li>
             </ul>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Key Takeaways</h2>
+        <h2>🎯 Key Takeaways</h2>
         <ul>
-            <li>Use <code>if</code>, <code>elif</code>, and <code>else</code> to make decisions in your code</li>
-            <li>Proper indentation is crucial in Python - use 4 spaces for each level</li>
-            <li>F-strings make string formatting clean and readable</li>
-            <li>F-strings automatically handle type conversion for variables</li>
-            <li>Always use f-strings instead of string concatenation with +</li>
+            <li><strong>if statements</strong> execute code only when conditions are true</li>
+            <li><strong>elif</strong> allows checking multiple conditions in sequence</li>
+            <li><strong>else</strong> provides a default action when no conditions are met</li>
+            <li><strong>Comparison operators</strong> (==, !=, <, >, <=, >=) compare values</li>
+            <li><strong>Logical operators</strong> (and, or, not) combine multiple conditions</li>
+            <li><strong>Indentation</strong> is critical - always use 4 spaces consistently</li>
+            <li><strong>F-strings</strong> provide clean, modern string formatting</li>
+            <li><strong>Data type consistency</strong> is important for comparisons</li>
         </ul>
     </div>
 
-    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+    <div class="content-section">
+        <h2>🚀 Next Week Preview</h2>
+        <p>Next week, we'll learn about <strong>Lists & Collections</strong> - how to store and manage multiple pieces of related data. This will let you create programs that can handle many contacts, scores, or any collection of information!</p>
+    </div>
+
+    <a href="../programming.html" class="back-link">← Back to Programming Overview</a>
 </body>
 </html>

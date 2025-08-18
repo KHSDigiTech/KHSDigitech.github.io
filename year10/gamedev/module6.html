@@ -139,32 +139,32 @@
     <a href="year10-game-dev.html" class="back-link">← Back to Course Overview</a>
 
     <div class="header">
-        <h1>Module 6: Top-Down Explorer</h1>
-        <p>CharacterBody2D Movement & Boundary Management</p>
+        <h1>Module 6: Maze Navigator</h1>
+        <p>Top-Down Movement & Maze Solving</p>
     </div>
 
     <div class="content-section">
         <h2>🎯 Learning Objectives</h2>
         <ul>
             <li>Create smooth 8-directional movement (including diagonals)</li>
-            <li>Implement screen boundaries and collision walls</li>
-            <li>Build a maze or exploration area</li>
-            <li>Add obstacles and navigation challenges</li>
-            <li>Master top-down game mechanics</li>
+            <li>Build a challenging maze with walls and paths</li>
+            <li>Implement collision detection for maze walls</li>
+            <li>Create a goal/exit area for the maze</li>
+            <li>Master top-down navigation mechanics</li>
         </ul>
     </div>
 
     <div class="content-section">
-        <h2>🎮 The Game: Maze Explorer</h2>
-        <p>Create a top-down exploration game where the player navigates through a maze, collects items, and avoids obstacles. Perfect for RPG-style movement!</p>
+        <h2>🎮 The Game: Maze Navigator</h2>
+        <p>Create a top-down maze navigation game where the player must find their way from the starting point to the exit. Focus on pathfinding and spatial reasoning!</p>
         
         <div class="node-info">
             <h3>🔧 Core Nodes</h3>
             <ul>
-                <li><strong>CharacterBody2D:</strong> Player with 8-directional movement</li>
-                <li><strong>StaticBody2D:</strong> Walls, obstacles, and barriers</li>
-                <li><strong>Area2D:</strong> Collectibles and trigger zones</li>
-                <li><strong>TileMap:</strong> (Optional) For creating maze walls efficiently</li>
+                <li><strong>TopDownController:</strong> Player with 8-directional movement</li>
+                <li><strong>StaticBody2D:</strong> Maze walls and barriers</li>
+                <li><strong>Area2D:</strong> Goal/exit zone detection</li>
+                <li><strong>TileMap:</strong> (Recommended) For creating maze layouts efficiently</li>
             </ul>
         </div>
 
@@ -178,36 +178,61 @@
         </div>
 
         <div class="boundary-info">
-            <h3>🧱 Understanding Boundaries</h3>
+            <h3>🧱 Maze Design Principles</h3>
             <ul>
-                <li><strong>Screen Boundaries:</strong> Keep player within camera view</li>
-                <li><strong>Collision Boundaries:</strong> Walls that stop movement</li>
-                <li><strong>Invisible Barriers:</strong> Define play area limits</li>
-                <li><strong>Maze Walls:</strong> Create navigation puzzles</li>
+                <li><strong>Start Area:</strong> Clear starting position for the player</li>
+                <li><strong>Exit Area:</strong> Visible goal that triggers win condition</li>
+                <li><strong>Dead Ends:</strong> False paths that add challenge</li>
+                <li><strong>Multiple Routes:</strong> Several valid paths to the exit</li>
             </ul>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>🏗️ Building Your Top-Down Explorer</h2>
+        <h2>🏗️ Building Your Maze Navigator</h2>
         
         <div class="step-by-step">
-            <h3>Step 1: Player Setup</h3>
-            <ol>
-                <li>Create new scene with <code>Node2D</code> root ("TopDownGame")</li>
-                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "TopDownExplorer.tscn"</li>
-                <li><strong>🔄 Reuse your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
-                <li>Add <code>Camera2D</code> child to the instanced player, set to "Current"</li>
-                <li><strong>💾 Save again:</strong> Your top-down base is ready!</li>
-            </ol>
+            <h3>Step 1: Create TopDownController Scene</h3>
             
-            <div class="highlight">
-                <p><strong>🎯 Smart Reuse:</strong> Your PlayerCharacter movement script should work perfectly for top-down movement too! The same WASD controls work in any 2D perspective.</p>
+            <div class="node-info">
+                <h4>🌳 TopDownController Structure</h4>
+                <pre style="background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 4px; font-family: monospace;">
+TopDownController (CharacterBody2D) 🎮
+├── PlayerSprite (Sprite2D) 🎨
+├── PlayerCollision (CollisionShape2D) ⚡
+└── PlayerCamera (Camera2D) 📹
+                </pre>
+                <p><strong>Purpose:</strong> Dedicated controller for top-down 8-directional movement</p>
             </div>
+            
+            <ol>
+                <li><strong>New Scene:</strong> Scene → New Scene → 2D Scene</li>
+                <li><strong>Change Root:</strong> Delete Node2D → Add CharacterBody2D → Rename to "TopDownController"</li>
+                <li><strong>Add Sprite:</strong> Right-click TopDownController → Add Child → Sprite2D → Rename to "PlayerSprite"</li>
+                <li><strong>Set Texture:</strong> Select PlayerSprite → Drag player image to "Texture" property</li>
+                <li><strong>Add Collision:</strong> Right-click TopDownController → Add Child → CollisionShape2D → Rename to "PlayerCollision"</li>
+                <li><strong>Set Shape:</strong> Select PlayerCollision → Inspector → Shape → New CircleShape2D (works better for mazes)</li>
+                <li><strong>Size Collision:</strong> Drag the blue circle to be slightly smaller than the sprite</li>
+                <li><strong>Add Camera:</strong> Right-click TopDownController → Add Child → Camera2D → Rename to "PlayerCamera"</li>
+                <li><strong>Enable Camera:</strong> Select PlayerCamera → Inspector → Check "Enabled" checkbox</li>
+                <li><strong>💾 Save Controller:</strong> Ctrl+S → Name it "TopDownController.tscn"</li>
+            </ol>
+        </div>
+        
+        <div class="step-by-step">
+            <h3>Step 2: Main Maze Scene Setup</h3>
+            <ol>
+                <li><strong>New Game Scene:</strong> Scene → New Scene → 2D Scene</li>
+                <li><strong>Rename Root:</strong> Select Node2D → rename to "MazeGame"</li>
+                <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "MazeNavigator.tscn"</li>
+                <li><strong>Instance Controller:</strong> Right-click MazeGame → Instance Child Scene → Select "TopDownController.tscn"</li>
+                <li><strong>Position Player:</strong> Drag player to the starting area of your maze</li>
+                <li><strong>💾 Save again:</strong> Your maze base is ready!</li>
+            </ol>
         </div>
 
         <div class="step-by-step">
-            <h3>Step 2: Create Maze Walls</h3>
+            <h3>Step 3: Create Maze Walls</h3>
             <p><strong>Method 1: Individual Wall Pieces</strong></p>
             <ol>
                 <li>Add <code>StaticBody2D</code> nodes for each wall segment</li>
@@ -225,32 +250,63 @@
         </div>
 
         <div class="step-by-step">
-            <h3>Step 3: Add Collectibles and Goals</h3>
+            <h3>Step 4: Create Exit Goal Area</h3>
             <ol>
-                <li>Place <code>Area2D</code> collectibles throughout the maze</li>
-                <li>Create a goal area (different colored Area2D)</li>
-                <li>Add UI elements (score, timer, instructions)</li>
+                <li><strong>Add Goal Area:</strong> Right-click MazeGame → Add Child → Area2D → Rename to "ExitGoal"</li>
+                <li><strong>Add Visual:</strong> Right-click ExitGoal → Add Child → Sprite2D → Use bright/distinct texture (like a door or portal)</li>
+                <li><strong>Add Collision:</strong> Right-click ExitGoal → Add Child → CollisionShape2D → New RectangleShape2D</li>
+                <li><strong>Size Collision:</strong> Make it large enough for easy player detection</li>
+                <li><strong>Position Goal:</strong> Place it at the end/exit of your maze</li>
+                <li><strong>Add to Group:</strong> Select ExitGoal → Groups tab → Add to "goals" group</li>
             </ol>
+            
+            <div class="node-info">
+                <p><strong>🎯 Win Condition:</strong> When the player touches the ExitGoal, show a "You Win!" message or load the next level.</p>
+            </div>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>🤖 AI-Assisted Top-Down Movement</h2>
+        <h2>🤖 AI-Assisted Maze Navigation</h2>
         
         <div class="ai-prompt">
-            <h3>Perfect Prompt for 8-Directional Movement</h3>
-            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I want to create a top-down game character in Godot 4 that can move in all 8 directions - up, down, left, right, and diagonally (like up-left, up-right, etc.) using WASD keys. The character should move at the same speed whether going straight or diagonally. There should be no gravity - just smooth movement across the screen in whichever direction I'm pressing. Can you show me the complete code including how to detect multiple keys pressed at once and move the character smoothly? Please explain each part."
-            </blockquote>
+            <h3>Perfect AI Prompt Setup</h3>
+            
+            <div class="step-by-step">
+                <h4>📸 Step 1: Take a Screenshot</h4>
+                <ol>
+                    <li><strong>Show TopDownController Scene:</strong> Open TopDownController.tscn and expand all nodes</li>
+                    <li><strong>Screenshot Structure:</strong> Capture the scene tree showing CharacterBody2D with children</li>
+                    <li><strong>Include Script Tab:</strong> Show that the TopDownController needs a script attached</li>
+                </ol>
+            </div>
+            
+            <div class="step-by-step">
+                <h4>💬 Step 2: Use This Prompt</h4>
+                <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                    "I'm making a top-down maze game in Godot 4. Here's a screenshot of my TopDownController scene. I want the character to move in all 8 directions (up, down, left, right, and diagonally) using WASD keys. The character should move at the same speed whether going straight or diagonally, and there should be no gravity. Can you write the script for this CharacterBody2D?"
+                </blockquote>
+            </div>
+            
+            <div class="node-info">
+                <h4>🎯 What This Will Create</h4>
+                <ul>
+                    <li><strong>8-Directional Movement:</strong> Including smooth diagonals</li>
+                    <li><strong>No Gravity:</strong> Perfect for top-down perspective</li>
+                    <li><strong>Equal Speed:</strong> Diagonal movement isn't faster</li>
+                    <li><strong>Wall Collision:</strong> Stops at maze walls automatically</li>
+                </ul>
+            </div>
         </div>
 
         <div class="ai-prompt">
-            <h3>Boundary Control Prompts</h3>
+            <h3>Follow-up Enhancement Prompts</h3>
+            <p><strong>📸 Remember:</strong> Include a screenshot of your working TopDownController for these features!</p>
             <ul>
-                <li>"How do I prevent my character from walking off the edges of the screen?"</li>
-                <li>"Can you show me how to create invisible walls that the player can't walk through?"</li>
-                <li>"How do I make the character sprite rotate to point in the direction they're walking?"</li>
-                <li>"What's the best way to make walls that block the player's movement in a maze?"</li>
+                <li><strong>Goal Detection:</strong> "My movement works [screenshot]. How do I detect when the player reaches the exit goal and show a win message?"</li>
+                <li><strong>Smooth Rotation:</strong> "Here's my controller [screenshot]. How do I make the character sprite face the direction they're moving?"</li>
+                <li><strong>Movement Trail:</strong> "My maze game works [screenshot]. Can you add a trail effect showing where the player has been?"</li>
+                <li><strong>Timer Challenge:</strong> "Here's my maze [screenshot]. How do I add a countdown timer to make it more challenging?"</li>
             </ul>
         </div>
     </div>
@@ -280,16 +336,16 @@
     </div>
 
     <div class="content-section">
-        <h2>🎨 Game Design Ideas</h2>
-        <h3>Make Your Explorer Unique!</h3>
+        <h2>🎨 Maze Design Ideas</h2>
+        <h3>Make Your Maze Challenging!</h3>
         <ul>
-            <li><strong>Timer Challenge:</strong> Reach the goal before time runs out</li>
-            <li><strong>Key Collection:</strong> Collect keys to unlock doors</li>
-            <li><strong>Moving Obstacles:</strong> Patrol enemies or moving walls</li>
-            <li><strong>Multiple Levels:</strong> Several maze layouts to complete</li>
-            <li><strong>Power-ups:</strong> Speed boosts or temporary abilities</li>
-            <li><strong>Fog of War:</strong> Only see a small area around the player</li>
-            <li><strong>Minimap:</strong> Small overview of the entire maze</li>
+            <li><strong>Timer Challenge:</strong> Reach the exit before time runs out</li>
+            <li><strong>Multiple Exits:</strong> Several exit points, only one is real</li>
+            <li><strong>Dead End Traps:</strong> False paths that lead nowhere</li>
+            <li><strong>Different Sized Mazes:</strong> Start small, increase complexity</li>
+            <li><strong>Visibility Fog:</strong> Only see a small area around the player</li>
+            <li><strong>Breadcrumb Trail:</strong> Show where the player has been</li>
+            <li><strong>Minimap Display:</strong> Small overview of the entire maze</li>
         </ul>
     </div>
 
@@ -297,19 +353,19 @@
         <h2>⚡ Advanced Features for Fast Finishers</h2>
         
         <div class="step-by-step">
-            <h3>Simple AI Enemy</h3>
+            <h3>Multiple Maze Levels</h3>
             <ol>
-                <li>Create <code>CharacterBody2D</code> enemy with different sprite</li>
-                <li>Use <code>NavigationAgent2D</code> for pathfinding (advanced)</li>
-                <li>Or simple AI: move toward player when in range</li>
-                <li>Reset player position when caught</li>
+                <li>Create several different maze layouts</li>
+                <li>Add a level counter and progression system</li>
+                <li>Increase maze complexity with each level</li>
+                <li>Save player's best completion times</li>
             </ol>
         </div>
 
         <div class="ai-prompt">
-            <h3>AI Prompt for Simple Enemy</h3>
+            <h3>AI Prompt for Level Progression</h3>
             <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I want to create a simple enemy in my top-down Godot game that follows the player when they get close. Can you show me how to detect when the player is within a certain distance and then move the enemy toward the player's position at a slower speed?"
+                "My maze game works [screenshot]. How do I create multiple levels? When the player reaches the exit, I want to load a new maze scene and keep track of which level they're on."
             </blockquote>
         </div>
     </div>
@@ -332,13 +388,13 @@
             <ul>
                 <li>Player moves smoothly in all 8 directions</li>
                 <li>Diagonal movement isn't faster than cardinal directions</li>
-                <li>Walls/obstacles properly block player movement</li>
+                <li>Maze walls properly block player movement</li>
                 <li>Camera follows player smoothly</li>
-                <li>At least basic maze or obstacle course created</li>
-                <li>Some collectible items placed in the level</li>
-                <li>Player cannot move outside defined boundaries</li>
+                <li>Clear starting position and exit goal area</li>
+                <li>Exit detection shows win condition</li>
+                <li>Maze has dead ends and multiple paths</li>
                 <li>Movement feels responsive and smooth</li>
-                <li>Saved scene as "TopDownExplorer.tscn"</li>
+                <li>Saved scenes as "TopDownController.tscn" and "MazeNavigator.tscn"</li>
             </ul>
         </div>
     </div>
@@ -346,11 +402,11 @@
     <div class="content-section">
         <h2>🧠 Key Concepts Learned</h2>
         <ul>
-            <li><strong>8-Directional Movement:</strong> Including diagonal directions</li>
+            <li><strong>8-Directional Movement:</strong> Including smooth diagonal directions</li>
             <li><strong>Vector Normalization:</strong> Preventing diagonal speed boost</li>
-            <li><strong>Boundary Management:</strong> Different methods to constrain player</li>
-            <li><strong>Top-Down Perspective:</strong> Different from platformer movement</li>
-            <li><strong>Collision Detection:</strong> Using walls and obstacles effectively</li>
+            <li><strong>Maze Construction:</strong> Using StaticBody2D for walls</li>
+            <li><strong>Goal Detection:</strong> Area2D for win conditions</li>
+            <li><strong>Top-Down Perspective:</strong> No gravity, pure directional movement</li>
         </ul>
     </div>
 

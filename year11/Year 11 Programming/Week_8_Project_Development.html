@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weeks 8-10: Project Development & Refinement</title>
+    <title>Week 8: Project Development & Implementation</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -47,6 +47,58 @@
             border-left: 4px solid #007bff;
         }
 
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        /* Python syntax highlighting */
+        .keyword { color: #f56565; }      /* Keywords like def, if, else */
+        .string { color: #68d391; }       /* String literals */
+        .comment { color: #a0aec0; font-style: italic; } /* Comments */
+        .function { color: #63b3ed; }     /* Function names */
+        .number { color: #fbb6ce; }       /* Numbers */
+
+        .example-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-box {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #e6ffe6;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
         .checklist {
             background: #e8f4f8;
             padding: 1.5rem;
@@ -60,9 +112,14 @@
         }
 
         .checklist li {
-            padding: 0.25rem 0;
+            padding: 0.5rem 0;
             position: relative;
             padding-left: 1.5rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
         }
 
         .checklist li::before {
@@ -70,6 +127,52 @@
             position: absolute;
             left: 0;
             font-size: 1.1rem;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 0.5rem;
+        }
+
+        .exercises {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .exercises ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exercises li {
+            padding: 0.8rem 0;
+            position: relative;
+            padding-left: 2rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .exercises li:last-child {
+            border-bottom: none;
+        }
+
+        .exercises li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
 
         .back-link {
@@ -109,8 +212,8 @@
 </head>
 <body>
     <div class="header">
-        <h1>Weeks 8-10: Project Development & Refinement</h1>
-        <p><strong>Goal:</strong> To use the final three weeks of term to build, test, document, and refine the <strong>Simple Contact Book</strong> project to the highest possible standard.</p>
+        <h1>Week 8: Project Development & Implementation</h1>
+        <p><strong>Goal:</strong> To apply everything you've learned by planning, designing, and implementing a complete programming project. Focus on creating a well-structured, professional application that demonstrates your programming skills for NCEA assessment.</p>
     </div>
 
     <div class="content-section">
@@ -207,6 +310,6 @@
         </div>
     </div>
 
-    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+    <a href="../programming.html" class="back-link">← Back to Programming Overview</a>
 </body>
 </html>

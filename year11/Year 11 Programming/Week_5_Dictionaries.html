@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 5: Dictionaries</title>
+    <title>Week 5: Dictionaries & Data Structures</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,12 +42,13 @@
         .code-block {
             background: #2d3748;
             color: #e2e8f0;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #007bff;
             margin: 1rem 0;
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             overflow-x: auto;
+            font-size: 0.9rem;
         }
 
         .code-block pre {
@@ -66,6 +67,39 @@
         .function { color: #63b3ed; }     /* Function names */
         .number { color: #fbb6ce; }       /* Numbers */
 
+        .example-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-box {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #e6ffe6;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .merit-box {
+            background: #f0e6ff;
+            border: 3px solid #9c27b0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
         .exercises {
             background: #d4edda;
             padding: 1.5rem;
@@ -79,9 +113,14 @@
         }
 
         .exercises li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             position: relative;
             padding-left: 2rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .exercises li:last-child {
+            border-bottom: none;
         }
 
         .exercises li::before {
@@ -113,128 +152,685 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 0.5rem;
         }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .dict-visual {
+            background: #f8f9fa;
+            border: 2px solid #6c757d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .progression-box {
+            background: #e8f5e8;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Week 5: Dictionaries</h1>
-        <p><strong>Goal:</strong> To learn how to store data as key-value pairs, which allows for much better organization. This is a critical step for creating a "well-structured" program and achieving at the Merit level.</p>
+        <h1>Week 5: Dictionaries & Data Structures</h1>
+        <p><strong>Goal:</strong> Master dictionaries to organize data with key-value pairs. This is the key to achieving Merit-level programming by creating well-structured, organized programs for your assessment.</p>
     </div>
 
     <div class="content-section">
-        <h2>Key Concepts & Explanations</h2>
+        <h2>🎯 Learning Objectives</h2>
+        <p>By the end of this week, you will be able to:</p>
+        <ul>
+            <li>Create and use dictionaries with key-value pairs</li>
+            <li>Access, modify, and delete dictionary entries</li>
+            <li>Use dictionaries to represent real-world objects (like contacts)</li>
+            <li>Create lists of dictionaries for multiple records</li>
+            <li>Loop through dictionaries using <code>.items()</code>, <code>.keys()</code>, and <code>.values()</code></li>
+            <li>Check if keys exist in dictionaries</li>
+            <li>Build Merit-level data structures for the AS92004 assessment</li>
+            <li>Understand when to use dictionaries vs lists</li>
+        </ul>
+    </div>
+
+    <div class="merit-box">
+        <h3>🏆 Merit Level Achievement</h3>
+        <p>Dictionaries are essential for achieving <strong>Merit</strong> in AS92004! They demonstrate proper data structuring and organization - key requirements for higher grades. This week's content directly supports your assessment success.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Key Concepts & Detailed Explanations</h2>
         
         <h3>1. The Problem with Simple Lists</h3>
-        <p>Imagine we store a contact like this: <code>contact = ["Alice", "123456789"]</code>. What does <code>contact[0]</code> mean? We know it's the name, but the code doesn't. We have to remember the order. This is where dictionaries come in.</p>
+        <p>Lists are great for storing multiple items, but they have limitations when storing complex information. Consider storing contact information:</p>
+
+        <div class="error-box">
+            <h4>❌ Problems with List-Only Approach:</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Using only lists - confusing and error-prone</span>
+contact = [<span class="string">"Alice Smith"</span>, <span class="string">"027-123-4567"</span>, <span class="string">"alice@email.com"</span>]
+
+<span class="comment"># What does contact[1] mean? Phone or email?</span>
+<span class="function">print</span>(contact[<span class="number">1</span>])  <span class="comment"># Is this phone or email? Hard to remember!</span>
+
+<span class="comment"># What if we want to add more information?</span>
+<span class="comment"># Order becomes critical and confusing</span></code></pre>
+            </div>
+            <p><strong>Issues:</strong> Hard to remember what index means what, difficult to add new fields, not self-documenting code.</p>
+        </div>
 
         <h3>2. What is a Dictionary?</h3>
-        <p>A dictionary is a collection of <strong>key-value pairs</strong>. It's like a real dictionary where you look up a word (the <strong>key</strong>) to find its definition (the <strong>value</strong>). The order doesn't matter, only the keys do.</p>
-        
-        <div class="code-block">
-<pre><code><span class="comment"># A dictionary representing one contact</span>
+        <p>A dictionary is a collection of <strong>key-value pairs</strong>. Instead of accessing data by position (like lists), you access data by meaningful names (keys). It's like a real dictionary where you look up a word (key) to find its definition (value).</p>
+
+        <div class="example-box">
+            <h4>Real-World Analogy:</h4>
+            <p>A dictionary is like a contact card or a filing system. Instead of remembering "Alice's phone number is in slot 2," you simply ask for "Alice's phone number" directly.</p>
+        </div>
+
+        <div class="dict-visual">
+            <h4>Dictionary Structure Visualization:</h4>
+            <pre>
 contact = {
-    <span class="string">"name"</span>: <span class="string">"Alice"</span>,
-    <span class="string">"phone"</span>: <span class="string">"123456789"</span>,
-    <span class="string">"email"</span>: <span class="string">"alice@example.com"</span>
-}</code></pre>
-        </div>
-        
-        <ul>
-            <li><strong>{}:</strong> Dictionaries are defined with curly braces.</li>
-            <li><strong>"name": "Alice":</strong> This is a key-value pair. <code>"name"</code> is the key, and <code>"Alice"</code> is the value. They are separated by a colon <code>:</code>.</li>
-            <li>Each pair is separated by a comma.</li>
-        </ul>
+    "name": "Alice Smith",      ← Key: "name",    Value: "Alice Smith"
+    "phone": "027-123-4567",    ← Key: "phone",   Value: "027-123-4567"
+    "email": "alice@email.com"  ← Key: "email",   Value: "alice@email.com"
+}
 
-        <h3>3. Accessing Values by Key</h3>
-        <p>You don't use an index with dictionaries. You use the key to get the value.</p>
-        
-        <div class="code-block">
-<pre><code><span class="function">print</span>(contact[<span class="string">"name"</span>])  <span class="comment"># This will print "Alice"</span>
-<span class="function">print</span>(contact[<span class="string">"email"</span>]) <span class="comment"># This will print "alice@example.com"</span></code></pre>
+Access: contact["name"] → "Alice Smith"
+        contact["phone"] → "027-123-4567"
+            </pre>
         </div>
 
-        <h3>4. A List of Dictionaries</h3>
-        <p>This is the pattern you will use for your final assessment. You have a <code>list</code> where each item in the list is a <code>dictionary</code> representing one contact.</p>
-        
+        <h3>3. Creating Dictionaries</h3>
+        <p>Dictionaries are created using curly braces <code>{}</code> with key-value pairs separated by colons.</p>
+
         <div class="code-block">
-<pre><code>all_contacts = [
-    { <span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"phone"</span>: <span class="string">"111-222"</span> },
-    { <span class="string">"name"</span>: <span class="string">"Bob"</span>, <span class="string">"phone"</span>: <span class="string">"333-444"</span> }
+<pre><code><span class="comment"># Creating an empty dictionary</span>
+empty_dict = {}
+student_grades = {}
+
+<span class="comment"># Creating a dictionary with initial data</span>
+contact = {
+    <span class="string">"name"</span>: <span class="string">"Alice Smith"</span>,
+    <span class="string">"phone"</span>: <span class="string">"027-123-4567"</span>,
+    <span class="string">"email"</span>: <span class="string">"alice@email.com"</span>,
+    <span class="string">"age"</span>: <span class="number">25</span>
+}
+
+<span class="comment"># Dictionaries can store different data types</span>
+student = {
+    <span class="string">"name"</span>: <span class="string">"Bob Johnson"</span>,
+    <span class="string">"age"</span>: <span class="number">16</span>,
+    <span class="string">"grades"</span>: [<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>],
+    <span class="string">"is_enrolled"</span>: <span class="keyword">True</span>
+}
+
+<span class="function">print</span>(contact)  <span class="comment"># Shows the entire dictionary</span></code></pre>
+        </div>
+
+        <div class="step-by-step">
+            <h4>Dictionary Creation Rules:</h4>
+            <ol>
+                <li>Use curly braces <code>{}</code> to define a dictionary</li>
+                <li>Separate key and value with a colon <code>:</code></li>
+                <li>Separate pairs with commas</li>
+                <li>Keys must be strings (in quotes) or numbers</li>
+                <li>Values can be any data type</li>
+            </ol>
+        </div>
+
+        <h3>4. Accessing Dictionary Values</h3>
+        <p>Use square brackets with the key name to access values. This is much clearer than remembering list positions!</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Accessing dictionary values</span>
+contact = {
+    <span class="string">"name"</span>: <span class="string">"Alice Smith"</span>,
+    <span class="string">"phone"</span>: <span class="string">"027-123-4567"</span>,
+    <span class="string">"email"</span>: <span class="string">"alice@email.com"</span>
+}
+
+<span class="comment"># Clear, self-documenting access</span>
+name = contact[<span class="string">"name"</span>]
+phone = contact[<span class="string">"phone"</span>]
+email = contact[<span class="string">"email"</span>]
+
+<span class="function">print</span>(<span class="string">f"Name: </span><span class="string">{name}</span><span class="string">"</span>)
+<span class="function">print</span>(<span class="string">f"Phone: </span><span class="string">{phone}</span><span class="string">"</span>)
+<span class="function">print</span>(<span class="string">f"Email: </span><span class="string">{email}</span><span class="string">"</span>)
+
+<span class="comment"># Using in user interaction</span>
+<span class="function">print</span>(<span class="string">f"Calling </span><span class="string">{contact['name']}</span><span class="string"> at </span><span class="string">{contact['phone']}</span><span class="string">..."</span>)</code></pre>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Dictionary Benefits Over Lists:</h4>
+            <ul>
+                <li><strong>Self-documenting:</strong> Code clearly shows what data you're accessing</li>
+                <li><strong>Flexible:</strong> Easy to add new fields without breaking existing code</li>
+                <li><strong>Robust:</strong> No need to remember numeric positions</li>
+                <li><strong>Professional:</strong> Industry standard for structured data</li>
+            </ul>
+        </div>
+
+        <h3>5. Adding and Modifying Dictionary Entries</h3>
+        <p>You can add new key-value pairs or modify existing ones using square bracket notation.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Starting with a basic contact</span>
+contact = {
+    <span class="string">"name"</span>: <span class="string">"Alice Smith"</span>,
+    <span class="string">"phone"</span>: <span class="string">"027-123-4567"</span>
+}
+
+<span class="comment"># Adding new information</span>
+contact[<span class="string">"email"</span>] = <span class="string">"alice@email.com"</span>
+contact[<span class="string">"address"</span>] = <span class="string">"123 Main St"</span>
+contact[<span class="string">"age"</span>] = <span class="number">25</span>
+
+<span class="function">print</span>(<span class="string">"After adding fields:"</span>, contact)
+
+<span class="comment"># Modifying existing information</span>
+contact[<span class="string">"phone"</span>] = <span class="string">"027-987-6543"</span>  <span class="comment"># Updated phone number</span>
+contact[<span class="string">"age"</span>] = <span class="number">26</span>                <span class="comment"># Birthday!</span>
+
+<span class="function">print</span>(<span class="string">"After updates:"</span>, contact)
+
+<span class="comment"># Interactive data entry</span>
+new_contact = {}
+new_contact[<span class="string">"name"</span>] = <span class="function">input</span>(<span class="string">"Enter name: "</span>)
+new_contact[<span class="string">"phone"</span>] = <span class="function">input</span>(<span class="string">"Enter phone: "</span>)
+new_contact[<span class="string">"email"</span>] = <span class="function">input</span>(<span class="string">"Enter email: "</span>)
+
+<span class="function">print</span>(<span class="string">"New contact created:"</span>, new_contact)</code></pre>
+        </div>
+
+        <h3>6. Checking if Keys Exist</h3>
+        <p>Before accessing a key, it's good practice to check if it exists to avoid errors.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Safe key checking</span>
+contact = {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"phone"</span>: <span class="string">"123-456"</span>}
+
+<span class="comment"># Method 1: Using 'in' operator</span>
+<span class="keyword">if</span> <span class="string">"email"</span> <span class="keyword">in</span> contact:
+    <span class="function">print</span>(<span class="string">f"Email: </span><span class="string">{contact['email']}</span><span class="string">"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"No email address on file"</span>)
+
+<span class="comment"># Method 2: Using .get() method with default value</span>
+email = contact.get(<span class="string">"email"</span>, <span class="string">"No email provided"</span>)
+<span class="function">print</span>(<span class="string">f"Email: </span><span class="string">{email}</span><span class="string">"</span>)
+
+<span class="comment"># Interactive field checking</span>
+field = <span class="function">input</span>(<span class="string">"What information do you want? (name/phone/email): "</span>)
+<span class="keyword">if</span> field <span class="keyword">in</span> contact:
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{field.title()}</span><span class="string">: </span><span class="string">{contact[field]}</span><span class="string">"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"Sorry, no </span><span class="string">{field}</span><span class="string"> information available."</span>)</code></pre>
+        </div>
+
+        <h3>7. Deleting Dictionary Entries</h3>
+        <p>Use the <code>del</code> keyword to remove key-value pairs from a dictionary.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Removing dictionary entries</span>
+contact = {
+    <span class="string">"name"</span>: <span class="string">"Alice Smith"</span>,
+    <span class="string">"phone"</span>: <span class="string">"027-123-4567"</span>,
+    <span class="string">"email"</span>: <span class="string">"alice@email.com"</span>,
+    <span class="string">"temp_note"</span>: <span class="string">"Delete this later"</span>
+}
+
+<span class="function">print</span>(<span class="string">"Before deletion:"</span>, contact)
+
+<span class="comment"># Safe deletion - check if key exists first</span>
+<span class="keyword">if</span> <span class="string">"temp_note"</span> <span class="keyword">in</span> contact:
+    <span class="keyword">del</span> contact[<span class="string">"temp_note"</span>]
+    <span class="function">print</span>(<span class="string">"Temporary note removed."</span>)
+
+<span class="function">print</span>(<span class="string">"After deletion:"</span>, contact)
+
+<span class="comment"># Interactive deletion</span>
+field_to_remove = <span class="function">input</span>(<span class="string">"Which field to remove? "</span>)
+<span class="keyword">if</span> field_to_remove <span class="keyword">in</span> contact:
+    <span class="keyword">del</span> contact[field_to_remove]
+    <span class="function">print</span>(<span class="string">f"Removed </span><span class="string">{field_to_remove}</span><span class="string"> from contact."</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{field_to_remove}</span><span class="string"> not found in contact."</span>)</code></pre>
+        </div>
+
+        <h3>8. Looping Through Dictionaries</h3>
+        <p>Dictionaries provide several methods for iteration: <code>.items()</code>, <code>.keys()</code>, and <code>.values()</code>.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Dictionary for looping examples</span>
+contact = {
+    <span class="string">"name"</span>: <span class="string">"Alice Smith"</span>,
+    <span class="string">"phone"</span>: <span class="string">"027-123-4567"</span>,
+    <span class="string">"email"</span>: <span class="string">"alice@email.com"</span>,
+    <span class="string">"age"</span>: <span class="number">25</span>
+}
+
+<span class="comment"># Method 1: Loop through key-value pairs</span>
+<span class="function">print</span>(<span class="string">"=== Contact Information ==="</span>)
+<span class="keyword">for</span> key, value <span class="keyword">in</span> contact.items():
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{key.title()}</span><span class="string">: </span><span class="string">{value}</span><span class="string">"</span>)
+
+<span class="comment"># Method 2: Loop through keys only</span>
+<span class="function">print</span>(<span class="string">"\n=== Available Fields ==="</span>)
+<span class="keyword">for</span> key <span class="keyword">in</span> contact.keys():
+    <span class="function">print</span>(<span class="string">f"- </span><span class="string">{key}</span><span class="string">"</span>)
+
+<span class="comment"># Method 3: Loop through values only</span>
+<span class="function">print</span>(<span class="string">"\n=== All Values ==="</span>)
+<span class="keyword">for</span> value <span class="keyword">in</span> contact.values():
+    <span class="function">print</span>(<span class="string">f"- </span><span class="string">{value}</span><span class="string">"</span>)
+
+<span class="comment"># Practical example: Display formatted contact card</span>
+<span class="function">print</span>(<span class="string">"\n=== Contact Card ==="</span>)
+<span class="keyword">for</span> field, info <span class="keyword">in</span> contact.items():
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{field.upper():<10}</span><span class="string">: </span><span class="string">{info}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Returns</th>
+                    <th>Use When</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>.items()</td>
+                    <td>Key-value pairs</td>
+                    <td>Need both key and value</td>
+                    <td>Displaying formatted data</td>
+                </tr>
+                <tr>
+                    <td>.keys()</td>
+                    <td>Keys only</td>
+                    <td>Need field names</td>
+                    <td>Showing available options</td>
+                </tr>
+                <tr>
+                    <td>.values()</td>
+                    <td>Values only</td>
+                    <td>Need just the data</td>
+                    <td>Calculating totals/averages</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>9. Lists of Dictionaries - The Assessment Pattern</h3>
+        <p>For the AS92004 assessment, you'll typically use a list where each item is a dictionary representing one record (like one contact).</p>
+
+        <div class="merit-box">
+            <h4>🏆 This is the Merit-Level Pattern!</h4>
+            <p>Using a list of dictionaries is exactly what you need for Merit level in AS92004. It shows proper data structuring and organization.</p>
+        </div>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Assessment-style data structure</span>
+contacts = [
+    {
+        <span class="string">"name"</span>: <span class="string">"Alice Smith"</span>,
+        <span class="string">"phone"</span>: <span class="string">"027-123-4567"</span>,
+        <span class="string">"email"</span>: <span class="string">"alice@email.com"</span>
+    },
+    {
+        <span class="string">"name"</span>: <span class="string">"Bob Johnson"</span>,
+        <span class="string">"phone"</span>: <span class="string">"027-987-6543"</span>,
+        <span class="string">"email"</span>: <span class="string">"bob@email.com"</span>
+    },
+    {
+        <span class="string">"name"</span>: <span class="string">"Charlie Brown"</span>,
+        <span class="string">"phone"</span>: <span class="string">"027-555-1234"</span>,
+        <span class="string">"email"</span>: <span class="string">"charlie@email.com"</span>
+    }
 ]
 
-<span class="comment"># Get Bob's phone number</span>
-<span class="function">print</span>(all_contacts[<span class="number">1</span>][<span class="string">"phone"</span>]) <span class="comment"># Prints "333-444"</span></code></pre>
-        </div>
-        
-        <ul>
-            <li><strong>all_contacts[1]:</strong> This gets the second dictionary from the list (<code>{ "name": "Bob", ... }</code>).</li>
-            <li><strong>["phone"]:</strong> From that dictionary, we then get the value associated with the "phone" key.</li>
-        </ul>
+<span class="comment"># Accessing specific contact's information</span>
+first_contact = contacts[<span class="number">0</span>]
+<span class="function">print</span>(<span class="string">f"First contact: </span><span class="string">{first_contact['name']}</span><span class="string">"</span>)
+<span class="function">print</span>(<span class="string">f"Phone: </span><span class="string">{first_contact['phone']}</span><span class="string">"</span>)
 
-        <h3>5. Iterating Through a Dictionary</h3>
-        <p>You can loop through a dictionary using a <code>for</code> loop with the <code>.items()</code> method. This gives you both the key and the value for each pair.</p>
-        
-        <div class="code-block">
-<pre><code>contact = { <span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"phone"</span>: <span class="string">"111-222"</span> }
-<span class="keyword">for</span> key, value <span class="keyword">in</span> contact.items():
-    <span class="function">print</span>(<span class="string">f"</span><span class="string">{key}</span><span class="string">: </span><span class="string">{value}</span><span class="string">"</span>)
-<span class="comment"># Output:</span>
-<span class="comment"># name: Alice</span>
-<span class="comment"># phone: 111-222</span></code></pre>
+<span class="comment"># Display all contacts</span>
+<span class="function">print</span>(<span class="string">"\n=== All Contacts ==="</span>)
+<span class="keyword">for</span> i, contact <span class="keyword">in</span> <span class="function">enumerate</span>(contacts, <span class="number">1</span>):
+    <span class="function">print</span>(<span class="string">f"Contact </span><span class="string">{i}</span><span class="string">:"</span>)
+    <span class="keyword">for</span> field, value <span class="keyword">in</span> contact.items():
+        <span class="function">print</span>(<span class="string">f"  </span><span class="string">{field.title()}</span><span class="string">: </span><span class="string">{value}</span><span class="string">"</span>)
+    <span class="function">print</span>()  <span class="comment"># Blank line between contacts</span></code></pre>
         </div>
 
-        <h3>6. Checking if a Key Exists</h3>
-        <p>If you try to access a key that doesn't exist, your program will crash. You can check for a key's existence first using the <code>in</code> keyword.</p>
-        
+        <h3>10. Practical Dictionary Operations</h3>
+        <p>Let's explore common operations you'll need for your assessment program.</p>
+
         <div class="code-block">
+<pre><code><span class="comment"># Adding new contacts to the list</span>
+<span class="keyword">def</span> <span class="function">add_contact</span>(contacts_list):
+    new_contact = {}
+    new_contact[<span class="string">"name"</span>] = <span class="function">input</span>(<span class="string">"Enter name: "</span>)
+    new_contact[<span class="string">"phone"</span>] = <span class="function">input</span>(<span class="string">"Enter phone: "</span>)
+    new_contact[<span class="string">"email"</span>] = <span class="function">input</span>(<span class="string">"Enter email: "</span>)
+    
+    contacts_list.append(new_contact)
+    <span class="function">print</span>(<span class="string">f"Added </span><span class="string">{new_contact['name']}</span><span class="string"> to contacts."</span>)
+
+<span class="comment"># Finding a contact by name</span>
+<span class="keyword">def</span> <span class="function">find_contact</span>(contacts_list, search_name):
+    <span class="keyword">for</span> contact <span class="keyword">in</span> contacts_list:
+        <span class="keyword">if</span> contact[<span class="string">"name"</span>].lower() == search_name.lower():
+            <span class="keyword">return</span> contact
+    <span class="keyword">return</span> <span class="keyword">None</span>
+
+<span class="comment"># Count total contacts</span>
+<span class="keyword">def</span> <span class="function">count_contacts</span>(contacts_list):
+    <span class="keyword">return</span> <span class="function">len</span>(contacts_list)
+
+<span class="comment"># Example usage</span>
+contacts = []
+add_contact(contacts)
+add_contact(contacts)
+
+<span class="function">print</span>(<span class="string">f"\nTotal contacts: </span><span class="string">{count_contacts(contacts)}</span><span class="string">"</span>)
+
+search_name = <span class="function">input</span>(<span class="string">"Search for contact: "</span>)
+found_contact = find_contact(contacts, search_name)
+
+<span class="keyword">if</span> found_contact:
+    <span class="function">print</span>(<span class="string">"Found contact:"</span>)
+    <span class="keyword">for</span> key, value <span class="keyword">in</span> found_contact.items():
+        <span class="function">print</span>(<span class="string">f"  </span><span class="string">{key.title()}</span><span class="string">: </span><span class="string">{value}</span><span class="string">"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"No contact found with name '</span><span class="string">{search_name}</span><span class="string">'"</span>)</code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>💡 Complete Working Examples</h2>
+
+        <h3>Example 1: Contact Book (Assessment-Style)</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Complete contact book using dictionaries - Merit level structure</span>
+contacts = []
+
+<span class="keyword">def</span> <span class="function">display_menu</span>():
+    <span class="function">print</span>(<span class="string">"\n=== Contact Book ==="</span>)
+    <span class="function">print</span>(<span class="string">"1. Add contact"</span>)
+    <span class="function">print</span>(<span class="string">"2. View all contacts"</span>)
+    <span class="function">print</span>(<span class="string">"3. Search contacts"</span>)
+    <span class="function">print</span>(<span class="string">"4. Exit"</span>)
+
+<span class="keyword">def</span> <span class="function">add_contact</span>():
+    <span class="function">print</span>(<span class="string">"\n--- Add New Contact ---"</span>)
+    new_contact = {
+        <span class="string">"name"</span>: <span class="function">input</span>(<span class="string">"Name: "</span>),
+        <span class="string">"phone"</span>: <span class="function">input</span>(<span class="string">"Phone: "</span>),
+        <span class="string">"email"</span>: <span class="function">input</span>(<span class="string">"Email: "</span>)
+    }
+    
+    contacts.append(new_contact)
+    <span class="function">print</span>(<span class="string">f"✓ Added </span><span class="string">{new_contact['name']}</span><span class="string"> to contacts."</span>)
+
+<span class="keyword">def</span> <span class="function">view_all_contacts</span>():
+    <span class="keyword">if</span> <span class="function">len</span>(contacts) == <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">"\nNo contacts found."</span>)
+        <span class="keyword">return</span>
+    
+    <span class="function">print</span>(<span class="string">f"\n=== All Contacts ({len(contacts)} total) ==="</span>)
+    <span class="keyword">for</span> i, contact <span class="keyword">in</span> <span class="function">enumerate</span>(contacts, <span class="number">1</span>):
+        <span class="function">print</span>(<span class="string">f"\nContact </span><span class="string">{i}</span><span class="string">:"</span>)
+        <span class="keyword">for</span> field, value <span class="keyword">in</span> contact.items():
+            <span class="function">print</span>(<span class="string">f"  </span><span class="string">{field.title()}</span><span class="string">: </span><span class="string">{value}</span><span class="string">"</span>)
+
+<span class="keyword">def</span> <span class="function">search_contacts</span>():
+    <span class="keyword">if</span> <span class="function">len</span>(contacts) == <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">"\nNo contacts to search."</span>)
+        <span class="keyword">return</span>
+    
+    search_term = <span class="function">input</span>(<span class="string">"\nEnter name to search for: "</span>).lower()
+    found_contacts = []
+    
+    <span class="keyword">for</span> contact <span class="keyword">in</span> contacts:
+        <span class="keyword">if</span> search_term <span class="keyword">in</span> contact[<span class="string">"name"</span>].lower():
+            found_contacts.append(contact)
+    
+    <span class="keyword">if</span> found_contacts:
+        <span class="function">print</span>(<span class="string">f"\nFound </span><span class="string">{len(found_contacts)}</span><span class="string"> matching contact(s):"</span>)
+        <span class="keyword">for</span> contact <span class="keyword">in</span> found_contacts:
+            <span class="function">print</span>(<span class="string">f"\n</span><span class="string">{contact['name']}</span><span class="string">:"</span>)
+            <span class="keyword">for</span> field, value <span class="keyword">in</span> contact.items():
+                <span class="function">print</span>(<span class="string">f"  </span><span class="string">{field.title()}</span><span class="string">: </span><span class="string">{value}</span><span class="string">"</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">f"No contacts found matching '</span><span class="string">{search_term}</span><span class="string">'"</span>)
+
+<span class="comment"># Main program loop</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    display_menu()
+    choice = <span class="function">input</span>(<span class="string">"Choose option (1-4): "</span>)
+    
+    <span class="keyword">if</span> choice == <span class="string">"1"</span>:
+        add_contact()
+    <span class="keyword">elif</span> choice == <span class="string">"2"</span>:
+        view_all_contacts()
+    <span class="keyword">elif</span> choice == <span class="string">"3"</span>:
+        search_contacts()
+    <span class="keyword">elif</span> choice == <span class="string">"4"</span>:
+        <span class="function">print</span>(<span class="string">"Goodbye!"</span>)
+        <span class="keyword">break</span>
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">"Invalid choice. Please enter 1-4."</span>)</code></pre>
+        </div>
+
+        <h3>Example 2: Student Grade Tracker</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Student grade tracking system using dictionaries</span>
+students = []
+
+<span class="keyword">def</span> <span class="function">add_student</span>():
+    student = {
+        <span class="string">"name"</span>: <span class="function">input</span>(<span class="string">"Student name: "</span>),
+        <span class="string">"id"</span>: <span class="function">input</span>(<span class="string">"Student ID: "</span>),
+        <span class="string">"math"</span>: <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Math grade: "</span>)),
+        <span class="string">"english"</span>: <span class="function">int</span>(<span class="function">input</span>(<span class="string">"English grade: "</span>)),
+        <span class="string">"science"</span>: <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Science grade: "</span>))
+    }
+    
+    <span class="comment"># Calculate average</span>
+    total = student[<span class="string">"math"</span>] + student[<span class="string">"english"</span>] + student[<span class="string">"science"</span>]
+    student[<span class="string">"average"</span>] = total / <span class="number">3</span>
+    
+    <span class="comment"># Determine grade letter</span>
+    <span class="keyword">if</span> student[<span class="string">"average"</span>] >= <span class="number">90</span>:
+        student[<span class="string">"letter_grade"</span>] = <span class="string">"A"</span>
+    <span class="keyword">elif</span> student[<span class="string">"average"</span>] >= <span class="number">80</span>:
+        student[<span class="string">"letter_grade"</span>] = <span class="string">"B"</span>
+    <span class="keyword">elif</span> student[<span class="string">"average"</span>] >= <span class="number">70</span>:
+        student[<span class="string">"letter_grade"</span>] = <span class="string">"C"</span>
+    <span class="keyword">elif</span> student[<span class="string">"average"</span>] >= <span class="number">60</span>:
+        student[<span class="string">"letter_grade"</span>] = <span class="string">"D"</span>
+    <span class="keyword">else</span>:
+        student[<span class="string">"letter_grade"</span>] = <span class="string">"F"</span>
+    
+    students.append(student)
+    <span class="function">print</span>(<span class="string">f"Added </span><span class="string">{student['name']}</span><span class="string"> (Average: </span><span class="string">{student['average']:.1f}</span><span class="string">, Grade: </span><span class="string">{student['letter_grade']}</span><span class="string">)"</span>)
+
+<span class="keyword">def</span> <span class="function">display_report</span>():
+    <span class="keyword">if</span> <span class="function">len</span>(students) == <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">"No students in database."</span>)
+        <span class="keyword">return</span>
+    
+    <span class="function">print</span>(<span class="string">f"\n=== Grade Report ({len(students)} students) ==="</span>)
+    <span class="function">print</span>(<span class="string">f"{'Name':<15} {'ID':<8} {'Math':<5} {'Eng':<5} {'Sci':<5} {'Avg':<6} {'Grade'}"</span>)
+    <span class="function">print</span>(<span class="string">"-" * 55</span>)
+    
+    <span class="keyword">for</span> student <span class="keyword">in</span> students:
+        <span class="function">print</span>(<span class="string">f"{student['name']:<15} "</span>
+              <span class="string">f"{student['id']:<8} "</span>
+              <span class="string">f"{student['math']:<5} "</span>
+              <span class="string">f"{student['english']:<5} "</span>
+              <span class="string">f"{student['science']:<5} "</span>
+              <span class="string">f"{student['average']:<6.1f} "</span>
+              <span class="string">f"{student['letter_grade']}"</span>)
+
+<span class="comment"># Demo usage</span>
+add_student()
+add_student()
+display_report()</code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚨 Common Errors and How to Fix Them</h2>
+
+        <div class="error-box">
+            <h4>Error 1: KeyError - Key doesn't exist</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+contact = {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"phone"</span>: <span class="string">"123-456"</span>}
+<span class="function">print</span>(contact[<span class="string">"email"</span>])  <span class="comment"># ERROR: 'email' key doesn't exist</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Always check if key exists first:</p>
+            <div class="code-block">
 <pre><code><span class="keyword">if</span> <span class="string">"email"</span> <span class="keyword">in</span> contact:
     <span class="function">print</span>(contact[<span class="string">"email"</span>])
 <span class="keyword">else</span>:
-    <span class="function">print</span>(<span class="string">"Email address not found."</span>)</code></pre>
+    <span class="function">print</span>(<span class="string">"No email available"</span>)
+
+<span class="comment"># Or use .get() method</span>
+email = contact.get(<span class="string">"email"</span>, <span class="string">"No email"</span>)
+<span class="function">print</span>(email)</code></pre>
+            </div>
         </div>
 
-        <h3>7. Deleting a Key-Value Pair</h3>
-        <p>You can remove a pair from a dictionary using the <code>del</code> keyword.</p>
-        
-        <div class="code-block">
-<pre><code><span class="keyword">del</span> contact[<span class="string">"phone"</span>]
-<span class="comment"># The contact dictionary no longer has a "phone" key.</span></code></pre>
+        <div class="error-box">
+            <h4>Error 2: Forgetting quotes around keys</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+contact = {name: <span class="string">"Alice"</span>}  <span class="comment"># ERROR: name should be "name"</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Always put string keys in quotes:</p>
+            <div class="code-block">
+<pre><code>contact = {<span class="string">"name"</span>: <span class="string">"Alice"</span>}  <span class="comment"># Correct</span></code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>Error 3: Modifying dictionary during iteration</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+<span class="keyword">for</span> key <span class="keyword">in</span> contact:
+    <span class="keyword">if</span> key == <span class="string">"temp"</span>:
+        <span class="keyword">del</span> contact[key]  <span class="comment"># Can cause issues</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Create a list of keys to delete first:</p>
+            <div class="code-block">
+<pre><code>keys_to_delete = []
+<span class="keyword">for</span> key <span class="keyword">in</span> contact:
+    <span class="keyword">if</span> key.startswith(<span class="string">"temp"</span>):
+        keys_to_delete.append(key)
+
+<span class="keyword">for</span> key <span class="keyword">in</span> keys_to_delete:
+    <span class="keyword">del</span> contact[key]</code></pre>
+            </div>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Exercises</h2>
+        <h2>✏️ Practice Exercises</h2>
         <div class="exercises">
             <ul>
-                <li><strong>My Profile:</strong> Create a dictionary to store your own profile with keys for "name", "city", and "favorite_food". Print one of the values.</li>
-                <li><strong>Car Details:</strong> Create a dictionary for a car with keys for "make", "model", and "year". Print a sentence using all three values.</li>
-                <li><strong>Add a Key:</strong> Create a profile dictionary. After creating it, add a new key-value pair for "email". Print the whole dictionary.</li>
-                <li><strong>Student Grades:</strong> Create a dictionary to store a student's grades, with subjects as keys and scores as values. Use `.items()` to loop through and print each subject and score.</li>
-                <li><strong>Simple Translation:</strong> Create a dictionary that maps three English words to their Spanish translations. Ask the user for an English word and use the `in` keyword to check if it exists before printing the translation.</li>
-                <li><strong>Delete a Key:</strong> Create a dictionary with three key-value pairs. Use `del` to remove one of them. Print the final dictionary.</li>
-                <li><strong>Contact List of Dictionaries:</strong> Create a `list` containing two `dictionary` items, where each dictionary represents a contact (with "name" and "phone" keys).</li>
-                <li><strong>Looping Through Dictionaries:</strong> Using the list from the previous exercise, write a `for` loop that prints a formatted string for each contact, like: "Contact: [Name], Phone: [Phone]".</li>
-                <li><strong>Adding a Dictionary to a List:</strong> Start with an empty list called `contacts`. Create a new contact `dictionary` based on user input and `append()` it to the list. Print the list.</li>
-                <li><strong>Search by Name:</strong> Create a list of contact dictionaries. Ask the user for a name to search for. Loop through the list, and if you find a dictionary with a matching name, print that contact's phone number.</li>
-                <li><strong>Full Contact Entry:</strong> Combine everything: Create an empty list. Ask the user for a name and phone number. Create a new dictionary with that data. Append the dictionary to the list. Finally, loop through the list and print all the contacts.</li>
-                <li><strong>Profile Printer:</strong> Create a profile dictionary. Use a `for` loop with `.items()` to print each piece of information on a new line, like "Key: Value".</li>
+                <li><strong>Personal Profile:</strong> Create a dictionary with your personal information (name, age, city, hobbies). Print it in a formatted way.</li>
+                
+                <li><strong>Movie Database:</strong> Create dictionaries for 3 movies with title, year, director, and rating. Store them in a list.</li>
+                
+                <li><strong>Contact Manager:</strong> Build a simple contact system that can add, display, and search contacts using dictionaries.</li>
+                
+                <li><strong>Student Records:</strong> Create a gradebook system using dictionaries to store student names and their test scores.</li>
+                
+                <li><strong>Inventory System:</strong> Create an inventory system where each item is a dictionary with name, quantity, and price.</li>
+                
+                <li><strong>Recipe Book:</strong> Store recipes as dictionaries with ingredients (as a list) and cooking instructions.</li>
+                
+                <li><strong>Car Dealership:</strong> Create a car database with dictionaries containing make, model, year, price, and features.</li>
+                
+                <li><strong>Library System:</strong> Track books using dictionaries with title, author, ISBN, and availability status.</li>
+                
+                <li><strong>Employee Database:</strong> Create employee records with name, ID, department, salary, and hire date.</li>
+                
+                <li><strong>Menu System:</strong> Create a restaurant menu where each dish is a dictionary with name, price, ingredients, and category.</li>
+                
+                <li><strong>Gaming Statistics:</strong> Track player statistics using dictionaries with player name, level, score, and achievements.</li>
+                
+                <li><strong>Weather Data:</strong> Store daily weather information as dictionaries with date, temperature, humidity, and conditions.</li>
             </ul>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Key Takeaways</h2>
+        <h2>🎯 Key Takeaways</h2>
         <ul>
-            <li>Dictionaries use key-value pairs instead of numbered indexes</li>
-            <li>Access values using keys in square brackets: <code>dict["key"]</code></li>
-            <li>Lists of dictionaries are perfect for storing multiple records (like contacts)</li>
-            <li>Use <code>.items()</code> to loop through both keys and values</li>
-            <li>Always check if a key exists using <code>in</code> before accessing it</li>
-            <li>Remove key-value pairs with the <code>del</code> keyword</li>
-            <li>Dictionaries provide better structure than lists for complex data</li>
+            <li><strong>Dictionaries</strong> store data as key-value pairs for organized, meaningful access</li>
+            <li><strong>Keys</strong> must be strings (in quotes) and are used to access values</li>
+            <li><strong>Values</strong> can be any data type (strings, numbers, lists, even other dictionaries)</li>
+            <li><strong>Lists of dictionaries</strong> are perfect for storing multiple records (Merit level!)</li>
+            <li><strong>.items()</strong> loops through key-value pairs</li>
+            <li><strong>.keys()</strong> and <strong>.values()</strong> loop through keys or values only</li>
+            <li><strong>Always check</strong> if keys exist before accessing them</li>
+            <li><strong>Dictionaries are mutable</strong> - you can add, modify, and delete entries</li>
         </ul>
     </div>
 
-    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+    <div class="progression-box">
+        <h3>📈 Your Programming Journey</h3>
+        <p><strong>Week 1-4:</strong> You learned the fundamentals - variables, conditions, lists, and loops.</p>
+        <p><strong>Week 5 (Now):</strong> You've mastered dictionaries - the key to Merit-level programming!</p>
+        <p><strong>Coming Next:</strong> Error handling for Excellence-level robustness and functions for clean, professional code.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>🚀 Next Week Preview</h2>
+        <p>Next week, we'll learn about <strong>Error Handling & Validation</strong> - how to make your programs robust by gracefully handling invalid input and unexpected situations. This is essential for achieving Excellence level in your assessment!</p>
+    </div>
+
+    <a href="../programming.html" class="back-link">← Back to Programming Overview</a>
 </body>
 </html>

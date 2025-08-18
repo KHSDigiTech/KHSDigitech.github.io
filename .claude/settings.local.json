@@ -8,7 +8,9 @@
       "Bash(rm:*)",
       "Bash(for:*)",
       "Bash(do echo \"=== $file ===\")",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(grep:*)",
+      "Bash(do sed -i 's|href=\"\"programming\\.html\"\"|href=\"\"../programming.html\"\"|g' \"$file\")"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

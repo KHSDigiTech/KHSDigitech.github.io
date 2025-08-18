@@ -175,49 +175,122 @@
         <h2>🏗️ Building Your Collision Game</h2>
         
         <div class="step-by-step">
-            <h3>Step 1: Scene Setup</h3>
+            <h3>Step 1: Main Game Scene Setup</h3>
+            
+            <div class="node-info">
+                <h4>🌳 Main Scene Structure</h4>
+                <pre style="background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 4px; font-family: monospace;">
+CollisionGame (Node2D) 🎮
+├── PlayerCharacter (Instantiated Scene) 🏃
+├── UI (Control) 📊
+│   └── ScoreLabel (Label) 🏆
+├── Coin1 (Instantiated Coin Scene) 🪙
+├── Coin2 (Instantiated Coin Scene) 🪙
+└── Coin3 (Instantiated Coin Scene) 🪙
+                </pre>
+            </div>
+            
             <ol>
-                <li>Create a new scene with <code>Node2D</code> as root (rename to "CollisionGame")</li>
+                <li><strong>New Scene:</strong> Scene → New Scene → 2D Scene</li>
+                <li><strong>Rename Root:</strong> Select Node2D → rename to "CollisionGame"</li>
                 <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "CollisionGame.tscn"</li>
-                <li><strong>🔄 Reuse your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
-                <li>Position the player in the scene</li>
-                <li>Create a <code>Control</code> node for UI (score label)</li>
-                <li>Add a <code>Label</code> child to show the score</li>
+                <li><strong>Add Player:</strong> Right-click CollisionGame → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
+                <li><strong>Position Player:</strong> Drag player to starting position (bottom center works well)</li>
+                <li><strong>Add UI Container:</strong> Right-click CollisionGame → Add Child → Control → Rename to "UI"</li>
+                <li><strong>Set UI to Full Screen:</strong> Select UI → In Inspector, Anchors Preset → Full Rect</li>
+                <li><strong>Add Score Label:</strong> Right-click UI → Add Child → Label → Rename to "ScoreLabel"</li>
+                <li><strong>Position Score:</strong> Select ScoreLabel → Drag to top-left corner</li>
+                <li><strong>Set Score Text:</strong> In Inspector, Text field → type "Score: 0"</li>
                 <li><strong>💾 Save again:</strong> Always save after major changes!</li>
             </ol>
             
-            <div class="highlight">
+            <div class="node-info">
                 <p><strong>🎯 Scene Reuse:</strong> By using your "PlayerCharacter.tscn" from Module 3, you don't need to recreate the movement system! This is the power of modular scene design in Godot.</p>
             </div>
         </div>
 
         <div class="step-by-step">
-            <h3>Step 2: Create a Collectible Coin</h3>
+            <h3>Step 2: Create a Collectible Coin Scene</h3>
+            
+            <div class="node-info">
+                <h4>🌳 Complete Node Structure</h4>
+                <div style="text-align: center; margin: 1rem 0;">
+                    <img src="images/coin-scene-structure.png" alt="Coin scene structure in Godot showing Coin root node with Sprite2D and CollisionShape2D children" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.9em; color: #666; margin-top: 0.5rem;"><em>Your coin scene should look like this in the Godot editor</em></p>
+                </div>
+                <pre style="background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 4px; font-family: monospace;">
+Coin (Area2D) 📦
+├── Sprite2D 🎨
+├── CollisionShape2D ⚡
+└── AudioStreamPlayer2D 🔊 [Optional]
+                </pre>
+                <p><strong>Important:</strong> This exact structure will be referenced in your scripts!</p>
+            </div>
+            
             <ol>
-                <li>Add <code>Area2D</code> node (rename to "Coin")</li>
-                <li>Add <code>Sprite2D</code> child with coin texture</li>
-                <li>Add <code>CollisionShape2D</code> child with CircleShape2D</li>
-                <li>Size the collision shape to match the sprite</li>
+                <li><strong>Create the Scene:</strong> Scene → New Scene → 2D Scene</li>
+                <li><strong>Change Root:</strong> Delete Node2D → Add Area2D as root → Rename to "Coin"</li>
+                <li><strong>Add Sprite:</strong> Right-click Coin → Add Child → Sprite2D → Rename to "CoinSprite"</li>
+                <li><strong>Set Texture:</strong> Select CoinSprite → In Inspector, drag your coin image to "Texture" property</li>
+                <li><strong>Add Collision:</strong> Right-click Coin → Add Child → CollisionShape2D → Rename to "CoinCollision"</li>
+                <li><strong>Set Shape:</strong> Select CoinCollision → In Inspector, "Shape" dropdown → New CircleShape2D</li>
+                <li><strong>Size the Circle:</strong> Click the blue circle that appears → Drag handles to match sprite size</li>
+                <li><strong>💾 Save Coin Scene:</strong> Ctrl+S → Name it "Coin.tscn"</li>
+            </ol>
+            
+            <div class="node-info">
+                <h4>🔍 Groups Setup (Important for Scripts!)</h4>
+                <ol>
+                    <li>Select the root "Coin" node (Area2D)</li>
+                    <li>Go to "Groups" tab (next to Inspector tab)</li>
+                    <li>Type "coins" in the text field</li>
+                    <li>Click "Add" button</li>
+                    <li><strong>Why Groups?</strong> This lets your script easily find all coins with <code>get_tree().get_nodes_in_group("coins")</code></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 3: Add Multiple Coins to Main Scene</h3>
+            <ol>
+                <li><strong>Instance First Coin:</strong> Right-click CollisionGame → Instance Child Scene → Select "Coin.tscn"</li>
+                <li><strong>Position Coin:</strong> Drag the coin to a spot away from the player</li>
+                <li><strong>Duplicate Coins:</strong> Right-click the coin → Duplicate (Ctrl+D) → Repeat 2-3 times</li>
+                <li><strong>Spread Coins Around:</strong> Drag each coin to different positions on screen</li>
+                <li><strong>Test Groups:</strong> Select any coin → Groups tab → Should see "coins" group listed</li>
+            </ol>
+            
+            <div class="node-info">
+                <p><strong>💡 Pro Tip:</strong> All instantiated coins automatically inherit the "coins" group from the Coin.tscn scene!</p>
+            </div>
+        </div>
+
+        <div class="step-by-step">
+            <h3>Step 4: Add Script to Main Scene</h3>
+            <ol>
+                <li><strong>Select Root:</strong> Click on "CollisionGame" (the root node)</li>
+                <li><strong>Attach Script:</strong> Click script icon 📜 next to the node name</li>
+                <li><strong>Create Script:</strong> Leave all defaults → Click "Create"</li>
+                <li><strong>Verify Script:</strong> Script editor should open with empty <code>_ready()</code> function</li>
             </ol>
         </div>
 
         <div class="step-by-step">
-            <h3>Step 3: Add Script to Main Scene</h3>
+            <h3>Step 5: Ready for Coding!</h3>
+            
+            <div class="node-info">
+                <h4>🚀 Smart Signal Connection</h4>
+                <p>Instead of manually connecting each coin's signal, we'll use CODE to automatically connect ALL coins in the "coins" group. This means you can add as many coins as you want and they'll all work automatically!</p>
+            </div>
+            
+            <div class="physics-info">
+                <p><strong>🔧 How This Works:</strong> The script will find all nodes in the "coins" group when the game starts, then automatically connect their signals. Add 10 coins or 100 coins - they'll all work without any extra steps!</p>
+            </div>
+            
             <ol>
-                <li>Select your main scene root node ("CollisionGame")</li>
-                <li>Click "Attach Script" button and create the script</li>
-                <li>This script will control the game logic</li>
-            </ol>
-        </div>
-
-        <div class="step-by-step">
-            <h3>Step 4: Connect the Collision Signal</h3>
-            <ol>
-                <li>Select the Coin (Area2D) node</li>
-                <li>Go to "Node" tab (next to Inspector)</li>
-                <li>Find <code>body_entered(body)</code> signal</li>
-                <li>Connect it to your main scene root node</li>
-                <li>This creates <code>_on_coin_body_entered(body)</code> function</li>
+                <li><strong>Verify Setup:</strong> Make sure you have multiple coins placed in the scene</li>
+                <li><strong>Check Groups:</strong> Select any coin → Groups tab → Should see "coins" group</li>
+                <li><strong>Ready to Code:</strong> Your scene is ready for the collision detection script!</li>
             </ol>
         </div>
     </div>
@@ -226,19 +299,71 @@
         <h2>🤖 AI-Assisted Collision Coding</h2>
         
         <div class="ai-prompt">
-            <h3>Perfect Prompt for Collision Detection</h3>
-            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I'm making a coin collection game in Godot 4. When my player character walks into a coin, I want the coin to disappear and add 1 point to the score. The score should be displayed on screen and update immediately. I also want to make sure only the player can collect coins, not other objects. Can you show me the complete code including how to store the score, detect when something touches the coin, check if it's the player, update the score display, and remove the coin?"
-            </blockquote>
+            <h3>Perfect AI Prompt Setup</h3>
+            
+            <div class="step-by-step">
+                <h4>📸 Step 1: Take a Screenshot</h4>
+                <ol>
+                    <li><strong>Show Scene Structure:</strong> In Godot, make sure your Scene dock is expanded and visible</li>
+                    <li><strong>Screenshot the Scene:</strong> Take a screenshot showing your complete scene tree with all nodes expanded</li>
+                    <li><strong>Include Inspector:</strong> If possible, select a coin and show the Groups tab to display the "coins" group</li>
+                </ol>
+            </div>
+            
+            <div class="step-by-step">
+                <h4>💬 Step 2: Use This Prompt</h4>
+                <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                    "I'm making a coin collection game in Godot 4. Here's a screenshot of my scene. My player already has movement working from a previous module. I want to make it so when my player walks into the coins, they disappear and the score goes up. I put all my coins in a group called 'coins'. Can you help me write the code for this? I want the score to show on screen and update when I collect coins."
+                </blockquote>
+            </div>
+            
+            <div class="node-info">
+                <h4>🎯 Why Screenshots Work Better</h4>
+                <ul>
+                    <li><strong>Visual Context:</strong> AI can see your exact node names and structure</li>
+                    <li><strong>No Typos:</strong> AI reads the actual names from your screenshot</li>
+                    <li><strong>Complete Picture:</strong> Shows groups, types, and hierarchy all at once</li>
+                    <li><strong>Debugging Help:</strong> AI can spot setup issues you might miss</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="node-info">
+            <h3>🔑 Key Code Concepts This Will Teach</h3>
+            <ul>
+                <li><strong>get_tree().get_nodes_in_group("coins"):</strong> Find all coins automatically</li>
+                <li><strong>coin.body_entered.connect():</strong> Connect signals via code</li>
+                <li><strong>Signal parameters:</strong> How to know which coin was touched</li>
+                <li><strong>Node references:</strong> Getting UI elements from code</li>
+                <li><strong>Dynamic behavior:</strong> Add more coins anytime, they'll work automatically</li>
+            </ul>
         </div>
 
         <div class="ai-prompt">
-            <h3>Additional Features to Ask For</h3>
+            <h3>Follow-up Prompts for Enhanced Features</h3>
+            <p><strong>📸 Remember:</strong> Always include a screenshot of your current scene structure when asking for these features!</p>
+            
             <ul>
-                <li>"How do I create multiple coins and place them randomly around the screen?"</li>
-                <li>"Can you add a visual effect like sparkles when a coin is collected?"</li>
-                <li>"How do I make some coins worth more points than others?"</li>
-                <li>"What's the best way to completely remove objects from the game when they're no longer needed?"</li>
+                <li><strong>Random Coin Spawning:</strong> "Here's my coin game [screenshot]. How do I make new coins appear randomly around the screen instead of placing them manually?"</li>
+                
+                <li><strong>Visual Effects:</strong> "My coin collection works [screenshot]. Can you add sparkles or animation when I collect a coin?"</li>
+                
+                <li><strong>Different Coin Types:</strong> "Here's my game [screenshot]. How do I make some coins worth more points than others?"</li>
+                
+                <li><strong>Sound Effects:</strong> "My game works but needs sound [screenshot]. How do I add collection sounds to my coins?"</li>
+                
+                <li><strong>Win Condition:</strong> "Here's my coin game [screenshot]. How do I show 'You Win!' when all coins are collected?"</li>
+            </ul>
+        </div>
+        
+        <div class="node-info">
+            <h3>🎯 Why Screenshots Work Better Than Text</h3>
+            <ul>
+                <li><strong>Accurate Node Names:</strong> AI sees your exact naming, no guessing</li>
+                <li><strong>Current State:</strong> Shows what you've already built vs. what you need</li>
+                <li><strong>Spot Issues:</strong> AI can identify setup problems before coding</li>
+                <li><strong>Custom Structures:</strong> Works with any variations you've made</li>
+                <li><strong>Less Typing:</strong> No need to describe complex hierarchies</li>
             </ul>
         </div>
     </div>

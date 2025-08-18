@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 4: Iteration (Loops)</title>
+    <title>Week 4: Iteration & Loops</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,12 +42,13 @@
         .code-block {
             background: #2d3748;
             color: #e2e8f0;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #007bff;
             margin: 1rem 0;
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             overflow-x: auto;
+            font-size: 0.9rem;
         }
 
         .code-block pre {
@@ -66,6 +67,38 @@
         .function { color: #63b3ed; }     /* Function names */
         .number { color: #fbb6ce; }       /* Numbers */
 
+        .example-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-box {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #e6ffe6;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
         .exercises {
             background: #d4edda;
             padding: 1.5rem;
@@ -79,9 +112,14 @@
         }
 
         .exercises li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             position: relative;
             padding-left: 2rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .exercises li:last-child {
+            border-bottom: none;
         }
 
         .exercises li::before {
@@ -113,95 +151,653 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 0.5rem;
         }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .loop-flow {
+            background: #f8f9fa;
+            border: 2px solid #6c757d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .pattern-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .infinite-warning {
+            background: #ffe6e6;
+            border: 3px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Week 4: Iteration (Loops)</h1>
-        <p><strong>Goal:</strong> To learn how to repeat blocks of code automatically. This is essential for creating a menu that keeps running and for processing every item in a list.</p>
+        <h1>Week 4: Iteration & Loops</h1>
+        <p><strong>Goal:</strong> Learn to repeat code automatically using loops. This allows you to process lists, create menus that keep running, and build powerful programs that can handle repetitive tasks efficiently.</p>
     </div>
 
     <div class="content-section">
-        <h2>Key Concepts & Explanations</h2>
+        <h2>🎯 Learning Objectives</h2>
+        <p>By the end of this week, you will be able to:</p>
+        <ul>
+            <li>Use <code>while</code> loops for repeated execution when you don't know how many times to repeat</li>
+            <li>Use <code>for</code> loops to iterate through lists and sequences</li>
+            <li>Control loop execution with <code>break</code> and <code>continue</code></li>
+            <li>Create menu systems that keep running until the user chooses to exit</li>
+            <li>Process every item in a list automatically</li>
+            <li>Use <code>range()</code> to generate number sequences</li>
+            <li>Avoid infinite loops and debug loop problems</li>
+            <li>Combine loops with conditionals and lists for powerful programs</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Key Concepts & Detailed Explanations</h2>
         
-        <h3>1. The while Loop</h3>
-        <p>A <code>while</code> loop repeats a block of code <strong>as long as a certain condition remains true</strong>. It's perfect for when you don't know how many times you need to repeat the code.</p>
-        
+        <h3>1. What is Iteration?</h3>
+        <p>Iteration means repeating a block of code multiple times. Instead of writing the same code over and over, loops let you tell the computer "do this X times" or "do this until something happens".</p>
+
+        <div class="example-box">
+            <h4>Real-World Analogy:</h4>
+            <p>Iteration is like following a recipe that says "stir until mixture is smooth" or "repeat 10 times". You're doing the same action repeatedly until a condition is met or a certain number of repetitions is reached.</p>
+        </div>
+
+        <div class="pattern-box">
+            <h4>Without Loops (Repetitive & Inefficient):</h4>
+            <div class="code-block">
+<pre><code><span class="function">print</span>(<span class="string">"Welcome!"</span>)
+<span class="function">print</span>(<span class="string">"Welcome!"</span>)
+<span class="function">print</span>(<span class="string">"Welcome!"</span>)
+<span class="function">print</span>(<span class="string">"Welcome!"</span>)
+<span class="function">print</span>(<span class="string">"Welcome!"</span>)  <span class="comment"># What if we need 100 times?</span></code></pre>
+            </div>
+            <h4>With Loops (Elegant & Scalable):</h4>
+            <div class="code-block">
+<pre><code><span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>):
+    <span class="function">print</span>(<span class="string">"Welcome!"</span>)  <span class="comment"># Easy to change to any number</span></code></pre>
+            </div>
+        </div>
+
+        <h3>2. The while Loop - Repeat Until a Condition Changes</h3>
+        <p>A <code>while</code> loop repeats a block of code as long as a condition remains True. It's perfect when you don't know exactly how many times you need to repeat something.</p>
+
         <div class="code-block">
-<pre><code><span class="comment"># A loop that counts to 3</span>
+<pre><code><span class="comment"># Basic while loop structure</span>
 count = <span class="number">1</span>
-<span class="keyword">while</span> count <= <span class="number">3</span>:
-    <span class="function">print</span>(<span class="string">"The count is:"</span>, count)
-    count = count + <span class="number">1</span> <span class="comment"># This is crucial! It's the incrementer.</span>
+<span class="keyword">while</span> count <= <span class="number">5</span>:
+    <span class="function">print</span>(<span class="string">f"Count is: </span><span class="string">{count}</span><span class="string">"</span>)
+    count = count + <span class="number">1</span>  <span class="comment"># CRITICAL: Update the condition variable!</span>
 
-<span class="function">print</span>(<span class="string">"Loop finished."</span>)</code></pre>
+<span class="function">print</span>(<span class="string">"Loop finished!"</span>)</code></pre>
         </div>
-        
-        <ul>
-            <li><strong>while count <= 3:</strong> The loop will continue as long as the <code>count</code> variable is less than or equal to 3.</li>
-            <li><strong>count = count + 1:</strong> Inside the loop, we must change the variable from the condition. If we don't, we create an <strong>infinite loop</strong> because the condition will never become false.</li>
-        </ul>
 
-        <h4>The while True and break Pattern:</h4>
-        <p>A very common pattern is to create a loop that runs forever and then use a conditional <code>break</code> statement to exit it. This is ideal for menus.</p>
-        
+        <div class="loop-flow">
+            <h4>While Loop Execution Flow:</h4>
+            <pre>
+1. Check condition (count <= 5)
+2. If True: Execute loop body
+3. Update condition variable (count = count + 1)
+4. Go back to step 1
+5. If False: Exit loop and continue with rest of program
+            </pre>
+        </div>
+
+        <div class="step-by-step">
+            <h4>while Loop Components:</h4>
+            <ol>
+                <li><strong>Initialization:</strong> Set up the condition variable before the loop</li>
+                <li><strong>Condition:</strong> The boolean expression that controls the loop</li>
+                <li><strong>Loop body:</strong> The code that gets repeated</li>
+                <li><strong>Update:</strong> Change the condition variable inside the loop</li>
+            </ol>
+        </div>
+
+        <div class="infinite-warning">
+            <h4>⚠️ DANGER: Infinite Loops!</h4>
+            <p>If you forget to update the condition variable, your loop will run forever:</p>
+            <div class="code-block">
+<pre><code><span class="comment"># This will run forever - DON'T DO THIS!</span>
+count = <span class="number">1</span>
+<span class="keyword">while</span> count <= <span class="number">5</span>:
+    <span class="function">print</span>(count)
+    <span class="comment"># Missing: count = count + 1</span></code></pre>
+            </div>
+            <p>Always make sure to modify the condition variable inside the loop!</p>
+        </div>
+
+        <h3>3. The while True Pattern - Continuous Loops with break</h3>
+        <p>A very common pattern is <code>while True</code> with a <code>break</code> statement. This creates a loop that runs forever until you explicitly tell it to stop.</p>
+
         <div class="code-block">
-<pre><code><span class="keyword">while</span> <span class="keyword">True</span>:
-    command = <span class="function">input</span>(<span class="string">"Enter command (or 'q' to quit): "</span>)
-    <span class="keyword">if</span> command == <span class="string">"q"</span>:
-        <span class="keyword">break</span> <span class="comment"># Exit the loop immediately</span>
-    <span class="function">print</span>(<span class="string">f"Executing command: </span><span class="string">{command}</span><span class="string">"</span>)</code></pre>
+<pre><code><span class="comment"># Menu system using while True</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="function">print</span>(<span class="string">"\n=== Main Menu ==="</span>)
+    <span class="function">print</span>(<span class="string">"1. Say Hello"</span>)
+    <span class="function">print</span>(<span class="string">"2. Count to 10"</span>)
+    <span class="function">print</span>(<span class="string">"3. Exit"</span>)
+    
+    choice = <span class="function">input</span>(<span class="string">"Choose an option: "</span>)
+    
+    <span class="keyword">if</span> choice == <span class="string">"1"</span>:
+        <span class="function">print</span>(<span class="string">"Hello, World!"</span>)
+    <span class="keyword">elif</span> choice == <span class="string">"2"</span>:
+        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">11</span>):
+            <span class="function">print</span>(i)
+    <span class="keyword">elif</span> choice == <span class="string">"3"</span>:
+        <span class="function">print</span>(<span class="string">"Goodbye!"</span>)
+        <span class="keyword">break</span>  <span class="comment"># Exit the loop</span>
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">"Invalid choice! Please try again."</span>)
+
+<span class="function">print</span>(<span class="string">"Program ended."</span>)</code></pre>
         </div>
 
-        <h3>2. The for Loop</h3>
-        <p>A <code>for</code> loop is used to iterate over a sequence (like a list). It will run its code block once for every item in the sequence.</p>
-        
-        <div class="code-block">
-<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
-<span class="keyword">for</span> item <span class="keyword">in</span> colors:
-    <span class="function">print</span>(<span class="string">"The color is:"</span>, item)</code></pre>
+        <div class="success-box">
+            <h4>✅ while True Pattern Benefits:</h4>
+            <ul>
+                <li>Perfect for menu systems</li>
+                <li>Easy to understand and maintain</li>
+                <li>No need to worry about complex loop conditions</li>
+                <li>Can exit at any point using <code>break</code></li>
+            </ul>
         </div>
-        
-        <ul>
-            <li><strong>for item in colors:</strong> This is the loop definition.
-                <ul>
-                    <li><strong>colors:</strong> The list you want to loop through.</li>
-                    <li><strong>item:</strong> This is a <strong>temporary variable</strong> that you name. In each iteration of the loop, <code>item</code> will hold the current item from the list (<code>"red"</code> in the first loop, <code>"green"</code> in the second, etc.).</li>
-                </ul>
-            </li>
-        </ul>
+
+        <h3>4. The for Loop - Iterate Through Sequences</h3>
+        <p>A <code>for</code> loop is used when you want to process every item in a sequence (like a list) or repeat something a specific number of times.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Basic for loop with a list</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>]
+
+<span class="keyword">for</span> fruit <span class="keyword">in</span> fruits:
+    <span class="function">print</span>(<span class="string">f"I like </span><span class="string">{fruit}</span><span class="string">s!"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># I like apples!</span>
+<span class="comment"># I like bananas!</span>
+<span class="comment"># I like oranges!</span></code></pre>
+        </div>
+
+        <div class="step-by-step">
+            <h4>for Loop Breakdown:</h4>
+            <ol>
+                <li><strong>for</strong> - The keyword that starts the loop</li>
+                <li><strong>fruit</strong> - The loop variable (you choose this name)</li>
+                <li><strong>in</strong> - Keyword that means "from"</li>
+                <li><strong>fruits</strong> - The sequence to iterate through</li>
+                <li><strong>Loop body</strong> - Code that runs for each item</li>
+            </ol>
+        </div>
+
+        <h3>5. The range() Function - Creating Number Sequences</h3>
+        <p>The <code>range()</code> function generates sequences of numbers, which is perfect for <code>for</code> loops when you need to repeat something a specific number of times.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Different ways to use range()</span>
+
+<span class="comment"># range(stop) - from 0 to stop-1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>):
+    <span class="function">print</span>(i)  <span class="comment"># Prints: 0, 1, 2, 3, 4</span>
+
+<span class="comment"># range(start, stop) - from start to stop-1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">6</span>):
+    <span class="function">print</span>(i)  <span class="comment"># Prints: 1, 2, 3, 4, 5</span>
+
+<span class="comment"># range(start, stop, step) - with custom step size</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">2</span>):
+    <span class="function">print</span>(i)  <span class="comment"># Prints: 0, 2, 4, 6, 8</span>
+
+<span class="comment"># Counting backwards</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>, <span class="number">0</span>, <span class="number">-1</span>):
+    <span class="function">print</span>(i)  <span class="comment"># Prints: 5, 4, 3, 2, 1</span></code></pre>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>range() Usage</th>
+                    <th>Syntax</th>
+                    <th>Example</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Stop only</td>
+                    <td>range(stop)</td>
+                    <td>range(3)</td>
+                    <td>0, 1, 2</td>
+                </tr>
+                <tr>
+                    <td>Start and stop</td>
+                    <td>range(start, stop)</td>
+                    <td>range(2, 5)</td>
+                    <td>2, 3, 4</td>
+                </tr>
+                <tr>
+                    <td>Start, stop, step</td>
+                    <td>range(start, stop, step)</td>
+                    <td>range(1, 10, 3)</td>
+                    <td>1, 4, 7</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>6. Accessing List Items with Indices in Loops</h3>
+        <p>Sometimes you need both the item and its position. You can use <code>range(len(list))</code> or <code>enumerate()</code> for this.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Method 1: Using range(len()) to get indices</span>
+students = [<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>]
+
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(students)):
+    <span class="function">print</span>(<span class="string">f"Student </span><span class="string">{i + 1}</span><span class="string">: </span><span class="string">{students[i]}</span><span class="string">"</span>)
+
+<span class="comment"># Method 2: Using enumerate() (more Pythonic)</span>
+<span class="keyword">for</span> index, student <span class="keyword">in</span> <span class="function">enumerate</span>(students):
+    <span class="function">print</span>(<span class="string">f"Student </span><span class="string">{index + 1}</span><span class="string">: </span><span class="string">{student}</span><span class="string">"</span>)
+
+<span class="comment"># Both methods output:</span>
+<span class="comment"># Student 1: Alice</span>
+<span class="comment"># Student 2: Bob</span>
+<span class="comment"># Student 3: Charlie</span></code></pre>
+        </div>
+
+        <h3>7. Loop Control: break and continue</h3>
+        <p>You can control loop execution with <code>break</code> (exit the loop) and <code>continue</code> (skip to next iteration).</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Using break to exit early</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]
+
+<span class="keyword">for</span> num <span class="keyword">in</span> numbers:
+    <span class="keyword">if</span> num == <span class="number">5</span>:
+        <span class="function">print</span>(<span class="string">"Found 5! Stopping here."</span>)
+        <span class="keyword">break</span>  <span class="comment"># Exit the loop completely</span>
+    <span class="function">print</span>(num)
+
+<span class="function">print</span>(<span class="string">"Loop ended."</span>)
+<span class="comment"># Output: 1, 2, 3, 4, Found 5! Stopping here., Loop ended.</span>
+
+<span class="comment"># Using continue to skip iterations</span>
+<span class="keyword">for</span> num <span class="keyword">in</span> numbers:
+    <span class="keyword">if</span> num % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># If even</span>
+        <span class="keyword">continue</span>  <span class="comment"># Skip to next iteration</span>
+    <span class="function">print</span>(<span class="string">f"Odd number: </span><span class="string">{num}</span><span class="string">"</span>)
+
+<span class="comment"># Output: Odd number: 1, Odd number: 3, Odd number: 5, etc.</span></code></pre>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Keyword</th>
+                    <th>Effect</th>
+                    <th>When to use</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>break</td>
+                    <td>Exit loop completely</td>
+                    <td>When you found what you're looking for</td>
+                    <td>Search for a specific item</td>
+                </tr>
+                <tr>
+                    <td>continue</td>
+                    <td>Skip to next iteration</td>
+                    <td>When you want to skip certain items</td>
+                    <td>Process only odd numbers</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8. Nested Loops - Loops Inside Loops</h3>
+        <p>You can put loops inside other loops to handle more complex situations, like processing 2D data or creating patterns.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Creating a multiplication table</span>
+<span class="function">print</span>(<span class="string">"Multiplication Table (1-5):"</span>)
+
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">6</span>):  <span class="comment"># Outer loop: rows</span>
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">6</span>):  <span class="comment"># Inner loop: columns</span>
+        result = i * j
+        <span class="function">print</span>(<span class="string">f"</span><span class="string">{result:2}</span><span class="string">"</span>, end=<span class="string">" "</span>)  <span class="comment"># Print without newline</span>
+    <span class="function">print</span>()  <span class="comment"># New line after each row</span>
+
+<span class="comment"># Processing a list of lists (2D data)</span>
+classes = [
+    [<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>],
+    [<span class="string">"David"</span>, <span class="string">"Eve"</span>],
+    [<span class="string">"Frank"</span>, <span class="string">"Grace"</span>, <span class="string">"Henry"</span>, <span class="string">"Ivy"</span>]
+]
+
+<span class="keyword">for</span> class_num, students <span class="keyword">in</span> <span class="function">enumerate</span>(classes):
+    <span class="function">print</span>(<span class="string">f"Class </span><span class="string">{class_num + 1}</span><span class="string">:"</span>)
+    <span class="keyword">for</span> student <span class="keyword">in</span> students:
+        <span class="function">print</span>(<span class="string">f"  - </span><span class="string">{student}</span><span class="string">"</span>)</code></pre>
+        </div>
     </div>
 
     <div class="content-section">
-        <h2>Exercises</h2>
+        <h2>💡 Complete Working Examples</h2>
+
+        <h3>Example 1: Contact List Display System</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Contact list with loop-based menu</span>
+contacts = [<span class="string">"Alice Smith"</span>, <span class="string">"Bob Johnson"</span>, <span class="string">"Charlie Brown"</span>]
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="function">print</span>(<span class="string">"\n=== Contact Manager ==="</span>)
+    <span class="function">print</span>(<span class="string">"1. View all contacts"</span>)
+    <span class="function">print</span>(<span class="string">"2. Add contact"</span>)
+    <span class="function">print</span>(<span class="string">"3. Search contacts"</span>)
+    <span class="function">print</span>(<span class="string">"4. Exit"</span>)
+    
+    choice = <span class="function">input</span>(<span class="string">"Choose option (1-4): "</span>)
+    
+    <span class="keyword">if</span> choice == <span class="string">"1"</span>:
+        <span class="function">print</span>(<span class="string">f"\n=== All Contacts ({len(contacts)} total) ==="</span>)
+        <span class="keyword">if</span> <span class="function">len</span>(contacts) == <span class="number">0</span>:
+            <span class="function">print</span>(<span class="string">"No contacts found."</span>)
+        <span class="keyword">else</span>:
+            <span class="keyword">for</span> i, contact <span class="keyword">in</span> <span class="function">enumerate</span>(contacts, <span class="number">1</span>):
+                <span class="function">print</span>(<span class="string">f"</span><span class="string">{i}</span><span class="string">. </span><span class="string">{contact}</span><span class="string">"</span>)
+    
+    <span class="keyword">elif</span> choice == <span class="string">"2"</span>:
+        new_contact = <span class="function">input</span>(<span class="string">"Enter new contact name: "</span>)
+        contacts.append(new_contact)
+        <span class="function">print</span>(<span class="string">f"Added </span><span class="string">{new_contact}</span><span class="string"> to contacts."</span>)
+    
+    <span class="keyword">elif</span> choice == <span class="string">"3"</span>:
+        search_term = <span class="function">input</span>(<span class="string">"Enter name to search: "</span>).lower()
+        found_contacts = []
+        
+        <span class="keyword">for</span> contact <span class="keyword">in</span> contacts:
+            <span class="keyword">if</span> search_term <span class="keyword">in</span> contact.lower():
+                found_contacts.append(contact)
+        
+        <span class="keyword">if</span> found_contacts:
+            <span class="function">print</span>(<span class="string">f"Found </span><span class="string">{len(found_contacts)}</span><span class="string"> matches:"</span>)
+            <span class="keyword">for</span> contact <span class="keyword">in</span> found_contacts:
+                <span class="function">print</span>(<span class="string">f"  - </span><span class="string">{contact}</span><span class="string">"</span>)
+        <span class="keyword">else</span>:
+            <span class="function">print</span>(<span class="string">"No matches found."</span>)
+    
+    <span class="keyword">elif</span> choice == <span class="string">"4"</span>:
+        <span class="function">print</span>(<span class="string">"Goodbye!"</span>)
+        <span class="keyword">break</span>
+    
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">"Invalid choice! Please enter 1-4."</span>)</code></pre>
+        </div>
+
+        <h3>Example 2: Number Guessing Game</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Number guessing game with attempts tracking</span>
+<span class="keyword">import</span> random
+
+<span class="function">print</span>(<span class="string">"=== Number Guessing Game ==="</span>)
+<span class="function">print</span>(<span class="string">"I'm thinking of a number between 1 and 100!"</span>)
+
+secret_number = random.randint(<span class="number">1</span>, <span class="number">100</span>)
+attempts = <span class="number">0</span>
+max_attempts = <span class="number">7</span>
+
+<span class="keyword">while</span> attempts < max_attempts:
+    attempts += <span class="number">1</span>
+    remaining = max_attempts - attempts + <span class="number">1</span>
+    
+    <span class="keyword">try</span>:
+        guess = <span class="function">int</span>(<span class="function">input</span>(<span class="string">f"Attempt </span><span class="string">{attempts}</span><span class="string"> (</span><span class="string">{remaining}</span><span class="string"> left): Enter your guess: "</span>))
+    <span class="keyword">except</span> ValueError:
+        <span class="function">print</span>(<span class="string">"Please enter a valid number!"</span>)
+        attempts -= <span class="number">1</span>  <span class="comment"># Don't count invalid input as an attempt</span>
+        <span class="keyword">continue</span>
+    
+    <span class="keyword">if</span> guess == secret_number:
+        <span class="function">print</span>(<span class="string">f"🎉 Congratulations! You guessed it in </span><span class="string">{attempts}</span><span class="string"> attempts!"</span>)
+        <span class="keyword">break</span>
+    <span class="keyword">elif</span> guess < secret_number:
+        <span class="function">print</span>(<span class="string">"📈 Too low! Try a higher number."</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">"📉 Too high! Try a lower number."</span>)
+    
+    <span class="comment"># Show progress with attempts</span>
+    <span class="keyword">if</span> attempts < max_attempts:
+        progress = <span class="string">"❌"</span> * attempts + <span class="string">"⭕"</span> * (max_attempts - attempts)
+        <span class="function">print</span>(<span class="string">f"Progress: </span><span class="string">{progress}</span><span class="string">"</span>)
+
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"💀 Game Over! The number was </span><span class="string">{secret_number}</span><span class="string">"</span>)
+
+<span class="function">print</span>(<span class="string">"Thanks for playing!"</span>)</code></pre>
+        </div>
+
+        <h3>Example 3: Quiz Score Analyzer</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Analyze quiz scores with detailed statistics</span>
+<span class="function">print</span>(<span class="string">"=== Quiz Score Analyzer ==="</span>)
+
+scores = []
+
+<span class="comment"># Collect scores</span>
+<span class="function">print</span>(<span class="string">"Enter quiz scores (enter -1 to finish):"</span>)
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="keyword">try</span>:
+        score = <span class="function">int</span>(<span class="function">input</span>(<span class="string">f"Enter score </span><span class="string">{len(scores) + 1}</span><span class="string"> (0-100): "</span>))
+        
+        <span class="keyword">if</span> score == <span class="number">-1</span>:
+            <span class="keyword">break</span>
+        
+        <span class="keyword">if</span> <span class="number">0</span> <= score <= <span class="number">100</span>:
+            scores.append(score)
+            <span class="function">print</span>(<span class="string">f"Added score: </span><span class="string">{score}</span><span class="string">"</span>)
+        <span class="keyword">else</span>:
+            <span class="function">print</span>(<span class="string">"Score must be between 0 and 100!"</span>)
+    
+    <span class="keyword">except</span> ValueError:
+        <span class="function">print</span>(<span class="string">"Please enter a valid number!"</span>)
+
+<span class="keyword">if</span> <span class="function">len</span>(scores) == <span class="number">0</span>:
+    <span class="function">print</span>(<span class="string">"No scores entered. Goodbye!"</span>)
+<span class="keyword">else</span>:
+    <span class="comment"># Calculate statistics</span>
+    total_scores = <span class="function">len</span>(scores)
+    total_points = <span class="function">sum</span>(scores)
+    average = total_points / total_scores
+    highest = <span class="function">max</span>(scores)
+    lowest = <span class="function">min</span>(scores)
+    
+    <span class="comment"># Count grade distribution</span>
+    grade_counts = {<span class="string">"A"</span>: <span class="number">0</span>, <span class="string">"B"</span>: <span class="number">0</span>, <span class="string">"C"</span>: <span class="number">0</span>, <span class="string">"D"</span>: <span class="number">0</span>, <span class="string">"F"</span>: <span class="number">0</span>}
+    
+    <span class="keyword">for</span> score <span class="keyword">in</span> scores:
+        <span class="keyword">if</span> score >= <span class="number">90</span>:
+            grade_counts[<span class="string">"A"</span>] += <span class="number">1</span>
+        <span class="keyword">elif</span> score >= <span class="number">80</span>:
+            grade_counts[<span class="string">"B"</span>] += <span class="number">1</span>
+        <span class="keyword">elif</span> score >= <span class="number">70</span>:
+            grade_counts[<span class="string">"C"</span>] += <span class="number">1</span>
+        <span class="keyword">elif</span> score >= <span class="number">60</span>:
+            grade_counts[<span class="string">"D"</span>] += <span class="number">1</span>
+        <span class="keyword">else</span>:
+            grade_counts[<span class="string">"F"</span>] += <span class="number">1</span>
+    
+    <span class="comment"># Display results</span>
+    <span class="function">print</span>(<span class="string">f"\n=== Analysis Results ==="</span>)
+    <span class="function">print</span>(<span class="string">f"Total scores: </span><span class="string">{total_scores}</span><span class="string">"</span>)
+    <span class="function">print</span>(<span class="string">f"Average: </span><span class="string">{average:.1f}</span><span class="string">%"</span>)
+    <span class="function">print</span>(<span class="string">f"Highest: </span><span class="string">{highest}</span><span class="string">%"</span>)
+    <span class="function">print</span>(<span class="string">f"Lowest: </span><span class="string">{lowest}</span><span class="string">%"</span>)
+    <span class="function">print</span>(<span class="string">f"Range: </span><span class="string">{highest - lowest}</span><span class="string"> points"</span>)
+    
+    <span class="function">print</span>(<span class="string">f"\n=== Grade Distribution ==="</span>)
+    <span class="keyword">for</span> grade, count <span class="keyword">in</span> grade_counts.items():
+        percentage = (count / total_scores) * <span class="number">100</span>
+        bar = <span class="string">"█"</span> * count
+        <span class="function">print</span>(<span class="string">f"</span><span class="string">{grade}</span><span class="string">: </span><span class="string">{count:2}</span><span class="string"> (</span><span class="string">{percentage:4.1f}</span><span class="string">%) </span><span class="string">{bar}</span><span class="string">"</span>)
+    
+    <span class="comment"># Show all scores</span>
+    <span class="function">print</span>(<span class="string">f"\n=== All Scores ==="</span>)
+    <span class="keyword">for</span> i, score <span class="keyword">in</span> <span class="function">enumerate</span>(scores, <span class="number">1</span>):
+        <span class="function">print</span>(<span class="string">f"Score </span><span class="string">{i:2}</span><span class="string">: </span><span class="string">{score:3}</span><span class="string">% "</span>, end=<span class="string">""</span>)
+        <span class="keyword">if</span> i % <span class="number">5</span> == <span class="number">0</span>:  <span class="comment"># New line every 5 scores</span>
+            <span class="function">print</span>()</code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚨 Common Errors and How to Fix Them</h2>
+
+        <div class="error-box">
+            <h4>Error 1: Infinite Loop (while loop)</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+count = <span class="number">1</span>
+<span class="keyword">while</span> count <= <span class="number">5</span>:
+    <span class="function">print</span>(count)
+    <span class="comment"># Missing: count += 1</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Always update the condition variable:</p>
+            <div class="code-block">
+<pre><code>count = <span class="number">1</span>
+<span class="keyword">while</span> count <= <span class="number">5</span>:
+    <span class="function">print</span>(count)
+    count += <span class="number">1</span>  <span class="comment"># This is essential!</span></code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>Error 2: Off-by-One Error with range()</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Want to print 1 to 10, but this prints 1 to 9:</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">10</span>):
+    <span class="function">print</span>(i)</code></pre>
+            </div>
+            <p><strong>Fix:</strong> Remember range() stops before the end value:</p>
+            <div class="code-block">
+<pre><code><span class="comment"># To print 1 to 10, use 11 as the stop value:</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="number">11</span>):
+    <span class="function">print</span>(i)</code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>Error 3: ModifyingList While Iterating</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+<span class="keyword">for</span> num <span class="keyword">in</span> numbers:
+    <span class="keyword">if</span> num % <span class="number">2</span> == <span class="number">0</span>:
+        numbers.remove(num)  <span class="comment"># This can skip items!</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Create a new list instead:</p>
+            <div class="code-block">
+<pre><code>numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+odd_numbers = []
+<span class="keyword">for</span> num <span class="keyword">in</span> numbers:
+    <span class="keyword">if</span> num % <span class="number">2</span> != <span class="number">0</span>:
+        odd_numbers.append(num)</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>✏️ Practice Exercises</h2>
         <div class="exercises">
             <ul>
-                <li><strong>Counting:</strong> Write a `while` loop that counts from 1 to 5 and prints each number.</li>
-                <li><strong>List Printer:</strong> Create a list of your favorite songs. Use a `for` loop to print each song title.</li>
-                <li><strong>Password Loop:</strong> Write a program that keeps asking for a password until the user types "secret".</li>
-                <li><strong>Sum of a List:</strong> Create a list of numbers. Use a `for` loop to calculate and print the sum of all the numbers in the list.</li>
-                <li><strong>Menu Loop:</strong> Using a `while True` loop, create a menu that prints two options. If the user chooses option 1, print "Option 1 chosen." If they choose option 2, `break` the loop.</li>
-                <li><strong>Even Numbers:</strong> Write a `for` loop that goes through a list of numbers and only prints the ones that are even.</li>
-                <li><strong>Guest List Greeter:</strong> You have a list of guests. Use a `for` loop to print a personalized greeting for each guest, like "Welcome to the party, [Guest Name]!"</li>
-                <li><strong>Find the Item:</strong> Create a list of items. Ask the user for an item to search for. Use a `for` loop and an `if` statement to check if the item is in the list and print a confirmation message.</li>
-                <li><strong>Shopping Cart Total:</strong> Create a list of prices for items in a shopping cart. Use a `for` loop to add them all up and print the final total.</li>
-                <li><strong>Contact List Display:</strong> Create a simple list of contacts (just names for now). Use a `for` loop to print the header "--- Your Contacts ---" and then print each contact name on a new line.</li>
+                <li><strong>Countdown Timer:</strong> Use a while loop to count down from 10 to 1, then print "Blast off!"</li>
+                
+                <li><strong>List Printer:</strong> Create a list of your favorite foods. Use a for loop to print each one with a number.</li>
+                
+                <li><strong>Password Validator:</strong> Keep asking for a password until the user enters "secret123".</li>
+                
+                <li><strong>Sum Calculator:</strong> Create a list of numbers. Use a for loop to calculate and print the total sum.</li>
+                
+                <li><strong>Menu System:</strong> Create a calculator menu that keeps running until the user chooses to exit.</li>
+                
+                <li><strong>Even Number Filter:</strong> Loop through numbers 1-20 and print only the even ones.</li>
+                
+                <li><strong>Name Greeter:</strong> Ask for names until the user enters "done", then greet each person.</li>
+                
+                <li><strong>Shopping List Builder:</strong> Let users add items to a shopping list, then display all items with numbers.</li>
+                
+                <li><strong>Multiplication Table:</strong> Create a 5x5 multiplication table using nested loops.</li>
+                
+                <li><strong>Grade Average:</strong> Collect test scores until user enters -1, then calculate and display the average.</li>
+                
+                <li><strong>Contact Finder:</strong> Loop through a contact list and find all contacts containing a search term.</li>
+                
+                <li><strong>Pattern Maker:</strong> Use nested loops to create a pattern like: *, **, ***, ****, *****</li>
             </ul>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Key Takeaways</h2>
+        <h2>🎯 Key Takeaways</h2>
         <ul>
-            <li>Use <code>while</code> loops when you don't know how many iterations you need</li>
-            <li>Use <code>for</code> loops to iterate through sequences like lists</li>
-            <li>Always modify the condition variable in a <code>while</code> loop to avoid infinite loops</li>
-            <li>The <code>while True</code> + <code>break</code> pattern is perfect for menu systems</li>
-            <li>The loop variable in a <code>for</code> loop automatically takes each value from the sequence</li>
-            <li>Proper indentation is crucial for defining what code belongs inside the loop</li>
+            <li><strong>while loops</strong> repeat code while a condition is True</li>
+            <li><strong>for loops</strong> iterate through sequences like lists</li>
+            <li><strong>range()</strong> generates number sequences for counting</li>
+            <li><strong>break</strong> exits a loop completely</li>
+            <li><strong>continue</strong> skips to the next iteration</li>
+            <li><strong>while True</strong> + break is perfect for menu systems</li>
+            <li><strong>Always update</strong> condition variables to avoid infinite loops</li>
+            <li><strong>enumerate()</strong> gives you both index and value when looping</li>
         </ul>
     </div>
 
-    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+    <div class="content-section">
+        <h2>🚀 Next Week Preview</h2>
+        <p>Next week, we'll learn about <strong>Dictionaries & Data Structures</strong> - how to organize data with key-value pairs instead of just simple lists. This will enable Merit-level programming for your assessment!</p>
+    </div>
+
+    <a href="../programming.html" class="back-link">← Back to Programming Overview</a>
 </body>
 </html>

@@ -3,176 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming - Year 11 Digital Technology</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Year 11 Programming - Advanced Programming & AS92004 Assessment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .module-card h3 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #7c3aed;
+            padding-bottom: 0.5rem;
+        }
+        
+        .module-link {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        
+        .module-link:hover {
+            background: #4c1d95;
+        }
+        
+        .intro-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight {
+            background: #f3e8ff;
+            padding: 1rem;
+            border-left: 4px solid #7c3aed;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .assessment-card {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .assessment-card h3 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .week-structure {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .week-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid #7c3aed;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .week-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+        }
+
+        .week-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #4c1d95);
+        }
+
+        .week-item h4 {
+            color: #4c1d95;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .week-item p {
+            color: #475569;
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .week-structure {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .week-structure {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .week-structure {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    
-    <div class="geometric-background" id="geometricBg">
-        <!-- Geometric shapes will be generated by JavaScript -->
+    <a href="../year11.html" class="back-link">← Back to Year 11</a>
+
+    <div class="header">
+        <h1>Year 11 Programming</h1>
+        <p>Advanced Programming & AS92004 Assessment</p>
     </div>
 
-    <header>
-        <div class="container">
-            <h1 class="logo">Year 11 Programming</h1>
-            <p class="tagline">Advanced Programming & AS92004 Assessment</p>
+    <div class="intro-section">
+        <h2>Course Overview</h2>
+        <p>Welcome to Year 11 Programming! This comprehensive course takes you from programming fundamentals to creating a robust Contact Book application. Master advanced programming concepts while working towards the AS92004 NCEA Level 1 assessment.</p>
+        
+        <div class="highlight">
+            <h3>What You'll Master:</h3>
+            <ul>
+                <li>Advanced data types and variables with proper type conversion</li>
+                <li>Complex conditional logic with if/elif/else statements</li>
+                <li>Data structures: Lists and Dictionaries for organized data storage</li>
+                <li>Iteration techniques with while and for loops</li>
+                <li>Robust error handling using try...except blocks</li>
+                <li>Functions and modular programming with parameters and returns</li>
+                <li>Professional documentation and testing practices</li>
+            </ul>
         </div>
-    </header>
 
-    <main>
-        <div class="container">
-            <section class="hero-section">
-                <h2 class="hero-title">Programming Mastery & Assessment</h2>
-                <p class="hero-description">
-                    Master advanced programming concepts and complete the AS92004 assessment. This 8-week course takes you from 
-                    programming fundamentals to creating a robust Contact Book application, focusing on practical skills and NCEA standards.
-                </p>
-            </section>
-
-            <section class="year-levels">
-                <div class="year-row">
-                    <div class="year-card">
-                        <div class="year-number">📊</div>
-                        <h3 class="year-title">Weekly Progress Tracking</h3>
-                        <p class="year-description">
-                            Monitor your learning progress through structured weekly milestones. 
-                            Track skill development from basic programming to assessment completion.
-                        </p>
-                        <a href="Weekly_Progress.html" class="year-link">Track Progress</a>
-                    </div>
-
-                    <div class="year-card">
-                        <div class="year-number">1️⃣</div>
-                        <h3 class="year-title">Week 1: Programming Basics</h3>
-                        <p class="year-description">
-                            Introduction to programming, data types, variables, and type conversion. 
-                            Master print(), input(), strings, integers, and the int() function.
-                        </p>
-                        <a href="Week_1_Intro_to_Programming.html" class="year-link">View Week 1</a>
-                    </div>
-
-                    <div class="year-card">
-                        <div class="year-number">2️⃣</div>
-                        <h3 class="year-title">Week 2: Conditional Logic</h3>
-                        <p class="year-description">
-                            Learn if/elif/else statements, comparison operators, and f-string formatting. 
-                            Build menu systems and create clean, readable output.
-                        </p>
-                        <a href="Week_2_Conditional_Logic.html" class="year-link">View Week 2</a>
-                    </div>
-                </div>
-
-                <div class="year-row">
-                    <div class="year-card">
-                        <div class="year-number">3️⃣</div>
-                        <h3 class="year-title">Week 3: Lists & Collections</h3>
-                        <p class="year-description">
-                            Master list operations: append(), pop(), remove(), and index access. 
-                            Store and manage collections of data effectively.
-                        </p>
-                        <a href="Week_3_Lists.html" class="year-link">View Week 3</a>
-                    </div>
-
-                    <div class="year-card">
-                        <div class="year-number">4️⃣</div>
-                        <h3 class="year-title">Week 4: Iteration & Loops</h3>
-                        <p class="year-description">
-                            Implement while loops, for loops, and break statements. 
-                            Create main menu loops and iterate through data collections.
-                        </p>
-                        <a href="Week_4_Iteration.html" class="year-link">View Week 4</a>
-                    </div>
-
-                    <div class="year-card">
-                        <div class="year-number">5️⃣</div>
-                        <h3 class="year-title">Week 5: Dictionaries</h3>
-                        <p class="year-description">
-                            Structure data with dictionaries, access values, use .items(), and del statements. 
-                            Achieve Merit-level data organization for your assessment.
-                        </p>
-                        <a href="Week_5_Dictionaries.html" class="year-link">View Week 5</a>
-                    </div>
-                </div>
-
-                <div class="year-row">
-                    <div class="year-card">
-                        <div class="year-number">6️⃣</div>
-                        <h3 class="year-title">Week 6: Error Handling</h3>
-                        <p class="year-description">
-                            Implement try...except blocks for robust error handling. 
-                            Make your programs Excellence-level by gracefully managing invalid input.
-                        </p>
-                        <a href="Week_6_Error_Handling.html" class="year-link">View Week 6</a>
-                    </div>
-
-                    <div class="year-card">
-                        <div class="year-number">7️⃣</div>
-                        <h3 class="year-title">Week 7: Functions & Documentation</h3>
-                        <p class="year-description">
-                            Create flexible code with functions, parameters, and return statements. 
-                            Document code effectively with comments and docstrings.
-                        </p>
-                        <a href="Week_7_Functions.html" class="year-link">View Week 7</a>
-                    </div>
-
-                    <div class="year-card">
-                        <div class="year-number">8️⃣</div>
-                        <h3 class="year-title">Weeks 8-10: Project Development</h3>
-                        <p class="year-description">
-                            Apply all concepts to complete the AS92004 Simple Contact Book assessment. 
-                            Debug, document, and test your application to NCEA standards.
-                        </p>
-                        <a href="Week_8_Project_Development.html" class="year-link">View Weeks 8-10</a>
-                    </div>
-                </div>
-
-                <div class="year-row">
-                    <div class="year-card">
-                        <div class="year-number">📋</div>
-                        <h3 class="year-title">AS92004 Assessment Task</h3>
-                        <p class="year-description">
-                            Create a Simple Contact Book application with menu options to add contacts, 
-                            view all contacts, and exit. Demonstrate programming competency for NCEA Level 1.
-                        </p>
-                        <a href="Assessment_Task.html" class="year-link">View Assessment</a>
-                    </div>
-
-                    <div class="year-card">
-                        <div class="year-number">🧪</div>
-                        <h3 class="year-title">Testing & Documentation</h3>
-                        <p class="year-description">
-                            Learn systematic testing approaches and documentation standards. 
-                            Build evidence portfolios for Achieved, Merit, and Excellence grades.
-                        </p>
-                        <a href="Testing_Template.html" class="year-link">Testing Template</a>
-                    </div>
-                </div>
-
-                <div class="year-row">
-                    <div class="year-card">
-                        <div class="year-number">↩️</div>
-                        <h3 class="year-title">Back to Year 11</h3>
-                        <p class="year-description">
-                            Return to the Year 11 main page to explore other subjects including Game Development 
-                            and Human Computer Interaction.
-                        </p>
-                        <a href="../year11.html" class="year-link">Back to Year 11</a>
-                    </div>
-                </div>
-            </section>
+        <div class="highlight">
+            <h3>Assessment Structure:</h3>
+            <p>This course is designed around the AS92004 standard: "Create a simple computer program to meet a given brief." You'll build a Contact Book application that demonstrates programming competency at Achieved, Merit, or Excellence levels.</p>
         </div>
-    </main>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 King's High School Digital Technology Department. Year 11 - Programming & AS92004.</p>
+    <div class="intro-section">
+        <h2>8-Week + Assessment Structure</h2>
+        <div class="week-structure">
+            <div class="week-item">
+                <h4>Week 1</h4>
+                <p>Programming Basics & Data Types</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 2</h4>
+                <p>Conditional Logic & Selection</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 3</h4>
+                <p>Lists & Collections</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 4</h4>
+                <p>Iteration & Loops</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 5</h4>
+                <p>Dictionaries & Data Structure</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 6</h4>
+                <p>Error Handling & Robustness</p>
+            </div>
+            <div class="week-item">
+                <h4>Week 7</h4>
+                <p>Functions & Documentation</p>
+            </div>
+            <div class="week-item">
+                <h4>Weeks 8-10</h4>
+                <p>Assessment Project Development</p>
+            </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="../geometric-background.js"></script>
+    <h2>Learning Modules & Resources</h2>
+    <div class="module-grid">
+        <div class="module-card">
+            <h3>📊 Weekly Progress Tracking</h3>
+            <p>Monitor your learning progress through structured weekly milestones. Track skill development from basic programming to assessment completion.</p>
+            <p><strong>Focus:</strong> Progress monitoring, milestone tracking, skill development</p>
+            <a href="Year 11 Programming/Weekly_Progress.html" class="module-link">Track Progress</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Week 1: Programming Basics</h3>
+            <p>Introduction to programming, data types, variables, and type conversion. Master print(), input(), strings, integers, and the int() function.</p>
+            <p><strong>Focus:</strong> print(), input(), int(), string manipulation, basic data types</p>
+            <a href="Year 11 Programming/Week_1_Intro_to_Programming.html" class="module-link">Start Week 1</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Week 2: Conditional Logic</h3>
+            <p>Learn if/elif/else statements, comparison operators, and f-string formatting. Build menu systems and create clean, readable output.</p>
+            <p><strong>Focus:</strong> if/elif/else, comparison operators, f-strings, menu systems</p>
+            <a href="Year 11 Programming/Week_2_Conditional_Logic.html" class="module-link">Start Week 2</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Week 3: Lists & Collections</h3>
+            <p>Master list operations: append(), pop(), remove(), and index access. Store and manage collections of data effectively.</p>
+            <p><strong>Focus:</strong> Lists, append(), pop(), remove(), indexing, list methods</p>
+            <a href="Year 11 Programming/Week_3_Lists.html" class="module-link">Start Week 3</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Week 4: Iteration & Loops</h3>
+            <p>Implement while loops, for loops, and break statements. Create main menu loops and iterate through data collections.</p>
+            <p><strong>Focus:</strong> while loops, for loops, break, continue, iteration patterns</p>
+            <a href="Year 11 Programming/Week_4_Iteration.html" class="module-link">Start Week 4</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Week 5: Dictionaries</h3>
+            <p>Structure data with dictionaries, access values, use .items(), and del statements. Achieve Merit-level data organization for your assessment.</p>
+            <p><strong>Focus:</strong> Dictionaries, key-value pairs, .items(), del, data structuring</p>
+            <a href="Year 11 Programming/Week_5_Dictionaries.html" class="module-link">Start Week 5</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Week 6: Error Handling</h3>
+            <p>Implement try...except blocks for robust error handling. Make your programs Excellence-level by gracefully managing invalid input.</p>
+            <p><strong>Focus:</strong> try...except, error handling, input validation, robustness</p>
+            <a href="Year 11 Programming/Week_6_Error_Handling.html" class="module-link">Start Week 6</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Week 7: Functions & Documentation</h3>
+            <p>Create flexible code with functions, parameters, and return statements. Document code effectively with comments and docstrings.</p>
+            <p><strong>Focus:</strong> def, parameters, return, comments, docstrings, modular code</p>
+            <a href="Year 11 Programming/Week_7_Functions.html" class="module-link">Start Week 7</a>
+        </div>
+
+        <div class="module-card">
+            <h3>Weeks 8-10: Project Development</h3>
+            <p>Apply all concepts to complete the AS92004 Simple Contact Book assessment. Debug, document, and test your application to NCEA standards.</p>
+            <p><strong>Focus:</strong> Project development, integration, debugging, documentation</p>
+            <a href="Year 11 Programming/Week_8_Project_Development.html" class="module-link">Start Project</a>
+        </div>
+    </div>
+
+    <div class="assessment-card">
+        <h3>AS92004 Assessment Task</h3>
+        <p><strong>Simple Contact Book Application:</strong> Create a menu-driven program that allows users to add contacts, view all contacts, and exit. Demonstrate programming competency for NCEA Level 1 through proper implementation, testing, and documentation.</p>
+        <a href="Year 11 Programming/Assessment_Task.html" class="module-link" style="background: #f59e0b; margin-top: 1rem;">View Assessment Details</a>
+    </div>
+
+    <div class="module-grid">
+        <div class="module-card">
+            <h3>🧪 Testing & Documentation</h3>
+            <p>Learn systematic testing approaches and documentation standards. Build evidence portfolios for Achieved, Merit, and Excellence grades.</p>
+            <p><strong>Focus:</strong> Test cases, documentation, evidence collection, NCEA standards</p>
+            <a href="Year 11 Programming/Testing_Template.html" class="module-link">Testing Template</a>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <h2>Learning Approach</h2>
+        <p>This course follows a progressive learning model: <strong>Introduce → Practice → Apply → Assess</strong>. Each week builds upon previous concepts, culminating in a comprehensive assessment project that demonstrates your programming competency.</p>
+        <p>The Year 11 program focuses on creating robust, well-documented programs that handle errors gracefully and solve real-world problems. By the end of this course, you'll have the skills needed for advanced programming courses and NCEA Level 2 Digital Technology.</p>
+        
+        <div class="highlight">
+            <h3>NCEA Assessment Grades:</h3>
+            <ul>
+                <li><strong>Achieved:</strong> Create a working program that meets basic requirements</li>
+                <li><strong>Merit:</strong> Use appropriate data structures and demonstrate programming conventions</li>
+                <li><strong>Excellence:</strong> Include robust error handling and comprehensive documentation</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

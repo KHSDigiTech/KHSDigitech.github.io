@@ -192,23 +192,51 @@
         <h2>🏗️ Building Your Platformer</h2>
         
         <div class="step-by-step">
-            <h3>Step 1: Scene Setup</h3>
+            <h3>Step 1: Create the PlatformController Scene</h3>
+            
+            <div class="node-info">
+                <h4>🌳 PlatformController Structure</h4>
+                <pre style="background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 4px; font-family: monospace;">
+PlatformController (CharacterBody2D) 🎮
+├── PlayerSprite (Sprite2D) 🎨
+├── PlayerCollision (CollisionShape2D) ⚡
+└── PlayerCamera (Camera2D) 📹
+                </pre>
+                <p><strong>Purpose:</strong> Dedicated controller for platformer movement with gravity and jumping</p>
+            </div>
+            
             <ol>
-                <li>Create new scene with <code>Node2D</code> as root ("PlatformerGame")</li>
+                <li><strong>New Scene:</strong> Scene → New Scene → 2D Scene</li>
+                <li><strong>Change Root:</strong> Delete Node2D → Add CharacterBody2D → Rename to "PlatformController"</li>
+                <li><strong>Add Sprite:</strong> Right-click PlatformController → Add Child → Sprite2D → Rename to "PlayerSprite"</li>
+                <li><strong>Set Texture:</strong> Select PlayerSprite → Drag player image to "Texture" property</li>
+                <li><strong>Add Collision:</strong> Right-click PlatformController → Add Child → CollisionShape2D → Rename to "PlayerCollision"</li>
+                <li><strong>Set Shape:</strong> Select PlayerCollision → Inspector → Shape → New RectangleShape2D</li>
+                <li><strong>Size Collision:</strong> Drag the blue rectangle to match the sprite size</li>
+                <li><strong>Add Camera:</strong> Right-click PlatformController → Add Child → Camera2D → Rename to "PlayerCamera"</li>
+                <li><strong>Enable Camera:</strong> Select PlayerCamera → Inspector → Check "Enabled" checkbox</li>
+                <li><strong>💾 Save Controller:</strong> Ctrl+S → Name it "PlatformController.tscn"</li>
+            </ol>
+        </div>
+        
+        <div class="step-by-step">
+            <h3>Step 2: Main Platformer Scene Setup</h3>
+            <ol>
+                <li><strong>New Game Scene:</strong> Scene → New Scene → 2D Scene</li>
+                <li><strong>Rename Root:</strong> Select Node2D → rename to "PlatformerGame"</li>
                 <li><strong>💾 Save immediately:</strong> Ctrl+S → Name it "Platformer.tscn"</li>
-                <li><strong>🔄 Reuse your player:</strong> Scene → Instance Child Scene → Select "PlayerCharacter.tscn"</li>
-                <li>Add a <code>Camera2D</code> child to the instanced player</li>
-                <li>Set Camera2D to "Current" in Inspector</li>
+                <li><strong>Instance Controller:</strong> Right-click PlatformerGame → Instance Child Scene → Select "PlatformController.tscn"</li>
+                <li><strong>Position Player:</strong> Drag player to starting position (above where platforms will be)</li>
                 <li><strong>💾 Save again:</strong> Your platformer base is ready!</li>
             </ol>
             
-            <div class="highlight">
-                <p><strong>📝 Note:</strong> You'll need to modify the PlayerCharacter's script to add jumping and gravity. We'll use AI to help add platformer physics to your existing movement code!</p>
+            <div class="node-info">
+                <p><strong>🎯 Why Separate Scenes:</strong> PlatformController.tscn can be reused in multiple levels and is specifically designed for platformer physics, different from the basic PlayerCharacter used in earlier modules.</p>
             </div>
         </div>
 
         <div class="step-by-step">
-            <h3>Step 2: Create Platforms Using TileMap</h3>
+            <h3>Step 3: Create Platforms Using TileMap</h3>
             <ol>
                 <li>Add <code>TileMap</code> node to root</li>
                 <li>In Inspector, create new <code>TileSet</code> resource</li>
@@ -219,7 +247,7 @@
         </div>
 
         <div class="step-by-step">
-            <h3>Step 3: Alternative - Individual Platforms</h3>
+            <h3>Step 4: Alternative - Individual Platforms</h3>
             <p><em>If TileMap is too complex, use this simpler method:</em></p>
             <ol>
                 <li>Add <code>StaticBody2D</code> nodes for each platform</li>
@@ -234,19 +262,44 @@
         <h2>🤖 AI-Assisted Platformer Physics</h2>
         
         <div class="ai-prompt">
-            <h3>Perfect Prompt for Platformer Movement</h3>
-            <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I want to create a platformer game character in Godot 4. The character should be able to run left and right when I press A/D keys, and jump up when I press Space - but only when they're standing on the ground, not floating in mid-air. The character should constantly fall down due to gravity when not on a platform. I want realistic physics where the character lands on platforms and can't jump while falling. Can you show me all the code needed including how to detect key presses, apply gravity, handle jumping, and move the character? Please explain each part."
-            </blockquote>
+            <h3>Perfect AI Prompt Setup</h3>
+            
+            <div class="step-by-step">
+                <h4>📸 Step 1: Take a Screenshot</h4>
+                <ol>
+                    <li><strong>Show PlatformController Scene:</strong> Open PlatformController.tscn and expand all nodes</li>
+                    <li><strong>Screenshot Structure:</strong> Capture the scene tree showing CharacterBody2D with children</li>
+                    <li><strong>Include Script Tab:</strong> Show that the PlatformController needs a script attached</li>
+                </ol>
+            </div>
+            
+            <div class="step-by-step">
+                <h4>💬 Step 2: Use This Prompt</h4>
+                <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
+                    "I'm making a platformer game in Godot 4. Here's a screenshot of my PlatformController scene. I want the character to run left and right with A/D keys, jump with Space (only when on ground), and fall down with gravity when not on a platform. Can you write the script for this CharacterBody2D? I want realistic platformer physics where the character lands on platforms and can't jump while falling."
+                </blockquote>
+            </div>
+            
+            <div class="node-info">
+                <h4>🎯 What This Will Create</h4>
+                <ul>
+                    <li><strong>Gravity System:</strong> Constant downward force</li>
+                    <li><strong>Jump Mechanics:</strong> Only when touching ground</li>
+                    <li><strong>Horizontal Movement:</strong> Left/right with key input</li>
+                    <li><strong>Ground Detection:</strong> Using CharacterBody2D.is_on_floor()</li>
+                </ul>
+            </div>
         </div>
 
         <div class="ai-prompt">
             <h3>Follow-up Enhancement Prompts</h3>
+            <p><strong>📸 Remember:</strong> Include a screenshot of your working PlatformController for these features!</p>
             <ul>
-                <li>"How do I give players a tiny bit of time to jump even after walking off a platform?"</li>
-                <li>"Can you make it so holding Space longer makes the character jump higher?"</li>
-                <li>"How do I make the character sprite flip to face left when moving left and right when moving right?"</li>
-                <li>"How do I make sure the character doesn't fall too fast and make the game feel uncontrollable?"</li>
+                <li><strong>Coyote Time:</strong> "My platformer works [screenshot]. How do I give players a tiny bit of time to jump even after walking off a platform?"</li>
+                <li><strong>Variable Jump Height:</strong> "Here's my controller [screenshot]. Can you make it so holding Space longer makes the character jump higher?"</li>
+                <li><strong>Sprite Flipping:</strong> "My movement works [screenshot]. How do I make the character sprite flip to face the direction they're moving?"</li>
+                <li><strong>Terminal Velocity:</strong> "Here's my platformer [screenshot]. How do I make sure the character doesn't fall too fast and feel uncontrollable?"</li>
+                <li><strong>Better Landing:</strong> "My jumping works [screenshot]. Can you add a small 'squash' animation when the character lands?"</li>
             </ul>
         </div>
     </div>
@@ -267,7 +320,7 @@
         <div class="ai-prompt">
             <h3>AI Help for TileMap Issues</h3>
             <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "I'm having trouble setting up collision for my TileMap in Godot 4. My player falls through the platforms. Can you walk me through adding physics layers and collision shapes to a TileSet resource step by step?"
+                "My PlatformController falls through my TileMap platforms [screenshot]. Can you help me set up collision for the TileSet? I need to know how to add physics layers and collision shapes step by step."
             </blockquote>
         </div>
     </div>
@@ -292,7 +345,7 @@
         <div class="ai-prompt">
             <h3>AI Prompt for Camera Following</h3>
             <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                "How do I set up a Camera2D in Godot 4 to smoothly follow my player character in a platformer? I want the camera to have some smoothing/lag so it doesn't feel too jerky when the player moves."
+                "My PlatformController has a Camera2D but it feels too jerky [screenshot]. How do I make the camera follow my player more smoothly? I want some lag so it doesn't snap around when the player changes direction."
             </blockquote>
         </div>
 

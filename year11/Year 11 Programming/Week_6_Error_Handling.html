@@ -66,6 +66,30 @@
         .function { color: #63b3ed; }     /* Function names */
         .number { color: #fbb6ce; }       /* Numbers */
 
+        .example-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-box {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #e6ffe6;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
         .exercises {
             background: #d4edda;
             padding: 1.5rem;
@@ -79,9 +103,14 @@
         }
 
         .exercises li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             position: relative;
             padding-left: 2rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .exercises li:last-child {
+            border-bottom: none;
         }
 
         .exercises li::before {
@@ -89,6 +118,22 @@
             position: absolute;
             left: 0;
             font-size: 1.2rem;
+        }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 0.5rem;
         }
 
         .back-link {
@@ -117,60 +162,386 @@
 </head>
 <body>
     <div class="header">
-        <h1>Week 6: A Detailed Guide to Error Handling</h1>
-        <p><strong>Goal:</strong> To make your program robust by anticipating and handling errors gracefully instead of crashing.</p>
+        <h1>Week 6: Error Handling & Input Validation</h1>
+        <p><strong>Goal:</strong> To create robust programs that handle user errors gracefully and provide meaningful feedback. Master try/except blocks and input validation for professional-quality code that meets Excellence standards.</p>
     </div>
 
     <div class="content-section">
-        <h2>Key Concepts & Thorough Explanations</h2>
+        <h2>🎯 Learning Objectives</h2>
+        <p>By the end of this week, you will be able to:</p>
+        <ul>
+            <li>Understand why programs crash and how to prevent it</li>
+            <li>Use <code>try/except</code> blocks to catch and handle errors</li>
+            <li>Handle different types of errors (ValueError, ZeroDivisionError, IndexError)</li>
+            <li>Create robust input validation loops</li>
+            <li>Provide meaningful error messages to users</li>
+            <li>Build professional-quality programs that never crash unexpectedly</li>
+            <li>Apply error handling to improve existing programs</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Key Concepts & Detailed Explanations</h2>
         
-        <h3>1. The Problem: Crashing Programs</h3>
-        <p>What happens if you ask for a number, but the user types "hello"? Your program will crash with a <code>ValueError</code> when you try to use <code>int()</code>.</p>
+        <h3>1. Why Programs Crash - The Problem We're Solving</h3>
+        <p>In previous weeks, we've written programs that expect users to enter exactly what we ask for. But what happens when they don't? Let's see what goes wrong:</p>
 
-        <h3>2. The try...except Block</h3>
-        <p>This structure lets you "try" a piece of code that might fail. If it fails, the program doesn't crash; instead, it runs the code in the "except" block.</p>
+        <div class="error-box">
+            <h4>❌ A Program That Will Crash:</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># This program expects a number but will crash if user enters text</span>
+age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your age: "</span>))  <span class="comment"># User types "hello"</span>
+<span class="function">print</span>(<span class="string">f"You are </span><span class="string">{age}</span><span class="string"> years old"</span>)
 
-        <h4>Syntax Breakdown:</h4>
+<span class="comment"># Result: ValueError: invalid literal for int() with base 10: 'hello'</span>
+<span class="comment"># Program terminates immediately!</span></code></pre>
+            </div>
+            <p><strong>The Problem:</strong> When the user enters "hello", <code>int()</code> can't convert it to a number, so Python throws a <code>ValueError</code> and the program crashes. This is unprofessional and creates a poor user experience.</p>
+        </div>
+
+        <div class="example-box">
+            <h4>Real-World Impact:</h4>
+            <p>Imagine if your calculator app crashed every time someone accidentally pressed a letter instead of a number. Or if an online shopping cart crashed when someone entered their phone number incorrectly. Error handling is what separates amateur programs from professional software.</p>
+        </div>
+
+        <h3>2. The try/except Solution - Catching Errors Gracefully</h3>
+        <p>The <code>try/except</code> block is Python's way of saying "try this code, but if it fails, don't crash - do this instead." It's like having a safety net for your program.</p>
+
+        <div class="step-by-step">
+            <h4>How try/except Works:</h4>
+            <ol>
+                <li><strong>try:</strong> Python attempts to run the code in this block</li>
+                <li><strong>If no error occurs:</strong> The except block is skipped entirely</li>
+                <li><strong>If an error occurs:</strong> Python immediately jumps to the except block</li>
+                <li><strong>Program continues:</strong> After the except block, the program continues normally</li>
+            </ol>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ The Same Program, Made Robust:</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Now the program handles errors gracefully</span>
+<span class="keyword">try</span>:
+    age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your age: "</span>))
+    <span class="function">print</span>(<span class="string">f"You are </span><span class="string">{age}</span><span class="string"> years old"</span>)
+<span class="keyword">except</span> ValueError:
+    <span class="function">print</span>(<span class="string">"Sorry, that's not a valid number. Please try again."</span>)
+
+<span class="comment"># Now if user types "hello", we get a friendly message instead of a crash!</span></code></pre>
+            </div>
+        </div>
+
+        <h3>3. Understanding Different Error Types</h3>
+        <p>Different operations can cause different types of errors. Understanding these helps you write more specific error handling:</p>
+
         <div class="code-block">
-<pre><code><span class="keyword">try</span>:
-    <span class="comment"># 1. The code to attempt is put in the 'try' block.</span>
-    age_string = <span class="function">input</span>(<span class="string">"Enter your age: "</span>)
-    age_number = <span class="function">int</span>(age_string)
-    <span class="function">print</span>(<span class="string">f"You are </span><span class="string">{age_number}</span><span class="string"> years old."</span>)
+<pre><code><span class="comment"># ValueError - Invalid conversion</span>
+<span class="keyword">try</span>:
+    number = <span class="function">int</span>(<span class="string">"hello"</span>)  <span class="comment"># Can't convert "hello" to integer</span>
+<span class="keyword">except</span> ValueError:
+    <span class="function">print</span>(<span class="string">"That's not a number!"</span>)
+
+<span class="comment"># ZeroDivisionError - Division by zero</span>
+<span class="keyword">try</span>:
+    result = <span class="number">10</span> / <span class="number">0</span>  <span class="comment"># Can't divide by zero</span>
+<span class="keyword">except</span> ZeroDivisionError:
+    <span class="function">print</span>(<span class="string">"Cannot divide by zero!"</span>)
+
+<span class="comment"># IndexError - List index out of range</span>
+<span class="keyword">try</span>:
+    my_list = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]
+    <span class="function">print</span>(my_list[<span class="number">10</span>])  <span class="comment"># Index 10 doesn't exist</span>
+<span class="keyword">except</span> IndexError:
+    <span class="function">print</span>(<span class="string">"That index doesn't exist in the list!"</span>)</code></pre>
+        </div>
+
+        <h3>4. Multiple except Blocks - Handling Different Errors Differently</h3>
+        <p>You can have multiple except blocks to handle different types of errors with specific responses:</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># A calculator that handles multiple error types</span>
+<span class="keyword">try</span>:
+    first_number = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter first number: "</span>))
+    second_number = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter second number: "</span>))
+    result = first_number / second_number
+    <span class="function">print</span>(<span class="string">f"Result: </span><span class="string">{result}</span><span class="string">"</span>)
 
 <span class="keyword">except</span> ValueError:
-    <span class="comment"># 2. This block only runs if a ValueError occurs in the 'try' block.</span>
-    <span class="function">print</span>(<span class="string">"Invalid input. Please enter a number."</span>)</code></pre>
+    <span class="function">print</span>(<span class="string">"Error: Please enter valid numbers only."</span>)
+    
+<span class="keyword">except</span> ZeroDivisionError:
+    <span class="function">print</span>(<span class="string">"Error: Cannot divide by zero. Please enter a non-zero second number."</span>)</code></pre>
         </div>
 
-        <ul>
-            <li><strong>try:</strong> The block of code where an error might happen.</li>
-            <li><strong>except ValueError:</strong> If a <code>ValueError</code> specifically occurs in the <code>try</code> block, the program immediately jumps to this <code>except</code> block. It skips the rest of the <code>try</code> block.</li>
-        </ul>
+        <h3>5. Input Validation Loops - Keep Asking Until Valid</h3>
+        <p>Professional programs don't just give an error message and quit. They ask the user to try again. We can combine loops with try/except to create robust input validation:</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Keep asking until user enters a valid number</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="keyword">try</span>:
+        age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your age: "</span>))
+        <span class="keyword">break</span>  <span class="comment"># Exit the loop if conversion succeeds</span>
+    <span class="keyword">except</span> ValueError:
+        <span class="function">print</span>(<span class="string">"That's not a valid number. Please try again."</span>)
+        <span class="comment"># Loop continues, asking again</span>
+
+<span class="function">print</span>(<span class="string">f"Thank you! You are </span><span class="string">{age}</span><span class="string"> years old."</span>)</code></pre>
+        </div>
+
+        <div class="step-by-step">
+            <h4>How the Validation Loop Works:</h4>
+            <ol>
+                <li><code>while True:</code> creates an infinite loop</li>
+                <li>Try to get and convert user input</li>
+                <li>If successful, <code>break</code> exits the loop</li>
+                <li>If error occurs, print message and loop continues</li>
+                <li>User gets another chance to enter valid input</li>
+            </ol>
+        </div>
+
+        <h3>6. Creating Reusable Input Functions</h3>
+        <p>We can create functions that handle input validation for us, making our code cleaner and more reusable:</p>
+
+        <div class="code-block">
+<pre><code><span class="keyword">def</span> <span class="function">get_integer_input</span>(prompt):
+    <span class="string">"""Keep asking for input until user enters a valid integer"""</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">try</span>:
+            value = <span class="function">int</span>(<span class="function">input</span>(prompt))
+            <span class="keyword">return</span> value  <span class="comment"># Return the valid integer</span>
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid whole number."</span>)
+
+<span class="keyword">def</span> <span class="function">get_positive_integer</span>(prompt):
+    <span class="string">"""Get a positive integer (greater than 0)"""</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">try</span>:
+            value = <span class="function">int</span>(<span class="function">input</span>(prompt))
+            <span class="keyword">if</span> value <= <span class="number">0</span>:
+                <span class="function">print</span>(<span class="string">"Please enter a positive number (greater than 0)."</span>)
+                <span class="keyword">continue</span>
+            <span class="keyword">return</span> value
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid whole number."</span>)
+
+<span class="comment"># Using our robust input functions</span>
+age = <span class="function">get_positive_integer</span>(<span class="string">"Enter your age: "</span>)
+num_siblings = <span class="function">get_integer_input</span>(<span class="string">"How many siblings do you have? "</span>)</code></pre>
+        </div>
 
         <div class="highlight">
-            <strong>Important:</strong> This is a cornerstone of robust programming and is essential for an Excellence grade.
+            <h4>🏆 Excellence Level Programming:</h4>
+            <p>Using functions like these demonstrates advanced programming practices and shows you understand how to write reusable, maintainable code. This is exactly what NCEA Excellence criteria look for!</p>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Exercises</h2>
-        <div class="exercises">
+        <h2>💡 Complete Working Examples</h2>
+
+        <h3>Example 1: Robust Calculator</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># A calculator that handles all common errors</span>
+<span class="function">print</span>(<span class="string">"=== Robust Calculator ==="</span>)
+
+<span class="keyword">def</span> <span class="function">get_number</span>(prompt):
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">try</span>:
+            <span class="keyword">return</span> <span class="function">float</span>(<span class="function">input</span>(prompt))
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid number."</span>)
+
+<span class="comment"># Get numbers from user</span>
+first_num = <span class="function">get_number</span>(<span class="string">"Enter first number: "</span>)
+second_num = <span class="function">get_number</span>(<span class="string">"Enter second number: "</span>)
+
+<span class="comment"># Perform division with error handling</span>
+<span class="keyword">try</span>:
+    result = first_num / second_num
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{first_num}</span><span class="string"> ÷ </span><span class="string">{second_num}</span><span class="string"> = </span><span class="string">{result}</span><span class="string">"</span>)
+<span class="keyword">except</span> ZeroDivisionError:
+    <span class="function">print</span>(<span class="string">"Error: Cannot divide by zero!"</span>)</code></pre>
+        </div>
+
+        <h3>Example 2: Safe List Access</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Safely access list items by index</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>, <span class="string">"grape"</span>]
+
+<span class="function">print</span>(<span class="string">"Available fruits:"</span>)
+<span class="keyword">for</span> i, fruit <span class="keyword">in</span> <span class="function">enumerate</span>(fruits):
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{i}</span><span class="string">: </span><span class="string">{fruit}</span><span class="string">"</span>)
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="keyword">try</span>:
+        index = <span class="function">int</span>(<span class="function">input</span>(<span class="string">f"Enter index (0-</span><span class="string">{<span class="function">len</span>(fruits)-<span class="number">1</span>}</span><span class="string">): "</span>))
+        selected_fruit = fruits[index]
+        <span class="function">print</span>(<span class="string">f"You selected: </span><span class="string">{selected_fruit}</span><span class="string">"</span>)
+        <span class="keyword">break</span>
+        
+    <span class="keyword">except</span> ValueError:
+        <span class="function">print</span>(<span class="string">"Please enter a valid number."</span>)
+        
+    <span class="keyword">except</span> IndexError:
+        <span class="function">print</span>(<span class="string">f"Index out of range. Please enter 0-</span><span class="string">{<span class="function">len</span>(fruits)-<span class="number">1</span>}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <h3>Example 3: Menu System with Error Handling</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Professional menu system with error handling</span>
+<span class="keyword">def</span> <span class="function">show_menu</span>():
+    <span class="function">print</span>(<span class="string">"\n=== Student Grade Calculator ==="</span>)
+    <span class="function">print</span>(<span class="string">"1. Add grade"</span>)
+    <span class="function">print</span>(<span class="string">"2. View average"</span>)
+    <span class="function">print</span>(<span class="string">"3. Exit"</span>)
+
+<span class="keyword">def</span> <span class="function">get_menu_choice</span>():
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">try</span>:
+            choice = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter your choice (1-3): "</span>))
+            <span class="keyword">if</span> choice <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]:
+                <span class="keyword">return</span> choice
+            <span class="keyword">else</span>:
+                <span class="function">print</span>(<span class="string">"Please enter 1, 2, or 3."</span>)
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid number."</span>)
+
+grades = []
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="function">show_menu</span>()
+    choice = <span class="function">get_menu_choice</span>()
+    
+    <span class="keyword">if</span> choice == <span class="number">1</span>:
+        <span class="keyword">try</span>:
+            grade = <span class="function">float</span>(<span class="function">input</span>(<span class="string">"Enter grade (0-100): "</span>))
+            <span class="keyword">if</span> <span class="number">0</span> <= grade <= <span class="number">100</span>:
+                grades.append(grade)
+                <span class="function">print</span>(<span class="string">f"Grade </span><span class="string">{grade}</span><span class="string"> added successfully!"</span>)
+            <span class="keyword">else</span>:
+                <span class="function">print</span>(<span class="string">"Grade must be between 0 and 100."</span>)
+        <span class="keyword">except</span> ValueError:
+            <span class="function">print</span>(<span class="string">"Please enter a valid number."</span>)
+            
+    <span class="keyword">elif</span> choice == <span class="number">2</span>:
+        <span class="keyword">if</span> grades:
+            average = <span class="function">sum</span>(grades) / <span class="function">len</span>(grades)
+            <span class="function">print</span>(<span class="string">f"Your average grade is: </span><span class="string">{average:<span class="number">.2</span>f}</span><span class="string">"</span>)
+        <span class="keyword">else</span>:
+            <span class="function">print</span>(<span class="string">"No grades entered yet."</span>)
+            
+    <span class="keyword">elif</span> choice == <span class="number">3</span>:
+        <span class="function">print</span>(<span class="string">"Goodbye!"</span>)
+        <span class="keyword">break</span></code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚨 Common Error Handling Patterns</h2>
+
+        <div class="error-box">
+            <h4>❌ Don't Do This - Hiding All Errors:</h4>
+            <div class="code-block">
+<pre><code><span class="keyword">try</span>:
+    <span class="comment"># Some code here</span>
+    <span class="keyword">pass</span>
+<span class="keyword">except</span>:  <span class="comment"># Catches ALL errors - bad practice!</span>
+    <span class="keyword">pass</span>   <span class="comment"># Silently ignores errors - very bad!</span></code></pre>
+            </div>
+            <p><strong>Why this is bad:</strong> This hides all errors, making debugging impossible. You won't know what went wrong or why.</p>
+        </div>
+
+        <div class="success-box">
+            <h4>✅ Do This - Specific Error Handling:</h4>
+            <div class="code-block">
+<pre><code><span class="keyword">try</span>:
+    age = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Age: "</span>))
+<span class="keyword">except</span> ValueError <span class="keyword">as</span> e:  <span class="comment"># Catch specific error type</span>
+    <span class="function">print</span>(<span class="string">f"Invalid input: </span><span class="string">{e}</span><span class="string">"</span>)  <span class="comment"># Provide helpful message</span></code></pre>
+            </div>
+            <p><strong>Why this is good:</strong> Catches only the specific error we expect and provides meaningful feedback.</p>
+        </div>
+
+        <div class="highlight">
+            <h4>Best Practices for Error Handling:</h4>
             <ul>
-                <li><strong>Safe Number Input:</strong> Ask the user for a number. Use a <code>try...except</code> block to print the number if it's valid, or an error message if it's not.</li>
-                <li><strong>Age Converter:</strong> Wrap the age conversion program from Week 1 in a <code>try...except</code> block.</li>
-                <li><strong>Calculator Protection:</strong> Wrap the simple calculator from Week 1 in a <code>try...except</code> block to handle cases where the user enters text instead of numbers.</li>
-                <li><strong>Menu with Loop and Error Handling:</strong> Create a menu that asks for a number choice. Use a <code>while</code> loop to keep asking until the user enters a valid number. Use <code>try...except</code> inside the loop.</li>
-                <li><strong>Division Calculator:</strong> Ask for two numbers. In the <code>try</code> block, calculate and print the result of the first number divided by the second. You will need two <code>except</code> blocks: one for <code>ValueError</code> (if they enter text) and one for <code>ZeroDivisionError</code> (if they try to divide by zero).</li>
-                <li><strong>List Index Checker:</strong> Create a list with 3 items. Ask the user for an index number. In a <code>try</code> block, try to print the item at that index. Catch the <code>IndexError</code> if the index is out of range.</li>
-                <li><strong>File Reader (Conceptual):</strong> You don't need to write the file part, but conceptually, how would you use <code>try...except</code> when trying to open a file that might not exist? (Hint: It would cause a <code>FileNotFoundError</code>).</li>
-                <li><strong>Robust Input Function:</strong> Create a function <code>get_integer_input(prompt)</code> that uses a <code>while True</code> loop and a <code>try...except</code> block to repeatedly ask the user for input with the given prompt until they enter a valid integer, at which point the function should <code>return</code> the number.</li>
-                <li><strong>Contact Book Age:</strong> Imagine your contact book also stored age. Use <code>try...except</code> to make sure the user enters a valid number for the age.</li>
-                <li><strong>Combining It All:</strong> Create a list of numbers. Ask the user for a new number to add. Use <code>try...except</code> to ensure it's a valid number before appending it to the list.</li>
+                <li><strong>Be specific:</strong> Catch specific error types, not all errors</li>
+                <li><strong>Provide feedback:</strong> Tell the user what went wrong and how to fix it</li>
+                <li><strong>Keep trying:</strong> Use loops to give users multiple attempts</li>
+                <li><strong>Validate input:</strong> Check if input makes sense (e.g., age > 0)</li>
+                <li><strong>Plan for errors:</strong> Think about what could go wrong and handle it</li>
             </ul>
         </div>
     </div>
 
-    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+    <div class="content-section">
+        <h2>✏️ Practice Exercises</h2>
+        <div class="exercises">
+            <ul>
+                <li><strong>Basic Error Handling:</strong> Create a program that asks for the user's age. Use try/except to handle the case where they enter text instead of a number. Display a friendly error message.</li>
+                
+                <li><strong>Safe Division Calculator:</strong> Create a calculator that asks for two numbers and divides them. Handle both ValueError (invalid number input) and ZeroDivisionError (division by zero) with specific error messages.</li>
+                
+                <li><strong>Robust Age Input:</strong> Create a function that keeps asking for the user's age until they enter a valid positive integer. Use a while loop with try/except inside.</li>
+                
+                <li><strong>List Index Safety:</strong> Create a list of your favorite movies. Ask the user for an index number and display the movie at that position. Handle IndexError if they enter an invalid index.</li>
+                
+                <li><strong>Menu System:</strong> Create a menu with 3 options (1. Add item, 2. View items, 3. Exit). Use error handling to ensure the user enters a valid menu choice (1, 2, or 3).</li>
+                
+                <li><strong>Grade Validator:</strong> Ask for a test grade and ensure it's between 0 and 100. Use try/except for invalid input and additional validation for out-of-range values.</li>
+                
+                <li><strong>Shopping Cart:</strong> Create a program that asks for item prices. Keep asking until the user enters "done". Use error handling to ensure each price is a valid positive number.</li>
+                
+                <li><strong>Contact Book Enhancement:</strong> Extend a contact book program to ask for phone numbers. Ensure phone numbers contain only digits (you can use the .isdigit() method) and handle invalid input gracefully.</li>
+                
+                <li><strong>Temperature Converter:</strong> Create a temperature converter (Celsius to Fahrenheit). Handle invalid input and also validate that temperatures are above absolute zero (-273.15°C).</li>
+                
+                <li><strong>Robust Calculator Function:</strong> Create a reusable function get_valid_number(prompt, min_value=None, max_value=None) that handles all validation including range checking.</li>
+                
+                <li><strong>Bank Account Simulator:</strong> Create a simple bank account program where users can deposit/withdraw money. Use error handling for invalid amounts and prevent withdrawing more than the current balance.</li>
+                
+                <li><strong>File Processing (Advanced):</strong> Research how to handle FileNotFoundError when trying to read a file. Create a program that asks for a filename and handles the case where the file doesn't exist.</li>
+                
+                <li><strong>Multi-Error Handler:</strong> Create a program that demonstrates handling at least 4 different types of errors in one program (ValueError, ZeroDivisionError, IndexError, and one more of your choice).</li>
+                
+                <li><strong>User Registration:</strong> Create a user registration system that validates username (must be alphanumeric), password (minimum length), and age (must be 13+). Use appropriate error handling for each validation.</li>
+                
+                <li><strong>Excellence Challenge:</strong> Create a complete contact management system with error handling for all inputs (name validation, phone number format, email format checking). Include menu-driven interface with comprehensive error handling throughout.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Key Takeaways</h2>
+        <ul>
+            <li><strong>Error handling</strong> prevents programs from crashing and provides better user experience</li>
+            <li><strong>try/except blocks</strong> catch specific errors and allow programs to respond gracefully</li>
+            <li><strong>Input validation loops</strong> give users multiple chances to enter correct data</li>
+            <li><strong>Specific error types</strong> allow for targeted error messages and handling</li>
+            <li><strong>Functions with error handling</strong> create reusable, robust code components</li>
+            <li><strong>Professional software</strong> always handles errors gracefully, never crashes unexpectedly</li>
+            <li><strong>Excellence programming</strong> requires comprehensive error handling throughout the application</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>🔗 NCEA Assessment Connections</h2>
+        <div class="highlight">
+            <h4>How This Relates to AS92004:</h4>
+            <ul>
+                <li><strong>Merit Level:</strong> Your programs must handle unexpected input gracefully without crashing</li>
+                <li><strong>Excellence Level:</strong> Comprehensive error handling with meaningful user feedback and recovery options</li>
+                <li><strong>Code Quality:</strong> Error handling demonstrates professional programming practices</li>
+                <li><strong>User Experience:</strong> Robust programs create better user interfaces and experiences</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚀 Next Week Preview</h2>
+        <p>Next week, we'll learn about <strong>Functions</strong> - how to organize your code into reusable blocks that can accept parameters and return values. Functions will help you create more modular, maintainable programs and avoid repeating code. We'll also explore how functions work with error handling to create truly professional applications!</p>
+    </div>
+
+    <a href="../programming.html" class="back-link">← Back to Programming Overview</a>
 </body>
 </html>

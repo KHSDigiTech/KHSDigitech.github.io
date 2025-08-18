@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 3: Introduction to Lists</title>
+    <title>Week 3: Lists & Collections</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,12 +42,13 @@
         .code-block {
             background: #2d3748;
             color: #e2e8f0;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #007bff;
             margin: 1rem 0;
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             overflow-x: auto;
+            font-size: 0.9rem;
         }
 
         .code-block pre {
@@ -66,6 +67,38 @@
         .function { color: #63b3ed; }     /* Function names */
         .number { color: #fbb6ce; }       /* Numbers */
 
+        .example-box {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-box {
+            background: #ffe6e6;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #e6ffe6;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
         .exercises {
             background: #d4edda;
             padding: 1.5rem;
@@ -79,9 +112,14 @@
         }
 
         .exercises li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             position: relative;
             padding-left: 2rem;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .exercises li:last-child {
+            border-bottom: none;
         }
 
         .exercises li::before {
@@ -113,127 +151,597 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 0.5rem;
         }
+
+        .step-by-step {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .visual-list {
+            background: #f8f9fa;
+            border: 2px solid #6c757d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .index-demo {
+            background: #e6f3ff;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Week 3: Introduction to Lists</h1>
-        <p><strong>Goal:</strong> To learn how to store and manage an ordered collection of items using lists. This is the first step to managing a collection of contacts.</p>
+        <h1>Week 3: Lists & Collections</h1>
+        <p><strong>Goal:</strong> Learn to store and manage collections of data using lists. This is essential for building programs that can handle multiple contacts, scores, or any group of related information.</p>
     </div>
 
     <div class="content-section">
-        <h2>Key Concepts & Explanations</h2>
+        <h2>🎯 Learning Objectives</h2>
+        <p>By the end of this week, you will be able to:</p>
+        <ul>
+            <li>Create and initialize lists with different data types</li>
+            <li>Access list elements using index notation</li>
+            <li>Add items to lists using <code>append()</code></li>
+            <li>Remove items using <code>pop()</code> and <code>remove()</code></li>
+            <li>Modify existing list elements</li>
+            <li>Use <code>len()</code> to find list length</li>
+            <li>Check if items exist in lists using <code>in</code></li>
+            <li>Combine lists and create programs that manage collections</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Key Concepts & Detailed Explanations</h2>
         
         <h3>1. What is a List?</h3>
-        <p>A list is a data structure that holds an ordered sequence of items. Think of it like a numbered list of groceries or a column in a spreadsheet. Each item in the list has a specific position.</p>
-        
+        <p>A list is a data structure that stores multiple items in a single variable. Think of it as a container that can hold many related pieces of information in a specific order. Each item in the list has a position (called an index).</p>
+
+        <div class="example-box">
+            <h4>Real-World Analogy:</h4>
+            <p>A list is like a numbered filing cabinet, a grocery list, or a playlist. Each item has a specific position, and you can add, remove, or rearrange items as needed.</p>
+        </div>
+
+        <div class="visual-list">
+            <h4>Visual Representation of a List:</h4>
+            <pre>
+Shopping List:
+┌─────────────┬─────────────┬─────────────┬─────────────┐
+│   "milk"    │  "bread"    │   "eggs"    │  "cheese"   │
+├─────────────┼─────────────┼─────────────┼─────────────┤
+│   Index 0   │   Index 1   │   Index 2   │   Index 3   │
+└─────────────┴─────────────┴─────────────┴─────────────┘
+            </pre>
+        </div>
+
+        <h3>2. Creating Lists</h3>
+        <p>Lists are created using square brackets <code>[]</code>. You can create empty lists or lists with initial values.</p>
+
         <div class="code-block">
-<pre><code><span class="comment"># An empty list</span>
+<pre><code><span class="comment"># Creating an empty list</span>
 my_friends = []
+shopping_list = []
+scores = []
 
-<span class="comment"># A list with initial items</span>
-shopping_list = [<span class="string">"apples"</span>, <span class="string">"bread"</span>, <span class="string">"milk"</span>]</code></pre>
+<span class="comment"># Creating lists with initial values</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>]
+numbers = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>]
+mixed_list = [<span class="string">"John"</span>, <span class="number">25</span>, <span class="keyword">True</span>, <span class="string">"student"</span>]
+
+<span class="comment"># Lists can contain any data type</span>
+student_info = [<span class="string">"Alice"</span>, <span class="number">16</span>, <span class="string">"Year 11"</span>, <span class="number">95.5</span>]
+
+<span class="function">print</span>(fruits)        <span class="comment"># Output: ['apple', 'banana', 'orange']</span>
+<span class="function">print</span>(numbers)       <span class="comment"># Output: [10, 20, 30, 40]</span></code></pre>
         </div>
-        
-        <ul>
-            <li><strong>[]:</strong> The square brackets are what define a list.</li>
-            <li><strong>"apples", "bread", "milk":</strong> The items are separated by commas.</li>
-        </ul>
 
-        <h3>2. Adding to a List with .append()</h3>
-        <p><code>.append()</code> is a <strong>method</strong>, which is a function that belongs to a specific object (in this case, a list). It adds a new item to the very end of the list.</p>
-        
+        <div class="step-by-step">
+            <h4>List Creation Rules:</h4>
+            <ol>
+                <li>Use square brackets <code>[]</code> to define a list</li>
+                <li>Separate items with commas</li>
+                <li>Items can be any data type (strings, numbers, booleans)</li>
+                <li>Lists can contain different data types in the same list</li>
+                <li>Empty lists are valid and useful</li>
+            </ol>
+        </div>
+
+        <h3>3. List Indexing - Accessing Individual Items</h3>
+        <p>Each item in a list has a position called an index. <strong>Python lists start counting from 0, not 1!</strong> This is called "zero-based indexing."</p>
+
+        <div class="index-demo">
+            <h4>Index Demonstration:</h4>
+            <pre>
+colors = ["red", "green", "blue", "yellow"]
+
+Indices:    0      1       2        3
+Values:   "red"  "green"  "blue"  "yellow"
+
+Negative:  -4     -3      -2       -1
+            </pre>
+        </div>
+
         <div class="code-block">
-<pre><code>shopping_list = [<span class="string">"apples"</span>, <span class="string">"bread"</span>]
+<pre><code><span class="comment"># Accessing list items by index</span>
+colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>]
+
+<span class="comment"># Positive indexing (starts from 0)</span>
+first_color = colors[<span class="number">0</span>]     <span class="comment"># Gets "red"</span>
+second_color = colors[<span class="number">1</span>]    <span class="comment"># Gets "green"</span>
+third_color = colors[<span class="number">2</span>]     <span class="comment"># Gets "blue"</span>
+
+<span class="function">print</span>(<span class="string">f"First color: </span><span class="string">{first_color}</span><span class="string">"</span>)
+<span class="function">print</span>(<span class="string">f"Second color: </span><span class="string">{second_color}</span><span class="string">"</span>)
+
+<span class="comment"># Negative indexing (starts from the end)</span>
+last_color = colors[<span class="number">-1</span>]      <span class="comment"># Gets "yellow"</span>
+second_last = colors[<span class="number">-2</span>]     <span class="comment"># Gets "blue"</span>
+
+<span class="function">print</span>(<span class="string">f"Last color: </span><span class="string">{last_color}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Index Out of Range Error</h4>
+            <p>If you try to access an index that doesn't exist, Python will raise an IndexError:</p>
+            <div class="code-block">
+<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]  <span class="comment"># Only indices 0, 1, 2 exist</span>
+<span class="function">print</span>(colors[<span class="number">5</span>])  <span class="comment"># ERROR: IndexError: list index out of range</span></code></pre>
+            </div>
+            <p>Always make sure your index is within the valid range!</p>
+        </div>
+
+        <h3>4. Adding Items to Lists - The append() Method</h3>
+        <p>The <code>append()</code> method adds a new item to the end of a list. This is one of the most commonly used list operations.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Starting with an empty list</span>
+shopping_list = []
+
+<span class="comment"># Adding items one by one</span>
+shopping_list.append(<span class="string">"milk"</span>)
+shopping_list.append(<span class="string">"bread"</span>)
 shopping_list.append(<span class="string">"eggs"</span>)
-<span class="comment"># Now, shopping_list is ["apples", "bread", "eggs"]</span></code></pre>
-        </div>
-        
-        <ul>
-            <li><strong>shopping_list.append(...):</strong> You write the name of the list, a dot <code>.</code>, and then the method name.</li>
-        </ul>
 
-        <h3>3. Accessing List Items by Index</h3>
-        <p>Every item in a list has a position called an <strong>index</strong>. The most important thing to remember is that <strong>indexes start at 0</strong>, not 1.</p>
-        
-        <div class="code-block">
-<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
-first_color = colors[<span class="number">0</span>]  <span class="comment"># This gets "red"</span>
-second_color = colors[<span class="number">1</span>] <span class="comment"># This gets "green"</span></code></pre>
-        </div>
-        
-        <ul>
-            <li><strong>colors[0]:</strong> The number inside the square brackets is the index of the item you want to retrieve.</li>
-        </ul>
+<span class="function">print</span>(shopping_list)  <span class="comment"># Output: ['milk', 'bread', 'eggs']</span>
 
-        <h3>4. Getting the Length of a List with len()</h3>
-        <p><code>len()</code> is a function that tells you how many items are in a list.</p>
-        
-        <div class="code-block">
-<pre><code>num_of_colors = <span class="function">len</span>(colors) <span class="comment"># This would be 3</span></code></pre>
+<span class="comment"># Adding items based on user input</span>
+favorite_foods = []
+food1 = <span class="function">input</span>(<span class="string">"Enter your favorite food: "</span>)
+favorite_foods.append(food1)
+
+food2 = <span class="function">input</span>(<span class="string">"Enter another favorite food: "</span>)
+favorite_foods.append(food2)
+
+<span class="function">print</span>(<span class="string">f"Your favorite foods: </span><span class="string">{favorite_foods}</span><span class="string">"</span>)</code></pre>
         </div>
 
-        <h3>5. Modifying an Item in a List</h3>
-        <p>You can change an item at a specific index by assigning a new value to it.</p>
-        
-        <div class="code-block">
-<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
-colors[<span class="number">1</span>] = <span class="string">"yellow"</span> <span class="comment"># Change the item at index 1</span>
-<span class="comment"># Now, colors is ["red", "yellow", "blue"]</span></code></pre>
+        <div class="step-by-step">
+            <h4>How append() Works:</h4>
+            <ol>
+                <li>Takes the value you provide as an argument</li>
+                <li>Adds it to the very end of the list</li>
+                <li>Increases the list length by 1</li>
+                <li>Modifies the original list (doesn't create a new one)</li>
+            </ol>
         </div>
 
-        <h3>6. Removing Items from a List</h3>
-        <p>There are two common ways to remove items:</p>
-        <ul>
-            <li><strong>.pop():</strong> Removes an item at a specific index. If you don't provide an index, it removes the <em>last</em> item.</li>
-            <li><strong>.remove():</strong> Removes the <em>first</em> item in the list that matches the value you provide.</li>
-        </ul>
-        
+        <h3>5. Finding List Length - The len() Function</h3>
+        <p>The <code>len()</code> function tells you how many items are in a list. This is essential for avoiding index errors and creating loops.</p>
+
         <div class="code-block">
-<pre><code><span class="comment"># Using .pop()</span>
+<pre><code><span class="comment"># Finding the length of lists</span>
 colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
-colors.pop(<span class="number">0</span>) <span class="comment"># Removes "red"</span>
-<span class="comment"># Now, colors is ["green", "blue"]</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+empty_list = []
 
-<span class="comment"># Using .remove()</span>
-colors.remove(<span class="string">"blue"</span>) <span class="comment"># Removes "blue"</span>
-<span class="comment"># Now, colors is ["green"]</span></code></pre>
+<span class="function">print</span>(<span class="string">f"Colors list has </span><span class="string">{len(colors)}</span><span class="string"> items"</span>)      <span class="comment"># Output: 3</span>
+<span class="function">print</span>(<span class="string">f"Numbers list has </span><span class="string">{len(numbers)}</span><span class="string"> items"</span>)    <span class="comment"># Output: 5</span>
+<span class="function">print</span>(<span class="string">f"Empty list has </span><span class="string">{len(empty_list)}</span><span class="string"> items"</span>)    <span class="comment"># Output: 0</span>
+
+<span class="comment"># Using len() to access the last item safely</span>
+<span class="keyword">if</span> <span class="function">len</span>(colors) > <span class="number">0</span>:
+    last_item = colors[<span class="function">len</span>(colors) - <span class="number">1</span>]  <span class="comment"># Same as colors[-1]</span>
+    <span class="function">print</span>(<span class="string">f"Last color: </span><span class="string">{last_item}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <h3>6. Modifying List Items</h3>
+        <p>You can change the value of any item in a list by assigning a new value to its index position.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Modifying list items</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>]
+<span class="function">print</span>(<span class="string">f"Original: </span><span class="string">{fruits}</span><span class="string">"</span>)
+
+<span class="comment"># Change the second item (index 1)</span>
+fruits[<span class="number">1</span>] = <span class="string">"grape"</span>
+<span class="function">print</span>(<span class="string">f"After change: </span><span class="string">{fruits}</span><span class="string">"</span>)  <span class="comment"># ['apple', 'grape', 'orange']</span>
+
+<span class="comment"># Interactive modification</span>
+students = [<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>]
+<span class="function">print</span>(<span class="string">f"Current students: </span><span class="string">{students}</span><span class="string">"</span>)
+
+index_to_change = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Which student to replace (0, 1, or 2)? "</span>))
+new_name = <span class="function">input</span>(<span class="string">"Enter new student name: "</span>)
+
+<span class="keyword">if</span> <span class="number">0</span> <= index_to_change < <span class="function">len</span>(students):
+    students[index_to_change] = new_name
+    <span class="function">print</span>(<span class="string">f"Updated students: </span><span class="string">{students}</span><span class="string">"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Invalid index!"</span>)</code></pre>
+        </div>
+
+        <h3>7. Removing Items from Lists</h3>
+        <p>There are several ways to remove items from lists, each useful in different situations.</p>
+
+        <h4>7a. The pop() Method</h4>
+        <p><code>pop()</code> removes and returns an item at a specific index. If no index is given, it removes the last item.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Using pop() to remove items</span>
+tasks = [<span class="string">"homework"</span>, <span class="string">"shopping"</span>, <span class="string">"exercise"</span>, <span class="string">"reading"</span>]
+<span class="function">print</span>(<span class="string">f"Original tasks: </span><span class="string">{tasks}</span><span class="string">"</span>)
+
+<span class="comment"># Remove the last item</span>
+completed_task = tasks.pop()
+<span class="function">print</span>(<span class="string">f"Completed: </span><span class="string">{completed_task}</span><span class="string">"</span>)        <span class="comment"># Output: reading</span>
+<span class="function">print</span>(<span class="string">f"Remaining tasks: </span><span class="string">{tasks}</span><span class="string">"</span>)
+
+<span class="comment"># Remove item at specific index</span>
+first_task = tasks.pop(<span class="number">0</span>)
+<span class="function">print</span>(<span class="string">f"Completed: </span><span class="string">{first_task}</span><span class="string">"</span>)         <span class="comment"># Output: homework</span>
+<span class="function">print</span>(<span class="string">f"Remaining tasks: </span><span class="string">{tasks}</span><span class="string">"</span>)</code></pre>
+        </div>
+
+        <h4>7b. The remove() Method</h4>
+        <p><code>remove()</code> removes the first occurrence of a specific value from the list.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Using remove() to remove by value</span>
+colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"red"</span>]
+<span class="function">print</span>(<span class="string">f"Original colors: </span><span class="string">{colors}</span><span class="string">"</span>)
+
+<span class="comment"># Remove the first occurrence of "red"</span>
+colors.remove(<span class="string">"red"</span>)
+<span class="function">print</span>(<span class="string">f"After removing red: </span><span class="string">{colors}</span><span class="string">"</span>)  <span class="comment"># ['green', 'blue', 'red']</span>
+
+<span class="comment"># Safe removal - check if item exists first</span>
+item_to_remove = <span class="function">input</span>(<span class="string">"What color to remove? "</span>)
+<span class="keyword">if</span> item_to_remove <span class="keyword">in</span> colors:
+    colors.remove(item_to_remove)
+    <span class="function">print</span>(<span class="string">f"Removed </span><span class="string">{item_to_remove}</span><span class="string">. Colors now: </span><span class="string">{colors}</span><span class="string">"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{item_to_remove}</span><span class="string"> not found in the list."</span>)</code></pre>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>What it removes</th>
+                    <th>Return value</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>pop()</td>
+                    <td>Last item (or item at index)</td>
+                    <td>The removed item</td>
+                    <td>item = list.pop()</td>
+                </tr>
+                <tr>
+                    <td>pop(index)</td>
+                    <td>Item at specific index</td>
+                    <td>The removed item</td>
+                    <td>item = list.pop(0)</td>
+                </tr>
+                <tr>
+                    <td>remove(value)</td>
+                    <td>First occurrence of value</td>
+                    <td>None</td>
+                    <td>list.remove("apple")</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8. Checking if Items Exist - The 'in' Operator</h3>
+        <p>The <code>in</code> operator checks if an item exists in a list and returns True or False.</p>
+
+        <div class="code-block">
+<pre><code><span class="comment"># Checking if items exist in lists</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>]
+
+<span class="comment"># Basic existence checking</span>
+<span class="keyword">if</span> <span class="string">"apple"</span> <span class="keyword">in</span> fruits:
+    <span class="function">print</span>(<span class="string">"We have apples!"</span>)
+
+<span class="keyword">if</span> <span class="string">"grape"</span> <span class="keyword">not</span> <span class="keyword">in</span> fruits:
+    <span class="function">print</span>(<span class="string">"We don't have grapes."</span>)
+
+<span class="comment"># Interactive search</span>
+search_item = <span class="function">input</span>(<span class="string">"What fruit are you looking for? "</span>)
+<span class="keyword">if</span> search_item <span class="keyword">in</span> fruits:
+    <span class="function">print</span>(<span class="string">f"Yes! </span><span class="string">{search_item}</span><span class="string"> is in our list."</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"Sorry, </span><span class="string">{search_item}</span><span class="string"> is not available."</span>)
+
+<span class="comment"># Getting the position of an item</span>
+<span class="keyword">if</span> search_item <span class="keyword">in</span> fruits:
+    position = fruits.index(search_item)
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{search_item}</span><span class="string"> is at position </span><span class="string">{position}</span><span class="string">"</span>)</code></pre>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Exercises</h2>
+        <h2>💡 Complete Working Examples</h2>
+
+        <h3>Example 1: Contact List Manager</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Simple contact list manager</span>
+<span class="function">print</span>(<span class="string">"=== Contact List Manager ==="</span>)
+
+<span class="comment"># Start with an empty contact list</span>
+contacts = []
+
+<span class="comment"># Add some initial contacts</span>
+contacts.append(<span class="string">"Alice Smith"</span>)
+contacts.append(<span class="string">"Bob Johnson"</span>)
+contacts.append(<span class="string">"Charlie Brown"</span>)
+
+<span class="function">print</span>(<span class="string">f"Current contacts: </span><span class="string">{contacts}</span><span class="string">"</span>)
+<span class="function">print</span>(<span class="string">f"Total contacts: </span><span class="string">{len(contacts)}</span><span class="string">"</span>)
+
+<span class="comment"># Add a new contact from user</span>
+new_contact = <span class="function">input</span>(<span class="string">"\nEnter a new contact name: "</span>)
+contacts.append(new_contact)
+
+<span class="comment"># Display all contacts with numbers</span>
+<span class="function">print</span>(<span class="string">"\n=== All Contacts ==="</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(contacts)):
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{i + 1}</span><span class="string">. </span><span class="string">{contacts[i]}</span><span class="string">"</span>)
+
+<span class="comment"># Search for a contact</span>
+search_name = <span class="function">input</span>(<span class="string">"\nSearch for a contact: "</span>)
+<span class="keyword">if</span> search_name <span class="keyword">in</span> contacts:
+    position = contacts.index(search_name)
+    <span class="function">print</span>(<span class="string">f"Found </span><span class="string">{search_name}</span><span class="string"> at position </span><span class="string">{position + 1}</span><span class="string">"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{search_name}</span><span class="string"> not found in contacts."</span>)</code></pre>
+        </div>
+
+        <h3>Example 2: Shopping List with Quantities</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Shopping list with item management</span>
+<span class="function">print</span>(<span class="string">"=== Smart Shopping List ==="</span>)
+
+shopping_items = []
+quantities = []
+
+<span class="comment"># Function to add items</span>
+<span class="keyword">def</span> <span class="function">add_item</span>():
+    item = <span class="function">input</span>(<span class="string">"What item to add? "</span>)
+    <span class="keyword">if</span> item <span class="keyword">in</span> shopping_items:
+        <span class="function">print</span>(<span class="string">f"</span><span class="string">{item}</span><span class="string"> is already in your list!"</span>)
+    <span class="keyword">else</span>:
+        quantity = <span class="function">int</span>(<span class="function">input</span>(<span class="string">f"How many </span><span class="string">{item}</span><span class="string">? "</span>))
+        shopping_items.append(item)
+        quantities.append(quantity)
+        <span class="function">print</span>(<span class="string">f"Added </span><span class="string">{quantity}</span><span class="string"> </span><span class="string">{item}</span><span class="string">(s) to your list."</span>)
+
+<span class="comment"># Function to display list</span>
+<span class="keyword">def</span> <span class="function">show_list</span>():
+    <span class="keyword">if</span> <span class="function">len</span>(shopping_items) == <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">"Your shopping list is empty."</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">f"\n=== Shopping List ({len(shopping_items)} items) ==="</span>)
+        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(shopping_items)):
+            <span class="function">print</span>(<span class="string">f"</span><span class="string">{i + 1}</span><span class="string">. </span><span class="string">{quantities[i]}</span><span class="string"> </span><span class="string">{shopping_items[i]}</span><span class="string">"</span>)
+
+<span class="comment"># Add some items</span>
+add_item()
+add_item()
+add_item()
+show_list()
+
+<span class="comment"># Remove an item</span>
+<span class="keyword">if</span> <span class="function">len</span>(shopping_items) > <span class="number">0</span>:
+    item_to_remove = <span class="function">input</span>(<span class="string">"\nWhat item did you buy? "</span>)
+    <span class="keyword">if</span> item_to_remove <span class="keyword">in</span> shopping_items:
+        index = shopping_items.index(item_to_remove)
+        shopping_items.pop(index)
+        quantities.pop(index)
+        <span class="function">print</span>(<span class="string">f"Removed </span><span class="string">{item_to_remove}</span><span class="string"> from your list."</span>)
+        show_list()
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">f"</span><span class="string">{item_to_remove}</span><span class="string"> wasn't in your list."</span>)</code></pre>
+        </div>
+
+        <h3>Example 3: Quiz Score Tracker</h3>
+        <div class="code-block">
+<pre><code><span class="comment"># Student quiz score tracking system</span>
+<span class="function">print</span>(<span class="string">"=== Quiz Score Tracker ==="</span>)
+
+student_names = []
+quiz_scores = []
+
+<span class="comment"># Add students and their scores</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    name = <span class="function">input</span>(<span class="string">"Enter student name (or 'done' to finish): "</span>)
+    <span class="keyword">if</span> name.lower() == <span class="string">"done"</span>:
+        <span class="keyword">break</span>
+    
+    score = <span class="function">int</span>(<span class="function">input</span>(<span class="string">f"Enter </span><span class="string">{name}</span><span class="string">'s quiz score: "</span>))
+    
+    student_names.append(name)
+    quiz_scores.append(score)
+    <span class="function">print</span>(<span class="string">f"Added </span><span class="string">{name}</span><span class="string"> with score </span><span class="string">{score}</span><span class="string">"</span>)
+
+<span class="comment"># Display all results</span>
+<span class="function">print</span>(<span class="string">f"\n=== Quiz Results ({len(student_names)} students) ==="</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(student_names)):
+    <span class="function">print</span>(<span class="string">f"</span><span class="string">{student_names[i]}</span><span class="string">: </span><span class="string">{quiz_scores[i]}</span><span class="string">%"</span>)
+
+<span class="comment"># Calculate statistics</span>
+<span class="keyword">if</span> <span class="function">len</span>(quiz_scores) > <span class="number">0</span>:
+    highest_score = <span class="function">max</span>(quiz_scores)
+    lowest_score = <span class="function">min</span>(quiz_scores)
+    average_score = <span class="function">sum</span>(quiz_scores) / <span class="function">len</span>(quiz_scores)
+    
+    <span class="function">print</span>(<span class="string">f"\n=== Statistics ==="</span>)
+    <span class="function">print</span>(<span class="string">f"Highest score: </span><span class="string">{highest_score}</span><span class="string">%"</span>)
+    <span class="function">print</span>(<span class="string">f"Lowest score: </span><span class="string">{lowest_score}</span><span class="string">%"</span>)
+    <span class="function">print</span>(<span class="string">f"Average score: </span><span class="string">{average_score:.1f}</span><span class="string">%"</span>)
+    
+    <span class="comment"># Find top performer</span>
+    top_student_index = quiz_scores.index(highest_score)
+    <span class="function">print</span>(<span class="string">f"Top performer: </span><span class="string">{student_names[top_student_index]}</span><span class="string">"</span>)</code></pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>🚨 Common Errors and How to Fix Them</h2>
+
+        <div class="error-box">
+            <h4>Error 1: IndexError - List index out of range</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+my_list = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]  <span class="comment"># Only indices 0, 1, 2 exist</span>
+<span class="function">print</span>(my_list[<span class="number">5</span>])  <span class="comment"># ERROR: Index 5 doesn't exist</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Always check the list length or use proper bounds:</p>
+            <div class="code-block">
+<pre><code>my_list = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]
+<span class="keyword">if</span> <span class="number">5</span> < <span class="function">len</span>(my_list):
+    <span class="function">print</span>(my_list[<span class="number">5</span>])
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Index 5 is out of range"</span>)</code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>Error 2: ValueError - Item not in list (with remove)</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>]
+colors.remove(<span class="string">"green"</span>)  <span class="comment"># ERROR: "green" is not in the list</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Check if the item exists before removing:</p>
+            <div class="code-block">
+<pre><code>colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>]
+<span class="keyword">if</span> <span class="string">"green"</span> <span class="keyword">in</span> colors:
+    colors.remove(<span class="string">"green"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Green is not in the list"</span>)</code></pre>
+            </div>
+        </div>
+
+        <div class="error-box">
+            <h4>Error 3: Modifying list while iterating</h4>
+            <div class="code-block">
+<pre><code><span class="comment"># Problematic code:</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+<span class="keyword">for</span> num <span class="keyword">in</span> numbers:
+    <span class="keyword">if</span> num % <span class="number">2</span> == <span class="number">0</span>:
+        numbers.remove(num)  <span class="comment"># This can cause issues</span></code></pre>
+            </div>
+            <p><strong>Fix:</strong> Create a new list or iterate backwards:</p>
+            <div class="code-block">
+<pre><code><span class="comment"># Better approach:</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+odd_numbers = []
+<span class="keyword">for</span> num <span class="keyword">in</span> numbers:
+    <span class="keyword">if</span> num % <span class="number">2</span> != <span class="number">0</span>:
+        odd_numbers.append(num)</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>✏️ Practice Exercises</h2>
         <div class="exercises">
             <ul>
-                <li><strong>My Hobbies:</strong> Create a list containing three of your hobbies. Print the entire list.</li>
-                <li><strong>First and Last:</strong> Create a list of your three favorite foods. Print the first item in the list.</li>
-                <li><strong>Add an Item:</strong> Start with an empty list called `movies`. Ask the user to enter their favorite movie and `append()` it to the list. Then print the list.</li>
-                <li><strong>Team Roster:</strong> Create a list with the names of two of your friends. Ask the user to add a third friend's name. Print the final list.</li>
-                <li><strong>List Count:</strong> Create a list of 5 different numbers. Use the `len()` function to print a message like: "The list contains 5 numbers."</li>
-                <li><strong>Change of Plans:</strong> Create a list of three places you want to visit. Use an index to change the second place to a new destination. Print the updated list.</li>
-                <li><strong>Remove an Item:</strong> Create a list of tasks to do. Use `.pop()` to remove the first task and print a message saying you've completed it. Then print the remaining tasks.</li>
-                <li><strong>Guest List Management:</strong> Create a list of guests. A guest cancels, so use `.remove()` to remove their name from the list. Print the final guest list.</li>
-                <li><strong>Dynamic Shopping List:</strong> Create an empty list. Ask the user to enter three items one by one, appending each to the list. Then, tell the user you're out of the first item and remove it. Print the final list.</li>
-                <li><strong>Error Finder:</strong> The following code has an error. Can you fix it? `my_list = [1, 2, 3] print(my_list[3])` (Hint: Remember how indexing starts).</li>
-                <li><strong>Sentence Builder:</strong> Create a list of individual words: `["This", "is", "a", "sentence"]`. Print each word on the same line by accessing them by their index and using string concatenation, to form the full sentence.</li>
-                <li><strong>Top Three:</strong> Create a list of your top three favorite songs. `pop()` the last one and store it in a variable. Then print a message like: "Your third favorite song is [Song], but let's just focus on the top two: [The rest of the list]."</li>
+                <li><strong>Favorite Movies:</strong> Create a list of your top 5 favorite movies. Print each movie with its ranking number.</li>
+                
+                <li><strong>Dynamic Shopping List:</strong> Start with an empty list, ask the user to add 5 items one by one, then display the complete list.</li>
+                
+                <li><strong>Student Roster:</strong> Create a list with 3 student names. Ask the user which student to replace, get a new name, and update the list.</li>
+                
+                <li><strong>Number Sorter:</strong> Create a list of 5 numbers. Find and print the largest, smallest, and middle values.</li>
+                
+                <li><strong>Task Manager:</strong> Create a to-do list. Allow users to add tasks, mark tasks as complete (remove them), and view remaining tasks.</li>
+                
+                <li><strong>Color Palette:</strong> Start with ["red", "green", "blue"]. Add two more colors, remove one color, and display the final palette.</li>
+                
+                <li><strong>Class Attendance:</strong> Create a list of student names. Ask which students are absent today and remove them from the list.</li>
+                
+                <li><strong>Playlist Manager:</strong> Create a music playlist (list of song names). Allow adding songs, removing songs, and showing the current playlist.</li>
+                
+                <li><strong>Restaurant Menu:</strong> Create a menu list with 6 food items. Ask the user what they want to order and check if it's available.</li>
+                
+                <li><strong>High Scores:</strong> Create a list of game scores. Add new scores, find the highest score, and display all scores in order.</li>
+                
+                <li><strong>Contact Search:</strong> Create a contact list. Allow users to search for a contact and tell them if it exists and at what position.</li>
+                
+                <li><strong>Inventory System:</strong> Create lists for item names and quantities. Allow adding items, using items (reducing quantity), and viewing inventory.</li>
             </ul>
         </div>
     </div>
 
     <div class="content-section">
-        <h2>Key Takeaways</h2>
+        <h2>🎯 Key Takeaways</h2>
         <ul>
-            <li>Lists are ordered collections of items defined with square brackets []</li>
-            <li>Use .append() to add items to the end of a list</li>
-            <li>List indexes start at 0, not 1</li>
-            <li>Access items using square bracket notation: list[index]</li>
-            <li>Use len() to find how many items are in a list</li>
-            <li>Modify list items by assigning new values to specific indexes</li>
-            <li>Remove items with .pop() (by index) or .remove() (by value)</li>
+            <li><strong>Lists</strong> store multiple items in a single variable with ordered positions</li>
+            <li><strong>Zero-based indexing</strong> means the first item is at index 0, not 1</li>
+            <li><strong>append()</strong> adds items to the end of a list</li>
+            <li><strong>len()</strong> tells you how many items are in a list</li>
+            <li><strong>pop()</strong> removes and returns items by index</li>
+            <li><strong>remove()</strong> removes items by value</li>
+            <li><strong>'in' operator</strong> checks if items exist in lists</li>
+            <li><strong>Lists are mutable</strong> - you can change them after creation</li>
         </ul>
     </div>
 
-    <a href="programming.html" class="back-link">← Back to Programming Overview</a>
+    <div class="content-section">
+        <h2>🚀 Next Week Preview</h2>
+        <p>Next week, we'll learn about <strong>Iteration & Loops</strong> - how to automatically process every item in a list using for and while loops. This will make your programs much more powerful and efficient!</p>
+    </div>
+
+    <a href="../programming.html" class="back-link">← Back to Programming Overview</a>
 </body>
 </html>
