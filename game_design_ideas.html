@@ -103,18 +103,47 @@
         }
         
         .generated-idea {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             color: #333;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1rem;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
             font-size: 1.1rem;
-            font-weight: 500;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            line-height: 1.8;
+            min-height: 120px;
+            text-align: left;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .game-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4facfe;
+            margin-bottom: 1rem;
             text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .game-description {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .game-goal {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .game-rule {
+            font-style: italic;
+            font-size: 1rem;
+            color: #666;
+            background: #f8f9fa;
+            padding: 0.8rem;
+            border-radius: 6px;
+            border-left: 4px solid #4facfe;
         }
         
         ul, ol {
@@ -176,15 +205,15 @@
             <h3>🎮 Game Mechanics</h3>
             <h4>Core Principle: Simple but Deep</h4>
             <ul>
-                <li><strong>Start with ONE core mechanic</strong> (jump, shoot, collect, puzzle)</li>
+                <li><strong>Start with ONE core mechanic</strong> (jump, collect, build, puzzle)</li>
                 <li><strong>Add variations, not new mechanics</strong> (different jump heights vs. swimming + flying)</li>
                 <li><strong>Test early and often</strong> - if it's not fun in 5 minutes, it won't be fun in 5 hours</li>
                 <li><strong>Examples of simple mechanics:</strong>
                     <ul>
                         <li>Platformer: Jump + avoid obstacles</li>
-                        <li>Shooter: Aim + shoot moving targets</li>
                         <li>Puzzle: Move blocks to solve patterns</li>
-                        <li>Collect: Gather items while avoiding enemies</li>
+                        <li>Collection: Gather items while avoiding obstacles</li>
+                        <li>Builder: Place objects to create solutions</li>
                     </ul>
                 </li>
             </ul>
@@ -565,13 +594,13 @@
             <div class="guideline-card">
                 <h3>🎯 Action Ideas</h3>
                 <ul>
-                    <li><strong>Asteroid Dodge:</strong> Survive as long as possible</li>
-                    <li><strong>Bubble Shooter:</strong> Pop bubbles of same color</li>
-                    <li><strong>Tower Defense Lite:</strong> Place 3 types of towers</li>
-                    <li><strong>Pac-Man Style:</strong> Collect dots while avoiding ghosts</li>
-                    <li><strong>Snake Plus:</strong> Snake with power-ups and obstacles</li>
-                    <li><strong>Breakout Remix:</strong> Brick breaker with special blocks</li>
-                    <li><strong>Shooting Gallery:</strong> Hit targets before time runs out</li>
+                    <li><strong>Asteroid Dodge:</strong> Navigate through space debris</li>
+                    <li><strong>Bubble Popper:</strong> Pop bubbles of same color</li>
+                    <li><strong>Tower Builder:</strong> Stack objects to reach goals</li>
+                    <li><strong>Pac-Man Style:</strong> Collect dots while avoiding obstacles</li>
+                    <li><strong>Snake Plus:</strong> Snake with power-ups and challenges</li>
+                    <li><strong>Breakout Remix:</strong> Ball bouncer with special blocks</li>
+                    <li><strong>Target Practice:</strong> Touch targets before time runs out</li>
                 </ul>
             </div>
 
@@ -592,12 +621,12 @@
                 <h3>🕹️ Retro Arcade Ideas</h3>
                 <ul>
                     <li><strong>Pong Plus:</strong> Classic Pong with power-ups</li>
-                    <li><strong>Centipede Mini:</strong> Shoot descending enemies</li>
-                    <li><strong>Frogger Style:</strong> Cross dangerous roads/rivers</li>
-                    <li><strong>Missile Command:</strong> Defend cities from falling bombs</li>
-                    <li><strong>Space Invaders Twist:</strong> Classic shooter with new mechanics</li>
+                    <li><strong>Centipede Style:</strong> Guide creatures through obstacles</li>
+                    <li><strong>Frogger Style:</strong> Cross busy roads and rivers safely</li>
+                    <li><strong>Block Catcher:</strong> Catch falling objects in containers</li>
+                    <li><strong>Space Navigator:</strong> Pilot through asteroid fields</li>
                     <li><strong>Tetris Mini:</strong> Simple block-falling puzzle</li>
-                    <li><strong>Dig Dug Style:</strong> Tunnel underground, avoid enemies</li>
+                    <li><strong>Dig Dug Style:</strong> Tunnel underground, collect gems</li>
                 </ul>
             </div>
 
@@ -634,70 +663,104 @@
         <div class="generated-idea" id="generatedIdea">
             Click the button above to generate your first game idea!
         </div>
-        <p><em>This generator can create over 10,000 unique combinations!</em></p>
+        <p><em>This generator can create over 2.5 million unique combinations!</em></p>
     </div>
 
     <script>
         const gameElements = {
-            genres: [
-                "Platformer", "Puzzle", "Action", "Arcade", "Runner", "Adventure", 
-                "Shooter", "Survival", "Racing", "Strategy", "Rhythm", "Stealth"
+            gameTypes: [
+                "Platformer", "Top-down Game", "Puzzle Game", "Endless Runner", 
+                "Collection Game", "Maze Game", "Stacking Game", "Racing Game",
+                "Memory Game", "Reaction Game", "Building Game", "Sorting Game",
+                "Matching Game", "Physics Game", "Rhythm Game", "Stealth Game",
+                "Tower Game", "Bridge Builder", "Path Creator", "Color Game",
+                "Number Game", "Pattern Game", "Timing Game", "Balance Game"
             ],
-            protagonists: [
-                "a robot", "a ninja", "a wizard", "a cat", "a ghost", "a spaceship", 
-                "a paper plane", "a bouncing ball", "a tiny dragon", "a magical cube",
-                "a brave knight", "a clever mouse", "a flying bird", "a submarine",
-                "a rolling boulder", "a growing plant", "a time traveler", "a painter",
-                "a chef", "a detective", "an alien visitor", "a balloon"
+            
+            goals: [
+                "Escape the level", "Collect 20 gems", "Reach the finish line", "Stack 10 blocks",
+                "Turn on all lights", "Find the exit key", "Gather all fruit", "Paint every tile",
+                "Connect all circuits", "Sort all colors", "Fill the container", "Light the beacon",
+                "Repair the machine", "Grow the garden", "Charge the battery", "Clean the mess",
+                "Wake the sleepers", "Cool the fire", "Balance the scales", "Complete the pattern",
+                "Unlock 5 doors", "Deliver 3 packages", "Feed all animals", "Water every plant",
+                "Catch 15 butterflies", "Melt all ice cubes", "Pop 30 balloons", "Fix the bridge",
+                "Start the engine", "Open the treasure chest", "Ring all the bells", "Count to 100",
+                "Match 12 pairs", "Solve 5 riddles", "Build a tower to the top", "Cross the river",
+                "Find the lost pet", "Turn off all alarms", "Organize the library", "Bake a cake"
             ],
+            
             settings: [
-                "in a haunted castle", "on a distant planet", "in an underwater city", 
-                "inside a computer", "in a magical forest", "on floating islands",
-                "in a candy land", "through mirror dimensions", "in ancient ruins",
-                "on a space station", "in a steampunk city", "inside a giant clock",
-                "in a pixel world", "through seasonal changes", "in a laboratory",
-                "on moving platforms", "in a music box", "through portals",
-                "in a library maze", "on a moving train", "in the clouds", 
-                "in a neon cityscape", "through time periods", "in a garden maze"
+                "a space station", "an underground cave", "a magical forest", "a clockwork factory",
+                "a candy kingdom", "an ice palace", "a robot city", "a cloud world",
+                "a pixel dimension", "a mirror maze", "a music box", "a paint studio",
+                "a laboratory", "a garden maze", "a desert oasis", "a mountain peak",
+                "a sunken ship", "a tree house", "a castle tower", "a neon arcade",
+                "an art gallery", "a toy store", "a library", "a bakery",
+                "a greenhouse", "a circus tent", "a subway tunnel", "a lighthouse",
+                "a watch repair shop", "a butterfly garden", "a crystal cave", "a train station",
+                "a weather station", "a recycling center", "a music studio", "a flower shop",
+                "a puzzle workshop", "a time machine", "a rainbow bridge", "a moon base"
             ],
-            objectives: [
-                "collect all the crystals", "reach the highest tower", "solve ancient puzzles",
-                "escape before time runs out", "defeat the shadow enemies", 
-                "restore color to the world", "find the missing keys", 
-                "light up all the lanterns", "connect all the circuits",
-                "wake up the sleeping giants", "repair the broken machine",
-                "plant flowers everywhere", "deliver important messages",
-                "unlock secret passages", "balance the magical forces",
-                "rescue trapped friends", "stop the spreading darkness",
-                "organize the chaos", "build bridges to safety",
-                "paint the world with music", "synchronize the clockwork",
-                "heal the corrupted data", "unite the scattered pieces"
+            
+            characters: [
+                "a bouncing ball", "a rolling cube", "a flying robot", "a jumping frog",
+                "a sliding penguin", "a spinning top", "a glowing orb", "a paper plane",
+                "a soap bubble", "a wind-up toy", "a magic gem", "a pixel hero",
+                "a tiny car", "a floating ghost", "a clockwork mouse", "a rubber duck",
+                "a walking cactus", "a swimming turtle", "a hopping rabbit", "a crawling snail",
+                "a flying butterfly", "a rolling marble", "a bouncing spring", "a gliding leaf",
+                "a spinning coin", "a melting snowman", "a growing seed", "a ticking clock",
+                "a floating balloon", "a sliding ice cube", "a dancing flower", "a singing bird"
             ],
-            mechanics: [
-                "but can only move by jumping", "while avoiding laser beams", 
-                "by switching between dimensions", "with gravity that constantly changes",
-                "while the world rotates around you", "but you shrink over time",
-                "by painting platforms into existence", "while being chased by shadows",
-                "using only sound to navigate", "with a limited number of moves",
-                "while platforms disappear behind you", "by controlling time flow",
-                "using magnetism to stick to walls", "while the screen splits in two",
-                "by creating echoes of yourself", "with each level in reverse",
-                "while balancing on a bouncing ball", "using light to reveal hidden paths",
-                "by growing or shrinking objects", "while everything is mirrored",
-                "with physics that change each level", "by connecting electrical circuits",
-                "while riding on conveyor belts", "using musical notes as platforms"
+            
+            controlSchemes: [
+                "Arrow keys to move, Spacebar to jump", "Mouse to drag and drop objects",
+                "WASD to move in 4 directions", "Click to change direction",
+                "Hold mouse to charge, release to launch", "Arrow keys only (no other buttons)",
+                "Mouse to draw paths", "Click and hold to grow/shrink",
+                "Spacebar to switch between two modes", "Arrow keys to rotate the world",
+                "Mouse to aim, click to interact", "WASD to move, mouse to rotate view",
+                "Click objects in the right order", "Hold Spacebar to float, release to fall",
+                "Use number keys 1-5 to change colors", "Click and drag to stretch objects",
+                "Press keys in rhythm with the music", "Move mouse to control wind direction",
+                "Double-click to activate special power", "Hold different keys to change speed",
+                "Click to place, right-click to remove", "Use mouse wheel to zoom in/out",
+                "Tap keys quickly to build energy", "Move mouse in circles to spin objects"
             ],
-            themes: [
-                "Time is running out!", "Colors hold the key to success.",
-                "Every choice creates a consequence.", "Music drives the action.",
-                "Light and shadow are your tools.", "Everything is connected.",
-                "Small actions have big results.", "The world is alive and reactive.",
-                "Patience is more important than speed.", "Collaboration solves everything.",
-                "Simplicity hides complexity.", "The environment tells a story.",
-                "Rhythm is everything.", "Memory is your greatest weapon.",
-                "Opposites must work together.", "The journey changes you.",
-                "Balance is key to harmony.", "Creativity overcomes obstacles.",
-                "Perspective changes everything.", "Growth comes through challenges."
+            
+            twists: [
+                "but platforms disappear when you leave them", "but you can only move for 3 seconds at a time",
+                "but gravity flips every 10 seconds", "but you bounce off every surface",
+                "but the screen slowly rotates", "but you leave a trail that blocks your path",
+                "but objects change color when touched", "but you can only see a small area around you",
+                "but everything moves in slow motion", "but you grow bigger with each item collected",
+                "but walls become invisible after 5 seconds", "but you can only move when music plays",
+                "but touching anything red resets your position", "but you shrink every few seconds",
+                "but the level floods with water from below", "but ice makes everything slippery",
+                "but wind pushes you in random directions", "but mirrors reflect your movements elsewhere",
+                "but you can only move in straight lines", "but stepping twice creates a hole",
+                "but objects melt in sunlight", "but you move faster when scared",
+                "but colors drain away over time", "but sounds make platforms appear",
+                "but you stick to metal surfaces", "but shadows hide secret paths",
+                "but rain makes you jump higher", "but heat makes you move slower",
+                "but you can walk on walls for 5 seconds", "but touching water makes you tiny",
+                "but laughing makes objects bounce", "but time reverses every 30 seconds"
+            ],
+            
+            specialRules: [
+                "Each level has a 45-second time limit", "You have 3 lives to complete all levels",
+                "Collect power-ups to unlock new abilities", "Avoid red objects - they end the level",
+                "Moving objects follow simple patrol patterns", "Switches open doors for 5 seconds",
+                "Springs make you jump twice as high", "Magnets pull you toward metal objects",
+                "Checkpoints save your progress mid-level", "Bonus points for finishing under 30 seconds",
+                "Collect stars to unlock the next world", "Touch 3 green objects to get an extra life",
+                "Purple items give you temporary invincibility", "Yellow objects restore your energy",
+                "Complete levels in under 60 seconds for bonus gems", "Find hidden coins for extra points",
+                "Some walls can be pushed to reveal secrets", "Step on pressure plates to activate bridges",
+                "Collect keys in the correct order", "Different colored doors need matching keys",
+                "Some objects only appear when you're not moving", "Music tempo controls your movement speed",
+                "Certain platforms only work during daytime", "Ice blocks melt near fire sources"
             ]
         };
 
@@ -706,18 +769,34 @@
         }
 
         function generateGameIdea() {
-            const genre = getRandomElement(gameElements.genres);
-            const protagonist = getRandomElement(gameElements.protagonists);
+            const gameType = getRandomElement(gameElements.gameTypes);
+            const goal = getRandomElement(gameElements.goals);
             const setting = getRandomElement(gameElements.settings);
-            const objective = getRandomElement(gameElements.objectives);
-            const mechanic = getRandomElement(gameElements.mechanics);
-            const theme = getRandomElement(gameElements.themes);
+            const character = getRandomElement(gameElements.characters);
+            const controls = getRandomElement(gameElements.controlSchemes);
+            const twist = getRandomElement(gameElements.twists);
+            const specialRule = getRandomElement(gameElements.specialRules);
 
             const idea = `
-                <strong>${genre} Game Concept:</strong><br><br>
-                You play as <strong>${protagonist}</strong> <strong>${setting}</strong>. 
-                Your goal is to <strong>${objective}</strong> <strong>${mechanic}</strong>.<br><br>
-                <em>Theme: ${theme}</em>
+                <div class="game-title">${gameType}</div>
+                <div class="game-description">
+                    <strong>Goal:</strong> ${goal}
+                </div>
+                <div class="game-goal">
+                    <strong>Setting:</strong> ${setting}
+                </div>
+                <div class="game-goal">
+                    <strong>Character:</strong> You play as ${character}
+                </div>
+                <div class="game-goal">
+                    <strong>Controls:</strong> ${controls}
+                </div>
+                <div class="game-goal">
+                    <strong>Twist:</strong> ${twist}
+                </div>
+                <div class="game-rule">
+                    <strong>Special Rule:</strong> ${specialRule}
+                </div>
             `;
 
             document.getElementById('generatedIdea').innerHTML = idea;
