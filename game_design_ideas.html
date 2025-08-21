@@ -668,99 +668,56 @@
 
     <script>
         const gameElements = {
-            gameTypes: [
-                "Platformer", "Top-down Game", "Puzzle Game", "Endless Runner", 
-                "Collection Game", "Maze Game", "Stacking Game", "Racing Game",
-                "Memory Game", "Reaction Game", "Building Game", "Sorting Game",
-                "Matching Game", "Physics Game", "Rhythm Game", "Stealth Game",
-                "Tower Game", "Bridge Builder", "Path Creator", "Color Game",
-                "Number Game", "Pattern Game", "Timing Game", "Balance Game"
+            mainCharacters: [
+                "Knight", "Robot", "Ninja", "Wizard", "Archer", "Pilot", "Explorer", "Detective",
+                "Soldier", "Engineer", "Scientist", "Adventurer", "Agent", "Guardian", "Hunter",
+                "Warrior", "Mage", "Ranger", "Scout", "Mechanic", "Captain", "Hero", "Champion"
             ],
             
-            goals: [
-                "Escape the level", "Collect 20 gems", "Reach the finish line", "Stack 10 blocks",
-                "Turn on all lights", "Find the exit key", "Gather all fruit", "Paint every tile",
-                "Connect all circuits", "Sort all colors", "Fill the container", "Light the beacon",
-                "Repair the machine", "Grow the garden", "Charge the battery", "Clean the mess",
-                "Wake the sleepers", "Cool the fire", "Balance the scales", "Complete the pattern",
-                "Unlock 5 doors", "Deliver 3 packages", "Feed all animals", "Water every plant",
-                "Catch 15 butterflies", "Melt all ice cubes", "Pop 30 balloons", "Fix the bridge",
-                "Start the engine", "Open the treasure chest", "Ring all the bells", "Count to 100",
-                "Match 12 pairs", "Solve 5 riddles", "Build a tower to the top", "Cross the river",
-                "Find the lost pet", "Turn off all alarms", "Organize the library", "Bake a cake"
+            challenges: [
+                "Don't fall down", "Avoid the enemies", "Stay in the light", "Don't touch the walls",
+                "Keep moving forward", "Survive the timer", "Don't get caught", "Stay above water",
+                "Avoid the spikes", "Don't run out of energy", "Keep your balance", "Don't overheat",
+                "Stay on the platforms", "Avoid the lasers", "Don't get lost", "Keep climbing up",
+                "Don't touch the lava", "Stay in bounds", "Avoid the traps", "Don't slow down"
             ],
             
-            settings: [
-                "a space station", "an underground cave", "a magical forest", "a clockwork factory",
-                "a candy kingdom", "an ice palace", "a robot city", "a cloud world",
-                "a pixel dimension", "a mirror maze", "a music box", "a paint studio",
-                "a laboratory", "a garden maze", "a desert oasis", "a mountain peak",
-                "a sunken ship", "a tree house", "a castle tower", "a neon arcade",
-                "an art gallery", "a toy store", "a library", "a bakery",
-                "a greenhouse", "a circus tent", "a subway tunnel", "a lighthouse",
-                "a watch repair shop", "a butterfly garden", "a crystal cave", "a train station",
-                "a weather station", "a recycling center", "a music studio", "a flower shop",
-                "a puzzle workshop", "a time machine", "a rainbow bridge", "a moon base"
-            ],
-            
-            characters: [
-                "a bouncing ball", "a rolling cube", "a flying robot", "a jumping frog",
-                "a sliding penguin", "a spinning top", "a glowing orb", "a paper plane",
-                "a soap bubble", "a wind-up toy", "a magic gem", "a pixel hero",
-                "a tiny car", "a floating ghost", "a clockwork mouse", "a rubber duck",
-                "a walking cactus", "a swimming turtle", "a hopping rabbit", "a crawling snail",
-                "a flying butterfly", "a rolling marble", "a bouncing spring", "a gliding leaf",
-                "a spinning coin", "a melting snowman", "a growing seed", "a ticking clock",
-                "a floating balloon", "a sliding ice cube", "a dancing flower", "a singing bird"
+            rules: [
+                "You can't stop moving", "You can only jump 3 times", "You move automatically",
+                "You can't turn around", "You have limited time", "You shrink over time",
+                "You can only move left and right", "You bounce off everything", "You stick to walls",
+                "You can't see the whole level", "You leave a trail behind", "You grow bigger over time",
+                "You can only move when touching ground", "You slide on ice", "You float in water",
+                "You move faster when scared", "You slow down when damaged", "You glow in the dark"
             ],
             
             controlSchemes: [
-                "Arrow keys to move, Spacebar to jump", "Mouse to drag and drop objects",
-                "WASD to move in 4 directions", "Click to change direction",
-                "Hold mouse to charge, release to launch", "Arrow keys only (no other buttons)",
-                "Mouse to draw paths", "Click and hold to grow/shrink",
-                "Spacebar to switch between two modes", "Arrow keys to rotate the world",
-                "Mouse to aim, click to interact", "WASD to move, mouse to rotate view",
-                "Click objects in the right order", "Hold Spacebar to float, release to fall",
-                "Use number keys 1-5 to change colors", "Click and drag to stretch objects",
-                "Press keys in rhythm with the music", "Move mouse to control wind direction",
-                "Double-click to activate special power", "Hold different keys to change speed",
-                "Click to place, right-click to remove", "Use mouse wheel to zoom in/out",
-                "Tap keys quickly to build energy", "Move mouse in circles to spin objects"
+                "Arrow keys only", "Mouse clicks only", "WASD movement", "Single button press",
+                "Drag and drop", "Point and click", "Hold to charge", "Tap to jump",
+                "Click to rotate", "Mouse to aim", "Keyboard shortcuts", "Touch controls",
+                "Swipe gestures", "Hold and release", "Double click actions", "Right click menu"
             ],
             
-            twists: [
-                "but platforms disappear when you leave them", "but you can only move for 3 seconds at a time",
-                "but gravity flips every 10 seconds", "but you bounce off every surface",
-                "but the screen slowly rotates", "but you leave a trail that blocks your path",
-                "but objects change color when touched", "but you can only see a small area around you",
-                "but everything moves in slow motion", "but you grow bigger with each item collected",
-                "but walls become invisible after 5 seconds", "but you can only move when music plays",
-                "but touching anything red resets your position", "but you shrink every few seconds",
-                "but the level floods with water from below", "but ice makes everything slippery",
-                "but wind pushes you in random directions", "but mirrors reflect your movements elsewhere",
-                "but you can only move in straight lines", "but stepping twice creates a hole",
-                "but objects melt in sunlight", "but you move faster when scared",
-                "but colors drain away over time", "but sounds make platforms appear",
-                "but you stick to metal surfaces", "but shadows hide secret paths",
-                "but rain makes you jump higher", "but heat makes you move slower",
-                "but you can walk on walls for 5 seconds", "but touching water makes you tiny",
-                "but laughing makes objects bounce", "but time reverses every 30 seconds"
+            mechanics: [
+                "Auto jumping", "Wall climbing", "Double jumping", "Dash ability", "Slow motion",
+                "Teleportation", "Shrinking", "Growing", "Flying", "Grappling hook", "Shield",
+                "Speed boost", "Invisibility", "Time freeze", "Magnetic pull", "Bouncing",
+                "Phasing through walls", "Gliding", "Super strength", "X-ray vision"
             ],
             
-            specialRules: [
-                "Each level has a 45-second time limit", "You have 3 lives to complete all levels",
-                "Collect power-ups to unlock new abilities", "Avoid red objects - they end the level",
-                "Moving objects follow simple patrol patterns", "Switches open doors for 5 seconds",
-                "Springs make you jump twice as high", "Magnets pull you toward metal objects",
-                "Checkpoints save your progress mid-level", "Bonus points for finishing under 30 seconds",
-                "Collect stars to unlock the next world", "Touch 3 green objects to get an extra life",
-                "Purple items give you temporary invincibility", "Yellow objects restore your energy",
-                "Complete levels in under 60 seconds for bonus gems", "Find hidden coins for extra points",
-                "Some walls can be pushed to reveal secrets", "Step on pressure plates to activate bridges",
-                "Collect keys in the correct order", "Different colored doors need matching keys",
-                "Some objects only appear when you're not moving", "Music tempo controls your movement speed",
-                "Certain platforms only work during daytime", "Ice blocks melt near fire sources"
+            settings: [
+                "Space station", "Underground cave", "Forest", "Factory", "Laboratory", "Castle",
+                "Desert", "Mountains", "Ocean", "City", "Jungle", "Arctic", "Volcano", "Swamp",
+                "Prison", "Hospital", "School", "Mall", "Airport", "Subway", "Warehouse", "Park",
+                "Beach", "Farm", "Office building", "Shopping center", "Train station", "Library"
+            ],
+            
+            goals: [
+                "Collect the gems", "Reach the exit", "Find the key", "Rescue the hostages",
+                "Defeat the boss", "Gather the artifacts", "Turn on the switches", "Fix the machine",
+                "Collect the coins", "Find the treasure", "Save the princess", "Stop the bomb",
+                "Deliver the package", "Unlock the doors", "Activate the beacons", "Collect the orbs",
+                "Find the survivors", "Repair the generator", "Gather the supplies", "Escape the maze"
             ]
         };
 
@@ -769,33 +726,36 @@
         }
 
         function generateGameIdea() {
-            const gameType = getRandomElement(gameElements.gameTypes);
-            const goal = getRandomElement(gameElements.goals);
-            const setting = getRandomElement(gameElements.settings);
-            const character = getRandomElement(gameElements.characters);
+            const mainCharacter = getRandomElement(gameElements.mainCharacters);
+            const challenge = getRandomElement(gameElements.challenges);
+            const rule = getRandomElement(gameElements.rules);
             const controls = getRandomElement(gameElements.controlSchemes);
-            const twist = getRandomElement(gameElements.twists);
-            const specialRule = getRandomElement(gameElements.specialRules);
+            const mechanic = getRandomElement(gameElements.mechanics);
+            const setting = getRandomElement(gameElements.settings);
+            const goal = getRandomElement(gameElements.goals);
 
             const idea = `
-                <div class="game-title">${gameType}</div>
+                <div class="game-title">Game Concept</div>
                 <div class="game-description">
-                    <strong>Goal:</strong> ${goal}
+                    <strong>Main Character:</strong> ${mainCharacter}
+                </div>
+                <div class="game-goal">
+                    <strong>Challenge:</strong> ${challenge}
+                </div>
+                <div class="game-goal">
+                    <strong>Rule:</strong> ${rule}
+                </div>
+                <div class="game-goal">
+                    <strong>Control Scheme:</strong> ${controls}
+                </div>
+                <div class="game-goal">
+                    <strong>Mechanic:</strong> ${mechanic}
                 </div>
                 <div class="game-goal">
                     <strong>Setting:</strong> ${setting}
                 </div>
-                <div class="game-goal">
-                    <strong>Character:</strong> You play as ${character}
-                </div>
-                <div class="game-goal">
-                    <strong>Controls:</strong> ${controls}
-                </div>
-                <div class="game-goal">
-                    <strong>Twist:</strong> ${twist}
-                </div>
                 <div class="game-rule">
-                    <strong>Special Rule:</strong> ${specialRule}
+                    <strong>Goal:</strong> ${goal}
                 </div>
             `;
 
