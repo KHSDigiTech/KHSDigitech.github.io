@@ -146,6 +146,91 @@
             border-left: 4px solid #4facfe;
         }
         
+        .manual-builder {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .builder-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .builder-column {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .builder-column h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        
+        .radio-list {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        .radio-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .radio-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        
+        .radio-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .radio-option input[type="radio"] {
+            margin-right: 0.5rem;
+            accent-color: #4facfe;
+        }
+        
+        .radio-option label {
+            cursor: pointer;
+            flex: 1;
+            padding: 0.2rem 0;
+        }
+        
+        .radio-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding-left: 0.3rem;
+        }
+        
+        .manual-result {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .manual-result h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
         ul, ol {
             padding-left: 1.5rem;
         }
@@ -666,6 +751,55 @@
         <p><em>This generator can create over 2.5 million unique combinations!</em></p>
     </div>
 
+    <div class="manual-builder">
+        <h2>🛠️ Manual Game Builder</h2>
+        <p>Want more control? Pick your own elements to create your perfect game concept!</p>
+        
+        <div class="builder-columns">
+            <div class="builder-column">
+                <h3>Main Character</h3>
+                <div class="radio-list" id="characterList"></div>
+            </div>
+            
+            <div class="builder-column">
+                <h3>Challenge</h3>
+                <div class="radio-list" id="challengeList"></div>
+            </div>
+            
+            <div class="builder-column">
+                <h3>Rule</h3>
+                <div class="radio-list" id="ruleList"></div>
+            </div>
+            
+            <div class="builder-column">
+                <h3>Control Scheme</h3>
+                <div class="radio-list" id="controlsList"></div>
+            </div>
+            
+            <div class="builder-column">
+                <h3>Mechanic</h3>
+                <div class="radio-list" id="mechanicList"></div>
+            </div>
+            
+            <div class="builder-column">
+                <h3>Setting</h3>
+                <div class="radio-list" id="settingList"></div>
+            </div>
+            
+            <div class="builder-column">
+                <h3>Goal</h3>
+                <div class="radio-list" id="goalList"></div>
+            </div>
+        </div>
+        
+        <div class="manual-result">
+            <h3>Your Custom Game Concept:</h3>
+            <div class="generated-idea" id="manualResult">
+                Select options above to build your game concept...
+            </div>
+        </div>
+    </div>
+
     <script>
         const gameElements = {
             mainCharacters: [
@@ -762,9 +896,86 @@
             document.getElementById('generatedIdea').innerHTML = idea;
         }
 
-        // Generate a random idea when the page loads
+        // Populate manual builder radio buttons
+        function populateManualBuilder() {
+            populateRadioList('characterList', gameElements.mainCharacters, 'character');
+            populateRadioList('challengeList', gameElements.challenges, 'challenge');
+            populateRadioList('ruleList', gameElements.rules, 'rule');
+            populateRadioList('controlsList', gameElements.controlSchemes, 'controls');
+            populateRadioList('mechanicList', gameElements.mechanics, 'mechanic');
+            populateRadioList('settingList', gameElements.settings, 'setting');
+            populateRadioList('goalList', gameElements.goals, 'goal');
+        }
+
+        function populateRadioList(containerId, items, groupName) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            items.forEach((item, index) => {
+                const radioOption = document.createElement('div');
+                radioOption.className = 'radio-option';
+                
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = groupName;
+                radio.value = item;
+                radio.id = `${groupName}_${index}`;
+                radio.addEventListener('change', updateManualResult);
+                
+                const label = document.createElement('label');
+                label.htmlFor = `${groupName}_${index}`;
+                label.textContent = item;
+                
+                radioOption.appendChild(radio);
+                radioOption.appendChild(label);
+                container.appendChild(radioOption);
+            });
+        }
+
+        function updateManualResult() {
+            const selectedCharacter = document.querySelector('input[name="character"]:checked')?.value;
+            const selectedChallenge = document.querySelector('input[name="challenge"]:checked')?.value;
+            const selectedRule = document.querySelector('input[name="rule"]:checked')?.value;
+            const selectedControls = document.querySelector('input[name="controls"]:checked')?.value;
+            const selectedMechanic = document.querySelector('input[name="mechanic"]:checked')?.value;
+            const selectedSetting = document.querySelector('input[name="setting"]:checked')?.value;
+            const selectedGoal = document.querySelector('input[name="goal"]:checked')?.value;
+
+            let resultHTML = '<div class="game-title">Your Custom Game Concept</div>';
+            
+            if (selectedCharacter) {
+                resultHTML += `<div class="game-description"><strong>Main Character:</strong> ${selectedCharacter}</div>`;
+            }
+            if (selectedChallenge) {
+                resultHTML += `<div class="game-goal"><strong>Challenge:</strong> ${selectedChallenge}</div>`;
+            }
+            if (selectedRule) {
+                resultHTML += `<div class="game-goal"><strong>Rule:</strong> ${selectedRule}</div>`;
+            }
+            if (selectedControls) {
+                resultHTML += `<div class="game-goal"><strong>Control Scheme:</strong> ${selectedControls}</div>`;
+            }
+            if (selectedMechanic) {
+                resultHTML += `<div class="game-goal"><strong>Mechanic:</strong> ${selectedMechanic}</div>`;
+            }
+            if (selectedSetting) {
+                resultHTML += `<div class="game-goal"><strong>Setting:</strong> ${selectedSetting}</div>`;
+            }
+            if (selectedGoal) {
+                resultHTML += `<div class="game-rule"><strong>Goal:</strong> ${selectedGoal}</div>`;
+            }
+
+            if (!selectedCharacter && !selectedChallenge && !selectedRule && !selectedControls && !selectedMechanic && !selectedSetting && !selectedGoal) {
+                resultHTML = 'Select options above to build your game concept...';
+            }
+
+            document.getElementById('manualResult').innerHTML = resultHTML;
+        }
+
+        // Generate a random idea when the page loads and populate manual builder
         window.onload = function() {
             generateGameIdea();
+            populateManualBuilder();
         };
     </script>
 </body>
