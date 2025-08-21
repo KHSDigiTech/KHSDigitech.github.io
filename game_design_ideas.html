@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Design Guidelines & Ideas - KHS DigiTech</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .guideline-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid #667eea;
+        }
+        
+        .guideline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .guideline-card h3 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-left: 4px solid #2196f3;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .warning {
+            background: #fff3e0;
+            padding: 1rem;
+            border-left: 4px solid #ff9800;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .idea-generator {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .generator-button {
+            background: white;
+            color: #333;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+        }
+        
+        .generator-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .generated-idea {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .design-doc-template {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #b3d9ff;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            transition: background 0.2s;
+        }
+        
+        .back-link:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    
+    <div class="header">
+        <h1>Game Design Guidelines & Ideas</h1>
+        <p>Everything you need to create amazing games in 10-15 weeks</p>
+    </div>
+
+    <div class="content-section">
+        <h2>🎯 Project Scope: 10-15 Week Timeline</h2>
+        <div class="highlight">
+            <strong>Key Constraint:</strong> With only 1 hour per day over 10-15 weeks, you have approximately 50-75 total hours. 
+            This means your game must be carefully scoped to be achievable within this timeframe.
+        </div>
+        
+        <h3>Recommended Project Sizes:</h3>
+        <ul>
+            <li><strong>Perfect Size:</strong> 2-5 levels, 1-3 core mechanics, simple story</li>
+            <li><strong>Too Big:</strong> Open worlds, complex RPG systems, multiple game modes</li>
+            <li><strong>Just Right:</strong> Focused experience that can be completed in 5-15 minutes</li>
+        </ul>
+    </div>
+
+    <div class="section-grid">
+        <div class="guideline-card">
+            <h3>🎮 Game Mechanics</h3>
+            <h4>Core Principle: Simple but Deep</h4>
+            <ul>
+                <li><strong>Start with ONE core mechanic</strong> (jump, shoot, collect, puzzle)</li>
+                <li><strong>Add variations, not new mechanics</strong> (different jump heights vs. swimming + flying)</li>
+                <li><strong>Test early and often</strong> - if it's not fun in 5 minutes, it won't be fun in 5 hours</li>
+                <li><strong>Examples of simple mechanics:</strong>
+                    <ul>
+                        <li>Platformer: Jump + avoid obstacles</li>
+                        <li>Shooter: Aim + shoot moving targets</li>
+                        <li>Puzzle: Move blocks to solve patterns</li>
+                        <li>Collect: Gather items while avoiding enemies</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="warning">
+                <strong>Avoid:</strong> Complex crafting, multiple character classes, branching dialogue trees, or any mechanic that requires more than 30 seconds to explain.
+            </div>
+        </div>
+
+        <div class="guideline-card">
+            <h3>🎨 Graphics & Art Style</h3>
+            <h4>Prioritize Consistency Over Complexity</h4>
+            <ul>
+                <li><strong>Choose a simple art style early:</strong>
+                    <ul>
+                        <li>Pixel art (8-bit or 16-bit style)</li>
+                        <li>Flat geometric shapes</li>
+                        <li>Simple 3D with basic textures</li>
+                        <li>Minimalist line art</li>
+                    </ul>
+                </li>
+                <li><strong>Use limited color palettes</strong> (3-6 colors max)</li>
+                <li><strong>Prioritize readability</strong> - players should instantly understand what they can interact with</li>
+                <li><strong>Free resources:</strong>
+                    <ul>
+                        <li>OpenGameArt.org</li>
+                        <li>Kenney.nl (free game assets)</li>
+                        <li>Google Fonts for UI text</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="highlight">
+                <strong>Pro Tip:</strong> A consistent simple style looks better than inconsistent complex art. Stick to your chosen style throughout the entire project.
+            </div>
+        </div>
+
+        <div class="guideline-card">
+            <h3>🔊 Sound Design</h3>
+            <h4>Audio That Enhances, Not Distracts</h4>
+            <ul>
+                <li><strong>Essential sounds (in order of priority):</strong>
+                    <ol>
+                        <li>Player actions (jump, shoot, collect)</li>
+                        <li>Feedback sounds (success, failure, UI clicks)</li>
+                        <li>Ambient/background music</li>
+                        <li>Environmental sounds</li>
+                    </ol>
+                </li>
+                <li><strong>Keep it simple:</strong>
+                    <ul>
+                        <li>Short sound effects (0.1-1 second)</li>
+                        <li>Looping background music</li>
+                        <li>Volume controls in settings</li>
+                    </ul>
+                </li>
+                <li><strong>Free sound resources:</strong>
+                    <ul>
+                        <li>Freesound.org</li>
+                        <li>Zapsplat.com (free with account)</li>
+                        <li>YouTube Audio Library</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="warning">
+                <strong>Remember:</strong> No sound is better than bad sound. Don't add audio just to have it - make sure it serves a purpose.
+            </div>
+        </div>
+
+        <div class="guideline-card">
+            <h3>🛠️ Technical Considerations</h3>
+            <h4>Build Smart, Not Hard</h4>
+            <ul>
+                <li><strong>Use Godot's built-in features:</strong>
+                    <ul>
+                        <li>Physics bodies for movement</li>
+                        <li>Signals for communication</li>
+                        <li>Scenes for organization</li>
+                        <li>AnimationPlayer for simple animations</li>
+                    </ul>
+                </li>
+                <li><strong>Code organization:</strong>
+                    <ul>
+                        <li>One script per scene when possible</li>
+                        <li>Comment your code as you write it</li>
+                        <li>Use meaningful variable names</li>
+                        <li>Test frequently - don't wait until the end</li>
+                    </ul>
+                </li>
+                <li><strong>Performance tips:</strong>
+                    <ul>
+                        <li>Limit to 50-100 objects on screen</li>
+                        <li>Use simple collision shapes</li>
+                        <li>Optimize only when you notice slowdown</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="guideline-card">
+            <h3>📚 Learning Resources</h3>
+            <h4>Where to Go When You're Stuck</h4>
+            <ul>
+                <li><strong>Godot Documentation:</strong> docs.godotengine.org</li>
+                <li><strong>Video Tutorials:</strong>
+                    <ul>
+                        <li>Godot Tutorials (YouTube)</li>
+                        <li>Brackeys Godot series</li>
+                        <li>HeartBeast tutorials</li>
+                    </ul>
+                </li>
+                <li><strong>Game Design Theory:</strong>
+                    <ul>
+                        <li>"The Art of Game Design" by Jesse Schell</li>
+                        <li>Extra Credits (YouTube channel)</li>
+                        <li>Game Maker's Toolkit (YouTube)</li>
+                    </ul>
+                </li>
+                <li><strong>Problem Solving:</strong>
+                    <ul>
+                        <li>Godot Discord community</li>
+                        <li>Reddit r/godot</li>
+                        <li>Stack Overflow</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="guideline-card">
+            <h3>🎯 Player Experience</h3>
+            <h4>Design for Your Audience</h4>
+            <ul>
+                <li><strong>Onboarding (First 30 seconds):</strong>
+                    <ul>
+                        <li>Show, don't tell - let players discover controls</li>
+                        <li>Start easy, gradually increase difficulty</li>
+                        <li>Clear visual feedback for all actions</li>
+                    </ul>
+                </li>
+                <li><strong>Difficulty curve:</strong>
+                    <ul>
+                        <li>Level 1: Learn the mechanic</li>
+                        <li>Level 2-3: Practice the mechanic</li>
+                        <li>Level 4+: Master the mechanic with variations</li>
+                    </ul>
+                </li>
+                <li><strong>Player feedback:</strong>
+                    <ul>
+                        <li>Visual: Screen shake, particle effects, color changes</li>
+                        <li>Audio: Success/failure sounds</li>
+                        <li>UI: Score updates, progress bars</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📅 Development Process & Timeline</h2>
+        
+        <div class="highlight">
+            <strong>Week-by-Week Breakdown for Success</strong><br>
+            Remember: It's better to have a simple, complete game than a complex, unfinished one.
+        </div>
+
+        <div class="section-grid">
+            <div class="guideline-card">
+                <h3>🔥 Weeks 1-2: Foundation</h3>
+                <ul>
+                    <li><strong>Brainstorm and choose your concept</strong></li>
+                    <li><strong>Create a simple Game Design Document</strong></li>
+                    <li><strong>Set up your Godot project</strong></li>
+                    <li><strong>Build basic player movement</strong></li>
+                    <li><strong>Create one simple level/scene</strong></li>
+                </ul>
+                <div class="warning">
+                    <strong>Milestone:</strong> You should have a character that can move around a basic environment.
+                </div>
+            </div>
+
+            <div class="guideline-card">
+                <h3>⚡ Weeks 3-4: Core Mechanics</h3>
+                <ul>
+                    <li><strong>Implement your primary game mechanic</strong></li>
+                    <li><strong>Add basic interactions (collectibles, obstacles)</strong></li>
+                    <li><strong>Create win/lose conditions</strong></li>
+                    <li><strong>Build 2-3 test levels</strong></li>
+                    <li><strong>Add placeholder art and sounds</strong></li>
+                </ul>
+                <div class="warning">
+                    <strong>Milestone:</strong> You have a playable game loop - you can play, win, and lose.
+                </div>
+            </div>
+
+            <div class="guideline-card">
+                <h3>🎨 Weeks 5-6: Polish & Content</h3>
+                <ul>
+                    <li><strong>Replace placeholder art with final art</strong></li>
+                    <li><strong>Add sound effects and music</strong></li>
+                    <li><strong>Create your full level set (3-5 levels)</strong></li>
+                    <li><strong>Add UI elements (score, health, menu)</strong></li>
+                    <li><strong>Test difficulty progression</strong></li>
+                </ul>
+            </div>
+
+            <div class="guideline-card">
+                <h3>🚀 Weeks 7-8: Testing & Refinement</h3>
+                <ul>
+                    <li><strong>Playtesting with friends/family</strong></li>
+                    <li><strong>Fix major bugs and balance issues</strong></li>
+                    <li><strong>Add final touches (particles, screen shake)</strong></li>
+                    <li><strong>Create a proper game title screen</strong></li>
+                    <li><strong>Write instructions/controls screen</strong></li>
+                </ul>
+            </div>
+
+            <div class="guideline-card">
+                <h3>✨ Weeks 9-10: Final Polish</h3>
+                <ul>
+                    <li><strong>Final bug fixes</strong></li>
+                    <li><strong>Optimize performance</strong></li>
+                    <li><strong>Add credits screen</strong></li>
+                    <li><strong>Export final build</strong></li>
+                    <li><strong>Document your process</strong></li>
+                </ul>
+                <div class="highlight">
+                    <strong>Success:</strong> You have a complete, playable game that others can enjoy!
+                </div>
+            </div>
+
+            <div class="guideline-card">
+                <h3>📊 Time Management Tips</h3>
+                <ul>
+                    <li><strong>Set daily goals:</strong> "Today I will add jumping" vs "Today I will work on movement"</li>
+                    <li><strong>Use the 80/20 rule:</strong> 80% core features, 20% polish</li>
+                    <li><strong>Save regularly:</strong> Use Git or backup to cloud storage</li>
+                    <li><strong>Don't restart:</strong> It's normal to want to rebuild - resist the urge!</li>
+                    <li><strong>Document issues:</strong> Keep a simple list of bugs to fix later</li>
+                    <li><strong>Celebrate milestones:</strong> Acknowledge when you hit each week's goals</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning">
+            <h3>🚨 Common Pitfalls to Avoid</h3>
+            <ul>
+                <li><strong>Feature Creep:</strong> "Just one more cool feature..." - stick to your original plan</li>
+                <li><strong>Perfectionism:</strong> Don't spend 3 weeks on the perfect jump animation</li>
+                <li><strong>Tutorial Trap:</strong> Stop watching tutorials and start building after week 2</li>
+                <li><strong>Comparison:</strong> Don't compare your first game to professional games</li>
+                <li><strong>No Playtesting:</strong> Show your game to others early and often</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Game Design Document Template</h2>
+        
+        <div class="highlight">
+            <strong>Keep it Simple!</strong> Your GDD should be 1-2 pages max. It's a reference guide, not a novel.
+        </div>
+
+        <div class="design-doc-template">
+            <h3>📋 Simple Game Design Document</h3>
+            
+            <h4>🎮 Game Overview</h4>
+            <ul>
+                <li><strong>Game Title:</strong> [Your Game Name]</li>
+                <li><strong>Genre:</strong> [Platformer/Puzzle/Shooter/etc.]</li>
+                <li><strong>Platform:</strong> PC (Godot)</li>
+                <li><strong>Development Time:</strong> [10-15 weeks]</li>
+                <li><strong>One-Sentence Description:</strong> [What is your game in 15 words or less?]</li>
+            </ul>
+
+            <h4>🎯 Core Gameplay</h4>
+            <ul>
+                <li><strong>Primary Mechanic:</strong> [What is the main thing players do?]</li>
+                <li><strong>Controls:</strong> [List 3-5 key inputs]</li>
+                <li><strong>Win Condition:</strong> [How do players succeed?]</li>
+                <li><strong>Lose Condition:</strong> [How do players fail?]</li>
+                <li><strong>Game Loop:</strong> [What happens in 30 seconds of play?]</li>
+            </ul>
+
+            <h4>🎨 Art & Audio Style</h4>
+            <ul>
+                <li><strong>Art Style:</strong> [Pixel art/3D/Hand-drawn/etc.]</li>
+                <li><strong>Color Palette:</strong> [3-6 main colors]</li>
+                <li><strong>Mood:</strong> [Happy/Dark/Mysterious/etc.]</li>
+                <li><strong>Audio:</strong> [Music style and key sound effects needed]</li>
+            </ul>
+
+            <h4>🗺️ Content Plan</h4>
+            <ul>
+                <li><strong>Number of Levels:</strong> [3-5 recommended]</li>
+                <li><strong>Level Progression:</strong> 
+                    <ul>
+                        <li>Level 1: [Learn the basics]</li>
+                        <li>Level 2: [Practice with variations]</li>
+                        <li>Level 3+: [Master with challenges]</li>
+                    </ul>
+                </li>
+                <li><strong>Estimated Playtime:</strong> [5-15 minutes total]</li>
+            </ul>
+
+            <h4>🛠️ Technical Requirements</h4>
+            <ul>
+                <li><strong>Godot Version:</strong> [4.x]</li>
+                <li><strong>Key Godot Features Used:</strong> [Physics2D/TileMap/etc.]</li>
+                <li><strong>Assets Needed:</strong> 
+                    <ul>
+                        <li>Graphics: [Player sprite, enemy sprites, background, UI elements]</li>
+                        <li>Audio: [Background music, sound effects list]</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>📅 Development Milestones</h4>
+            <ul>
+                <li><strong>Week 2:</strong> [Player can move and interact with environment]</li>
+                <li><strong>Week 4:</strong> [Core mechanic working, basic win/lose]</li>
+                <li><strong>Week 6:</strong> [All levels built, placeholder art replaced]</li>
+                <li><strong>Week 8:</strong> [Playtested and major bugs fixed]</li>
+                <li><strong>Week 10:</strong> [Final build ready]</li>
+            </ul>
+
+            <h4>🎲 Backup Plan</h4>
+            <ul>
+                <li><strong>If Behind Schedule:</strong> [Cut levels, not features]</li>
+                <li><strong>If Ahead of Schedule:</strong> [Add polish, not new mechanics]</li>
+                <li><strong>Minimum Viable Game:</strong> [What's the simplest version that's still fun?]</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h3>💡 Pro Tips for Your GDD</h3>
+            <ul>
+                <li><strong>Write it BEFORE you start coding</strong> - it will save you time later</li>
+                <li><strong>Update it as you learn</strong> - it's okay to change your mind</li>
+                <li><strong>Share it with others</strong> - get feedback on your concept early</li>
+                <li><strong>Keep it visible</strong> - refer back to it when you get distracted by new ideas</li>
+                <li><strong>Be realistic</strong> - it's better to under-promise and over-deliver</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>💡 Game Ideas for Inspiration</h2>
+        
+        <div class="highlight">
+            <strong>Stuck for ideas?</strong> Here are proven concepts that work great for student projects. Feel free to add your own twist!
+        </div>
+
+        <div class="section-grid">
+            <div class="guideline-card">
+                <h3>🏃 Platformer Ideas</h3>
+                <ul>
+                    <li><strong>Gravity Flip:</strong> Switch gravity to walk on ceiling</li>
+                    <li><strong>Color Switch:</strong> Only touch platforms matching your color</li>
+                    <li><strong>Shadow Runner:</strong> Avoid light, stay in shadows</li>
+                    <li><strong>Balloon Pop:</strong> Collect balloons while avoiding thorns</li>
+                    <li><strong>Time Echo:</strong> Your past selves help solve puzzles</li>
+                    <li><strong>Shrinking World:</strong> Platforms disappear over time</li>
+                    <li><strong>One Button:</strong> Everything controlled with spacebar</li>
+                </ul>
+            </div>
+
+            <div class="guideline-card">
+                <h3>🧩 Puzzle Ideas</h3>
+                <ul>
+                    <li><strong>Block Painter:</strong> Color all tiles by walking over them</li>
+                    <li><strong>Mirror Match:</strong> Make both sides of screen identical</li>
+                    <li><strong>Laser Redirect:</strong> Use mirrors to hit targets</li>
+                    <li><strong>Number Tiles:</strong> Step on tiles in correct order</li>
+                    <li><strong>Key Collection:</strong> Unlock doors in the right sequence</li>
+                    <li><strong>Shape Sorting:</strong> Drag objects to matching slots</li>
+                    <li><strong>Pattern Memory:</strong> Repeat increasingly complex sequences</li>
+                </ul>
+            </div>
+
+            <div class="guideline-card">
+                <h3>🎯 Action Ideas</h3>
+                <ul>
+                    <li><strong>Asteroid Dodge:</strong> Survive as long as possible</li>
+                    <li><strong>Bubble Shooter:</strong> Pop bubbles of same color</li>
+                    <li><strong>Tower Defense Lite:</strong> Place 3 types of towers</li>
+                    <li><strong>Pac-Man Style:</strong> Collect dots while avoiding ghosts</li>
+                    <li><strong>Snake Plus:</strong> Snake with power-ups and obstacles</li>
+                    <li><strong>Breakout Remix:</strong> Brick breaker with special blocks</li>
+                    <li><strong>Shooting Gallery:</strong> Hit targets before time runs out</li>
+                </ul>
+            </div>
+
+            <div class="guideline-card">
+                <h3>🏃 Endless Runner Ideas</h3>
+                <ul>
+                    <li><strong>Paper Plane:</strong> Glide through obstacles</li>
+                    <li><strong>Robot Assembly Line:</strong> Jump over conveyor hazards</li>
+                    <li><strong>Space Debris:</strong> Weave through asteroid field</li>
+                    <li><strong>Underwater Escape:</strong> Swim up while avoiding sharks</li>
+                    <li><strong>City Parkour:</strong> Jump between buildings</li>
+                    <li><strong>Mine Cart:</strong> Switch tracks to avoid obstacles</li>
+                    <li><strong>Growing Circle:</strong> Circle gets bigger, avoid walls</li>
+                </ul>
+            </div>
+
+            <div class="guideline-card">
+                <h3>🕹️ Retro Arcade Ideas</h3>
+                <ul>
+                    <li><strong>Pong Plus:</strong> Classic Pong with power-ups</li>
+                    <li><strong>Centipede Mini:</strong> Shoot descending enemies</li>
+                    <li><strong>Frogger Style:</strong> Cross dangerous roads/rivers</li>
+                    <li><strong>Missile Command:</strong> Defend cities from falling bombs</li>
+                    <li><strong>Space Invaders Twist:</strong> Classic shooter with new mechanics</li>
+                    <li><strong>Tetris Mini:</strong> Simple block-falling puzzle</li>
+                    <li><strong>Dig Dug Style:</strong> Tunnel underground, avoid enemies</li>
+                </ul>
+            </div>
+
+            <div class="guideline-card">
+                <h3>🎨 Creative & Unique Ideas</h3>
+                <ul>
+                    <li><strong>Sound Simon:</strong> Repeat musical patterns</li>
+                    <li><strong>Ecosystem Builder:</strong> Balance simple food chain</li>
+                    <li><strong>Rhythm Jumper:</strong> Jump to the beat of music</li>
+                    <li><strong>Weather Control:</strong> Use rain/sun to help plants grow</li>
+                    <li><strong>Traffic Director:</strong> Control lights to prevent crashes</li>
+                    <li><strong>Color Blind:</strong> See the world in different colors</li>
+                    <li><strong>Scale Adventure:</strong> Zoom in/out to solve puzzles</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning">
+            <h3>🎲 How to Make Any Idea Your Own</h3>
+            <ul>
+                <li><strong>Change the theme:</strong> Space → Underwater → Medieval → Modern</li>
+                <li><strong>Add one twist:</strong> What if gravity was reversed? What if time moved backward?</li>
+                <li><strong>Combine two simple ideas:</strong> Platformer + Puzzle, Shooter + Rhythm</li>
+                <li><strong>Change the perspective:</strong> Side-view → Top-down → First-person</li>
+                <li><strong>Add emotional story:</strong> Why is the character doing this? What's at stake?</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="idea-generator">
+        <h2>🎲 Random Game Idea Generator</h2>
+        <p>Need inspiration? Click the button to generate a unique game concept!</p>
+        <button class="generator-button" onclick="generateGameIdea()">Generate New Idea!</button>
+        <div class="generated-idea" id="generatedIdea">
+            Click the button above to generate your first game idea!
+        </div>
+        <p><em>This generator can create over 10,000 unique combinations!</em></p>
+    </div>
+
+    <script>
+        const gameElements = {
+            genres: [
+                "Platformer", "Puzzle", "Action", "Arcade", "Runner", "Adventure", 
+                "Shooter", "Survival", "Racing", "Strategy", "Rhythm", "Stealth"
+            ],
+            protagonists: [
+                "a robot", "a ninja", "a wizard", "a cat", "a ghost", "a spaceship", 
+                "a paper plane", "a bouncing ball", "a tiny dragon", "a magical cube",
+                "a brave knight", "a clever mouse", "a flying bird", "a submarine",
+                "a rolling boulder", "a growing plant", "a time traveler", "a painter",
+                "a chef", "a detective", "an alien visitor", "a balloon"
+            ],
+            settings: [
+                "in a haunted castle", "on a distant planet", "in an underwater city", 
+                "inside a computer", "in a magical forest", "on floating islands",
+                "in a candy land", "through mirror dimensions", "in ancient ruins",
+                "on a space station", "in a steampunk city", "inside a giant clock",
+                "in a pixel world", "through seasonal changes", "in a laboratory",
+                "on moving platforms", "in a music box", "through portals",
+                "in a library maze", "on a moving train", "in the clouds", 
+                "in a neon cityscape", "through time periods", "in a garden maze"
+            ],
+            objectives: [
+                "collect all the crystals", "reach the highest tower", "solve ancient puzzles",
+                "escape before time runs out", "defeat the shadow enemies", 
+                "restore color to the world", "find the missing keys", 
+                "light up all the lanterns", "connect all the circuits",
+                "wake up the sleeping giants", "repair the broken machine",
+                "plant flowers everywhere", "deliver important messages",
+                "unlock secret passages", "balance the magical forces",
+                "rescue trapped friends", "stop the spreading darkness",
+                "organize the chaos", "build bridges to safety",
+                "paint the world with music", "synchronize the clockwork",
+                "heal the corrupted data", "unite the scattered pieces"
+            ],
+            mechanics: [
+                "but can only move by jumping", "while avoiding laser beams", 
+                "by switching between dimensions", "with gravity that constantly changes",
+                "while the world rotates around you", "but you shrink over time",
+                "by painting platforms into existence", "while being chased by shadows",
+                "using only sound to navigate", "with a limited number of moves",
+                "while platforms disappear behind you", "by controlling time flow",
+                "using magnetism to stick to walls", "while the screen splits in two",
+                "by creating echoes of yourself", "with each level in reverse",
+                "while balancing on a bouncing ball", "using light to reveal hidden paths",
+                "by growing or shrinking objects", "while everything is mirrored",
+                "with physics that change each level", "by connecting electrical circuits",
+                "while riding on conveyor belts", "using musical notes as platforms"
+            ],
+            themes: [
+                "Time is running out!", "Colors hold the key to success.",
+                "Every choice creates a consequence.", "Music drives the action.",
+                "Light and shadow are your tools.", "Everything is connected.",
+                "Small actions have big results.", "The world is alive and reactive.",
+                "Patience is more important than speed.", "Collaboration solves everything.",
+                "Simplicity hides complexity.", "The environment tells a story.",
+                "Rhythm is everything.", "Memory is your greatest weapon.",
+                "Opposites must work together.", "The journey changes you.",
+                "Balance is key to harmony.", "Creativity overcomes obstacles.",
+                "Perspective changes everything.", "Growth comes through challenges."
+            ]
+        };
+
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function generateGameIdea() {
+            const genre = getRandomElement(gameElements.genres);
+            const protagonist = getRandomElement(gameElements.protagonists);
+            const setting = getRandomElement(gameElements.settings);
+            const objective = getRandomElement(gameElements.objectives);
+            const mechanic = getRandomElement(gameElements.mechanics);
+            const theme = getRandomElement(gameElements.themes);
+
+            const idea = `
+                <strong>${genre} Game Concept:</strong><br><br>
+                You play as <strong>${protagonist}</strong> <strong>${setting}</strong>. 
+                Your goal is to <strong>${objective}</strong> <strong>${mechanic}</strong>.<br><br>
+                <em>Theme: ${theme}</em>
+            `;
+
+            document.getElementById('generatedIdea').innerHTML = idea;
+        }
+
+        // Generate a random idea when the page loads
+        window.onload = function() {
+            generateGameIdea();
+        };
+    </script>
+</body>
+</html>
