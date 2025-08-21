@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Submission Plan - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .checklist-item {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .checklist-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox.checked {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .checkbox.checked::after {
+            content: "✓";
+            font-weight: bold;
+        }
+
+        .item-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .item-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .file-requirements {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .deadline-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .deadline-banner h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .submission-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .standard-card {
+            background: rgba(45, 45, 45, 0.9);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .standard-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem;
+            margin: -2rem -2rem 1.5rem -2rem;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .standard-header h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .standard-header p {
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .evidence-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .evidence-list li {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .evidence-list li::before {
+            content: "📄";
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
+        }
+
+        .navigation-section {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 1rem;
+            }
+            
+            .submission-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .standards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="index.html" class="back-link">
+            <span>←</span> Back to Project Hub
+        </a>
+
+        <div class="content-card">
+            <div class="hero-section">
+                <h1>Final Submission Plan</h1>
+                <p class="hero-subtitle">Your Complete Assessment Submission Guide</p>
+            
+            <div class="deadline-banner">
+            <h3>⏰ Submission Deadline</h3>
+            <p>Final submission must be completed by [INSERT DEADLINE DATE]</p>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number">--</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">--</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">--</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📋 Submission Overview</h2>
+            <p>Your final submission combines evidence for both NZQA Level 2 Digital Technologies standards. This page helps you organize and prepare everything needed for successful assessment.</p>
+            
+            <div class="info-card">
+                <h3>What You're Submitting</h3>
+                <ul>
+                    <li><strong>Complete Game Build:</strong> Finished, playable game executable</li>
+                    <li><strong>Source Code:</strong> Full project files and version history</li>
+                    <li><strong>Documentation Portfolio:</strong> All design documents and evidence</li>
+                    <li><strong>Reflection Report:</strong> Final analysis of your project and learning</li>
+                    <li><strong>Video Demonstration:</strong> Screencast showing your game in action</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🎯 Assessment Standards Requirements</h2>
+            
+            <div class="standards-grid">
+                <div class="standard-card">
+                    <div class="standard-header">
+                        <h3>AS91893 - Digital Media Outcome</h3>
+                        <p>Use advanced processes to develop a digital media outcome (4 credits)</p>
+                    </div>
+                    
+                    <h4>Required Evidence:</h4>
+                    <ul class="evidence-list">
+                        <li>Game Design Document showing planning process</li>
+                        <li>Stakeholder feedback log with responses</li>
+                        <li>Design iteration examples (before/after)</li>
+                        <li>User testing documentation</li>
+                        <li>Final polished game demonstrating design outcomes</li>
+                        <li>Reflection on design decisions and improvements</li>
+                    </ul>
+                </div>
+                
+                <div class="standard-card">
+                    <div class="standard-header">
+                        <h3>AS91897 - Digital Technologies Outcome</h3>
+                        <p>Use advanced programming techniques to develop a digital technologies outcome (6 credits)</p>
+                    </div>
+                    
+                    <h4>Required Evidence:</h4>
+                    <ul class="evidence-list">
+                        <li>Complete source code with clear structure</li>
+                        <li>Technical documentation of programming decisions</li>
+                        <li>Evidence of advanced programming techniques</li>
+                        <li>Problem-solving process documentation</li>
+                        <li>Testing and debugging examples</li>
+                        <li>Reflection on technical implementation and learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📝 Final Submission Checklist</h2>
+            <p>Complete each item and check it off. All items must be completed for full assessment consideration.</p>
+            
+            <h3>🎮 Game Build & Files</h3>
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Final Game Build</div>
+                </div>
+                <div class="item-description">
+                    Export your game as a standalone executable. Test that it runs on a different computer to ensure all dependencies are included.
+                </div>
+                <div class="file-requirements">
+                    <strong>File format:</strong> .exe (Windows) or .app (Mac) or web build<br>
+                    <strong>Size limit:</strong> Under 100MB if possible<br>
+                    <strong>Include:</strong> Any required asset files or installation instructions
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Complete Source Code</div>
+                </div>
+                <div class="item-description">
+                    Submit your entire project folder with all scripts, scenes, and assets. Include your Git repository history if available.
+                </div>
+                <div class="file-requirements">
+                    <strong>Format:</strong> .zip file of complete project<br>
+                    <strong>Include:</strong> All Godot project files, scripts, and assets<br>
+                    <strong>Exclude:</strong> Build files and temporary cache folders
+                </div>
+            </div>
+
+            <h3>📄 Documentation Portfolio</h3>
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Game Design Document</div>
+                </div>
+                <div class="item-description">
+                    Completed GDD showing your planning process, design decisions, and technical specifications.
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Feedback Log</div>
+                </div>
+                <div class="item-description">
+                    All feedback sessions documented with tester details, feedback received, and your responses/implementations.
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Weekly Development Journal</div>
+                </div>
+                <div class="item-description">
+                    Complete weekly entries showing your development process, problem-solving, and learning journey.
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Sprint Documentation</div>
+                </div>
+                <div class="item-description">
+                    All sprint plans, progress tracking, and sprint retrospectives showing agile development process.
+                </div>
+            </div>
+
+            <h3>🎬 Demonstration Materials</h3>
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Video Screencast</div>
+                </div>
+                <div class="item-description">
+                    5-10 minute video demonstrating your game's features, gameplay, and technical implementation.
+                </div>
+                <div class="file-requirements">
+                    <strong>Length:</strong> 5-10 minutes maximum<br>
+                    <strong>Content:</strong> Gameplay demonstration, feature showcase, brief commentary<br>
+                    <strong>Quality:</strong> Clear audio and video, good resolution
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Screenshots Portfolio</div>
+                </div>
+                <div class="item-description">
+                    Collection of high-quality screenshots showing different aspects of your game, including UI, gameplay, and visual progression.
+                </div>
+            </div>
+
+            <h3>📊 Assessment Evidence</h3>
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Technical Implementation Evidence</div>
+                </div>
+                <div class="item-description">
+                    Code snippets, technical challenges overcome, and examples of advanced programming techniques used.
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Design Process Evidence</div>
+                </div>
+                <div class="item-description">
+                    Before/after examples showing design iterations, user feedback integration, and design decision reasoning.
+                </div>
+            </div>
+
+            <div class="checklist-item">
+                <div class="checklist-header">
+                    <div class="checkbox"></div>
+                    <div class="item-title">Final Reflection Report</div>
+                </div>
+                <div class="item-description">
+                    Comprehensive reflection on your project, learning outcomes, challenges overcome, and assessment standard fulfillment.
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📤 Submission Process</h2>
+            
+            <div class="submission-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Organize Your Files</h4>
+                    <p>Create a clear folder structure with all required files. Name everything clearly and include a file index.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Final Quality Check</h4>
+                    <p>Test your game build, proofread all documents, and ensure everything is complete and professional.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Create Submission Package</h4>
+                    <p>Compile everything into the required format for your school's submission system (usually a shared drive or online platform).</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Submit & Confirm</h4>
+                    <p>Upload your submission before the deadline and confirm receipt with your teacher. Keep backup copies!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>💡 Final Submission Tips</h2>
+            
+            <div class="info-card">
+                <h3>Quality Checklist</h3>
+                <ul>
+                    <li><strong>Professional Presentation:</strong> All documents are well-formatted and error-free</li>
+                    <li><strong>Complete Evidence:</strong> Every requirement is addressed with clear examples</li>
+                    <li><strong>Clear Organization:</strong> Files are logically organized and easy to navigate</li>
+                    <li><strong>Working Game:</strong> Your game builds and runs without errors</li>
+                    <li><strong>Backup Everything:</strong> Keep multiple copies in different locations</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>Common Submission Mistakes to Avoid</h3>
+                <ul>
+                    <li>Missing source code or incomplete project files</li>
+                    <li>Game build that doesn't work on other computers</li>
+                    <li>Insufficient documentation of the development process</li>
+                    <li>Weak reflection that doesn't demonstrate learning</li>
+                    <li>Submitting at the last minute without time for fixes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="sprint-4-plan.html" class="cta-button">
+                <span>←</span>
+                Sprint 4
+            </a>
+            <a href="assessment-task.html" class="cta-button">
+                <span>→</span>
+                Assessment Task
+            </a>
+        </div>
+    </div>
+    
+    <script src="../geometric-background.js"></script>
+    <script>
+        // Simple checklist functionality
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                
+                // Save state to localStorage
+                const checkedItems = Array.from(document.querySelectorAll('.checkbox.checked')).length;
+                const totalItems = document.querySelectorAll('.checkbox').length;
+                
+                localStorage.setItem('submissionProgress', JSON.stringify({
+                    checked: Array.from(document.querySelectorAll('.checkbox')).map(cb => cb.classList.contains('checked')),
+                    timestamp: Date.now()
+                }));
+            });
+        });
+        
+        // Load saved state
+        const saved = localStorage.getItem('submissionProgress');
+        if (saved) {
+            const data = JSON.parse(saved);
+            data.checked.forEach((isChecked, index) => {
+                if (isChecked && document.querySelectorAll('.checkbox')[index]) {
+                    document.querySelectorAll('.checkbox')[index].classList.add('checked');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

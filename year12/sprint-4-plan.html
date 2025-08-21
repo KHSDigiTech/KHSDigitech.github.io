@@ -4,73 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprint 4 Plan: Polish & Final Features - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
+        .content-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #f5f5f5;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .content-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .week-card {
-            background: #f8f9fa;
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(233, 30, 99, 0.3);
             border-left: 4px solid #e91e63;
             padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .week-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(233, 30, 99, 0.5);
         }
 
         .week-title {
             color: #e91e63;
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .focus-area {
-            background: #fce4ec;
+            background: rgba(233, 30, 99, 0.1);
+            border: 1px solid rgba(233, 30, 99, 0.3);
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: 8px;
             margin: 0.5rem 0;
-            border-left: 4px solid #f8bbd9;
+            color: var(--text-primary);
         }
 
         .task-list {
-            background: white;
+            background: rgba(45, 45, 45, 0.5);
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: 8px;
             margin: 0.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .task-list ul {
             list-style-type: none;
             padding-left: 0;
+            margin: 0;
         }
 
         .task-list li {
             padding: 0.5rem 0;
             position: relative;
             padding-left: 2rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
         }
 
         .task-list li:last-child {
@@ -78,95 +77,177 @@
         }
 
         .task-list li::before {
-            content: '☐';
+            content: '▶';
             position: absolute;
             left: 0;
-            font-size: 1.2rem;
             color: #e91e63;
+            font-size: 0.8rem;
         }
 
         .sprint-goal {
-            background: #fce4ec;
+            background: rgba(233, 30, 99, 0.1);
+            border: 1px solid rgba(233, 30, 99, 0.3);
             padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #e91e63;
-            margin: 1rem 0;
+            border-radius: 12px;
+            margin: 1.5rem 0;
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .sprint-goal h3 {
-            color: #c2185b;
+            color: #e91e63;
             margin-bottom: 0.5rem;
-        }
-
-        .highlight {
-            background: #fce4ec;
-            padding: 1rem;
-            border-left: 4px solid #e91e63;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        .next-module {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .next-link {
-            display: inline-block;
-            background: #e91e63;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            margin: 0 10px;
-        }
-
-        .next-link:hover {
-            background: #c2185b;
+            font-size: 1.3rem;
         }
 
         .polish-tips {
-            background: #e8f5e8;
-            border: 1px solid #4caf50;
-            border-radius: 8px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .polish-tips h4 {
-            color: #2e7d32;
+            color: #4caf50;
             margin-bottom: 1rem;
+        }
+
+        .polish-tips ul {
+            color: var(--text-primary);
+        }
+
+        .polish-tips li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .reflection-section {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .reflection-question {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .reflection-answer {
+            background: rgba(45, 45, 45, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px dashed rgba(102, 126, 234, 0.5);
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .tips-box {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .tips-box h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tips-box ul {
+            color: var(--text-primary);
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
+        }
+
+        .navigation-section {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 1rem;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="index.html" class="back-link">
+            <span>←</span> Back to Project Hub
+        </a>
 
-    <div class="header">
-        <h1>Sprint 4: Polish & Final Features</h1>
-        <p>Weeks 15-18 of Your Major Project</p>
-    </div>
+        <div class="hero-section">
+            <h1>Sprint 4: Polish & Final Features</h1>
+            <p class="hero-subtitle">Weeks 15-18 of Your Major Project</p>
+        </div>
 
-    <div class="content-section">
+        <div class="content-card">
         <div class="sprint-goal">
             <h3>🎯 Sprint Goal</h3>
             <p>To add "juice" (game feel), fix all outstanding bugs, and conduct final user testing.</p>
         </div>
 
-        <div class="highlight">
+        <div class="info-card">
             <h3>📋 Sprint 4 Success Criteria</h3>
             <ul>
                 <li>Game feels satisfying and responsive to play</li>
@@ -176,10 +257,10 @@
                 <li>Game is ready for final submission</li>
             </ul>
         </div>
-    </div>
+        </div>
 
-    <div class="content-section">
-        <h2>📅 Weekly Breakdown</h2>
+        <div class="content-card">
+            <h2>📅 Weekly Breakdown</h2>
 
         <div class="week-card">
             <div class="week-title">Week 15: Game Feel & "Juice"</div>
@@ -243,26 +324,109 @@
                 </ul>
             </div>
         </div>
-    </div>
+        </div>
 
-    <div class="content-section">
-        <h2>✨ Polish & "Juice" Ideas</h2>
-        <div class="polish-tips">
-            <h4>Game Feel Enhancements</h4>
-            <ul>
-                <li><strong>Screen Shake:</strong> Small camera shake when player takes damage or destroys enemies</li>
-                <li><strong>Particle Effects:</strong> Sparks, dust, explosion effects for key events</li>
-                <li><strong>Sound Timing:</strong> Perfect synchronization of sound effects with visual events</li>
-                <li><strong>Animation Easing:</strong> Smooth, natural movement curves instead of linear motion</li>
-                <li><strong>UI Animations:</strong> Buttons that scale or glow when hovered</li>
-                <li><strong>Visual Feedback:</strong> Health bars, score counters that animate smoothly</li>
-            </ul>
+        <div class="content-card">
+            <h2>💡 Development Tips</h2>
+            <div class="tips-box">
+                <h4>Bug Testing Strategy</h4>
+                <ul>
+                    <li><strong>Edge Cases:</strong> Try unusual player behaviors and input combinations</li>
+                    <li><strong>Platform Testing:</strong> Test on different devices if possible</li>
+                    <li><strong>Performance:</strong> Monitor frame rate and memory usage</li>
+                    <li><strong>User Flow:</strong> Ensure all menus and transitions work smoothly</li>
+                </ul>
+            </div>
+
+            <div class="tips-box">
+                <h4>Final Testing Tips</h4>
+                <ul>
+                    <li><strong>Fresh Eyes:</strong> Use testers who haven't played your game before</li>
+                    <li><strong>No Guidance:</strong> Let them discover the game naturally</li>
+                    <li><strong>Document Everything:</strong> Record both positive and negative feedback</li>
+                    <li><strong>Prioritize Fixes:</strong> Focus on game-breaking bugs first</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>✨ Polish & "Juice" Ideas</h2>
+            <div class="polish-tips">
+                <h4>Game Feel Enhancements</h4>
+                <ul>
+                    <li><strong>Screen Shake:</strong> Small camera shake when player takes damage or destroys enemies</li>
+                    <li><strong>Particle Effects:</strong> Sparks, dust, explosion effects for key events</li>
+                    <li><strong>Sound Timing:</strong> Perfect synchronization of sound effects with visual events</li>
+                    <li><strong>Animation Easing:</strong> Smooth, natural movement curves instead of linear motion</li>
+                    <li><strong>UI Animations:</strong> Buttons that scale or glow when hovered</li>
+                    <li><strong>Visual Feedback:</strong> Health bars, score counters that animate smoothly</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📝 Sprint 4 Reflection</h2>
+            <p>Complete this reflection at the end of Week 18 to prepare for final submission:</p>
+
+            <div class="reflection-section">
+                <div class="reflection-question">What polish elements had the biggest impact on game feel?</div>
+                <div class="reflection-answer">
+                    Your detailed answer here - which "juice" features made the game feel most satisfying?
+                </div>
+
+                <div class="reflection-question">What were the most critical bugs you discovered and fixed?</div>
+                <div class="reflection-answer">
+                    Your detailed answer here - game-breaking issues, usability problems, performance issues
+                </div>
+
+                <div class="reflection-question">How did final user testing change your perspective on the game?</div>
+                <div class="reflection-answer">
+                    Your detailed answer here - what did fresh testers notice that you missed?
+                </div>
+
+                <div class="reflection-question">What would you do differently if you started this project over?</div>
+                <div class="reflection-answer">
+                    Your detailed answer here - lessons learned about game development, time management, scope
+                </div>
+
+                <div class="reflection-question">How ready is your game for final submission?</div>
+                <div class="reflection-answer">
+                    Your detailed answer here - confidence level, remaining tasks, final assessment
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>✅ Sprint 4 Completion Checklist</h2>
+            <div class="task-list">
+                <h3>Before final submission:</h3>
+                <ul>
+                    <li>Game feels satisfying and responsive to play</li>
+                    <li>All critical bugs have been identified and fixed</li>
+                    <li>Polish elements (particles, animations, etc.) are implemented</li>
+                    <li>At least 2-3 fresh testers have completed full playthroughs</li>
+                    <li>All final user feedback is documented in Feedback Log</li>
+                    <li>Game performance is optimized and stable</li>
+                    <li>All weekly journal entries are completed</li>
+                    <li>Sprint 4 Reflection is completed</li>
+                    <li>Final code and assets committed to Git repository</li>
+                    <li>Game is ready for submission to assessment</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="sprint-3-plan.html" class="cta-button">
+                <span>←</span>
+                Sprint 3
+            </a>
+            <a href="final-submission.html" class="cta-button">
+                <span>→</span>
+                Final Submission
+            </a>
         </div>
     </div>
-
-    <div class="next-module">
-        <a href="sprint-3-plan.html" class="next-link">← Sprint 3 Plan</a>
-        <a href="feedback-log.html" class="next-link">Feedback Log →</a>
-    </div>
+    
+    <script src="../geometric-background.js"></script>
 </body>
 </html>

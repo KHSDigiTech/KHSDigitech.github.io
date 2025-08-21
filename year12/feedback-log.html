@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Log - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feedback-entry {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .feedback-header {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .feedback-source {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .feedback-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .feedback-content {
+            margin: 1rem 0;
+        }
+
+        .feedback-content h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-response {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+        }
+
+        .feedback-response h5 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .template-entry {
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px dashed rgba(102, 126, 234, 0.4);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .template-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .feedback-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
+        }
+
+        .navigation-section {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 1rem;
+            }
+            
+            .feedback-header {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .feedback-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="index.html" class="back-link">
+            <span>←</span> Back to Project Hub
+        </a>
+
+        <div class="content-card">
+            <div class="hero-section">
+                <h1>Feedback Log</h1>
+                <p class="hero-subtitle">Tracking User Input & Iterative Improvements</p>
+            </div>
+
+            <h2>📊 Overview</h2>
+            <p>This feedback log is essential for your assessment evidence. Document all feedback received during development, your responses, and how this influenced your game's evolution. This demonstrates the iterative design process required for both NZQA standards.</p>
+            
+            <div class="info-card">
+                <h3>Assessment Requirements</h3>
+                <ul>
+                    <li><strong>AS91893:</strong> Evidence of testing with stakeholders and incorporating feedback</li>
+                    <li><strong>AS91897:</strong> Demonstration of iterative refinement based on user testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📈 Feedback Summary</h2>
+            <div class="feedback-stats">
+                <div class="stat-card">
+                    <span class="stat-number">0</span>
+                    <div class="stat-label">Total Feedback Entries</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0</span>
+                    <div class="stat-label">Unique Testers</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0</span>
+                    <div class="stat-label">Issues Resolved</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0</span>
+                    <div class="stat-label">Features Added</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>✍️ How to Use This Log</h2>
+            <p>For each feedback session, create a new entry using the template below. Be thorough - this documentation is your assessment evidence!</p>
+            
+            <div class="info-card">
+                <h3>Feedback Collection Tips</h3>
+                <ol>
+                    <li><strong>Test Early and Often:</strong> Start collecting feedback from Sprint 1</li>
+                    <li><strong>Diverse Perspectives:</strong> Get feedback from different types of players</li>
+                    <li><strong>Specific Questions:</strong> Ask targeted questions about particular aspects</li>
+                    <li><strong>Document Everything:</strong> Record both positive and negative feedback</li>
+                    <li><strong>Show Changes:</strong> Demonstrate how feedback influenced your decisions</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📝 Feedback Entry Template</h2>
+            <div class="template-entry">
+                <div class="feedback-header">
+                    <h3>Feedback Session #[Number]</h3>
+                    <div class="feedback-source">Source: [Teacher/Peer/Family/Target User]</div>
+                    <div class="feedback-date">Date: [DD/MM/YYYY]</div>
+                </div>
+                
+                <div class="feedback-content">
+                    <h4>📋 Context</h4>
+                    <div class="template-field">
+                        What version/sprint was tested? What specific aspects were you seeking feedback on?
+                    </div>
+                    
+                    <h4>👤 Tester Profile</h4>
+                    <div class="template-field">
+                        Age, gaming experience, relationship to you (e.g., "15-year-old casual gamer, classmate")
+                    </div>
+                    
+                    <h4>🎮 Testing Process</h4>
+                    <div class="template-field">
+                        How did the testing session work? Did they play independently or with guidance?
+                    </div>
+                    
+                    <h4>💬 Feedback Received</h4>
+                    <div class="template-field">
+                        Record exact quotes when possible. Include both positive feedback and problems identified.
+                    </div>
+                    
+                    <h4>🔍 Observations</h4>
+                    <div class="template-field">
+                        What did you notice while watching them play? Body language, confusion points, moments of engagement?
+                    </div>
+                </div>
+                
+                <div class="feedback-response">
+                    <h5>🔄 Your Response & Action Plan</h5>
+                    <div class="template-field">
+                        How will you address this feedback? What changes will you make? What will you keep the same and why?
+                    </div>
+                    
+                    <h5>✅ Implementation Status</h5>
+                    <div class="template-field">
+                        [Update this later] What changes were actually made? Any compromises or alternative solutions?
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📚 Example Feedback Entries</h2>
+            
+            <div class="feedback-entry">
+                <div class="feedback-header">
+                    <h3>Feedback Session #1</h3>
+                    <div class="feedback-source">Teacher</div>
+                    <div class="feedback-date">15/03/2024</div>
+                </div>
+                
+                <div class="feedback-content">
+                    <h4>📋 Context</h4>
+                    <p>Sprint 1 prototype - testing basic movement mechanics and core gameplay loop. First playable build with placeholder graphics.</p>
+                    
+                    <h4>👤 Tester Profile</h4>
+                    <p>Teacher with moderate gaming experience, familiar with assessment requirements.</p>
+                    
+                    <h4>🎮 Testing Process</h4>
+                    <p>5-minute play session during class, followed by structured discussion about mechanics and progression.</p>
+                    
+                    <h4>💬 Feedback Received</h4>
+                    <p>"The jumping feels responsive and the basic concept is clear. However, it's hard to tell when I'm taking damage - there's no visual feedback. The controls are intuitive but I'd like to see the jump height increased slightly."</p>
+                    
+                    <h4>🔍 Observations</h4>
+                    <p>Picked up controls quickly but looked confused when health decreased. Attempted to jump higher than current mechanics allow several times.</p>
+                </div>
+                
+                <div class="feedback-response">
+                    <h5>🔄 Your Response & Action Plan</h5>
+                    <p>Will add screen flash and sound effect for damage feedback. Will increase jump height by 20% and test again. These changes align with creating a more polished user experience for AS91893.</p>
+                    
+                    <h5>✅ Implementation Status</h5>
+                    <p>✓ Added red screen flash and damage sound effect<br>
+                       ✓ Increased jump height from 100 to 120 pixels<br>
+                       → Significant improvement in player clarity during next test session</p>
+                </div>
+            </div>
+
+            <div class="feedback-entry">
+                <div class="feedback-header">
+                    <h3>Feedback Session #2</h3>
+                    <div class="feedback-source">Target User</div>
+                    <div class="feedback-date">28/03/2024</div>
+                </div>
+                
+                <div class="feedback-content">
+                    <h4>📋 Context</h4>
+                    <p>Sprint 2 build - testing complete gameplay loop with basic UI. Focus on overall game flow and difficulty balance.</p>
+                    
+                    <h4>👤 Tester Profile</h4>
+                    <p>16-year-old avid gamer, enjoys platformers and indie games. Part of target demographic.</p>
+                    
+                    <h4>🎮 Testing Process</h4>
+                    <p>15-minute independent play session, followed by questionnaire about difficulty, engagement, and overall experience.</p>
+                    
+                    <h4>💬 Feedback Received</h4>
+                    <p>"This is actually pretty fun! The gameplay loop works well. But the first level is way too easy - I was bored for the first few minutes. The enemies are too predictable. Love the art style though!"</p>
+                    
+                    <h4>🔍 Observations</h4>
+                    <p>Played confidently, completed first level without dying. Seemed more engaged during level 2 when difficulty increased. Spent time examining background art details.</p>
+                </div>
+                
+                <div class="feedback-response">
+                    <h5>🔄 Your Response & Action Plan</h5>
+                    <p>Will redesign first level to be more challenging while still teaching mechanics. Will add more varied enemy movement patterns. Art direction is working well - continue current approach.</p>
+                    
+                    <h5>✅ Implementation Status</h5>
+                    <p>✓ Added more platforms and enemies to first level<br>
+                       ✓ Implemented 3 different enemy movement patterns<br>
+                       ✓ Reduced initial safe areas while keeping tutorial elements<br>
+                       → Next tester found difficulty curve much more engaging</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🎯 Assessment Integration</h2>
+            <p>This feedback log directly supports your assessment by demonstrating:</p>
+            
+            <div class="info-card">
+                <h3>For AS91893 (Digital Media Outcome)</h3>
+                <ul>
+                    <li>Stakeholder engagement throughout development</li>
+                    <li>Iterative design process with clear improvements</li>
+                    <li>Evidence of testing different design solutions</li>
+                    <li>User-centered design thinking</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>For AS91897 (Digital Technologies Outcome)</h3>
+                <ul>
+                    <li>Testing and refinement of technical implementations</li>
+                    <li>Problem-solving based on user experience</li>
+                    <li>Documentation of iterative development process</li>
+                    <li>Evidence of addressing technical usability issues</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="index.html" class="cta-button">
+                <span>←</span>
+                Project Hub
+            </a>
+            <a href="weekly-journal.html" class="cta-button">
+                <span>→</span>
+                Weekly Journal
+            </a>
+        </div>
+    </div>
+    
+    <script src="../geometric-background.js"></script>
+</body>
+</html>

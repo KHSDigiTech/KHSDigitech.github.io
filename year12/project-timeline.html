@@ -4,158 +4,352 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Timeline - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
+        .content-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #f5f5f5;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .content-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .timeline-table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        .timeline-table th,
-        .timeline-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-            vertical-align: top;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: rgba(45, 45, 45, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
         }
 
         .timeline-table th {
-            background-color: #f8f9fa;
-            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-primary);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: none;
         }
 
-        .timeline-table tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
+        .timeline-table th:first-child {
+            border-top-left-radius: 12px;
+        }
+
+        .timeline-table th:last-child {
+            border-top-right-radius: 12px;
+        }
+
+        .timeline-table td {
+            padding: 1rem;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+            color: var(--text-primary);
+        }
+
+        .timeline-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .timeline-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .phase-header {
-            font-weight: bold;
-            background-color: #e3f2fd !important;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3)) !important;
+            font-weight: 600;
         }
 
-        .phase-continuation {
-            border-left: none;
-            font-style: italic;
+        .phase-header td {
+            border-bottom: 2px solid rgba(102, 126, 234, 0.5) !important;
         }
 
         .deliverables ul {
             margin: 0;
-            padding-left: 1.2rem;
+            padding-left: 1.5rem;
+            list-style: none;
         }
 
         .deliverables li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
         }
 
-        .highlight {
-            background: #fff3cd;
-            padding: 1rem;
-            border-left: 4px solid #ffc107;
-            border-radius: 5px;
-            margin: 1rem 0;
+        .deliverables li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resource-link {
+            display: block;
+            background: rgba(45, 45, 45, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .resource-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .resource-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(102, 126, 234, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .resource-link:hover::before {
+            left: 100%;
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .resource-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .resource-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .back-link {
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: #667eea;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
             text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            text-decoration: underline;
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
         }
 
-        .next-module {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .next-link {
-            display: inline-block;
-            background: #28a745;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            margin: 0 10px;
-        }
-
-        .next-link:hover {
-            background: #218838;
-        }
-
-        .assessment-info {
-            background: #e8f5e8;
+        .info-card {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #4caf50;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-card ol {
+            list-style: none;
+            counter-reset: step-counter;
+            padding-left: 0;
+        }
+
+        .info-card ol li {
+            counter-increment: step-counter;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .info-card ol li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .success-factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .success-factor {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-factor::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        }
+
+        .success-factor:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .success-factor h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .success-factor p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
+            .content-container {
+                padding: 1rem;
+            }
+            
             .timeline-table {
                 font-size: 0.9rem;
             }
             
             .timeline-table th,
             .timeline-table td {
-                padding: 8px;
+                padding: 0.75rem;
             }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .navigation-section {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .success-factors {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
         }
     </style>
 </head>
 <body>
-    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="index.html" class="back-link">
+            <span>←</span> Back to Project Hub
+        </a>
 
-    <div class="header">
-        <h1>Year 12 Major Project Timeline</h1>
-        <p>20-Week Game Development Journey</p>
-    </div>
-
-    <div class="content-section">
-        <h2>🎯 Project Overview</h2>
-        <p>This timeline provides a comprehensive 20-week overview for your major project, combining two NZQA Level 2 achievement standards:</p>
-        
-        <div class="assessment-info">
-            <h3>Assessment Standards</h3>
-            <ul>
-                <li><strong>AS91893 (Digital Media Outcome)</strong> - 4 credits</li>
-                <li><strong>AS91897 (Digital Technologies Outcome)</strong> - 6 credits</li>
-            </ul>
-            <p>Your game development project will address both standards simultaneously through careful planning and execution.</p>
+        <div class="hero-section">
+            <h1>Year 12 Major Project Timeline</h1>
+            <p class="hero-subtitle">20-Week Game Development Journey</p>
         </div>
-    </div>
 
-    <div class="content-section">
-        <h2>📅 Development Timeline</h2>
+        <div class="content-card">
+            <h2>🎯 Project Overview</h2>
+            <p>This timeline provides a comprehensive 20-week overview for your major project, combining two NZQA Level 2 achievement standards:</p>
+            
+            <div class="info-card">
+                <h3>Assessment Standards</h3>
+                <ul>
+                    <li><strong>AS91893 (Digital Media Outcome)</strong> - 4 credits</li>
+                    <li><strong>AS91897 (Digital Technologies Outcome)</strong> - 6 credits</li>
+                </ul>
+                <p>Your game development project will address both standards simultaneously through careful planning and execution.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📅 Development Timeline</h2>
         <table class="timeline-table">
             <thead>
                 <tr>
@@ -194,7 +388,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="phase-continuation"></td>
                     <td>7-10</td>
                     <td><strong>Sprint 2: Gameplay Loop & UI</strong></td>
                     <td class="deliverables">
@@ -207,7 +400,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="phase-continuation"></td>
                     <td>11-14</td>
                     <td><strong>Sprint 3: Art, Sound & Level Design</strong></td>
                     <td class="deliverables">
@@ -221,7 +413,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="phase-continuation"></td>
                     <td>15-18</td>
                     <td><strong>Sprint 4: Polish & Final Features</strong></td>
                     <td class="deliverables">
@@ -249,38 +440,134 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+        </div>
 
-    <div class="content-section">
-        <h2>🔄 Agile Development Process</h2>
-        <p>This project follows an <strong>agile development methodology</strong> with four main sprints. Each sprint is approximately 4 weeks long and focuses on different aspects of game development:</p>
-        
-        <div class="highlight">
-            <h3>Sprint Structure</h3>
-            <p>Each sprint follows the same pattern:</p>
-            <ol>
-                <li><strong>Planning:</strong> Define goals and tasks for the sprint</li>
-                <li><strong>Development:</strong> Implement features and create content</li>
-                <li><strong>Testing:</strong> Playtest and gather feedback</li>
-                <li><strong>Reflection:</strong> Evaluate progress and plan improvements</li>
-            </ol>
+        <div class="content-card">
+            <h2>🛠️ Essential Development Tools</h2>
+            <p>Success in your project depends on using the right tools. Here are the essential resources you'll need:</p>
+            
+            <div class="resource-grid">
+                <a href="https://desktop.github.com/" class="resource-link" target="_blank">
+                    <span class="resource-icon">🐙</span>
+                    <div class="resource-title">GitHub Desktop</div>
+                    <div class="resource-description">Version control made simple. Track your code changes, collaborate, and never lose work again.</div>
+                </a>
+                
+                <a href="https://trello.com/" class="resource-link" target="_blank">
+                    <span class="resource-icon">📋</span>
+                    <div class="resource-title">Trello</div>
+                    <div class="resource-description">Project management boards. Organize tasks, track sprint progress, and manage your development workflow.</div>
+                </a>
+                
+                <a href="https://godotengine.org/" class="resource-link" target="_blank">
+                    <span class="resource-icon">🎮</span>
+                    <div class="resource-title">Godot Engine</div>
+                    <div class="resource-description">Free, open-source game engine. Perfect for 2D and 3D game development with GDScript or C#.</div>
+                </a>
+                
+                <a href="https://claude.ai/" class="resource-link" target="_blank">
+                    <span class="resource-icon">🤖</span>
+                    <div class="resource-title">Claude AI</div>
+                    <div class="resource-description">AI assistant for coding help, brainstorming ideas, debugging, and getting unstuck on complex problems.</div>
+                </a>
+                
+                <a href="https://chat.openai.com/" class="resource-link" target="_blank">
+                    <span class="resource-icon">💬</span>
+                    <div class="resource-title">ChatGPT</div>
+                    <div class="resource-description">AI chatbot for programming assistance, idea generation, and learning new concepts quickly.</div>
+                </a>
+                
+                <a href="https://www.figma.com/" class="resource-link" target="_blank">
+                    <span class="resource-icon">🎨</span>
+                    <div class="resource-title">Figma</div>
+                    <div class="resource-description">Design tool for UI mockups, game art concepts, and collaborative design work with your team.</div>
+                </a>
+                
+                <a href="https://aseprite.org/" class="resource-link" target="_blank">
+                    <span class="resource-icon">🖼️</span>
+                    <div class="resource-title">Aseprite</div>
+                    <div class="resource-description">Pixel art editor perfect for creating 2D game sprites, animations, and retro-style graphics.</div>
+                </a>
+                
+                <a href="https://freesound.org/" class="resource-link" target="_blank">
+                    <span class="resource-icon">🔊</span>
+                    <div class="resource-title">Freesound</div>
+                    <div class="resource-description">Free sound effects library. Download royalty-free audio for your game's sound design needs.</div>
+                </a>
+                
+                <a href="https://itch.io/" class="resource-link" target="_blank">
+                    <span class="resource-icon">🕹️</span>
+                    <div class="resource-title">Itch.io</div>
+                    <div class="resource-description">Indie game platform for publishing your game, getting feedback, and discovering inspiration.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🔄 Agile Development Process</h2>
+            <p>This project follows an <strong>agile development methodology</strong> with four main sprints. Each sprint is approximately 4 weeks long and focuses on different aspects of game development:</p>
+            
+            <div class="info-card">
+                <h3>Sprint Structure</h3>
+                <p>Each sprint follows the same pattern:</p>
+                <ol>
+                    <li><strong>Planning:</strong> Define goals and tasks for the sprint</li>
+                    <li><strong>Development:</strong> Implement features and create content</li>
+                    <li><strong>Testing:</strong> Playtest and gather feedback</li>
+                    <li><strong>Reflection:</strong> Evaluate progress and plan improvements</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📋 Key Success Factors</h2>
+            <p>These essential practices will help ensure your project's success throughout the development cycle:</p>
+            
+            <div class="success-factors">
+                <div class="success-factor">
+                    <h4>📝 Documentation</h4>
+                    <p>Keep detailed records of your development process, decisions made, and lessons learned for assessment evidence.</p>
+                </div>
+                
+                <div class="success-factor">
+                    <h4>👥 User Testing</h4>
+                    <p>Gather feedback regularly from different users to validate your design decisions and improve gameplay.</p>
+                </div>
+                
+                <div class="success-factor">
+                    <h4>🔄 Version Control</h4>
+                    <p>Use Git/GitHub to track your progress, backup your work, and demonstrate iterative development.</p>
+                </div>
+                
+                <div class="success-factor">
+                    <h4>⏰ Time Management</h4>
+                    <p>Stick to sprint deadlines and maintain consistent progress to avoid rushing at the end of the project.</p>
+                </div>
+                
+                <div class="success-factor">
+                    <h4>🔁 Iteration</h4>
+                    <p>Be prepared to modify your game based on feedback, testing results, and technical constraints.</p>
+                </div>
+                
+                <div class="success-factor">
+                    <h4>🎯 Scope Management</h4>
+                    <p>Keep your project achievable within the timeframe while still meeting both assessment standards.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="game-design-document.html" class="cta-button">
+                <span>📄</span>
+                Game Design Document
+            </a>
+            <a href="assessment-task.html" class="cta-button">
+                <span>📋</span>
+                Assessment Overview
+            </a>
         </div>
     </div>
-
-    <div class="content-section">
-        <h2>📋 Key Success Factors</h2>
-        <ul>
-            <li><strong>Documentation:</strong> Keep detailed records of your development process</li>
-            <li><strong>User Testing:</strong> Gather feedback regularly from different users</li>
-            <li><strong>Version Control:</strong> Use Git/GitHub to track your progress</li>
-            <li><strong>Time Management:</strong> Stick to the sprint deadlines to avoid rushing at the end</li>
-            <li><strong>Iteration:</strong> Be prepared to modify your game based on feedback and testing</li>
-        </ul>
-    </div>
-
-    <div class="next-module">
-        <a href="game-design-document.html" class="next-link">Game Design Document Template →</a>
-        <a href="sprint-1-plan.html" class="next-link">Sprint 1 Plan →</a>
-    </div>
+    
+    <script src="../geometric-background.js"></script>
 </body>
 </html>

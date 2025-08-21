@@ -4,365 +4,350 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Design Document Template - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
+        .content-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #f5f5f5;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .content-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .template-field {
-            background: #f8f9fa;
-            border: 2px dashed #6c757d;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 5px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px dashed rgba(102, 126, 234, 0.4);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
             font-style: italic;
-            color: #495057;
+            color: var(--text-secondary);
+            backdrop-filter: blur(10px);
         }
 
         .example-text {
-            background: #e3f2fd;
-            padding: 0.8rem;
-            border-left: 4px solid #2196f3;
-            border-radius: 5px;
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .highlight {
-            background: #fff3cd;
+            background: rgba(0, 168, 255, 0.1);
             padding: 1rem;
-            border-left: 4px solid #ffc107;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-
-        .checklist {
-            background: #d4edda;
-            padding: 1.5rem;
+            border-left: 4px solid var(--secondary-color);
             border-radius: 8px;
             margin: 1rem 0;
+            font-size: 0.95rem;
         }
 
-        .checklist ul {
-            list-style-type: none;
-            padding-left: 0;
+        .example-text h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
         }
 
-        .checklist li {
-            padding: 0.3rem 0;
-            position: relative;
-            padding-left: 2rem;
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
-        .checklist li::before {
-            content: '☐';
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-            color: #28a745;
+        .section-card {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
         }
 
         .back-link {
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: #667eea;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
             text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            text-decoration: underline;
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
         }
 
-        .next-module {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .next-link {
-            display: inline-block;
-            background: #28a745;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            margin: 0 10px;
-        }
-
-        .next-link:hover {
-            background: #218838;
-        }
-
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(to right, transparent, #667eea, transparent);
-            margin: 2rem 0;
-            border: none;
-        }
-
-        code {
-            background: #f1f3f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        .mechanics-list {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 5px;
-            margin: 0.5rem 0;
-        }
-
-        .scope-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .navigation-section {
+            display: flex;
             gap: 2rem;
-            margin: 1rem 0;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
         }
-
-        .scope-box {
-            background: #f8f9fa;
-            padding: 1.5rem;
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
             border-radius: 8px;
-            border-left: 4px solid #28a745;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
         }
-
-        .stretch-goals {
-            border-left-color: #ffc107;
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
         }
 
         @media (max-width: 768px) {
-            .scope-section {
+            .content-container {
+                padding: 1rem;
+            }
+            
+            .section-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
                 gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="project-timeline.html" class="back-link">
+            <span>←</span> Back to Project Timeline
+        </a>
 
-    <div class="header">
-        <h1>Game Design Document (GDD)</h1>
-        <p>Template for Your Major Project</p>
-    </div>
+        <div class="content-card">
+            <div class="hero-section">
+                <h1>Game Design Document Template</h1>
+                <p class="hero-subtitle">Your Blueprint for Success</p>
+            </div>
 
-    <div class="content-section">
-        <h2>📋 What is a Game Design Document?</h2>
-        <p>A Game Design Document (GDD) is your blueprint for game development. It serves as a central reference point that keeps your project focused and organized throughout the development process.</p>
-        
-        <div class="highlight">
-            <h3>🎯 Purpose of the GDD</h3>
-            <ul>
-                <li><strong>Clarity:</strong> Defines exactly what you're building</li>
-                <li><strong>Scope Management:</strong> Keeps your project realistic and achievable</li>
-                <li><strong>Assessment Evidence:</strong> Demonstrates planning for AS91897</li>
-                <li><strong>Communication:</strong> Helps others understand your vision</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2>1️⃣ Game Overview</h2>
-        <p>Start with the high-level concept of your game. This section should be clear and concise.</p>
-
-        <h3>Game Title:</h3>
-        <div class="template-field">
-            Your Game's Title Here
+            <h2>📋 Overview</h2>
+            <p>The Game Design Document (GDD) is your game's blueprint. It serves as both a planning tool and assessment evidence. Complete each section thoughtfully - this document will guide your entire development process and demonstrate your design thinking to assessors.</p>
+            
+            <div class="info-card">
+                <h3>Assessment Integration</h3>
+                <p>This document directly supports both assessment standards:</p>
+                <ul>
+                    <li><strong>AS91893:</strong> Evidence of planning and design process</li>
+                    <li><strong>AS91897:</strong> Technical specifications and implementation planning</li>
+                </ul>
+            </div>
         </div>
 
-        <h3>High Concept:</h3>
-        <div class="template-field">
-            A one-sentence pitch for your game that captures the core experience.
-        </div>
-        <div class="example-text">
-            <strong>Example:</strong> "A fast-paced puzzle-platformer where you control gravity to navigate through increasingly complex mazes."
-        </div>
-
-        <h3>Genre:</h3>
-        <div class="template-field">
-            Primary game genre (e.g., 2D Platformer, Top-Down Shooter, Puzzle, RPG)
-        </div>
-
-        <h3>Target Audience:</h3>
-        <div class="template-field">
-            Who will play your game? (e.g., Casual players, fans of retro games, puzzle enthusiasts)
-        </div>
-
-        <h3>Core Loop:</h3>
-        <div class="template-field">
-            Describe the central gameplay loop in 3-5 steps that players will repeat.
-        </div>
-        <div class="example-text">
-            <strong>Example:</strong><br>
-            1. Player enters a room<br>
-            2. Player solves a puzzle to unlock the door<br>
-            3. Player collects a key or power-up<br>
-            4. Player moves to the next room<br>
-            5. Difficulty increases
-        </div>
-    </div>
-
-    <hr class="section-divider">
-
-    <div class="content-section">
-        <h2>2️⃣ Gameplay & Mechanics</h2>
-        <p>Detail how the player will interact with your game world.</p>
-
-        <h3>Core Mechanics:</h3>
-        <p>List the main actions the player can perform:</p>
-        
-        <div class="mechanics-list">
-            <h4>Mechanic 1:</h4>
+        <div class="content-card">
+            <h2>🎮 Game Concept</h2>
+            
+            <h3>Game Title</h3>
             <div class="template-field">
-                e.g., Player Movement: Left/Right with arrow keys, Jump with Spacebar
+                Write your game's title here. Choose something memorable and relevant to your game's theme.
+            </div>
+
+            <h3>One-Line Description</h3>
+            <div class="template-field">
+                Describe your game in one sentence. This should capture the core gameplay and appeal.
             </div>
             
-            <h4>Mechanic 2:</h4>
+            <div class="example-text">
+                <h4>Example:</h4>
+                <p>"A fast-paced 2D platformer where players control a ninja cat collecting fish while avoiding robot dogs in a cyberpunk city."</p>
+            </div>
+
+            <h3>Genre & Platform</h3>
             <div class="template-field">
-                e.g., Shooting: Aim with mouse, left-click to fire
+                Specify your game's genre (e.g., platformer, puzzle, shooter) and target platform (PC, mobile, web).
+            </div>
+
+            <h3>Target Audience</h3>
+            <div class="template-field">
+                Who is this game for? Consider age range, gaming experience, and interests.
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🎯 Core Gameplay</h2>
+            
+            <h3>Primary Objective</h3>
+            <div class="template-field">
+                What is the main goal players are trying to achieve? Be specific about win/lose conditions.
+            </div>
+
+            <h3>Core Mechanics</h3>
+            <div class="template-field">
+                List the 3-5 most important gameplay mechanics. These are the actions players will perform most often.
             </div>
             
-            <h4>Additional Mechanics:</h4>
+            <div class="example-text">
+                <h4>Example Core Mechanics:</h4>
+                <ul>
+                    <li>Jump and double-jump to navigate platforms</li>
+                    <li>Dash through enemies and obstacles</li>
+                    <li>Collect fish to increase score</li>
+                    <li>Avoid or defeat robot enemies</li>
+                </ul>
+            </div>
+
+            <h3>Controls</h3>
             <div class="template-field">
-                Add more mechanics as needed for your game concept
+                Map out your control scheme. Keep it simple - players should be able to learn controls quickly.
             </div>
         </div>
 
-        <h3>Game Flow:</h3>
-        <div class="template-field">
-            Describe the player's journey from start to finish. Include menus, levels, and transitions.
-        </div>
-        <div class="example-text">
-            <strong>Example:</strong> "Player navigates main menu → selects level → plays through level → sees results screen → returns to level select or progresses to next level."
-        </div>
-
-        <h3>Controls:</h3>
-        <div class="template-field">
-            List all controls clearly (e.g., <code>W/A/S/D</code> for movement, <code>Mouse</code> to aim, <code>LMB</code> to shoot)
-        </div>
-    </div>
-
-    <hr class="section-divider">
-
-    <div class="content-section">
-        <h2>3️⃣ Art & Sound</h2>
-        <p>Define the aesthetic and audio direction for your game.</p>
-
-        <h3>Visual Style:</h3>
-        <div class="template-field">
-            Describe the look and feel of your game's visuals.
-        </div>
-        <div class="example-text">
-            <strong>Example:</strong> "Minimalist pixel art with a dark, neon color palette inspired by cyberpunk aesthetics."
-        </div>
-
-        <h3>Sound Design:</h3>
-        <div class="template-field">
-            What will the game sound like? Include music and sound effects.
-        </div>
-        <div class="example-text">
-            <strong>Example:</strong> "Retro 8-bit sound effects for player actions, ambient electronic music for background."
-        </div>
-    </div>
-
-    <hr class="section-divider">
-
-    <div class="content-section">
-        <h2>4️⃣ Technical Specifications</h2>
-        <p>Define the technical aspects of your project.</p>
-
-        <h3>Game Engine/Framework:</h3>
-        <div class="template-field">
-            What tools will you use? (e.g., Unity, Godot, Pygame, JavaScript with Phaser)
-        </div>
-
-        <h3>Target Platform:</h3>
-        <div class="template-field">
-            Where will players access your game? (e.g., Windows, Web Browser, Mobile)
-        </div>
-    </div>
-
-    <hr class="section-divider">
-
-    <div class="content-section">
-        <h2>5️⃣ Project Scope</h2>
-        <p>Define what you <em>must</em> build versus what would be <em>nice to have</em>.</p>
-
-        <div class="scope-section">
-            <div class="scope-box">
-                <h3>🎮 Minimum Viable Product (MVP)</h3>
-                <p>Essential features to make the game playable:</p>
-                <div class="checklist">
-                    <ul>
-                        <li>Playable character with basic controls</li>
-                        <li>One complete level</li>
-                        <li>Clear win and lose conditions</li>
-                        <li>Basic UI (start game, game over screens)</li>
-                        <li>Core game mechanic functional</li>
-                    </ul>
+        <div class="content-card">
+            <h2>🎨 Art & Audio Direction</h2>
+            
+            <div class="section-grid">
+                <div class="section-card">
+                    <h3>Visual Style</h3>
+                    <div class="template-field">
+                        Describe your art style. Include reference images or mood boards if possible.
+                    </div>
                 </div>
-            </div>
-
-            <div class="scope-box stretch-goals">
-                <h3>⭐ Stretch Goals</h3>
-                <p>"Nice-to-have" features if time allows:</p>
-                <div class="checklist">
-                    <ul>
-                        <li>Additional levels or content</li>
-                        <li>Scoring system</li>
-                        <li>Animated menus and transitions</li>
-                        <li>Sound effects and music</li>
-                        <li>Particle effects or polish</li>
-                    </ul>
+                
+                <div class="section-card">
+                    <h3>Color Palette</h3>
+                    <div class="template-field">
+                        What colors will dominate your game? Consider mood and readability.
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h3>Audio Style</h3>
+                    <div class="template-field">
+                        Describe the music and sound effects style that will complement your visuals.
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h3>UI Design</h3>
+                    <div class="template-field">
+                        How will menus, HUD, and interface elements look and feel?
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="content-section">
-        <h2>📝 Completion Checklist</h2>
-        <div class="checklist">
-            <h3>Before submitting your GDD:</h3>
-            <ul>
-                <li>All template fields are filled with specific details</li>
-                <li>Game concept is clear and focused</li>
-                <li>MVP is realistic for a 20-week project</li>
-                <li>Technical choices are justified and researched</li>
-                <li>Controls and mechanics are clearly defined</li>
-                <li>Art and sound direction supports the gameplay</li>
-                <li>Document is proofread and professional</li>
-            </ul>
+        <div class="content-card">
+            <h2>🗺️ Level Design</h2>
+            
+            <h3>Level Structure</h3>
+            <div class="template-field">
+                How many levels will you have? Describe the progression and increasing difficulty.
+            </div>
+
+            <h3>Level Themes</h3>
+            <div class="template-field">
+                What are the different environments/themes for your levels?
+            </div>
+
+            <h3>Key Challenges</h3>
+            <div class="template-field">
+                What specific obstacles, puzzles, or enemies will players encounter?
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>⚙️ Technical Specifications</h2>
+            
+            <div class="section-grid">
+                <div class="section-card">
+                    <h3>Engine & Tools</h3>
+                    <div class="template-field">
+                        Godot 4.x, Aseprite for pixel art, etc.
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h3>Resolution</h3>
+                    <div class="template-field">
+                        Target screen resolution and aspect ratio
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h3>Performance Targets</h3>
+                    <div class="template-field">
+                        Frame rate goals and system requirements
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h3>File Structure</h3>
+                    <div class="template-field">
+                        How will you organize your project files?
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📊 Project Scope</h2>
+            
+            <h3>Must-Have Features</h3>
+            <div class="template-field">
+                List the absolutely essential features your game needs to be playable and meet assessment requirements.
+            </div>
+
+            <h3>Should-Have Features</h3>
+            <div class="template-field">
+                Features that would improve the game but aren't critical for core functionality.
+            </div>
+
+            <h3>Could-Have Features</h3>
+            <div class="template-field">
+                Nice-to-have features you might add if time permits (stretch goals).
+            </div>
+
+            <div class="example-text">
+                <h4>Scope Management Tip:</h4>
+                <p>Focus on making your "Must-Have" features excellent rather than trying to implement everything. A polished simple game beats an unfinished complex one!</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🎯 Success Metrics</h2>
+            
+            <h3>Assessment Criteria</h3>
+            <div class="template-field">
+                How will you know if your game meets the NZQA assessment standards? Reference the marking schedules.
+            </div>
+
+            <h3>Player Experience Goals</h3>
+            <div class="template-field">
+                What should players feel when playing your game? How will you measure if you've achieved this?
+            </div>
+
+            <h3>Technical Milestones</h3>
+            <div class="template-field">
+                What are the key technical achievements that will mark progress in your development?
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="index.html" class="cta-button">
+                <span>🏠</span>
+                Project Hub
+            </a>
+            <a href="sprint-1-plan.html" class="cta-button">
+                <span>🚀</span>
+                Start Sprint 1
+            </a>
         </div>
     </div>
-
-    <div class="next-module">
-        <a href="project-timeline.html" class="next-link">← Project Timeline</a>
-        <a href="sprint-1-plan.html" class="next-link">Sprint 1 Plan →</a>
-    </div>
+    
+    <script src="../geometric-background.js"></script>
 </body>
 </html>

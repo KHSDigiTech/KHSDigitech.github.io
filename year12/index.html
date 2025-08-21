@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 12 Major Project - Game Development</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="year12-shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .overview-card {
+            background: rgba(45, 45, 45, 0.9);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 0;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .overview-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .overview-header h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .overview-header .credits {
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .overview-content {
+            padding: 1.5rem;
+        }
+
+        .phase-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .phase-card {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .phase-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .phase-card h4 {
+            color: var(--secondary-color);
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resource-card {
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .resource-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+        }
+
+        .resource-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quick-link {
+            background: rgba(45, 45, 45, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quick-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateX(5px);
+        }
+
+        .quick-link-icon {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="../year12.html" class="back-link">
+            <span>←</span> Back to Year 12 Overview
+        </a>
+
+        <div class="content-card">
+            <div class="hero-section">
+                <h1>Year 12 Major Project</h1>
+                <p class="hero-subtitle">Game Development Assessment Hub</p>
+            </div>
+
+            <h2>🎯 Project Overview</h2>
+            <p>Your comprehensive 20-week game development project combining two NZQA Level 2 achievement standards. This hub contains all the resources, templates, and guidance you need to successfully complete your major assessment.</p>
+            
+            <div class="project-overview">
+                <div class="overview-card">
+                    <div class="overview-header">
+                        <h3>AS91893 - Digital Media</h3>
+                        <div class="credits">4 Credits</div>
+                    </div>
+                    <div class="overview-content">
+                        <p>Use advanced processes to develop a digital media outcome</p>
+                        <ul>
+                            <li>Design process documentation</li>
+                            <li>Stakeholder engagement</li>
+                            <li>Iterative refinement</li>
+                            <li>User-centered design</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-header">
+                        <h3>AS91897 - Digital Technologies</h3>
+                        <div class="credits">6 Credits</div>
+                    </div>
+                    <div class="overview-content">
+                        <p>Use advanced programming techniques to develop a digital technologies outcome</p>
+                        <ul>
+                            <li>Advanced programming concepts</li>
+                            <li>Problem-solving documentation</li>
+                            <li>Technical implementation</li>
+                            <li>Code quality and structure</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📅 Project Timeline</h2>
+            <p>Your 20-week journey broken into manageable phases with clear milestones and deliverables.</p>
+            
+            <div class="phase-timeline">
+                <div class="phase-card">
+                    <div class="phase-number">1</div>
+                    <h4>Pre-production (Weeks 1-2)</h4>
+                    <p>Planning, idea generation, and Game Design Document creation</p>
+                    <ul>
+                        <li>Project proposal</li>
+                        <li>Complete GDD</li>
+                        <li>Tool setup</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">2</div>
+                    <h4>Sprint 1: Core Mechanics (Weeks 3-6)</h4>
+                    <p>Implement basic gameplay and core systems</p>
+                    <ul>
+                        <li>Player movement</li>
+                        <li>Core mechanics</li>
+                        <li>Basic level</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">3</div>
+                    <h4>Sprint 2: Gameplay Loop (Weeks 7-10)</h4>
+                    <p>Complete game flow and user interface</p>
+                    <ul>
+                        <li>Full game loop</li>
+                        <li>Menu systems</li>
+                        <li>User feedback</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">4</div>
+                    <h4>Sprint 3: Art & Audio (Weeks 11-14)</h4>
+                    <p>Visual and audio polish, level design</p>
+                    <ul>
+                        <li>Final art assets</li>
+                        <li>Sound integration</li>
+                        <li>Level polish</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">5</div>
+                    <h4>Sprint 4: Polish & Testing (Weeks 15-18)</h4>
+                    <p>Final features, optimization, and user testing</p>
+                    <ul>
+                        <li>Game juice</li>
+                        <li>Bug fixing</li>
+                        <li>Final testing</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">6</div>
+                    <h4>Post-production (Weeks 19-20)</h4>
+                    <p>Final submission preparation and portfolio completion</p>
+                    <ul>
+                        <li>Documentation review</li>
+                        <li>Video creation</li>
+                        <li>Final submission</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="navigation-section">
+                <a href="project-timeline.html" class="cta-button">
+                    <span>📅</span>
+                    View Detailed Timeline
+                </a>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📚 Key Resources</h2>
+            <p>Essential documents and templates to guide your development process.</p>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <span class="resource-icon">📋</span>
+                    <h4>Game Design Document</h4>
+                    <p>Your project blueprint and planning template</p>
+                </div>
+                
+                <div class="resource-card">
+                    <span class="resource-icon">💬</span>
+                    <h4>Feedback Log</h4>
+                    <p>Track user input and iterative improvements</p>
+                </div>
+                
+                <div class="resource-card">
+                    <span class="resource-icon">📓</span>
+                    <h4>Weekly Journal</h4>
+                    <p>Document your development journey</p>
+                </div>
+                
+                <div class="resource-card">
+                    <span class="resource-icon">📊</span>
+                    <h4>Assessment Materials</h4>
+                    <p>Task overview and marking schedules</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🔗 Quick Navigation</h2>
+            <p>Jump directly to the resources you need.</p>
+            
+            <div class="quick-links">
+                <a href="game-design-document.html" class="quick-link">
+                    <span class="quick-link-icon">📋</span>
+                    Game Design Document
+                </a>
+                
+                <a href="sprint-1-plan.html" class="quick-link">
+                    <span class="quick-link-icon">🚀</span>
+                    Sprint 1 Plan
+                </a>
+                
+                <a href="sprint-2-plan.html" class="quick-link">
+                    <span class="quick-link-icon">🎮</span>
+                    Sprint 2 Plan
+                </a>
+                
+                <a href="sprint-3-plan.html" class="quick-link">
+                    <span class="quick-link-icon">🎨</span>
+                    Sprint 3 Plan
+                </a>
+                
+                <a href="sprint-4-plan.html" class="quick-link">
+                    <span class="quick-link-icon">✨</span>
+                    Sprint 4 Plan
+                </a>
+                
+                <a href="feedback-log.html" class="quick-link">
+                    <span class="quick-link-icon">💬</span>
+                    Feedback Log
+                </a>
+                
+                <a href="weekly-journal.html" class="quick-link">
+                    <span class="quick-link-icon">📓</span>
+                    Weekly Journal
+                </a>
+                
+                <a href="final-submission.html" class="quick-link">
+                    <span class="quick-link-icon">📤</span>
+                    Final Submission
+                </a>
+                
+                <a href="assessment-task.html" class="quick-link">
+                    <span class="quick-link-icon">📋</span>
+                    Assessment Task
+                </a>
+                
+                <a href="marking-schedules.html" class="quick-link">
+                    <span class="quick-link-icon">📊</span>
+                    Marking Schedules
+                </a>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🎯 Getting Started</h2>
+            
+            <div class="info-card">
+                <h3>Recommended Starting Path</h3>
+                <ol>
+                    <li><strong>Read the Assessment Task:</strong> Understand what you're working toward</li>
+                    <li><strong>Review the Project Timeline:</strong> Get familiar with the 20-week structure</li>
+                    <li><strong>Start Your Game Design Document:</strong> Begin planning your game concept</li>
+                    <li><strong>Set Up Your Development Environment:</strong> Install Godot, GitHub Desktop, and other tools</li>
+                    <li><strong>Begin Sprint 1:</strong> Start implementing core mechanics</li>
+                </ol>
+            </div>
+            
+            <div class="info-card">
+                <h3>Success Tips</h3>
+                <ul>
+                    <li><strong>Start Simple:</strong> Focus on core gameplay before adding complexity</li>
+                    <li><strong>Document Everything:</strong> Your process is as important as your product</li>
+                    <li><strong>Test Early & Often:</strong> Get feedback from real users throughout development</li>
+                    <li><strong>Stay Organized:</strong> Use version control and maintain clear file structures</li>
+                    <li><strong>Ask for Help:</strong> Use the resources and support available to you</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="assessment-task.html" class="cta-button">
+                <span>📋</span>
+                Start Here: Assessment Task
+            </a>
+            <a href="project-timeline.html" class="cta-button">
+                <span>📅</span>
+                Project Timeline
+            </a>
+        </div>
+    </div>
+    
+    <script src="../geometric-background.js"></script>
+</body>
+</html>

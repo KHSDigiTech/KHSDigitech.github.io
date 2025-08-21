@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Journal Template - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journal-entry {
+            background: rgba(45, 45, 45, 0.9);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .week-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .journal-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .template-section {
+            margin: 1.5rem 0;
+        }
+
+        .template-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .template-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+            min-height: 60px;
+        }
+
+        .template-field.large {
+            min-height: 120px;
+        }
+
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .reflection-card {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .reflection-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 20px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .mood-tracker {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .mood-emoji {
+            font-size: 2rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.4;
+        }
+
+        .mood-emoji:hover,
+        .mood-emoji.selected {
+            opacity: 1;
+            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
+        }
+
+        .navigation-section {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 1rem;
+            }
+            
+            .journal-header {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+            
+            .reflection-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .mood-tracker {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="index.html" class="back-link">
+            <span>←</span> Back to Project Hub
+        </a>
+
+        <div class="content-card">
+            <div class="hero-section">
+                <h1>Weekly Journal Template</h1>
+                <p class="hero-subtitle">Documenting Your Development Journey</p>
+            </div>
+
+            <h2>📓 Overview</h2>
+            <p>Your weekly journal is crucial assessment evidence showing your development process, problem-solving, and reflection skills. This ongoing documentation demonstrates your learning journey and professional practice development.</p>
+            
+            <div class="info-card">
+                <h3>Why Keep a Weekly Journal?</h3>
+                <ul>
+                    <li><strong>Assessment Evidence:</strong> Shows iterative development for both standards</li>
+                    <li><strong>Problem Documentation:</strong> Records challenges and how you solved them</li>
+                    <li><strong>Reflection Practice:</strong> Develops critical thinking about your process</li>
+                    <li><strong>Progress Tracking:</strong> Helps you stay on target with timeline goals</li>
+                    <li><strong>Professional Skill:</strong> Mirrors industry practice of development logs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📝 Weekly Entry Template</h2>
+            <p>Complete one entry every week. Copy this template and fill it out with your specific experiences.</p>
+            
+            <div class="journal-entry">
+                <div class="journal-header">
+                    <div class="week-badge">Week [Number] - [Sprint Phase]</div>
+                    <div class="journal-date">[Date Range: DD/MM - DD/MM/2024]</div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎯 This Week's Goals</h4>
+                    <div class="template-field">
+                        What specific tasks and objectives did you set for this week? Reference your sprint plan.
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>✅ Achievements & Progress</h4>
+                    <div class="template-field large">
+                        What did you actually accomplish? Include completed features, assets created, problems solved, and any unexpected positive outcomes.
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>⚡ Challenges & Problems</h4>
+                    <div class="template-field large">
+                        What obstacles did you encounter? Technical issues, creative blocks, time management problems, etc. Be specific about what made these challenging.
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🔧 Solutions & Learning</h4>
+                    <div class="template-field large">
+                        How did you address the challenges? What resources did you use? What did you learn from these experiences? Include failed attempts too.
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🧠 Key Learning Moments</h4>
+                    <div class="template-field">
+                        What was the most important thing you learned this week? New technical skills, design insights, or process improvements?
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>📈 Assessment Progress</h4>
+                    <div class="reflection-grid">
+                        <div class="reflection-card">
+                            <h4>AS91893 Progress</h4>
+                            <div class="progress-label">
+                                <span>Planning & Design</span>
+                                <span>[X]%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%;"></div>
+                            </div>
+                            <div class="template-field">
+                                How does this week's work contribute to the digital media outcome? What evidence are you generating?
+                            </div>
+                        </div>
+                        <div class="reflection-card">
+                            <h4>AS91897 Progress</h4>
+                            <div class="progress-label">
+                                <span>Technical Implementation</span>
+                                <span>[X]%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%;"></div>
+                            </div>
+                            <div class="template-field">
+                                How does this week's work contribute to the digital technologies outcome? What technical skills are you demonstrating?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎭 Mood & Motivation</h4>
+                    <p>How did you feel about your progress this week?</p>
+                    <div class="mood-tracker">
+                        <div class="mood-emoji" title="Frustrated">😤</div>
+                        <div class="mood-emoji" title="Confused">😕</div>
+                        <div class="mood-emoji" title="Neutral">😐</div>
+                        <div class="mood-emoji" title="Satisfied">😊</div>
+                        <div class="mood-emoji" title="Excited">🤩</div>
+                    </div>
+                    <div class="template-field">
+                        Explain your mood choice. What factors influenced how you felt about your progress?
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎯 Next Week's Focus</h4>
+                    <div class="template-field">
+                        Based on this week's outcomes, what will you prioritize next week? Any changes to your approach or timeline?
+                    </div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🔗 Resources Used</h4>
+                    <div class="template-field">
+                        List websites, tutorials, people, tools, or other resources that helped you this week. Include links where possible.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>📚 Example Weekly Entries</h2>
+            
+            <div class="journal-entry">
+                <div class="journal-header">
+                    <div class="week-badge">Week 3 - Sprint 1</div>
+                    <div class="journal-date">18/03 - 24/03/2024</div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎯 This Week's Goals</h4>
+                    <p>Implement player movement mechanics, create basic enemy AI, and set up collision detection system. Goal was to have a playable character that can interact with the environment.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>✅ Achievements & Progress</h4>
+                    <p>Successfully implemented smooth player movement with acceleration and deceleration. Created a simple enemy that follows the player when in range. Set up basic collision detection between player, enemies, and platforms. Player can now take damage and respawn at checkpoints. The game feels much more interactive than last week.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>⚡ Challenges & Problems</h4>
+                    <p>Spent 3 hours debugging collision detection - player was falling through platforms randomly. Enemy AI was too aggressive and made the game unplayable. Had trouble understanding Godot's physics system and when to use RigidBody2D vs CharacterBody2D.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🔧 Solutions & Learning</h4>
+                    <p>Fixed collision issue by adjusting collision layers and masks properly. Found a great tutorial on Godot's collision system. Reduced enemy speed and added a detection radius so they don't chase from across the map. Learned that CharacterBody2D is better for platformer characters because it gives more control.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🧠 Key Learning Moments</h4>
+                    <p>Understanding the difference between collision layers and masks was huge - it solved multiple problems at once. Also realized that playtesting immediately after implementing a feature helps catch issues before they become complicated.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎭 Mood & Motivation</h4>
+                    <p>😊 Satisfied - Despite the debugging frustrations, seeing the game become actually playable was really rewarding. The collision bug was annoying but solving it felt like a real achievement.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎯 Next Week's Focus</h4>
+                    <p>Add sound effects for movement and combat. Implement basic UI for health display. Start working on level design and creating more interesting enemy behaviors. Need to catch up slightly on sprint timeline.</p>
+                </div>
+            </div>
+
+            <div class="journal-entry">
+                <div class="journal-header">
+                    <div class="week-badge">Week 8 - Sprint 2</div>
+                    <div class="journal-date">22/04 - 28/04/2024</div>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎯 This Week's Goals</h4>
+                    <p>Complete main menu system, implement game state management, and gather first round of user feedback. Focus on having a complete game loop from start to end.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>✅ Achievements & Progress</h4>
+                    <p>Created polished main menu with background animation and sound effects. Implemented proper scene transitions between menu, game, and game over screens. Successfully conducted feedback session with 3 classmates - documented their responses in feedback log. Game now has a proper beginning, middle, and end experience.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>⚡ Challenges & Problems</h4>
+                    <p>Menu buttons weren't responding consistently - discovered it was a layer ordering issue. One tester found a way to break the game by pausing during scene transitions. Feedback revealed that the difficulty spike in level 2 is too harsh for new players.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🔧 Solutions & Learning</h4>
+                    <p>Fixed button issue by adjusting CanvasLayer ordering and ensuring proper input handling. Added pause state checking during scene transitions. Planned difficulty adjustment for next week based on user feedback - will add more intermediate challenges in level 1.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🧠 Key Learning Moments</h4>
+                    <p>Watching people play my game was incredibly valuable - they found issues I never would have noticed and played in ways I didn't expect. Their feedback will definitely improve the final product.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎭 Mood & Motivation</h4>
+                    <p>🤩 Excited - Seeing other people actually enjoy playing something I made was amazing! The positive feedback really boosted my confidence and gave me great ideas for improvements.</p>
+                </div>
+
+                <div class="template-section">
+                    <h4>🎯 Next Week's Focus</h4>
+                    <p>Implement feedback suggestions, start adding placeholder art with proper sprites, and begin audio integration. Goal is to have a more polished visual experience for Sprint 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>💡 Journal Writing Tips</h2>
+            
+            <div class="reflection-grid">
+                <div class="reflection-card">
+                    <h4>📝 Writing Quality</h4>
+                    <ul>
+                        <li>Write clearly and specifically</li>
+                        <li>Use proper grammar and spelling</li>
+                        <li>Include technical terminology correctly</li>
+                        <li>Explain your thinking process</li>
+                    </ul>
+                </div>
+                
+                <div class="reflection-card">
+                    <h4>🎯 Assessment Focus</h4>
+                    <ul>
+                        <li>Connect activities to learning objectives</li>
+                        <li>Show problem-solving processes</li>
+                        <li>Demonstrate iterative improvement</li>
+                        <li>Reference both assessment standards</li>
+                    </ul>
+                </div>
+                
+                <div class="reflection-card">
+                    <h4>⏰ Time Management</h4>
+                    <ul>
+                        <li>Write entries while experience is fresh</li>
+                        <li>Keep brief notes during the week</li>
+                        <li>Set aside 30 minutes for reflection</li>
+                        <li>Update regularly, don't batch weeks together</li>
+                    </ul>
+                </div>
+                
+                <div class="reflection-card">
+                    <h4>🔍 Evidence Collection</h4>
+                    <ul>
+                        <li>Include screenshots of progress</li>
+                        <li>Link to code commits or builds</li>
+                        <li>Reference feedback sessions</li>
+                        <li>Document resource usage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="feedback-log.html" class="cta-button">
+                <span>←</span>
+                Feedback Log
+            </a>
+            <a href="final-submission.html" class="cta-button">
+                <span>→</span>
+                Final Submission
+            </a>
+        </div>
+    </div>
+    
+    <script src="../geometric-background.js"></script>
+</body>
+</html>

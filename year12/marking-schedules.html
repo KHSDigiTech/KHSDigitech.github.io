@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marking Schedules - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .schedule-container {
+            background: rgba(45, 45, 45, 0.9);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            margin: 2rem 0;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .schedule-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            margin: 0;
+        }
+
+        .schedule-header h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .schedule-header .standard-code {
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .grade-table th,
+        .grade-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+        }
+
+        .grade-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .grade-table td {
+            color: var(--text-secondary);
+        }
+
+        .grade-level {
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            min-width: 80px;
+            display: inline-block;
+        }
+
+        .grade-achieved {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+        }
+
+        .grade-merit {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+        }
+
+        .grade-excellence {
+            background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+        }
+
+        .criteria-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .criteria-list li {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .criteria-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0.8rem;
+            top: 0.8rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .evidence-examples {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .evidence-examples h5 {
+            color: var(--secondary-color);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .evidence-examples ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .evidence-examples li {
+            margin: 0.3rem 0;
+        }
+
+        .progression-indicator {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .progression-arrow {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+
+        .self-assessment {
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .self-assessment h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .assessment-checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .assessment-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .assessment-item:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .assessment-item.checked {
+            border-color: var(--secondary-color);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .assessment-checkbox {
+            float: right;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1rem;
+        }
+
+        .assessment-checkbox.checked {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .assessment-checkbox.checked::after {
+            content: "✓";
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
+        }
+
+        .navigation-section {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 1rem;
+            }
+            
+            .grade-table {
+                font-size: 0.9rem;
+            }
+            
+            .grade-table th,
+            .grade-table td {
+                padding: 0.75rem;
+            }
+            
+            .assessment-checklist {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .progression-indicator {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="index.html" class="back-link">
+            <span>←</span> Back to Project Hub
+        </a>
+
+        <div class="content-card">
+            <div class="hero-section">
+                <h1>Marking Schedules</h1>
+                <p class="hero-subtitle">Understanding Assessment Criteria & Grade Boundaries</p>
+            </div>
+
+            <h2>📊 Overview</h2>
+            <p>These marking schedules show exactly what is required to achieve each grade level for both assessment standards. Use these to guide your development process and self-assess your progress throughout the project.</p>
+            
+            <div class="info-card">
+                <h3>Grade Progression</h3>
+                <div class="progression-indicator">
+                    <div class="grade-level grade-achieved">Achieved</div>
+                    <div class="progression-arrow">→</div>
+                    <div class="grade-level grade-merit">Merit</div>
+                    <div class="progression-arrow">→</div>
+                    <div class="grade-level grade-excellence">Excellence</div>
+                </div>
+                <p>Each level builds upon the previous one. To achieve Merit, you must first meet all Achieved criteria, plus the additional Merit requirements. Excellence requires meeting all Achieved and Merit criteria, plus Excellence-specific requirements.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>🎨 AS91893 - Digital Media Outcome</h2>
+            
+            <div class="schedule-container">
+                <div class="schedule-header">
+                    <h3>Use advanced processes to develop a digital media outcome</h3>
+                    <div class="standard-code">AS91893 • 4 Credits • Internal</div>
+                </div>
+                
+                <table class="grade-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Grade Level</th>
+                            <th style="width: 80%;">Criteria & Evidence Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="grade-level grade-achieved">Achieved</div>
+                            </td>
+                            <td>
+                                <ul class="criteria-list">
+                                    <li>Follows a structured design process with clear planning documentation</li>
+                                    <li>Engages with stakeholders to gather requirements and feedback</li>
+                                    <li>Creates a complete, functional digital media outcome (game)</li>
+                                    <li>Uses advanced tools and techniques appropriately</li>
+                                    <li>Documents the development process and design decisions</li>
+                                    <li>Shows evidence of testing and basic improvements</li>
+                                </ul>
+                                <div class="evidence-examples">
+                                    <h5>Evidence Examples:</h5>
+                                    <ul>
+                                        <li>Game Design Document with clear objectives and planning</li>
+                                        <li>Stakeholder feedback sessions (minimum 2-3 different people)</li>
+                                        <li>Working game with complete gameplay loop</li>
+                                        <li>Development journal showing process</li>
+                                        <li>Basic user testing with documented improvements</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grade-level grade-merit">Merit</div>
+                            </td>
+                            <td>
+                                <ul class="criteria-list">
+                                    <li>All Achieved criteria PLUS:</li>
+                                    <li>Demonstrates informed decision-making based on stakeholder needs</li>
+                                    <li>Shows clear understanding of design principles and user experience</li>
+                                    <li>Integrates feedback effectively to improve the outcome</li>
+                                    <li>Uses advanced techniques with clear understanding and rationale</li>
+                                    <li>Outcome shows sophistication and attention to detail</li>
+                                </ul>
+                                <div class="evidence-examples">
+                                    <h5>Evidence Examples:</h5>
+                                    <ul>
+                                        <li>Detailed analysis of user needs and how they influenced design</li>
+                                        <li>Multiple feedback sessions with comprehensive responses</li>
+                                        <li>Clear before/after examples showing iterative improvement</li>
+                                        <li>Sophisticated use of design principles (color theory, UI/UX)</li>
+                                        <li>Well-justified technical and artistic choices</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grade-level grade-excellence">Excellence</div>
+                            </td>
+                            <td>
+                                <ul class="criteria-list">
+                                    <li>All Achieved and Merit criteria PLUS:</li>
+                                    <li>Demonstrates comprehensive understanding of advanced design concepts</li>
+                                    <li>Shows extensive iterative refinement based on thorough testing</li>
+                                    <li>Outcome is polished, professional-quality, and highly effective</li>
+                                    <li>Advanced techniques are used innovatively and effectively</li>
+                                    <li>Deep integration of stakeholder feedback with sophisticated analysis</li>
+                                </ul>
+                                <div class="evidence-examples">
+                                    <h5>Evidence Examples:</h5>
+                                    <ul>
+                                        <li>Extensive user testing with diverse stakeholder groups</li>
+                                        <li>Professional-level polish in visual design and user experience</li>
+                                        <li>Innovative or particularly sophisticated design solutions</li>
+                                        <li>Comprehensive analysis of design effectiveness</li>
+                                        <li>Exceptional integration of feedback into refined outcome</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>💻 AS91897 - Digital Technologies Outcome</h2>
+            
+            <div class="schedule-container">
+                <div class="schedule-header">
+                    <h3>Use advanced programming techniques to develop a digital technologies outcome</h3>
+                    <div class="standard-code">AS91897 • 6 Credits • Internal</div>
+                </div>
+                
+                <table class="grade-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Grade Level</th>
+                            <th style="width: 80%;">Criteria & Evidence Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="grade-level grade-achieved">Achieved</div>
+                            </td>
+                            <td>
+                                <ul class="criteria-list">
+                                    <li>Uses advanced programming techniques effectively</li>
+                                    <li>Creates a complete, functional digital technologies outcome</li>
+                                    <li>Demonstrates understanding of programming concepts and structures</li>
+                                    <li>Shows evidence of testing and debugging</li>
+                                    <li>Documents technical decisions and implementation</li>
+                                    <li>Uses appropriate data structures and algorithms</li>
+                                </ul>
+                                <div class="evidence-examples">
+                                    <h5>Evidence Examples:</h5>
+                                    <ul>
+                                        <li>Complete source code with clear structure and comments</li>
+                                        <li>Implementation of object-oriented programming concepts</li>
+                                        <li>Use of advanced data structures (arrays, lists, dictionaries)</li>
+                                        <li>Evidence of algorithm implementation (pathfinding, collision detection)</li>
+                                        <li>Documentation of technical challenges and solutions</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grade-level grade-merit">Merit</div>
+                            </td>
+                            <td>
+                                <ul class="criteria-list">
+                                    <li>All Achieved criteria PLUS:</li>
+                                    <li>Demonstrates informed use of advanced programming techniques</li>
+                                    <li>Shows clear understanding of why specific techniques were chosen</li>
+                                    <li>Implements sophisticated programming solutions</li>
+                                    <li>Evidence of optimization and efficiency considerations</li>
+                                    <li>Well-structured, maintainable code with good practices</li>
+                                </ul>
+                                <div class="evidence-examples">
+                                    <h5>Evidence Examples:</h5>
+                                    <ul>
+                                        <li>Sophisticated AI behaviors or game mechanics</li>
+                                        <li>Efficient algorithms with performance considerations</li>
+                                        <li>Advanced design patterns (state machines, observer pattern)</li>
+                                        <li>Clear justification for technical architecture decisions</li>
+                                        <li>Evidence of code refactoring and optimization</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grade-level grade-excellence">Excellence</div>
+                            </td>
+                            <td>
+                                <ul class="criteria-list">
+                                    <li>All Achieved and Merit criteria PLUS:</li>
+                                    <li>Demonstrates exceptional understanding and application of programming concepts</li>
+                                    <li>Implements highly sophisticated or innovative technical solutions</li>
+                                    <li>Shows mastery of advanced programming techniques</li>
+                                    <li>Code is professional-quality with excellent structure and documentation</li>
+                                    <li>Comprehensive testing and robust error handling</li>
+                                </ul>
+                                <div class="evidence-examples">
+                                    <h5>Evidence Examples:</h5>
+                                    <ul>
+                                        <li>Innovative or particularly complex technical implementations</li>
+                                        <li>Advanced algorithms (A* pathfinding, complex physics)</li>
+                                        <li>Sophisticated architecture with multiple interacting systems</li>
+                                        <li>Professional-level code quality and documentation</li>
+                                        <li>Comprehensive testing framework and error handling</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>✅ Self-Assessment Checklist</h2>
+            
+            <div class="self-assessment">
+                <h3>Track Your Progress</h3>
+                <p>Use this checklist throughout your project to monitor your progress toward each grade level. Click items to mark them as complete.</p>
+                
+                <h4>AS91893 - Digital Media Self-Check</h4>
+                <div class="assessment-checklist">
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Structured Planning:</strong> Complete Game Design Document with clear objectives and methodology
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Stakeholder Engagement:</strong> Documented feedback sessions with multiple stakeholders
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Functional Outcome:</strong> Complete, playable game with all planned features
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Advanced Techniques:</strong> Sophisticated use of design tools and methodologies
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Iterative Improvement:</strong> Clear evidence of refinement based on feedback
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Professional Polish:</strong> High-quality visual design and user experience
+                    </div>
+                </div>
+                
+                <h4>AS91897 - Digital Technologies Self-Check</h4>
+                <div class="assessment-checklist">
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Advanced Programming:</strong> Implementation of complex programming concepts
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Technical Documentation:</strong> Well-commented code and technical decisions documented
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Problem Solving:</strong> Evidence of debugging and technical challenge resolution
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Sophisticated Architecture:</strong> Well-structured, maintainable code
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Algorithm Implementation:</strong> Advanced algorithms and data structures
+                    </div>
+                    <div class="assessment-item" onclick="toggleCheck(this)">
+                        <div class="assessment-checkbox"></div>
+                        <strong>Technical Innovation:</strong> Creative or sophisticated technical solutions
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>💡 Assessment Tips</h2>
+            
+            <div class="info-card">
+                <h3>Maximizing Your Grade</h3>
+                <ul>
+                    <li><strong>Document Everything:</strong> Keep detailed records of your process from day one</li>
+                    <li><strong>Seek Feedback Early:</strong> Start user testing in Sprint 1, not Sprint 4</li>
+                    <li><strong>Show Your Thinking:</strong> Explain why you made specific decisions</li>
+                    <li><strong>Quality Over Quantity:</strong> Better to have fewer features that work excellently</li>
+                    <li><strong>Test on Others:</strong> Your game must work for people who didn't create it</li>
+                    <li><strong>Reflect Deeply:</strong> Show learning and growth throughout the process</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>Common Pitfalls to Avoid</h3>
+                <ul>
+                    <li>Leaving documentation until the end - it should be ongoing</li>
+                    <li>Not engaging with real stakeholders - friends and family count!</li>
+                    <li>Focusing only on technical implementation without design consideration</li>
+                    <li>Creating a game that only you can understand or play</li>
+                    <li>Not showing evidence of iteration and improvement</li>
+                    <li>Submitting work that doesn't run or has critical bugs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="assessment-task.html" class="cta-button">
+                <span>←</span>
+                Assessment Task
+            </a>
+            <a href="index.html" class="cta-button">
+                <span>→</span>
+                Project Hub
+            </a>
+        </div>
+    </div>
+    
+    <script src="../geometric-background.js"></script>
+    <script>
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            const checkbox = element.querySelector('.assessment-checkbox');
+            checkbox.classList.toggle('checked');
+            
+            // Save progress to localStorage
+            saveProgress();
+        }
+        
+        function saveProgress() {
+            const checkedItems = Array.from(document.querySelectorAll('.assessment-item')).map(item => 
+                item.classList.contains('checked')
+            );
+            
+            localStorage.setItem('markingScheduleProgress', JSON.stringify({
+                checked: checkedItems,
+                timestamp: Date.now()
+            }));
+        }
+        
+        function loadProgress() {
+            const saved = localStorage.getItem('markingScheduleProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                const items = document.querySelectorAll('.assessment-item');
+                
+                data.checked.forEach((isChecked, index) => {
+                    if (isChecked && items[index]) {
+                        items[index].classList.add('checked');
+                        items[index].querySelector('.assessment-checkbox').classList.add('checked');
+                    }
+                });
+            }
+        }
+        
+        // Load saved progress when page loads
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>

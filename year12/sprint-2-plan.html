@@ -4,73 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprint 2 Plan: Gameplay Loop & UI - Year 12 Major Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
+        .content-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #f5f5f5;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .content-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .week-card {
-            background: #f8f9fa;
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 107, 53, 0.3);
             border-left: 4px solid #ff6b35;
             padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .week-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 107, 53, 0.5);
         }
 
         .week-title {
             color: #ff6b35;
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .focus-area {
-            background: #fff3e0;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: 8px;
             margin: 0.5rem 0;
-            border-left: 4px solid #ff9800;
+            color: var(--text-primary);
         }
 
         .task-list {
-            background: white;
+            background: rgba(45, 45, 45, 0.5);
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: 8px;
             margin: 0.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .task-list ul {
             list-style-type: none;
             padding-left: 0;
+            margin: 0;
         }
 
         .task-list li {
             padding: 0.5rem 0;
             position: relative;
             padding-left: 2rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
         }
 
         .task-list li:last-child {
@@ -78,139 +77,177 @@
         }
 
         .task-list li::before {
-            content: '☐';
+            content: '▶';
             position: absolute;
             left: 0;
-            font-size: 1.2rem;
             color: #ff6b35;
+            font-size: 0.8rem;
         }
 
         .reflection-section {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 8px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .reflection-question {
-            font-weight: bold;
-            color: #856404;
+            font-weight: 600;
+            color: var(--secondary-color);
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .reflection-answer {
-            background: white;
+            background: rgba(45, 45, 45, 0.8);
             padding: 1rem;
-            border-radius: 5px;
-            border: 2px dashed #ffc107;
+            border-radius: 8px;
+            border: 2px dashed rgba(102, 126, 234, 0.5);
             font-style: italic;
-            color: #6c757d;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
-        }
-
-        .highlight {
-            background: #ffe8cc;
-            padding: 1rem;
-            border-left: 4px solid #ff6b35;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        .next-module {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .next-link {
-            display: inline-block;
-            background: #ff6b35;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            margin: 0 10px;
-        }
-
-        .next-link:hover {
-            background: #e55a2b;
         }
 
         .sprint-goal {
-            background: #ffe8cc;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
             padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #ff6b35;
-            margin: 1rem 0;
+            border-radius: 12px;
+            margin: 1.5rem 0;
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .sprint-goal h3 {
-            color: #d84315;
+            color: #ff6b35;
             margin-bottom: 0.5rem;
-        }
-
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(to right, transparent, #ff6b35, transparent);
-            margin: 2rem 0;
-            border: none;
+            font-size: 1.3rem;
         }
 
         .tips-box {
-            background: #f0f8ff;
-            border: 1px solid #b3d9ff;
-            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .tips-box h4 {
-            color: #0066cc;
+            color: var(--secondary-color);
             margin-bottom: 1rem;
+        }
+
+        .tips-box ul {
+            color: var(--text-primary);
+        }
+
+        .tips-box li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
         }
 
         .user-testing {
-            background: #e8f5e8;
-            border: 1px solid #4caf50;
-            border-radius: 8px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .user-testing h4 {
-            color: #2e7d32;
+            color: #4caf50;
             margin-bottom: 1rem;
+        }
+
+        .user-testing ul {
+            color: var(--text-primary);
+        }
+
+        .user-testing li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(-5px);
+        }
+
+        .navigation-section {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: rgba(45, 45, 45, 0.8);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .cta-button:hover {
+            background: rgba(45, 45, 45, 1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 1rem;
+            }
+            
+            .navigation-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="../year12.html" class="back-link">← Back to Year 12 Overview</a>
+    <div class="animated-bg"></div>
+    <div class="geometric-background"></div>
+    
+    <div class="content-container">
+        <a href="index.html" class="back-link">
+            <span>←</span> Back to Project Hub
+        </a>
 
-    <div class="header">
-        <h1>Sprint 2: Gameplay Loop & UI</h1>
-        <p>Weeks 7-10 of Your Major Project</p>
-    </div>
+        <div class="hero-section">
+            <h1>Sprint 2: Gameplay Loop & UI</h1>
+            <p class="hero-subtitle">Weeks 7-10 of Your Major Project</p>
+        </div>
 
-    <div class="content-section">
+        <div class="content-card">
         <div class="sprint-goal">
             <h3>🎯 Sprint Goal</h3>
             <p>To build a complete, playable game loop with a functional user interface.</p>
         </div>
 
-        <div class="highlight">
+        <div class="info-card">
             <h3>📋 Sprint 2 Success Criteria</h3>
             <ul>
                 <li>Main menu with start/quit functionality</li>
@@ -222,10 +259,10 @@
                 <li>Feedback collected and key improvements implemented</li>
             </ul>
         </div>
-    </div>
+        </div>
 
-    <div class="content-section">
-        <h2>📅 Weekly Breakdown</h2>
+        <div class="content-card">
+            <h2>📅 Weekly Breakdown</h2>
 
         <div class="week-card">
             <div class="week-title">Week 7: Main Menu & UI Scaffolding</div>
@@ -298,12 +335,10 @@
                 </ul>
             </div>
         </div>
-    </div>
+        </div>
 
-    <hr class="section-divider">
-
-    <div class="content-section">
-        <h2>💡 Development Tips</h2>
+        <div class="content-card">
+            <h2>💡 Development Tips</h2>
         <div class="tips-box">
             <h4>UI/UX Design Tips</h4>
             <ul>
@@ -324,10 +359,10 @@
                 <li><strong>Test with Different People:</strong> Get varied perspectives and skill levels</li>
             </ul>
         </div>
-    </div>
+        </div>
 
-    <div class="content-section">
-        <h2>📝 Sprint 2 Reflection</h2>
+        <div class="content-card">
+            <h2>📝 Sprint 2 Reflection</h2>
         <p>Complete this reflection at the end of Week 10 to prepare for Sprint 3:</p>
 
         <div class="reflection-section">
@@ -351,10 +386,10 @@
                 Your detailed answer here - what visual/audio elements need the most attention?
             </div>
         </div>
-    </div>
+        </div>
 
-    <div class="content-section">
-        <h2>✅ Sprint 2 Completion Checklist</h2>
+        <div class="content-card">
+            <h2>✅ Sprint 2 Completion Checklist</h2>
         <div class="task-list">
             <h3>Before moving to Sprint 3:</h3>
             <ul>
@@ -371,11 +406,20 @@
                 <li>Updated code committed to Git repository</li>
             </ul>
         </div>
-    </div>
+        </div>
 
-    <div class="next-module">
-        <a href="sprint-1-plan.html" class="next-link">← Sprint 1 Plan</a>
-        <a href="sprint-3-plan.html" class="next-link">Sprint 3 Plan →</a>
+        <div class="navigation-section">
+            <a href="sprint-1-plan.html" class="cta-button">
+                <span>←</span>
+                Sprint 1
+            </a>
+            <a href="sprint-3-plan.html" class="cta-button">
+                <span>→</span>
+                Sprint 3
+            </a>
+        </div>
     </div>
+    
+    <script src="../geometric-background.js"></script>
 </body>
 </html>
