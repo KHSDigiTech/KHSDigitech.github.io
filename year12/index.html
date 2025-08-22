@@ -114,12 +114,26 @@
             backdrop-filter: blur(10px);
             text-align: center;
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
         }
 
         .resource-card:hover {
             border-color: rgba(102, 126, 234, 0.5);
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .resource-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-card:hover h4 {
+            color: var(--secondary-color);
         }
 
         .resource-icon {
@@ -181,7 +195,10 @@
             </div>
 
             <h2>🎯 Project Overview</h2>
-            <p>Your comprehensive 20-week game development project combining two NZQA Level 2 achievement standards. This hub contains all the resources, templates, and guidance you need to successfully complete your major assessment.</p>
+            
+            <div class="info-card">
+                <p>Your comprehensive 20-week game development project combining two NZQA Level 2 achievement standards. This hub contains all the resources, templates, and guidance you need to successfully complete your major assessment.</p>
+            </div>
             
             <div class="project-overview">
                 <div class="overview-card">
@@ -220,7 +237,10 @@
 
         <div class="content-card">
             <h2>📅 Project Timeline</h2>
-            <p>Your 20-week journey broken into manageable phases with clear milestones and deliverables.</p>
+            
+            <div class="info-card">
+                <p>Your 20-week journey broken into manageable phases with clear milestones and deliverables.</p>
+            </div>
             
             <div class="phase-timeline">
                 <div class="phase-card">
@@ -300,38 +320,44 @@
 
         <div class="content-card">
             <h2>📚 Key Resources</h2>
-            <p>Essential documents and templates to guide your development process.</p>
+            
+            <div class="info-card">
+                <p>Essential documents and templates to guide your development process.</p>
+            </div>
             
             <div class="resource-grid">
-                <div class="resource-card">
+                <a href="game-design-document.html" class="resource-card">
                     <span class="resource-icon">📋</span>
                     <h4>Game Design Document</h4>
                     <p>Your project blueprint and planning template</p>
-                </div>
+                </a>
                 
-                <div class="resource-card">
+                <a href="feedback-log.html" class="resource-card">
                     <span class="resource-icon">💬</span>
                     <h4>Feedback Log</h4>
                     <p>Track user input and iterative improvements</p>
-                </div>
+                </a>
                 
-                <div class="resource-card">
+                <a href="weekly-journal.html" class="resource-card">
                     <span class="resource-icon">📓</span>
                     <h4>Weekly Journal</h4>
                     <p>Document your development journey</p>
-                </div>
+                </a>
                 
-                <div class="resource-card">
+                <a href="assessment-task.html" class="resource-card">
                     <span class="resource-icon">📊</span>
                     <h4>Assessment Materials</h4>
                     <p>Task overview and marking schedules</p>
-                </div>
+                </a>
             </div>
         </div>
 
         <div class="content-card">
             <h2>🔗 Quick Navigation</h2>
-            <p>Jump directly to the resources you need.</p>
+            
+            <div class="info-card">
+                <p>Jump directly to the resources you need.</p>
+            </div>
             
             <div class="quick-links">
                 <a href="game-design-document.html" class="quick-link">

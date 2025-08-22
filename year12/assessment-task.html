@@ -178,6 +178,36 @@
             font-weight: bold;
         }
 
+        .criteria-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .criteria-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            position: relative;
+            padding-left: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .criteria-item::before {
+            content: "✓";
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .criteria-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
         .timeline-integration {
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
             border: 2px solid rgba(102, 126, 234, 0.3);
@@ -292,7 +322,10 @@
             </div>
 
             <h2>🎯 Project Overview</h2>
-            <p>Your Year 12 major project combines two NZQA Level 2 achievement standards to create a comprehensive assessment of your digital technologies and design skills. You'll develop a complete game while demonstrating advanced technical implementation and sophisticated design processes.</p>
+            
+            <div class="info-card">
+                <p>Your Year 12 major project combines two NZQA Level 2 achievement standards to create a comprehensive assessment of your digital technologies and design skills. You'll develop a complete game while demonstrating advanced technical implementation and sophisticated design processes.</p>
+            </div>
             
             <div class="info-card">
                 <h3>Assessment Integration</h3>
@@ -461,62 +494,66 @@
         <div class="content-card">
             <h2>🎯 Success Criteria</h2>
             
-            <div class="info-card">
-                <h3>For Achieved Level</h3>
-                <ul>
-                    <li>Complete functional game with clear gameplay objectives</li>
-                    <li>Evidence of planning and structured development process</li>
-                    <li>Basic stakeholder engagement and user testing</li>
-                    <li>Implementation of advanced programming concepts</li>
-                    <li>Documentation of development process and decisions</li>
-                </ul>
-            </div>
-            
-            <div class="info-card">
-                <h3>For Merit Level (Informed)</h3>
-                <ul>
-                    <li>Well-designed game showing clear understanding of user needs</li>
-                    <li>Comprehensive stakeholder feedback integration</li>
-                    <li>Sophisticated programming implementation with clear rationale</li>
-                    <li>Evidence of informed decision-making throughout process</li>
-                    <li>Clear connection between design choices and user requirements</li>
-                </ul>
-            </div>
-            
-            <div class="info-card">
-                <h3>For Excellence Level (Refined)</h3>
-                <ul>
-                    <li>Polished, professional-quality game outcome</li>
-                    <li>Extensive iterative refinement based on comprehensive testing</li>
-                    <li>Innovative or highly sophisticated programming techniques</li>
-                    <li>Deep integration of advanced programming and design concepts</li>
-                    <li>Exceptional quality in both technical and design aspects</li>
-                </ul>
+            <div class="evidence-examples">
+                <div class="evidence-card">
+                    <h4>For Achieved Level</h4>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Complete functional game with clear gameplay objectives</div>
+                        <div class="criteria-item">Evidence of planning and structured development process</div>
+                        <div class="criteria-item">Basic stakeholder engagement and user testing</div>
+                        <div class="criteria-item">Implementation of advanced programming concepts</div>
+                        <div class="criteria-item">Documentation of development process and decisions</div>
+                    </div>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>For Merit Level (Informed)</h4>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Well-designed game showing clear understanding of user needs</div>
+                        <div class="criteria-item">Comprehensive stakeholder feedback integration</div>
+                        <div class="criteria-item">Sophisticated programming implementation with clear rationale</div>
+                        <div class="criteria-item">Evidence of informed decision-making throughout process</div>
+                        <div class="criteria-item">Clear connection between design choices and user requirements</div>
+                    </div>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>For Excellence Level (Refined)</h4>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Polished, professional-quality game outcome</div>
+                        <div class="criteria-item">Extensive iterative refinement based on comprehensive testing</div>
+                        <div class="criteria-item">Innovative or highly sophisticated programming techniques</div>
+                        <div class="criteria-item">Deep integration of advanced programming and design concepts</div>
+                        <div class="criteria-item">Exceptional quality in both technical and design aspects</div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="content-card">
             <h2>⚠️ Important Considerations</h2>
             
-            <div class="info-card">
-                <h3>Academic Integrity</h3>
-                <p>All work must be your own. You may use tutorials, online resources, and seek help, but you must:</p>
-                <ul>
-                    <li>Clearly document all resources and assistance received</li>
-                    <li>Ensure the majority of the work demonstrates your own skills</li>
-                    <li>Properly attribute any code, assets, or ideas from external sources</li>
-                    <li>Demonstrate understanding of all implemented features</li>
-                </ul>
-            </div>
-            
-            <div class="info-card">
-                <h3>Submission Requirements</h3>
-                <ul>
-                    <li><strong>Deadline:</strong> [Insert specific deadline date]</li>
-                    <li><strong>Format:</strong> Digital submission including playable game and documentation</li>
-                    <li><strong>File Organization:</strong> Clear folder structure with all required evidence</li>
-                    <li><strong>Backup:</strong> Keep multiple copies of all work</li>
-                </ul>
+            <div class="evidence-examples">
+                <div class="evidence-card">
+                    <h4>Academic Integrity</h4>
+                    <p>All work must be your own. You may use tutorials, online resources, and seek help, but you must:</p>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Clearly document all resources and assistance received</div>
+                        <div class="criteria-item">Ensure the majority of the work demonstrates your own skills</div>
+                        <div class="criteria-item">Properly attribute any code, assets, or ideas from external sources</div>
+                        <div class="criteria-item">Demonstrate understanding of all implemented features</div>
+                    </div>
+                </div>
+                
+                <div class="evidence-card">
+                    <h4>Submission Requirements</h4>
+                    <div class="criteria-list">
+                        <div class="criteria-item"><strong>Deadline:</strong> [Insert specific deadline date]</div>
+                        <div class="criteria-item"><strong>Format:</strong> Digital submission including playable game and documentation</div>
+                        <div class="criteria-item"><strong>File Organization:</strong> Clear folder structure with all required evidence</div>
+                        <div class="criteria-item"><strong>Backup:</strong> Keep multiple copies of all work</div>
+                    </div>
+                </div>
             </div>
         </div>
 
