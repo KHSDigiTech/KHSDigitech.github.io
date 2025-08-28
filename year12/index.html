@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Year 12 Major Project - Game Development</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="year12-shared.css">
+    <link rel="stylesheet" href="../unified-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -98,85 +97,6 @@
             color: var(--secondary-color);
             margin: 1rem 0 0.5rem 0;
         }
-
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .resource-card {
-            background: rgba(45, 45, 45, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-            text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text-primary);
-            display: block;
-        }
-
-        .resource-card:hover {
-            border-color: rgba(102, 126, 234, 0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-
-        .resource-card h4 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .resource-card:hover h4 {
-            color: var(--secondary-color);
-        }
-
-        .resource-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
-        }
-
-        .resource-card h4 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .quick-link {
-            background: rgba(45, 45, 45, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .quick-link:hover {
-            background: rgba(102, 126, 234, 0.1);
-            border-color: rgba(102, 126, 234, 0.5);
-            transform: translateX(5px);
-        }
-
-        .quick-link-icon {
-            font-size: 1.2rem;
-        }
     </style>
 </head>
 <body>
@@ -208,12 +128,12 @@
                     </div>
                     <div class="overview-content">
                         <p>Use advanced processes to develop a digital media outcome</p>
-                        <ul>
-                            <li>Design process documentation</li>
-                            <li>Stakeholder engagement</li>
-                            <li>Iterative refinement</li>
-                            <li>User-centered design</li>
-                        </ul>
+                        <div class="criteria-list">
+                            <div class="criteria-item">Design process documentation</div>
+                            <div class="criteria-item">Stakeholder engagement</div>
+                            <div class="criteria-item">Iterative refinement</div>
+                            <div class="criteria-item">User-centered design</div>
+                        </div>
                     </div>
                 </div>
                 
@@ -224,12 +144,12 @@
                     </div>
                     <div class="overview-content">
                         <p>Use advanced programming techniques to develop a digital technologies outcome</p>
-                        <ul>
-                            <li>Advanced programming concepts</li>
-                            <li>Problem-solving documentation</li>
-                            <li>Technical implementation</li>
-                            <li>Code quality and structure</li>
-                        </ul>
+                        <div class="criteria-list">
+                            <div class="criteria-item">Advanced programming concepts</div>
+                            <div class="criteria-item">Problem-solving documentation</div>
+                            <div class="criteria-item">Technical implementation</div>
+                            <div class="criteria-item">Code quality and structure</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,66 +167,66 @@
                     <div class="phase-number">1</div>
                     <h4>Pre-production (Weeks 1-2)</h4>
                     <p>Planning, idea generation, and Game Design Document creation</p>
-                    <ul>
-                        <li>Project proposal</li>
-                        <li>Complete GDD</li>
-                        <li>Tool setup</li>
-                    </ul>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Project proposal</div>
+                        <div class="criteria-item">Complete GDD</div>
+                        <div class="criteria-item">Tool setup</div>
+                    </div>
                 </div>
                 
                 <div class="phase-card">
                     <div class="phase-number">2</div>
                     <h4>Sprint 1: Core Mechanics (Weeks 3-6)</h4>
                     <p>Implement basic gameplay and core systems</p>
-                    <ul>
-                        <li>Player movement</li>
-                        <li>Core mechanics</li>
-                        <li>Basic level</li>
-                    </ul>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Player movement</div>
+                        <div class="criteria-item">Core mechanics</div>
+                        <div class="criteria-item">Basic level</div>
+                    </div>
                 </div>
                 
                 <div class="phase-card">
                     <div class="phase-number">3</div>
                     <h4>Sprint 2: Gameplay Loop (Weeks 7-10)</h4>
                     <p>Complete game flow and user interface</p>
-                    <ul>
-                        <li>Full game loop</li>
-                        <li>Menu systems</li>
-                        <li>User feedback</li>
-                    </ul>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Full game loop</div>
+                        <div class="criteria-item">Menu systems</div>
+                        <div class="criteria-item">User feedback</div>
+                    </div>
                 </div>
                 
                 <div class="phase-card">
                     <div class="phase-number">4</div>
                     <h4>Sprint 3: Art & Audio (Weeks 11-14)</h4>
                     <p>Visual and audio polish, level design</p>
-                    <ul>
-                        <li>Final art assets</li>
-                        <li>Sound integration</li>
-                        <li>Level polish</li>
-                    </ul>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Final art assets</div>
+                        <div class="criteria-item">Sound integration</div>
+                        <div class="criteria-item">Level polish</div>
+                    </div>
                 </div>
                 
                 <div class="phase-card">
                     <div class="phase-number">5</div>
                     <h4>Sprint 4: Polish & Testing (Weeks 15-18)</h4>
                     <p>Final features, optimization, and user testing</p>
-                    <ul>
-                        <li>Game juice</li>
-                        <li>Bug fixing</li>
-                        <li>Final testing</li>
-                    </ul>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Game juice</div>
+                        <div class="criteria-item">Bug fixing</div>
+                        <div class="criteria-item">Final testing</div>
+                    </div>
                 </div>
                 
                 <div class="phase-card">
                     <div class="phase-number">6</div>
                     <h4>Post-production (Weeks 19-20)</h4>
                     <p>Final submission preparation and portfolio completion</p>
-                    <ul>
-                        <li>Documentation review</li>
-                        <li>Video creation</li>
-                        <li>Final submission</li>
-                    </ul>
+                    <div class="criteria-list">
+                        <div class="criteria-item">Documentation review</div>
+                        <div class="criteria-item">Video creation</div>
+                        <div class="criteria-item">Final submission</div>
+                    </div>
                 </div>
             </div>
             
@@ -417,24 +337,24 @@
             
             <div class="info-card">
                 <h3>Recommended Starting Path</h3>
-                <ol>
-                    <li><strong>Read the Assessment Task:</strong> Understand what you're working toward</li>
-                    <li><strong>Review the Project Timeline:</strong> Get familiar with the 20-week structure</li>
-                    <li><strong>Start Your Game Design Document:</strong> Begin planning your game concept</li>
-                    <li><strong>Set Up Your Development Environment:</strong> Install Godot, GitHub Desktop, and other tools</li>
-                    <li><strong>Begin Sprint 1:</strong> Start implementing core mechanics</li>
-                </ol>
+                <div class="criteria-list">
+                    <div class="criteria-item"><strong>Read the Assessment Task:</strong> Understand what you're working toward</div>
+                    <div class="criteria-item"><strong>Review the Project Timeline:</strong> Get familiar with the 20-week structure</div>
+                    <div class="criteria-item"><strong>Start Your Game Design Document:</strong> Begin planning your game concept</div>
+                    <div class="criteria-item"><strong>Set Up Your Development Environment:</strong> Install Godot, GitHub Desktop, and other tools</div>
+                    <div class="criteria-item"><strong>Begin Sprint 1:</strong> Start implementing core mechanics</div>
+                </div>
             </div>
             
             <div class="info-card">
                 <h3>Success Tips</h3>
-                <ul>
-                    <li><strong>Start Simple:</strong> Focus on core gameplay before adding complexity</li>
-                    <li><strong>Document Everything:</strong> Your process is as important as your product</li>
-                    <li><strong>Test Early & Often:</strong> Get feedback from real users throughout development</li>
-                    <li><strong>Stay Organized:</strong> Use version control and maintain clear file structures</li>
-                    <li><strong>Ask for Help:</strong> Use the resources and support available to you</li>
-                </ul>
+                <div class="criteria-list">
+                    <div class="criteria-item"><strong>Start Simple:</strong> Focus on core gameplay before adding complexity</div>
+                    <div class="criteria-item"><strong>Document Everything:</strong> Your process is as important as your product</div>
+                    <div class="criteria-item"><strong>Test Early & Often:</strong> Get feedback from real users throughout development</div>
+                    <div class="criteria-item"><strong>Stay Organized:</strong> Use version control and maintain clear file structures</div>
+                    <div class="criteria-item"><strong>Ask for Help:</strong> Use the resources and support available to you</div>
+                </div>
             </div>
         </div>
 

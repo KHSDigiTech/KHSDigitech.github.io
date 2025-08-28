@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Development - Year 10 Digital Technology</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../unified-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,35 +33,16 @@
                 </p>
                 
                 <!-- StarterKit Download Section -->
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                            border-radius: 15px; 
-                            padding: 25px; 
-                            margin: 30px 0; 
-                            text-align: center; 
-                            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                            border: 2px solid rgba(255,255,255,0.1);">
+                <div class="info-card" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); text-align: center; border: 2px solid rgba(255,255,255,0.1);">
                     <h3 style="color: #fff; margin: 0 0 15px 0; font-size: 1.5em; font-weight: 700;">
                         📦 Get Started Now!
                     </h3>
                     <p style="color: rgba(255,255,255,0.9); margin: 0 0 20px 0; font-size: 1.1em;">
                         Download the complete StarterKit with project templates, assets, and tutorials
                     </p>
-                    <a href="StarterKit.zip" 
-                       style="display: inline-block;
-                              background: #fff;
-                              color: #667eea;
-                              padding: 15px 30px;
-                              border-radius: 50px;
-                              text-decoration: none;
-                              font-weight: 700;
-                              font-size: 1.2em;
-                              box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                              transition: all 0.3s ease;
-                              transform: translateY(0);"
-                       onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)';"
-                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.2)';"
-                       download>
-                        ⬇️ Download StarterKit.zip
+                    <a href="../downloads/StarterKit.zip" class="cta-button" style="background: #fff; color: var(--primary-color);" download>
+                        <span>⬇️</span>
+                        Download StarterKit.zip
                     </a>
                 </div>
             </section>
