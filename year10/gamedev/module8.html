@@ -144,6 +144,18 @@
     </div>
 
     <div class="content-section">
+        <h2>📹 Tutorial Video</h2>
+        <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-bottom: 1rem;">
+            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    src="https://www.youtube.com/embed/6U8d7Fd3cjA" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="content-section">
         <h2>🎯 Learning Objectives</h2>
         <ul>
             <li>Create realistic car physics using RigidBody2D</li>
@@ -235,20 +247,18 @@ VehicleController (RigidBody2D) 🚗
 
         <div class="step-by-step">
             <h3>Step 3: Create Racing Track</h3>
-            <p><strong>Method 1: TileMap Track (Recommended)</strong></p>
+            <div class="node-info">
+                <h4>🏗️ TileMap Track Creation</h4>
+                <p><strong>Recommended Approach:</strong> Use TileMap for efficient track building</p>
+            </div>
+            
             <ol>
                 <li><strong>Add TileMap:</strong> Right-click RacingGame → Add Child → TileMap</li>
                 <li><strong>Create TileSet:</strong> In Inspector → TileSet → New TileSet</li>
-                <li><strong>Add Track Tiles:</strong> Add road, grass, and barrier sprites</li>
-                <li><strong>Set Collision:</strong> Add collision for barriers only (not road)</li>
-                <li><strong>Paint Track:</strong> Design your racing circuit</li>
-            </ol>
-            
-            <p><strong>Method 2: Individual Track Pieces</strong></p>
-            <ol>
-                <li><strong>Track Boundaries:</strong> Add StaticBody2D nodes for track edges</li>
-                <li><strong>Visual Track:</strong> Add Sprite2D nodes for road appearance</li>
-                <li><strong>Collision Barriers:</strong> CollisionShape2D for walls and obstacles</li>
+                <li><strong>Add Track Tiles:</strong> Add road, grass, and barrier sprites to your tileset</li>
+                <li><strong>Set Collision:</strong> Add collision shapes for barriers only (roads should have no collision)</li>
+                <li><strong>Paint Track Layout:</strong> Use the TileMap tools to design your racing circuit</li>
+                <li><strong>Add Variety:</strong> Include straight sections, curves, and interesting track features</li>
             </ol>
         </div>
     </div>

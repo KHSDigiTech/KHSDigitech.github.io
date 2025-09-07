@@ -628,6 +628,163 @@ body {
 }
 
 /* ==========================================================================
+   Code Formatting & Syntax Highlighting
+   ========================================================================== */
+
+.code-block {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.code-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f38ba8, #fab387, #f9e2af, #a6e3a1, #74c7ec, #cba6f7);
+  border-radius: 12px 12px 0 0;
+}
+
+/* Inline code */
+code:not(.code-block code) {
+  background: rgba(30, 30, 46, 0.8);
+  color: #f38ba8;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  font-size: 0.85em;
+  border: 1px solid rgba(243, 139, 168, 0.3);
+}
+
+/* Pre-formatted text blocks */
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced syntax highlighting for common languages */
+.code-block .comment { color: #6c7086; font-style: italic; }
+.code-block .keyword { color: #cba6f7; font-weight: 600; }
+.code-block .string { color: #a6e3a1; }
+.code-block .number { color: #fab387; }
+.code-block .function { color: #89b4fa; font-weight: 500; }
+.code-block .variable { color: #f9e2af; }
+.code-block .operator { color: #89dceb; }
+.code-block .punctuation { color: #bac2de; }
+
+/* Language-specific styling */
+.code-block.python .def { color: #f38ba8; font-weight: 600; }
+.code-block.javascript .function { color: #74c7ec; }
+.code-block.html .tag { color: #f38ba8; }
+.code-block.css .property { color: #89b4fa; }
+
+/* Code block with language label */
+.code-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-language-label {
+  position: absolute;
+  top: -12px;
+  right: 1rem;
+  background: #89b4fa;
+  color: #1e1e2e;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 1;
+}
+
+/* Copy button for code blocks */
+.code-copy-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(45, 45, 45, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-secondary);
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.code-block:hover .code-copy-button {
+  opacity: 1;
+}
+
+.code-copy-button:hover {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.4);
+  color: var(--text-primary);
+}
+
+/* Terminal/Command line styling */
+.terminal-block {
+  background: #0d1117;
+  color: #c9d1d9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid #30363d;
+  position: relative;
+}
+
+.terminal-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #21262d;
+  border-radius: 12px 12px 0 0;
+}
+
+.terminal-prompt {
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+.terminal-command {
+  color: #58a6ff;
+}
+
+.terminal-output {
+  color: #8b949e;
+}
+
+/* ==========================================================================
    Utility Classes
    ========================================================================== */
 

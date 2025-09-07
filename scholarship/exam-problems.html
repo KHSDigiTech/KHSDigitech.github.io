@@ -13,7 +13,7 @@
             line-height: 1.6;
             background-color: #f5f5f5;
         }
-        
+
         .header {
             background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
             color: white;
@@ -88,14 +88,17 @@
         }
         
         .code-block {
-            background: #1e293b;
-            color: #e2e8f0;
+            background: #1e1e2e;
+            color: #cdd6f4;
             padding: 1.5rem;
             border-radius: 8px;
-            font-family: 'Courier New', monospace;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
             overflow-x: auto;
             margin: 1rem 0;
             font-size: 0.9rem;
+            line-height: 1.4;
+            white-space: pre;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .back-link {
@@ -256,7 +259,6 @@
             <a href="#greedy">Greedy Algorithms</a>
             <a href="#patterns">Problem Patterns</a>
             <a href="#advanced">Advanced Topics</a>
-        </div>
     </div>
 
     <div class="category-header" id="algorithms">
@@ -434,13 +436,13 @@ def knightMinMoves(n, start, end):
                 <li><strong>Minimum board size:</strong> 4×4 (smaller boards may have unreachable squares)</li>
             </ul>
         </div>
-    </div>
+        </div>
 
-    <div class="category-header" id="dynamic">
-        <h2>Category 3: Dynamic Programming & Optimization</h2>
-    </div>
+        <div class="category-header" id="dynamic">
+            <h2>Category 3: Dynamic Programming & Optimization</h2>
+        </div>
 
-    <div class="problem-card">
+        <div class="content-card">
         <div class="problem-header">
             <h3 class="problem-title">4. 0/1 Knapsack Problem</h3>
             <span class="difficulty-badge medium">Medium</span>
@@ -501,13 +503,13 @@ def knapsack_optimized(capacity, weights, values, n):
                 <li>Mention NP-completeness and why DP is pseudo-polynomial</li>
             </ul>
         </div>
-    </div>
+        </div>
 
-    <div class="category-header" id="data-structures">
-        <h2>Category 4: Advanced Data Structures</h2>
-    </div>
+        <div class="category-header" id="data-structures">
+            <h2>Category 4: Advanced Data Structures</h2>
+        </div>
 
-    <div class="problem-card">
+        <div class="content-card">
         <div class="problem-header">
             <h3 class="problem-title">5. Sliding Window Maximum</h3>
             <span class="difficulty-badge hard">Hard</span>
@@ -566,6 +568,1776 @@ def sliding_window_maximum(nums, k):
                 <li><strong>Amortized Analysis:</strong> Each element added/removed at most once</li>
             </ul>
         </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">6. Binary Search Tree Validation</h3>
+                <span class="difficulty-badge medium">Medium</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Given a binary tree, determine if it is a valid binary search tree. Consider edge cases like duplicate values and integer overflow.</p>
+                
+                <p><strong>Example:</strong> Tree [5,1,4,null,null,3,6] → False (4 > 5 but in right subtree)</p>
+                <p><strong>Expected Skills:</strong> Tree traversal, constraint validation, edge case handling</p>
+            </div>
+
+            <div class="solution-approach">
+                <h4>Multiple Approaches:</h4>
+                <ol>
+                    <li><strong>In-order traversal:</strong> Should produce sorted sequence</li>
+                    <li><strong>Min-Max bounds:</strong> Validate node values against valid range</li>
+                    <li><strong>Recursive validation:</strong> Check left < node < right with bounds</li>
+                </ol>
+            </div>
+
+            <div class="code-block">
+def isValidBST(root):
+    def validate(node, min_val, max_val):
+        if not node:
+            return True
+        
+        if node.val <= min_val or node.val >= max_val:
+            return False
+        
+        return (validate(node.left, min_val, node.val) and 
+                validate(node.right, node.val, max_val))
+    
+    return validate(root, float('-inf'), float('inf'))
+            </div>
+
+            <div class="complexity-analysis">
+                <h4>Complexity Analysis:</h4>
+                <ul>
+                    <li><strong>Time Complexity:</strong> O(n) - visit each node once</li>
+                    <li><strong>Space Complexity:</strong> O(h) - recursion stack depth</li>
+                    <li><strong>Edge Cases:</strong> Empty tree (valid), single node, duplicates</li>
+                </ul>
+            </div>
+
+            <div class="scholarship-tips">
+                <h4>Scholarship-Level Insights:</h4>
+                <ul>
+                    <li>Discuss why simple parent-child comparison fails</li>
+                    <li>Explain integer overflow considerations</li>
+                    <li>Compare iterative vs recursive approaches</li>
+                    <li>Analyze different traversal methods</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">7. Merge Intervals</h3>
+                <span class="difficulty-badge medium">Medium</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Given a collection of intervals, merge all overlapping intervals. Handle edge cases and optimize for both time and space.</p>
+                
+                <p><strong>Example:</strong> [[1,3],[2,6],[8,10],[15,18]] → [[1,6],[8,10],[15,18]]</p>
+                <p><strong>Expected Skills:</strong> Sorting, interval processing, optimization</p>
+            </div>
+
+            <div class="solution-approach">
+                <h4>Solution Strategy:</h4>
+                <ol>
+                    <li><strong>Sort by start time:</strong> Process intervals in order</li>
+                    <li><strong>Merge overlapping:</strong> Compare current with last merged</li>
+                    <li><strong>Edge cases:</strong> Empty input, single interval, no overlaps</li>
+                </ol>
+            </div>
+
+            <div class="code-block">
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+    
+    # Sort by start time
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    
+    for current in intervals[1:]:
+        last = merged[-1]
+        
+        # Check if intervals overlap
+        if current[0] <= last[1]:
+            # Merge intervals
+            merged[-1] = [last[0], max(last[1], current[1])]
+        else:
+            # No overlap, add current interval
+            merged.append(current)
+    
+    return merged
+            </div>
+
+            <div class="complexity-analysis">
+                <h4>Analysis:</h4>
+                <ul>
+                    <li><strong>Time:</strong> O(n log n) due to sorting</li>
+                    <li><strong>Space:</strong> O(1) excluding output array</li>
+                    <li><strong>Optimization:</strong> Could use O(n) if intervals pre-sorted</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="category-header" id="mathematical">
+            <h2>Category 5: Mathematical & Number Theory</h2>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">8. Prime Factorization & Applications</h3>
+                <span class="difficulty-badge medium">Medium</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Implement efficient prime factorization and use it to solve: GCD, LCM, counting divisors, and checking perfect powers.</p>
+                
+                <p><strong>Input:</strong> Number n ≤ 10^12</p>
+                <p><strong>Expected Skills:</strong> Number theory, optimization, mathematical algorithms</p>
+            </div>
+
+            <div class="solution-approach">
+                <h4>Advanced Techniques:</h4>
+                <ol>
+                    <li><strong>Trial Division:</strong> Basic approach up to √n</li>
+                    <li><strong>Pollard's Rho:</strong> For large composite factors</li>
+                    <li><strong>Sieve Integration:</strong> Precompute small primes</li>
+                    <li><strong>Applications:</strong> GCD, LCM, divisor counting</li>
+                </ol>
+            </div>
+
+            <div class="code-block">
+def prime_factorization(n):
+    factors = {}
+    d = 2
+    
+    # Handle factor of 2
+    while n % 2 == 0:
+        factors[2] = factors.get(2, 0) + 1
+        n //= 2
+    
+    # Check odd factors
+    d = 3
+    while d * d <= n:
+        while n % d == 0:
+            factors[d] = factors.get(d, 0) + 1
+            n //= d
+        d += 2
+    
+    # If n is still > 1, it's a prime factor
+    if n > 1:
+        factors[n] = 1
+        
+    return factors
+
+def gcd_from_factors(factors_a, factors_b):
+    gcd = 1
+    for prime in set(factors_a.keys()) & set(factors_b.keys()):
+        gcd *= prime ** min(factors_a[prime], factors_b[prime])
+    return gcd
+            </div>
+
+            <div class="complexity-analysis">
+                <h4>Complexity Analysis:</h4>
+                <ul>
+                    <li><strong>Time:</strong> O(√n) for trial division</li>
+                    <li><strong>Advanced:</strong> O(n^1/4) with Pollard's Rho</li>
+                    <li><strong>Applications:</strong> GCD, LCM in O(log min(a,b))</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">9. Matrix Exponentiation</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Calculate the nth Fibonacci number, nth term of linear recurrence, or solve system dynamics using matrix exponentiation for very large n (up to 10^18).</p>
+                
+                <p><strong>Example Applications:</strong> Fibonacci, Tribonacci, graph path counting</p>
+                <p><strong>Expected Skills:</strong> Matrix operations, fast exponentiation, recurrence relations</p>
+            </div>
+
+            <div class="solution-approach">
+                <h4>Matrix Exponentiation Approach:</h4>
+                <ol>
+                    <li><strong>Transform recurrence:</strong> Express as matrix equation</li>
+                    <li><strong>Fast exponentiation:</strong> Binary exponentiation on matrices</li>
+                    <li><strong>Optimize:</strong> Use appropriate modular arithmetic</li>
+                </ol>
+            </div>
+
+            <div class="code-block">
+def matrix_multiply(A, B, mod):
+    n = len(A)
+    C = [[0] * n for _ in range(n)]
+    
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % mod
+    
+    return C
+
+def matrix_power(matrix, n, mod):
+    size = len(matrix)
+    # Identity matrix
+    result = [[1 if i == j else 0 for j in range(size)] for i in range(size)]
+    base = [row[:] for row in matrix]  # Copy matrix
+    
+    while n > 0:
+        if n % 2 == 1:
+            result = matrix_multiply(result, base, mod)
+        base = matrix_multiply(base, base, mod)
+        n //= 2
+    
+    return result
+
+def fibonacci(n, mod=1000000007):
+    if n <= 1:
+        return n
+    
+    # Transformation matrix for Fibonacci
+    # [F(n+1)]   [1 1]^n   [F(1)]   [1 1]^n   [1]
+    # [F(n)  ] = [1 0]   * [F(0)] = [1 0]   * [0]
+    
+    transform = [[1, 1], [1, 0]]
+    result_matrix = matrix_power(transform, n, mod)
+    
+    return result_matrix[0][1]  # F(n)
+            </div>
+
+            <div class="scholarship-tips">
+                <h4>Advanced Analysis:</h4>
+                <ul>
+                    <li>Explain how recurrence relations become matrix equations</li>
+                    <li>Discuss applications beyond Fibonacci (grid paths, linear recurrences)</li>
+                    <li>Compare with iterative approach for smaller n</li>
+                    <li>Analyze numerical stability and overflow handling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">10. Modular Arithmetic & Chinese Remainder Theorem</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Solve systems of modular equations and implement fast modular exponentiation. Handle cases where moduli are not coprime.</p>
+                
+                <p><strong>Example:</strong> x ≡ 2 (mod 3), x ≡ 3 (mod 5), x ≡ 2 (mod 7) → x = 23</p>
+                <p><strong>Expected Skills:</strong> Number theory, extended Euclidean algorithm, optimization</p>
+            </div>
+
+            <div class="code-block">
+def extended_gcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    
+    gcd, x1, y1 = extended_gcd(b % a, a)
+    x = y1 - (b // a) * x1
+    y = x1
+    
+    return gcd, x, y
+
+def chinese_remainder_theorem(remainders, moduli):
+    if len(remainders) != len(moduli):
+        return None
+    
+    # Check if moduli are pairwise coprime
+    n = len(remainders)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if extended_gcd(moduli[i], moduli[j])[0] != 1:
+                return None  # Not pairwise coprime
+    
+    total_mod = 1
+    for mod in moduli:
+        total_mod *= mod
+    
+    result = 0
+    for i in range(n):
+        Mi = total_mod // moduli[i]
+        gcd, yi, _ = extended_gcd(Mi, moduli[i])
+        result = (result + remainders[i] * Mi * yi) % total_mod
+    
+    return result
+
+def fast_power_mod(base, exp, mod):
+    result = 1
+    base = base % mod
+    
+    while exp > 0:
+        if exp % 2 == 1:
+            result = (result * base) % mod
+        exp = exp >> 1
+        base = (base * base) % mod
+    
+    return result
+            </div>
+        </div>
+
+        <div class="category-header" id="greedy">
+            <h2>Category 6: Greedy Algorithms & Optimization</h2>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">11. Activity Selection & Interval Scheduling</h3>
+                <span class="difficulty-badge medium">Medium</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Given activities with start and end times, select the maximum number of non-overlapping activities. Extend to weighted interval scheduling.</p>
+                
+                <p><strong>Input:</strong> Activities [(start, end, weight), ...], maximize count or total weight</p>
+                <p><strong>Expected Skills:</strong> Greedy algorithms, proof of optimality, dynamic programming comparison</p>
+            </div>
+
+            <div class="solution-approach">
+                <h4>Greedy Strategy:</h4>
+                <ol>
+                    <li><strong>Sort by end time:</strong> Always choose activity ending earliest</li>
+                    <li><strong>Greedy choice:</strong> Take compatible activity with earliest end</li>
+                    <li><strong>Weighted version:</strong> Requires DP, greedy fails</li>
+                </ol>
+            </div>
+
+            <div class="code-block">
+def activity_selection(activities):
+    # Sort by end time
+    activities.sort(key=lambda x: x[1])
+    
+    selected = []
+    last_end = -1
+    
+    for start, end in activities:
+        if start >= last_end:
+            selected.append((start, end))
+            last_end = end
+    
+    return selected
+
+def weighted_interval_scheduling(intervals):
+    # For weighted version, need DP
+    intervals.sort(key=lambda x: x[1])  # Sort by end time
+    n = len(intervals)
+    
+    # dp[i] = maximum weight achievable using intervals 0..i
+    dp = [0] * n
+    dp[0] = intervals[0][2]  # weight of first interval
+    
+    for i in range(1, n):
+        # Option 1: Don't take current interval
+        include = intervals[i][2]
+        
+        # Option 2: Take current interval + best compatible
+        latest_compatible = find_latest_compatible(intervals, i)
+        if latest_compatible != -1:
+            include += dp[latest_compatible]
+        
+        dp[i] = max(dp[i-1], include)
+    
+    return dp[n-1]
+
+def find_latest_compatible(intervals, i):
+    # Binary search for latest job that doesn't overlap with intervals[i]
+    start_time = intervals[i][0]
+    
+    left, right = 0, i - 1
+    result = -1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if intervals[mid][1] <= start_time:
+            result = mid
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return result
+            </div>
+
+            <div class="scholarship-tips">
+                <h4>Key Insights:</h4>
+                <ul>
+                    <li>Prove why "earliest end time" greedy strategy works</li>
+                    <li>Explain why other greedy choices (shortest duration, latest start) fail</li>
+                    <li>Compare unweighted (greedy O(n log n)) vs weighted (DP O(n log n))</li>
+                    <li>Discuss applications: meeting scheduling, resource allocation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">12. Huffman Coding & Optimal Prefix Codes</h3>
+                <span class="difficulty-badge medium">Medium</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Given character frequencies, build optimal prefix-free code using Huffman's algorithm. Analyze compression ratio and prove optimality.</p>
+                
+                <p><strong>Example:</strong> Frequencies {'A':45, 'B':13, 'C':12, 'D':16, 'E':9, 'F':5}</p>
+                <p><strong>Expected Skills:</strong> Greedy algorithms, priority queues, tree construction, proof techniques</p>
+            </div>
+
+            <div class="code-block">
+import heapq
+from collections import defaultdict, Counter
+
+class HuffmanNode:
+    def __init__(self, char=None, freq=0, left=None, right=None):
+        self.char = char
+        self.freq = freq
+        self.left = left
+        self.right = right
+    
+    def __lt__(self, other):
+        if self.freq == other.freq:
+            # Tie-breaking for deterministic results
+            if self.char is None and other.char is None:
+                return False
+            if self.char is None:
+                return False
+            if other.char is None:
+                return True
+            return self.char < other.char
+        return self.freq < other.freq
+
+def build_huffman_tree(frequencies):
+    if len(frequencies) == 1:
+        # Special case: single character
+        char = list(frequencies.keys())[0]
+        root = HuffmanNode(char, frequencies[char])
+        return root
+    
+    # Create priority queue with leaf nodes
+    heap = []
+    for char, freq in frequencies.items():
+        heapq.heappush(heap, HuffmanNode(char, freq))
+    
+    # Build tree bottom-up
+    while len(heap) > 1:
+        left = heapq.heappop(heap)
+        right = heapq.heappop(heap)
+        
+        merged = HuffmanNode(
+            freq=left.freq + right.freq,
+            left=left,
+            right=right
+        )
+        
+        heapq.heappush(heap, merged)
+    
+    return heap[0]
+
+def generate_codes(root):
+    if root is None:
+        return {}
+    
+    if root.char is not None:
+        # Single character case
+        return {root.char: '0'}
+    
+    codes = {}
+    
+    def dfs(node, code):
+        if node.char is not None:
+            codes[node.char] = code
+            return
+        
+        if node.left:
+            dfs(node.left, code + '0')
+        if node.right:
+            dfs(node.right, code + '1')
+    
+    dfs(root, '')
+    return codes
+
+def huffman_encoding(text):
+    if not text:
+        return "", {}
+    
+    # Calculate frequencies
+    frequencies = Counter(text)
+    
+    # Build Huffman tree
+    root = build_huffman_tree(frequencies)
+    
+    # Generate codes
+    codes = generate_codes(root)
+    
+    # Encode text
+    encoded = ''.join(codes[char] for char in text)
+    
+    return encoded, codes
+
+def calculate_compression_ratio(text, codes):
+    original_bits = len(text) * 8  # ASCII encoding
+    
+    compressed_bits = sum(len(codes[char]) for char in text)
+    
+    return compressed_bits / original_bits
+            </div>
+
+            <div class="complexity-analysis">
+                <h4>Analysis:</h4>
+                <ul>
+                    <li><strong>Time:</strong> O(n log k) where k = unique characters</li>
+                    <li><strong>Space:</strong> O(k) for tree and codes</li>
+                    <li><strong>Optimality:</strong> Huffman codes are optimal for character-based compression</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="category-header" id="patterns">
+            <h2>Category 7: Advanced Problem Patterns</h2>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">13. Two Pointers & Sliding Window Mastery</h3>
+                <span class="difficulty-badge medium">Medium</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Solve multiple variants: 3Sum, longest substring without repeating characters, minimum window substring, container with most water.</p>
+                
+                <p><strong>Skills Tested:</strong> Pattern recognition, optimization, multiple solution approaches</p>
+            </div>
+
+            <div class="code-block">
+def three_sum(nums):
+    """Find all unique triplets that sum to zero"""
+    nums.sort()
+    result = []
+    n = len(nums)
+    
+    for i in range(n - 2):
+        # Skip duplicates for first element
+        if i > 0 and nums[i] == nums[i-1]:
+            continue
+        
+        left, right = i + 1, n - 1
+        
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            
+            if total == 0:
+                result.append([nums[i], nums[left], nums[right]])
+                
+                # Skip duplicates for second element
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                # Skip duplicates for third element
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                
+                left += 1
+                right -= 1
+            elif total < 0:
+                left += 1
+            else:
+                right -= 1
+    
+    return result
+
+def longest_substring_without_repeating(s):
+    """Sliding window approach"""
+    char_index = {}
+    left = 0
+    max_length = 0
+    
+    for right in range(len(s)):
+        if s[right] in char_index and char_index[s[right]] >= left:
+            left = char_index[s[right]] + 1
+        
+        char_index[s[right]] = right
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+def min_window_substring(s, t):
+    """Find minimum window in s containing all characters of t"""
+    from collections import Counter
+    
+    if not s or not t or len(s) < len(t):
+        return ""
+    
+    # Count characters in t
+    target_counts = Counter(t)
+    required = len(target_counts)
+    
+    # Sliding window
+    left = right = 0
+    formed = 0  # Number of unique characters in current window with desired frequency
+    
+    window_counts = {}
+    
+    # Result
+    min_len = float('inf')
+    min_left = 0
+    
+    while right < len(s):
+        # Add character from right to window
+        char = s[right]
+        window_counts[char] = window_counts.get(char, 0) + 1
+        
+        if char in target_counts and window_counts[char] == target_counts[char]:
+            formed += 1
+        
+        # Contract window from left
+        while left <= right and formed == required:
+            char = s[left]
+            
+            # Update result if this window is smaller
+            if right - left + 1 < min_len:
+                min_len = right - left + 1
+                min_left = left
+            
+            # Remove leftmost character
+            window_counts[char] -= 1
+            if char in target_counts and window_counts[char] < target_counts[char]:
+                formed -= 1
+            
+            left += 1
+        
+        right += 1
+    
+    return "" if min_len == float('inf') else s[min_left:min_left + min_len]
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">14. Advanced Graph Algorithms</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Implement and analyze: Topological sort with cycle detection, strongly connected components (Tarjan's), and maximum bipartite matching.</p>
+                
+                <p><strong>Expected Skills:</strong> Advanced graph theory, algorithm design, complexity analysis</p>
+            </div>
+
+            <div class="code-block">
+def topological_sort_kahn(graph):
+    """Kahn's algorithm for topological sorting"""
+    from collections import deque, defaultdict
+    
+    # Calculate in-degrees
+    in_degree = defaultdict(int)
+    for node in graph:
+        for neighbor in graph[node]:
+            in_degree[neighbor] += 1
+    
+    # Start with nodes having no incoming edges
+    queue = deque([node for node in graph if in_degree[node] == 0])
+    result = []
+    
+    while queue:
+        node = queue.popleft()
+        result.append(node)
+        
+        # Reduce in-degree of neighbors
+        for neighbor in graph[node]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+    
+    # Check for cycle
+    if len(result) != len(graph):
+        return None  # Cycle detected
+    
+    return result
+
+def strongly_connected_components_tarjan(graph):
+    """Tarjan's algorithm for finding SCCs"""
+    index_counter = [0]
+    stack = []
+    lowlinks = {}
+    index = {}
+    on_stack = {}
+    sccs = []
+    
+    def strongconnect(node):
+        # Set depth index for node
+        index[node] = index_counter[0]
+        lowlinks[node] = index_counter[0]
+        index_counter[0] += 1
+        stack.append(node)
+        on_stack[node] = True
+        
+        # Consider successors
+        for successor in graph.get(node, []):
+            if successor not in index:
+                # Successor not yet visited; recurse
+                strongconnect(successor)
+                lowlinks[node] = min(lowlinks[node], lowlinks[successor])
+            elif on_stack[successor]:
+                # Successor is in stack and hence in current SCC
+                lowlinks[node] = min(lowlinks[node], index[successor])
+        
+        # If node is root node, pop stack and generate SCC
+        if lowlinks[node] == index[node]:
+            scc = []
+            while True:
+                w = stack.pop()
+                on_stack[w] = False
+                scc.append(w)
+                if w == node:
+                    break
+            sccs.append(scc)
+    
+    for node in graph:
+        if node not in index:
+            strongconnect(node)
+    
+    return sccs
+
+def maximum_bipartite_matching(graph, left_nodes, right_nodes):
+    """Ford-Fulkerson for maximum bipartite matching"""
+    match_left = {}
+    match_right = {}
+    
+    def dfs(u, visited):
+        for v in graph.get(u, []):
+            if v in visited:
+                continue
+            visited.add(v)
+            
+            # If v is free or we can find an augmenting path
+            if v not in match_right or dfs(match_right[v], visited):
+                match_left[u] = v
+                match_right[v] = u
+                return True
+        return False
+    
+    matching = 0
+    for u in left_nodes:
+        if dfs(u, set()):
+            matching += 1
+    
+    return matching, match_left
+            </div>
+
+            <div class="complexity-analysis">
+                <h4>Complexity Analysis:</h4>
+                <ul>
+                    <li><strong>Topological Sort:</strong> O(V + E) time, O(V) space</li>
+                    <li><strong>Tarjan's SCC:</strong> O(V + E) time, O(V) space</li>
+                    <li><strong>Bipartite Matching:</strong> O(VE) time, O(V) space</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="category-header" id="advanced">
+            <h2>Category 8: Advanced Topics & Optimization</h2>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">15. Segment Trees & Range Queries</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Implement segment tree for range sum queries and updates. Extend to range minimum queries, lazy propagation, and coordinate compression.</p>
+                
+                <p><strong>Operations:</strong> Point update, range query, range update (with lazy propagation)</p>
+                <p><strong>Expected Skills:</strong> Advanced data structures, recursion, optimization techniques</p>
+            </div>
+
+            <div class="code-block">
+class SegmentTree:
+    def __init__(self, arr):
+        self.n = len(arr)
+        self.tree = [0] * (4 * self.n)
+        self.lazy = [0] * (4 * self.n)
+        self.build(arr, 0, 0, self.n - 1)
+    
+    def build(self, arr, node, start, end):
+        if start == end:
+            self.tree[node] = arr[start]
+        else:
+            mid = (start + end) // 2
+            self.build(arr, 2 * node + 1, start, mid)
+            self.build(arr, 2 * node + 2, mid + 1, end)
+            self.tree[node] = self.tree[2 * node + 1] + self.tree[2 * node + 2]
+    
+    def push(self, node, start, end):
+        """Apply lazy propagation"""
+        if self.lazy[node] != 0:
+            # Update current node
+            self.tree[node] += self.lazy[node] * (end - start + 1)
+            
+            # Mark children for lazy update
+            if start != end:
+                self.lazy[2 * node + 1] += self.lazy[node]
+                self.lazy[2 * node + 2] += self.lazy[node]
+            
+            # Clear lazy value
+            self.lazy[node] = 0
+    
+    def update_range(self, l, r, val):
+        """Add val to all elements in range [l, r]"""
+        self._update_range(0, 0, self.n - 1, l, r, val)
+    
+    def _update_range(self, node, start, end, l, r, val):
+        self.push(node, start, end)
+        
+        if start > r or end < l:
+            return
+        
+        if start >= l and end <= r:
+            self.lazy[node] += val
+            self.push(node, start, end)
+            return
+        
+        mid = (start + end) // 2
+        self._update_range(2 * node + 1, start, mid, l, r, val)
+        self._update_range(2 * node + 2, mid + 1, end, l, r, val)
+        
+        # Update current node after children updates
+        self.push(2 * node + 1, start, mid)
+        self.push(2 * node + 2, mid + 1, end)
+        self.tree[node] = self.tree[2 * node + 1] + self.tree[2 * node + 2]
+    
+    def query_range(self, l, r):
+        """Get sum of elements in range [l, r]"""
+        return self._query_range(0, 0, self.n - 1, l, r)
+    
+    def _query_range(self, node, start, end, l, r):
+        if start > r or end < l:
+            return 0
+        
+        self.push(node, start, end)
+        
+        if start >= l and end <= r:
+            return self.tree[node]
+        
+        mid = (start + end) // 2
+        left_sum = self._query_range(2 * node + 1, start, mid, l, r)
+        right_sum = self._query_range(2 * node + 2, mid + 1, end, l, r)
+        
+        return left_sum + right_sum
+
+# Example usage and testing
+def test_segment_tree():
+    arr = [1, 3, 5, 7, 9, 11]
+    st = SegmentTree(arr)
+    
+    # Range sum query
+    print(f"Sum of range [1, 3]: {st.query_range(1, 3)}")  # 3 + 5 + 7 = 15
+    
+    # Range update
+    st.update_range(1, 3, 10)  # Add 10 to elements at indices 1, 2, 3
+    
+    # Query after update
+    print(f"Sum after update [1, 3]: {st.query_range(1, 3)}")  # 45
+    
+    return st
+            </div>
+
+            <div class="scholarship-tips">
+                <h4>Advanced Concepts:</h4>
+                <ul>
+                    <li>Explain when to use segment trees vs other data structures</li>
+                    <li>Discuss space-time tradeoffs and when lazy propagation is necessary</li>
+                    <li>Compare with Fenwick trees, square root decomposition</li>
+                    <li>Applications: competitive programming, computational geometry</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">16. Advanced Dynamic Programming</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Solve multi-dimensional DP problems: Edit distance with operations cost, optimal BST construction, and matrix chain multiplication with memoization optimization.</p>
+                
+                <p><strong>Skills:</strong> State space design, optimization, space complexity reduction</p>
+            </div>
+
+            <div class="code-block">
+def edit_distance_advanced(str1, str2, costs={'insert': 1, 'delete': 1, 'replace': 1}):
+    """Edit distance with custom operation costs"""
+    m, n = len(str1), len(str2)
+    
+    # DP table
+    dp = [[float('inf')] * (n + 1) for _ in range(m + 1)]
+    
+    # Base cases
+    for i in range(m + 1):
+        dp[i][0] = i * costs['delete']
+    for j in range(n + 1):
+        dp[0][j] = j * costs['insert']
+    
+    # Fill DP table
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if str1[i-1] == str2[j-1]:
+                dp[i][j] = dp[i-1][j-1]  # No operation needed
+            else:
+                dp[i][j] = min(
+                    dp[i-1][j] + costs['delete'],      # Delete from str1
+                    dp[i][j-1] + costs['insert'],      # Insert into str1
+                    dp[i-1][j-1] + costs['replace']    # Replace in str1
+                )
+    
+    return dp[m][n]
+
+def matrix_chain_multiplication(matrices):
+    """Find optimal parenthesization for matrix chain multiplication"""
+    n = len(matrices)
+    if n <= 1:
+        return 0
+    
+    # dp[i][j] = minimum cost to multiply matrices from i to j
+    dp = [[0] * n for _ in range(n)]
+    
+    # Length of chain being considered
+    for length in range(2, n + 1):
+        for i in range(n - length + 1):
+            j = i + length - 1
+            dp[i][j] = float('inf')
+            
+            # Try all possible split points
+            for k in range(i, j):
+                # Cost of multiplying two chains + cost of multiplying resulting matrices
+                cost = (dp[i][k] + dp[k+1][j] + 
+                       matrices[i][0] * matrices[k][1] * matrices[j][1])
+                dp[i][j] = min(dp[i][j], cost)
+    
+    return dp[0][n-1]
+
+def optimal_bst(keys, frequencies):
+    """Construct optimal BST given search frequencies"""
+    n = len(keys)
+    if n == 0:
+        return 0
+    
+    # Calculate prefix sums for quick range sum queries
+    freq_sum = [0] * (n + 1)
+    for i in range(n):
+        freq_sum[i + 1] = freq_sum[i] + frequencies[i]
+    
+    # dp[i][j] = minimum cost for optimal BST containing keys[i:j+1]
+    dp = [[float('inf')] * n for _ in range(n)]
+    
+    # Base case: single nodes
+    for i in range(n):
+        dp[i][i] = frequencies[i]
+    
+    # Fill for chains of length 2 to n
+    for length in range(2, n + 1):
+        for i in range(n - length + 1):
+            j = i + length - 1
+            
+            # Sum of frequencies in range [i, j]
+            freq_range = freq_sum[j + 1] - freq_sum[i]
+            
+            # Try each key as root
+            for root in range(i, j + 1):
+                left_cost = dp[i][root - 1] if root > i else 0
+                right_cost = dp[root + 1][j] if root < j else 0
+                
+                total_cost = left_cost + right_cost + freq_range
+                dp[i][j] = min(dp[i][j], total_cost)
+    
+    return dp[0][n - 1]
+
+# Space-optimized versions for scholarship analysis
+def edit_distance_space_optimized(str1, str2):
+    """O(min(m,n)) space complexity"""
+    if len(str1) < len(str2):
+        str1, str2 = str2, str1  # Ensure str1 is longer
+    
+    m, n = len(str1), len(str2)
+    prev_row = list(range(n + 1))
+    
+    for i in range(1, m + 1):
+        curr_row = [i]
+        for j in range(1, n + 1):
+            if str1[i-1] == str2[j-1]:
+                curr_row.append(prev_row[j-1])
+            else:
+                curr_row.append(1 + min(prev_row[j],      # delete
+                                       curr_row[j-1],     # insert
+                                       prev_row[j-1]))    # replace
+        prev_row = curr_row
+    
+    return prev_row[n]
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">17. String Algorithms & Pattern Matching</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Implement KMP algorithm, Z-algorithm, and suffix array construction. Apply to solve multiple pattern matching and substring problems efficiently.</p>
+                
+                <p><strong>Applications:</strong> Text search, DNA sequence analysis, data compression</p>
+            </div>
+
+            <div class="code-block">
+def compute_lps(pattern):
+    """Compute Longest Prefix Suffix array for KMP"""
+    m = len(pattern)
+    lps = [0] * m
+    length = 0  # Length of previous longest prefix suffix
+    i = 1
+    
+    while i < m:
+        if pattern[i] == pattern[length]:
+            length += 1
+            lps[i] = length
+            i += 1
+        else:
+            if length != 0:
+                length = lps[length - 1]
+            else:
+                lps[i] = 0
+                i += 1
+    
+    return lps
+
+def kmp_search(text, pattern):
+    """KMP string matching algorithm"""
+    if not pattern:
+        return []
+    
+    n, m = len(text), len(pattern)
+    lps = compute_lps(pattern)
+    
+    matches = []
+    i = j = 0  # i for text, j for pattern
+    
+    while i < n:
+        if text[i] == pattern[j]:
+            i += 1
+            j += 1
+        
+        if j == m:
+            matches.append(i - j)
+            j = lps[j - 1]
+        elif i < n and text[i] != pattern[j]:
+            if j != 0:
+                j = lps[j - 1]
+            else:
+                i += 1
+    
+    return matches
+
+def z_algorithm(s):
+    """Compute Z array: Z[i] = length of longest substring starting from i that matches prefix"""
+    n = len(s)
+    z = [0] * n
+    l = r = 0
+    
+    for i in range(1, n):
+        if i <= r:
+            z[i] = min(r - i + 1, z[i - l])
+        
+        while i + z[i] < n and s[z[i]] == s[i + z[i]]:
+            z[i] += 1
+        
+        if i + z[i] - 1 > r:
+            l, r = i, i + z[i] - 1
+    
+    return z
+
+def find_all_occurrences_z(text, pattern):
+    """Use Z-algorithm for pattern matching"""
+    if not pattern:
+        return []
+    
+    # Create combined string: pattern + '$' + text
+    combined = pattern + '$' + text
+    z = z_algorithm(combined)
+    
+    matches = []
+    pattern_len = len(pattern)
+    
+    for i in range(pattern_len + 1, len(combined)):
+        if z[i] == pattern_len:
+            matches.append(i - pattern_len - 1)  # Adjust for combined string offset
+    
+    return matches
+
+def suffix_array_simple(s):
+    """Simple O(n^2 log n) suffix array construction"""
+    n = len(s)
+    suffixes = [(s[i:], i) for i in range(n)]
+    suffixes.sort()
+    return [suffix[1] for suffix in suffixes]
+
+def lcp_array(s, sa):
+    """Compute Longest Common Prefix array from suffix array"""
+    n = len(s)
+    rank = [0] * n
+    lcp = [0] * (n - 1)
+    
+    # Compute rank array
+    for i in range(n):
+        rank[sa[i]] = i
+    
+    # Compute LCP using Kasai's algorithm
+    h = 0
+    for i in range(n):
+        if rank[i] > 0:
+            j = sa[rank[i] - 1]
+            while i + h < n and j + h < n and s[i + h] == s[j + h]:
+                h += 1
+            lcp[rank[i] - 1] = h
+            if h > 0:
+                h -= 1
+    
+    return lcp
+
+def count_distinct_substrings(s):
+    """Count distinct substrings using suffix array"""
+    n = len(s)
+    if n == 0:
+        return 0
+    
+    sa = suffix_array_simple(s)
+    lcp = lcp_array(s, sa)
+    
+    # Total substrings - sum of LCP values
+    total_substrings = n * (n + 1) // 2
+    repeated_substrings = sum(lcp)
+    
+    return total_substrings - repeated_substrings
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">18. Computational Geometry</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Solve geometric problems: convex hull construction, line intersection, point-in-polygon testing, and closest pair of points.</p>
+                
+                <p><strong>Expected Skills:</strong> Coordinate geometry, algorithm design, numerical precision handling</p>
+            </div>
+
+            <div class="code-block">
+import math
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __repr__(self):
+        return f"Point({self.x}, {self.y})"
+
+def orientation(p, q, r):
+    """Find orientation of ordered triplet (p, q, r)
+    Returns: 0 -> Collinear, 1 -> Clockwise, 2 -> Counterclockwise
+    """
+    val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y)
+    if val == 0:
+        return 0  # Collinear
+    return 1 if val > 0 else 2  # Clockwise or Counterclockwise
+
+def convex_hull_graham(points):
+    """Graham scan algorithm for convex hull"""
+    n = len(points)
+    if n < 3:
+        return points
+    
+    # Find bottom-most point (or left most in case of tie)
+    l = 0
+    for i in range(1, n):
+        if points[i].y < points[l].y:
+            l = i
+        elif points[i].y == points[l].y and points[i].x < points[l].x:
+            l = i
+    
+    # Start from leftmost point, keep moving counterclockwise
+    hull = []
+    p = l
+    while True:
+        hull.append(points[p])
+        
+        # Find the most counterclockwise point
+        q = (p + 1) % n
+        for i in range(n):
+            if orientation(points[p], points[i], points[q]) == 2:
+                q = i
+        
+        p = q
+        if p == l:  # Came back to first point
+            break
+    
+    return hull
+
+def point_in_polygon(point, polygon):
+    """Ray casting algorithm for point-in-polygon test"""
+    x, y = point.x, point.y
+    n = len(polygon)
+    inside = False
+    
+    p1x, p1y = polygon[0].x, polygon[0].y
+    for i in range(1, n + 1):
+        p2x, p2y = polygon[i % n].x, polygon[i % n].y
+        if y > min(p1y, p2y):
+            if y <= max(p1y, p2y):
+                if x <= max(p1x, p2x):
+                    if p1y != p2y:
+                        xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                    if p1x == p2x or x <= xinters:
+                        inside = not inside
+        p1x, p1y = p2x, p2y
+    
+    return inside
+
+def closest_pair_recursive(points):
+    """Divide and conquer closest pair of points"""
+    def distance(p1, p2):
+        return math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2)
+    
+    def brute_force(points):
+        min_dist = float('inf')
+        n = len(points)
+        for i in range(n):
+            for j in range(i + 1, n):
+                min_dist = min(min_dist, distance(points[i], points[j]))
+        return min_dist
+    
+    def closest_pair_rec(px, py):
+        n = len(px)
+        
+        # Base case for small arrays
+        if n <= 3:
+            return brute_force(px)
+        
+        # Divide
+        mid = n // 2
+        midpoint = px[mid]
+        
+        pyl = [point for point in py if point.x <= midpoint.x]
+        pyr = [point for point in py if point.x > midpoint.x]
+        
+        dl = closest_pair_rec(px[:mid], pyl)
+        dr = closest_pair_rec(px[mid:], pyr)
+        
+        # Find minimum of two halves
+        d = min(dl, dr)
+        
+        # Create strip array
+        strip = [point for point in py if abs(point.x - midpoint.x) < d]
+        
+        # Find closest points in strip
+        strip_min = d
+        for i in range(len(strip)):
+            j = i + 1
+            while j < len(strip) and (strip[j].y - strip[i].y) < strip_min:
+                strip_min = min(strip_min, distance(strip[i], strip[j]))
+                j += 1
+        
+        return min(d, strip_min)
+    
+    # Sort points by x and y coordinates
+    px = sorted(points, key=lambda p: p.x)
+    py = sorted(points, key=lambda p: p.y)
+    
+    return closest_pair_rec(px, py)
+
+def line_intersection(p1, q1, p2, q2):
+    """Find intersection point of two line segments"""
+    def on_segment(p, q, r):
+        return (q.x <= max(p.x, r.x) and q.x >= min(p.x, r.x) and
+                q.y <= max(p.y, r.y) and q.y >= min(p.y, r.y))
+    
+    o1 = orientation(p1, q1, p2)
+    o2 = orientation(p1, q1, q2)
+    o3 = orientation(p2, q2, p1)
+    o4 = orientation(p2, q2, q1)
+    
+    # General case
+    if o1 != o2 and o3 != o4:
+        return True
+    
+    # Special cases
+    if (o1 == 0 and on_segment(p1, p2, q1) or
+        o2 == 0 and on_segment(p1, q2, q1) or
+        o3 == 0 and on_segment(p2, p1, q2) or
+        o4 == 0 and on_segment(p2, q1, q2)):
+        return True
+    
+    return False
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">19. Advanced Tree Algorithms</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Implement heavy-light decomposition, lowest common ancestor (LCA) with binary lifting, and tree diameter algorithms. Apply to solve complex tree queries.</p>
+            </div>
+
+            <div class="code-block">
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def lca_binary_lifting(root, nodes):
+    """Preprocess tree for O(log n) LCA queries"""
+    from collections import defaultdict
+    
+    # Build adjacency list and find depths
+    graph = defaultdict(list)
+    parent = {}
+    depth = {}
+    
+    def dfs(node, par, d):
+        parent[node] = par
+        depth[node] = d
+        for child in graph[node]:
+            if child != par:
+                dfs(child, node, d + 1)
+    
+    # Assuming we have a way to convert tree to graph representation
+    # This is a simplified version - in practice you'd build this from the tree
+    
+    max_log = 20  # log2(max_nodes)
+    up = defaultdict(lambda: defaultdict(int))
+    
+    # Initialize: up[node][0] = parent[node]
+    for node in parent:
+        up[node][0] = parent[node] if parent[node] else node
+    
+    # Fill up table: up[node][j] = up[up[node][j-1]][j-1]
+    for j in range(1, max_log):
+        for node in parent:
+            up[node][j] = up[up[node][j-1]][j-1]
+    
+    def query_lca(u, v):
+        # Ensure u is deeper than v
+        if depth[u] < depth[v]:
+            u, v = v, u
+        
+        # Bring u to same level as v
+        diff = depth[u] - depth[v]
+        for i in range(max_log):
+            if (diff >> i) & 1:
+                u = up[u][i]
+        
+        if u == v:
+            return u
+        
+        # Binary search for LCA
+        for i in range(max_log - 1, -1, -1):
+            if up[u][i] != up[v][i]:
+                u = up[u][i]
+                v = up[v][i]
+        
+        return up[u][0]
+    
+    return query_lca
+
+def tree_diameter(root):
+    """Find diameter of tree using two DFS calls"""
+    if not root:
+        return 0
+    
+    def dfs(node, parent, graph):
+        max_dist = 0
+        farthest = node
+        
+        def explore(curr, par, dist):
+            nonlocal max_dist, farthest
+            if dist > max_dist:
+                max_dist = dist
+                farthest = curr
+            
+            for neighbor in graph.get(curr, []):
+                if neighbor != par:
+                    explore(neighbor, curr, dist + 1)
+        
+        explore(node, parent, 0)
+        return farthest, max_dist
+    
+    # Convert tree to adjacency list (simplified)
+    graph = defaultdict(list)
+    
+    def build_graph(node, parent=None):
+        if not node:
+            return
+        if parent:
+            graph[parent.val].append(node.val)
+            graph[node.val].append(parent.val)
+        build_graph(node.left, node)
+        build_graph(node.right, node)
+    
+    build_graph(root)
+    
+    # First DFS: find one end of diameter
+    end1, _ = dfs(root.val, None, graph)
+    
+    # Second DFS: find actual diameter
+    end2, diameter = dfs(end1, None, graph)
+    
+    return diameter
+
+def heavy_light_decomposition(root):
+    """Heavy-light decomposition for tree path queries"""
+    from collections import defaultdict
+    
+    graph = defaultdict(list)
+    size = defaultdict(int)
+    heavy_child = {}
+    parent = {}
+    depth = {}
+    
+    def dfs1(node, par, d):
+        """Calculate subtree sizes and find heavy children"""
+        size[node] = 1
+        parent[node] = par
+        depth[node] = d
+        
+        max_child_size = 0
+        heavy_child[node] = None
+        
+        for child in graph[node]:
+            if child != par:
+                dfs1(child, node, d + 1)
+                size[node] += size[child]
+                if size[child] > max_child_size:
+                    max_child_size = size[child]
+                    heavy_child[node] = child
+    
+    def dfs2(node, chain_head):
+        """Decompose tree into heavy-light chains"""
+        chain_id[node] = len(chains) if chain_head == node else chain_id[chain_head]
+        if chain_head == node:
+            chains.append([])
+        chains[chain_id[node]].append(node)
+        
+        # Process heavy child first
+        if heavy_child[node]:
+            dfs2(heavy_child[node], chain_head)
+        
+        # Process light children (each starts new chain)
+        for child in graph[node]:
+            if child != parent[node] and child != heavy_child[node]:
+                dfs2(child, child)
+    
+    chain_id = {}
+    chains = []
+    
+    # Build graph from tree (simplified)
+    def build_graph(node, par=None):
+        if not node:
+            return
+        if par:
+            graph[par.val].append(node.val)
+            graph[node.val].append(par.val)
+        build_graph(node.left, node)
+        build_graph(node.right, node)
+    
+    build_graph(root)
+    
+    # Perform decomposition
+    dfs1(root.val, None, 0)
+    dfs2(root.val, root.val)
+    
+    return chains, chain_id, parent, depth
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="problem-header">
+                <h3 class="problem-title">20. System Design & Scalability</h3>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="problem-description">
+                <h4>Problem Statement:</h4>
+                <p>Design a distributed hash table, implement consistent hashing, and create a simple load balancer. Analyze trade-offs in distributed systems.</p>
+                
+                <p><strong>Skills:</strong> System design, distributed algorithms, scalability analysis, trade-off evaluation</p>
+            </div>
+
+            <div class="code-block">
+import hashlib
+import bisect
+from typing import List, Dict, Any, Optional
+
+class ConsistentHashing:
+    """Consistent hashing implementation for distributed systems"""
+    
+    def __init__(self, nodes: List[str] = None, replicas: int = 3):
+        self.replicas = replicas
+        self.ring = {}  # hash -> node mapping
+        self.sorted_hashes = []
+        
+        if nodes:
+            for node in nodes:
+                self.add_node(node)
+    
+    def _hash(self, key: str) -> int:
+        """Hash function using MD5"""
+        return int(hashlib.md5(key.encode()).hexdigest(), 16)
+    
+    def add_node(self, node: str):
+        """Add a node to the hash ring"""
+        for i in range(self.replicas):
+            replica_key = f"{node}:{i}"
+            hash_value = self._hash(replica_key)
+            self.ring[hash_value] = node
+            bisect.insort(self.sorted_hashes, hash_value)
+    
+    def remove_node(self, node: str):
+        """Remove a node from the hash ring"""
+        for i in range(self.replicas):
+            replica_key = f"{node}:{i}"
+            hash_value = self._hash(replica_key)
+            if hash_value in self.ring:
+                del self.ring[hash_value]
+                self.sorted_hashes.remove(hash_value)
+    
+    def get_node(self, key: str) -> Optional[str]:
+        """Find the node responsible for a key"""
+        if not self.ring:
+            return None
+        
+        hash_value = self._hash(key)
+        
+        # Find first node clockwise from the hash
+        idx = bisect.bisect_right(self.sorted_hashes, hash_value)
+        if idx == len(self.sorted_hashes):
+            idx = 0
+        
+        return self.ring[self.sorted_hashes[idx]]
+    
+    def get_nodes(self, key: str, n: int = 1) -> List[str]:
+        """Get n nodes responsible for a key (for replication)"""
+        if not self.ring or n <= 0:
+            return []
+        
+        hash_value = self._hash(key)
+        nodes = []
+        seen = set()
+        
+        idx = bisect.bisect_right(self.sorted_hashes, hash_value)
+        
+        for _ in range(min(n, len(self.ring))):
+            if idx >= len(self.sorted_hashes):
+                idx = 0
+            
+            node = self.ring[self.sorted_hashes[idx]]
+            if node not in seen:
+                nodes.append(node)
+                seen.add(node)
+            
+            idx += 1
+        
+        return nodes
+
+class LoadBalancer:
+    """Simple load balancer with different strategies"""
+    
+    def __init__(self, servers: List[str]):
+        self.servers = servers
+        self.current = 0
+        self.server_weights = {server: 1 for server in servers}
+        self.server_connections = {server: 0 for server in servers}
+    
+    def round_robin(self) -> str:
+        """Round-robin load balancing"""
+        if not self.servers:
+            return None
+        
+        server = self.servers[self.current]
+        self.current = (self.current + 1) % len(self.servers)
+        return server
+    
+    def least_connections(self) -> str:
+        """Least connections load balancing"""
+        if not self.servers:
+            return None
+        
+        return min(self.servers, key=lambda s: self.server_connections[s])
+    
+    def weighted_round_robin(self) -> str:
+        """Weighted round-robin implementation"""
+        if not self.servers:
+            return None
+        
+        # Simple weighted selection based on weights
+        total_weight = sum(self.server_weights.values())
+        if total_weight == 0:
+            return self.round_robin()
+        
+        # Use consistent hashing approach for weighted selection
+        import random
+        rand_val = random.randint(1, total_weight)
+        
+        cumulative_weight = 0
+        for server in self.servers:
+            cumulative_weight += self.server_weights[server]
+            if rand_val <= cumulative_weight:
+                return server
+        
+        return self.servers[-1]
+    
+    def update_connection_count(self, server: str, delta: int):
+        """Update connection count for a server"""
+        if server in self.server_connections:
+            self.server_connections[server] = max(0, self.server_connections[server] + delta)
+
+class DistributedHashTable:
+    """Simplified distributed hash table"""
+    
+    def __init__(self, nodes: List[str], replication_factor: int = 3):
+        self.replication_factor = replication_factor
+        self.consistent_hash = ConsistentHashing(nodes, replicas=5)
+        self.data = {}  # Local storage
+        self.nodes = set(nodes)
+    
+    def put(self, key: str, value: Any) -> bool:
+        """Store a key-value pair"""
+        nodes = self.consistent_hash.get_nodes(key, self.replication_factor)
+        
+        success_count = 0
+        for node in nodes:
+            if self._store_on_node(node, key, value):
+                success_count += 1
+        
+        # Require majority of replicas to succeed
+        return success_count > self.replication_factor // 2
+    
+    def get(self, key: str) -> Any:
+        """Retrieve a value by key"""
+        nodes = self.consistent_hash.get_nodes(key, self.replication_factor)
+        
+        for node in nodes:
+            value = self._get_from_node(node, key)
+            if value is not None:
+                return value
+        
+        return None
+    
+    def _store_on_node(self, node: str, key: str, value: Any) -> bool:
+        """Store data on a specific node (simplified)"""
+        try:
+            # In real implementation, this would make network call
+            node_key = f"{node}:{key}"
+            self.data[node_key] = value
+            return True
+        except Exception:
+            return False
+    
+    def _get_from_node(self, node: str, key: str) -> Any:
+        """Retrieve data from a specific node (simplified)"""
+        try:
+            # In real implementation, this would make network call
+            node_key = f"{node}:{key}"
+            return self.data.get(node_key)
+        except Exception:
+            return None
+    
+    def add_node(self, node: str):
+        """Add a new node and rebalance data"""
+        self.nodes.add(node)
+        self.consistent_hash.add_node(node)
+        
+        # In real implementation, would trigger data migration
+        # self._rebalance_data()
+    
+    def remove_node(self, node: str):
+        """Remove a node and redistribute its data"""
+        if node in self.nodes:
+            self.nodes.remove(node)
+            self.consistent_hash.remove_node(node)
+            
+            # In real implementation, would migrate data to other nodes
+            # self._migrate_data_from_node(node)
+
+# Example usage and testing
+def test_distributed_systems():
+    """Test the distributed systems components"""
+    
+    # Test consistent hashing
+    nodes = ['server1', 'server2', 'server3']
+    ch = ConsistentHashing(nodes)
+    
+    print("Consistent Hashing Distribution:")
+    keys = ['key1', 'key2', 'key3', 'key4', 'key5']
+    for key in keys:
+        node = ch.get_node(key)
+        print(f"{key} -> {node}")
+    
+    # Test load balancer
+    lb = LoadBalancer(['web1', 'web2', 'web3'])
+    
+    print("\nLoad Balancer (Round Robin):")
+    for i in range(6):
+        server = lb.round_robin()
+        print(f"Request {i+1} -> {server}")
+    
+    # Test distributed hash table
+    dht = DistributedHashTable(['node1', 'node2', 'node3'])
+    
+    print("\nDistributed Hash Table:")
+    dht.put('user:123', {'name': 'Alice', 'age': 30})
+    dht.put('user:456', {'name': 'Bob', 'age': 25})
+    
+    print(f"user:123 -> {dht.get('user:123')}")
+    print(f"user:456 -> {dht.get('user:456')}")
+    
+    return ch, lb, dht
+            </div>
+
+            <div class="scholarship-tips">
+                <h4>System Design Analysis:</h4>
+                <ul>
+                    <li><strong>Trade-offs:</strong> Consistency vs Availability vs Partition tolerance (CAP theorem)</li>
+                    <li><strong>Scalability:</strong> Horizontal vs vertical scaling considerations</li>
+                    <li><strong>Performance:</strong> Latency vs throughput optimization strategies</li>
+                    <li><strong>Reliability:</strong> Replication, fault tolerance, and recovery mechanisms</li>
+                    <li><strong>Real-world:</strong> Applications in CDNs, databases, microservices</li>
+                </ul>
+            </div>
     </div>
 
     <div class="content-section">
@@ -697,8 +2469,8 @@ def sliding_window_maximum(nums, k):
     <div class="nav-buttons">
         <a href="index.html" class="prev-next-link">← Back to Study Guide</a>
         <div style="text-align: center;">
-            <p><strong>Problems 1-5 of 20</strong><br>
-            <small>Continue practicing with the remaining 15 problems using the patterns shown above</small></p>
+            <p><strong>All 20 Problems Complete!</strong><br>
+            <small>Comprehensive coverage of scholarship-level algorithms and data structures</small></p>
         </div>
         <a href="index.html" class="prev-next-link">More Resources →</a>
     </div>

@@ -144,6 +144,18 @@
     </div>
 
     <div class="content-section">
+        <h2>📹 Tutorial Video</h2>
+        <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-bottom: 1rem;">
+            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                    src="https://www.youtube.com/embed/R8pT9z8wstc" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="content-section">
         <h2>🎯 Learning Objectives</h2>
         <ul>
             <li>Create smooth 8-directional movement (including diagonals)</li>
@@ -192,31 +204,24 @@
         <h2>🏗️ Building Your Maze Navigator</h2>
         
         <div class="step-by-step">
-            <h3>Step 1: Create TopDownController Scene</h3>
+            <h3>Step 1: Use Your Existing Player Character</h3>
             
             <div class="node-info">
-                <h4>🌳 TopDownController Structure</h4>
-                <pre style="background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 4px; font-family: monospace;">
-TopDownController (CharacterBody2D) 🎮
-├── PlayerSprite (Sprite2D) 🎨
-├── PlayerCollision (CollisionShape2D) ⚡
-└── PlayerCamera (Camera2D) 📹
-                </pre>
-                <p><strong>Purpose:</strong> Dedicated controller for top-down 8-directional movement</p>
+                <h4>♻️ Reuse Previous Work</h4>
+                <p><strong>Important:</strong> Instead of creating a new controller from scratch, instance your existing player character from previous modules. This saves time and maintains consistency across your projects!</p>
             </div>
             
             <ol>
-                <li><strong>New Scene:</strong> Scene → New Scene → 2D Scene</li>
-                <li><strong>Change Root:</strong> Delete Node2D → Add CharacterBody2D → Rename to "TopDownController"</li>
-                <li><strong>Add Sprite:</strong> Right-click TopDownController → Add Child → Sprite2D → Rename to "PlayerSprite"</li>
-                <li><strong>Set Texture:</strong> Select PlayerSprite → Drag player image to "Texture" property</li>
-                <li><strong>Add Collision:</strong> Right-click TopDownController → Add Child → CollisionShape2D → Rename to "PlayerCollision"</li>
-                <li><strong>Set Shape:</strong> Select PlayerCollision → Inspector → Shape → New CircleShape2D (works better for mazes)</li>
-                <li><strong>Size Collision:</strong> Drag the blue circle to be slightly smaller than the sprite</li>
-                <li><strong>Add Camera:</strong> Right-click TopDownController → Add Child → Camera2D → Rename to "PlayerCamera"</li>
-                <li><strong>Enable Camera:</strong> Select PlayerCamera → Inspector → Check "Enabled" checkbox</li>
-                <li><strong>💾 Save Controller:</strong> Ctrl+S → Name it "TopDownController.tscn"</li>
+                <li><strong>Open Previous Project:</strong> Navigate to your previous module's player character scene (e.g., "Player.tscn" or "Character.tscn")</li>
+                <li><strong>Check the Scene:</strong> Make sure it has CharacterBody2D with Sprite2D, CollisionShape2D, and Camera2D</li>
+                <li><strong>Copy to Current Project:</strong> File → Export → Copy the player scene file to your Module 6 project folder</li>
+                <li><strong>Or Instance Directly:</strong> If working in the same project, you can directly instance the existing player scene</li>
+                <li><strong>Rename if Needed:</strong> You can rename it to "TopDownController" to match this module's naming</li>
             </ol>
+            
+            <div class="node-info">
+                <p><strong>💡 Pro Tip:</strong> Reusing assets and scenes is a fundamental game development practice. It ensures consistency and speeds up development!</p>
+            </div>
         </div>
         
         <div class="step-by-step">
@@ -232,21 +237,33 @@ TopDownController (CharacterBody2D) 🎮
         </div>
 
         <div class="step-by-step">
-            <h3>Step 3: Create Maze Walls</h3>
-            <p><strong>Method 1: Individual Wall Pieces</strong></p>
+            <h3>Step 3: Create Maze Walls Using TileSet</h3>
+            
+            <div class="node-info">
+                <h4>♻️ Reuse Your Previous TileSet</h4>
+                <p><strong>Save Time:</strong> If you created a tileset in a previous project, you can reuse it here! Tilesets are perfect for building mazes efficiently.</p>
+            </div>
+            
+            <h4>📁 Saving TileSet from Previous Project:</h4>
             <ol>
-                <li>Add <code>StaticBody2D</code> nodes for each wall segment</li>
-                <li>Add <code>Sprite2D</code> child with wall/brick texture</li>
-                <li>Add <code>CollisionShape2D</code> child matching the sprite</li>
-                <li>Arrange walls to create a maze pattern</li>
+                <li><strong>Open Previous Project:</strong> Go to your previous project that has a TileMap with walls/platforms</li>
+                <li><strong>Find the TileSet:</strong> Select your TileMap node → Inspector → TileSet property</li>
+                <li><strong>Save TileSet Resource:</strong> Click the dropdown arrow next to the TileSet → "Save As" → Name it "MazeTileSet.tres"</li>
+                <li><strong>Copy to New Project:</strong> Copy the .tres file to your Module 6 project folder</li>
             </ol>
             
-            <p><strong>Method 2: TileMap Maze (Advanced)</strong></p>
+            <h4>🏗️ Using TileSet for Maze:</h4>
             <ol>
-                <li>Add <code>TileMap</code> node</li>
-                <li>Create TileSet with wall sprites and collision</li>
-                <li>Paint your maze layout using the tile painting tools</li>
+                <li><strong>Add TileMap:</strong> Right-click MazeGame → Add Child → TileMap</li>
+                <li><strong>Load TileSet:</strong> Select TileMap → Inspector → TileSet → Load → Select your "MazeTileSet.tres"</li>
+                <li><strong>Paint Maze Walls:</strong> Use the TileMap painting tools to create your maze layout</li>
+                <li><strong>Create Paths:</strong> Leave empty spaces for the player to navigate through</li>
+                <li><strong>Add Variety:</strong> Use different wall tiles to make the maze visually interesting</li>
             </ol>
+            
+            <div class="node-info">
+                <p><strong>🎯 Maze Design:</strong> Create a clear starting area, multiple paths with dead ends, and a visible exit area. Make sure there's at least one valid path from start to finish!</p>
+            </div>
         </div>
 
         <div class="step-by-step">
@@ -270,44 +287,33 @@ TopDownController (CharacterBody2D) 🎮
         <h2>🤖 AI-Assisted Maze Navigation</h2>
         
         <div class="ai-prompt">
-            <h3>Perfect AI Prompt Setup</h3>
+            <h3>Goal Detection AI Prompt</h3>
             
             <div class="step-by-step">
                 <h4>📸 Step 1: Take a Screenshot</h4>
                 <ol>
-                    <li><strong>Show TopDownController Scene:</strong> Open TopDownController.tscn and expand all nodes</li>
-                    <li><strong>Screenshot Structure:</strong> Capture the scene tree showing CharacterBody2D with children</li>
-                    <li><strong>Include Script Tab:</strong> Show that the TopDownController needs a script attached</li>
+                    <li><strong>Show Your Maze Scene:</strong> Open MazeNavigator.tscn and expand all nodes</li>
+                    <li><strong>Screenshot Structure:</strong> Capture the scene tree showing your player, maze walls, and ExitGoal area</li>
+                    <li><strong>Include Goal Area:</strong> Make sure the ExitGoal Area2D is visible in the screenshot</li>
                 </ol>
             </div>
             
             <div class="step-by-step">
                 <h4>💬 Step 2: Use This Prompt</h4>
                 <blockquote style="background: #f8f9fa; padding: 1rem; border-left: 3px solid #6c757d; font-style: italic;">
-                    "I'm making a top-down maze game in Godot 4. Here's a screenshot of my TopDownController scene. I want the character to move in all 8 directions (up, down, left, right, and diagonally) using WASD keys. The character should move at the same speed whether going straight or diagonally, and there should be no gravity. Can you write the script for this CharacterBody2D?"
+                    "I'm making a maze game in Godot 4. Here's my scene structure [screenshot]. I have a player character that can already move around the maze. I want to add goal detection: when the player enters the ExitGoal area, I want it to print 'You win!' and then quit the game automatically. The ExitGoal is an Area2D node. Can you help me write the script for this win condition?"
                 </blockquote>
             </div>
             
             <div class="node-info">
                 <h4>🎯 What This Will Create</h4>
                 <ul>
-                    <li><strong>8-Directional Movement:</strong> Including smooth diagonals</li>
-                    <li><strong>No Gravity:</strong> Perfect for top-down perspective</li>
-                    <li><strong>Equal Speed:</strong> Diagonal movement isn't faster</li>
-                    <li><strong>Wall Collision:</strong> Stops at maze walls automatically</li>
+                    <li><strong>Win Detection:</strong> Automatically detects when player reaches the goal</li>
+                    <li><strong>Win Message:</strong> Prints "You win!" to the console</li>
+                    <li><strong>Game Exit:</strong> Automatically closes the game after winning</li>
+                    <li><strong>No Movement Code Needed:</strong> Your existing player movement will work perfectly!</li>
                 </ul>
             </div>
-        </div>
-
-        <div class="ai-prompt">
-            <h3>Follow-up Enhancement Prompts</h3>
-            <p><strong>📸 Remember:</strong> Include a screenshot of your working TopDownController for these features!</p>
-            <ul>
-                <li><strong>Goal Detection:</strong> "My movement works [screenshot]. How do I detect when the player reaches the exit goal and show a win message?"</li>
-                <li><strong>Smooth Rotation:</strong> "Here's my controller [screenshot]. How do I make the character sprite face the direction they're moving?"</li>
-                <li><strong>Movement Trail:</strong> "My maze game works [screenshot]. Can you add a trail effect showing where the player has been?"</li>
-                <li><strong>Timer Challenge:</strong> "Here's my maze [screenshot]. How do I add a countdown timer to make it more challenging?"</li>
-            </ul>
         </div>
     </div>
 
